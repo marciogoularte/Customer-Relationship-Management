@@ -18,7 +18,8 @@
                     Type = a.Type,
                     TargetId = a.TargetId,
                     TargetType = a.TargetType,
-                    CreatedOn = a.CreatedOn
+                    CreatedOn = a.CreatedOn,
+                    IsDeleted = a.IsDeleted
                 };
             }
         }
@@ -34,5 +35,7 @@
         public ActivityTargetType TargetType { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
