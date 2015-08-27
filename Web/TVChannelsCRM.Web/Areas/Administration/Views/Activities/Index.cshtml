@@ -5,9 +5,9 @@
     ViewBag.Title = "Activities";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Scripts.Render("~/bundles/jquery")
-
-@* TODO: Remove that hardcode of height in pixels, This should be done automatically by metro theme and javascripts from it *@
+@*@Scripts.Render("~/bundles/jquery")*@
+<script src="~/Scripts/kendo/jquery.min.js" type="text/javascript"></script>
+    @* TODO: Remove that hardcode of height in pixels, This should be done automatically by metro theme and javascripts from it *@
 <style type="text/css">
     #content {
         min-height: 600px;
