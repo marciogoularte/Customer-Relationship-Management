@@ -52,7 +52,7 @@
                         </span>
                         <span class="date" style="display: inline;">
                             @activity.CreatedOn.ToLongDateString() <b>@activity.CreatedOn.ToLongTimeString()</b>
-                            @if (activity.IsDeleted == false && activity.Type != ActivityType.Delete)
+                            @*@if (activity.IsDeleted == false && activity.Type != ActivityType.Delete)
                             {
                                 switch (activity.TargetType)
                                 {
@@ -66,7 +66,7 @@
                                     @Html.ActionLink("Details", "ProviderDetails", "Providers", new { area = "Users", providerId = int.Parse(activity.TargetId) }, new { @class = "btn btn-mini btn-inverse" })
                                         break;
                                 }
-                            }
+                            }*@
 
                         </span>
                     </li>
