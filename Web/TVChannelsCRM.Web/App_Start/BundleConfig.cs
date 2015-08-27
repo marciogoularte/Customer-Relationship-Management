@@ -69,7 +69,7 @@
                 "~/Scripts/theme-scripts/jquery-ui-1.10.0.custom.min.js",
                 "~/Scripts/theme-scripts/jquery.ui.touch-punch.js",
                 "~/Scripts/theme-scripts/modernizr.js",
-                "~/Scripts/theme-scripts/bootstrap.min.js",
+                "~/Scripts/bootstrap.min.js",
                 "~/Scripts/theme-scripts/jquery.cookie.js",
                 "~/Scripts/theme-scripts/fullcalendar.min.js",
                 "~/Scripts/theme-scripts/jquery.dataTables.min.js",
