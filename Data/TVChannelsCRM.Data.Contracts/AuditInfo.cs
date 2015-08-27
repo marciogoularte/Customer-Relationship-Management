@@ -1,0 +1,18 @@
+﻿namespace TVChannelsCRM.Data.Contracts
+{
+    using System;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public class AuditInfo : IAuditInfo
+    {
+        public DateTime CreatedOn { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the CreatedOn property should be automatically set.
+        /// </summary>
+        [NotMapped]
+        public bool PreserveCreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+    }
+}

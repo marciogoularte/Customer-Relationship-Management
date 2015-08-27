@@ -1,0 +1,158 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
+@{
+    const string controllerName = "DeletedItems";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/kendo")
+@Scripts.Render("~/bundles/jqueryval")
+
+<h2>Deleted providers</h2>
+
+<div id="pnlContent">
+    @(Html.Kendo()
+     .Grid<ProviderViewModel>()
+    .Name("grid-deleted-providers")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Name);
+        columns.Bound(model => model.Type);
+        columns.Bound(model => model.Eik);
+        columns.Bound(model => model.Email);
+        columns.Bound(model => model.ResidenceAndAddress);
+        columns.Bound(model => model.NetworkPage);
+        columns.Bound(model => model.ContactPerson);
+        columns.Bound(model => model.PhoneNumber);
+        columns.Bound(model => model.Email);
+        columns.Bound(model => model.Address);
+        columns.Bound(model => model.ChannelName);
+        columns.Bound(model => model.ReveivingOptions);
+        columns.Bound(model => model.SatelliteData);
+        columns.Bound(model => model.Degrees);
+        columns.Bound(model => model.Freq);
+        columns.Bound(model => model.Transponder);
+        columns.Bound(model => model.Encryption);
+        columns.Bound(model => model.SrFec);
+        columns.Bound(model => model.Sid);
+        columns.Bound(model => model.Vpid);
+        columns.Bound(model => model.Apid);
+        columns.Bound(model => model.OnidTid);
+        columns.Bound(model => model.Beam);
+        columns.Bound(model => model.EpgSource);
+        columns.Bound(model => model.Website);
+        columns.Bound(model => model.Presentation);
+        columns.Bound(model => model.ContractTemplate);
+        columns.Bound(model => model.Term);
+        columns.Bound(model => model.CPS);
+        columns.Bound(model => model.Commission);
+        columns.Command(command => command.Custom("Restore").Click("showDetails"));
+    })
+        .ToolBar(tools =>
+        {
+            tools.Excel();
+            tools.Pdf();
+        })
+        .Groupable()
+        .ColumnMenu()
+        .Filterable()
+        .Navigatable()
+        .Resizable(r => r.Columns(true))
+        .Reorderable(r => r.Columns(true))
+        .Events(ev => ev.Change("selectRow"))
+         .HtmlAttributes(new { style = "width:3740px" })
+        .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+        .Excel(excel => excel
+            .FileName("Deleted Provides Database.xlsx")
+            .Filterable(true)
+            .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
+         )
+        .Pdf(pdf => pdf
+            .AllPages()
+                 .FileName("Deleted Providers Database.pdf")
+            .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
+        )
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .Sortable(sort =>
+        {
+            sort.AllowUnsort(false);
+            sort.SortMode(GridSortMode.SingleColumn);
+        })
+        .DataSource(data =>
+        {
+            data.Ajax()
+                .Model(model => model.Id(c => c.Id))
+                .PageSize(10)
+                .ServerOperation(true)
+                .Events(ev => ev.Error("errorAlert"))
+                .Read(read => read.Action("ReadDeletedProviders", controllerName));
+        }))
+</div>
+<div id="selected">
+</div>
+
+@(Html.Kendo().Window().Name("restore-provider-box")
+    .Title("Restore provider")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .Width(300)
+)
+
+<script type="text/x-kendo-template" id="providers-template">
+    <div id="providers-restore-container">
+        <h4>Are you sure that you want to restore that provider?</h4>
+        <button id="restore-provider-button" class="btn btn-primary">Restore</button>
+    </div>
+</script>
+
+<script type="text/javascript">
+    var detailsTemplate = kendo.template($("#providers-template").html());
+    var dataItem;
+
+    function showDetails(e) {
+        e.preventDefault();
+
+        dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var wnd = $("#restore-provider-box").data("kendoWindow");
+
+        wnd.content(detailsTemplate(dataItem));
+        wnd.center().open();
+    }
+
+    $(document).on('click', '#restore-provider-button', function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ConfirmRestoreProvider", "DeletedItems")',
+            data: { providerId: dataItem.Id.toString() },
+            datatype: "JSON",
+            success: function () {
+                var grid = $("#grid-deleted-providers").data("kendoGrid");
+                grid.dataSource.fetch();
+                var wnd = $("#restore-provider-box").data("kendoWindow");
+                wnd.close();
+            }
+        });
+    });
+</script>
+
+<script>
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

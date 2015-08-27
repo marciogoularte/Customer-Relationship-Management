@@ -1,0 +1,9 @@
+﻿@using TVChannelsCRM.Common.Extensions
+@using TVChannelsCRM.Data.Models
+@model Gender
+
+@(Html.Kendo().DropDownListFor(m => m)
+        .DataTextField("Text")
+        .DataValueField("Value")
+        .BindTo(KendoGridExtensions.EnumToSelectList(typeof(Gender)))
+)

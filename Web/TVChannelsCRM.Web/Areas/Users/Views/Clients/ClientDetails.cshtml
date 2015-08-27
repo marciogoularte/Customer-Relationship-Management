@@ -1,0 +1,173 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
+@model ClientViewModel
+@{
+    ViewBag.Title = "ClientDetails";
+}
+
+<style type="text/css">
+    #content {
+        min-height: 600px;
+    }
+</style>
+
+<h2>Client details</h2>
+
+@* <p>Sorry this page is still not ready and you are not allowed to check it</p>
+    <h1>You will be automatically redirected after <span id="seconds-until-redirect">6</span> seconds!</h1>
+    <img src="~/Content/images/sorry_not_implemented.jpg"/>
+    <script>
+        $(document).ready(function () {
+            var sec = 6;
+            var timer = setInterval(function () {
+                $('#seconds-until-redirect').text(--sec);
+                if (sec === 1) {
+                    window.location.href = '/users/clients/index';
+                    clearInterval(timer);
+                }
+            }, 1000);
+        });
+    </script>*@
+
+
+
+
+
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Is active
+                    </strong>
+                </td>
+                <td>
+                    @Model.IsActive
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Active from
+                    </strong>
+                </td>
+                <td>
+                    @Model.ActiveFrom
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Active to
+                    </strong>
+                </td>
+                <td>
+                    @Model.ActiveTo
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Mg
+                    </strong>
+                </td>
+                <td>
+                    @Model.Mg
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        IrdCard
+                    </strong>
+                </td>
+                <td>
+                    @Model.IrdCard
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Invoicing
+                    </strong>
+                </td>
+                <td>
+                    @Model.Invoicing
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Date of signing
+                    </strong>
+                </td>
+                <td>
+                    @Model.DateOfSigning
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Date of expiring
+                    </strong>
+                </td>
+                <td>
+                    @Model.DateOfExpiring
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Currency
+                    </strong>
+                </td>
+                <td>
+                    @Model.Currency
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        InvoicesIssued
+                    </strong>
+                </td>
+                <td>
+                    @Model.InvoicesIssued
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        PaymentsReceived
+                    </strong>
+                </td>
+                <td>
+                    @Model.PaymentsReceived
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Contract
+                    </strong>
+                </td>
+                <td>
+                    @Model.Contract
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
