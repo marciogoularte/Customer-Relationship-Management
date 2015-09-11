@@ -46,7 +46,7 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> ClientDetails(int clientId)
+        public ActionResult ClientDetails(int clientId)
         {
            // var client = await this.Data.Clients
            //     .All()

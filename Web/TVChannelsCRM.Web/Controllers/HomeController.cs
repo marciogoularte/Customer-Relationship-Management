@@ -78,34 +78,34 @@
             {
                 var firstClient = new Client()
                 {
-                    IsActive = true,
-                    // ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i).ToString(),
-                    // ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i).ToString(),
-                    Mg = "MG" + i * 0.4,
-                    IrdCard = i * 19.00002 + "IrdCard",
-                    Invoicing = i + "asdasd",
-                    //  DateOfSigning = DateTime.Now.ToString(),
-                    //  DateOfExpiring = DateTime.Now.ToString(),
-                    Currency = (i * 20).ToString(),
-                    InvoicesIssued = i + "Some Random" + (i / 19.2),
-                    PaymentsReceived = i.ToString(),
-                    Contract = "Contract" + i
+                    //IsActive = true,
+                    //ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i).ToString(),
+                    //ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i).ToString(),
+                    //Mg = "MG" + i * 0.4,
+                    //IrdCard = i * 19.00002 + "IrdCard",
+                    //Invoicing = i + "asdasd",
+                    //DateOfSigning = DateTime.Now.ToString(),
+                    //DateOfExpiring = DateTime.Now.ToString(),
+                    //Currency = (i * 20).ToString(),
+                    //InvoicesIssued = i + "Some Random" + (i / 19.2),
+                    //PaymentsReceived = i.ToString(),
+                    //Contract = "Contract" + i
                 };
 
                 var secondClient = new Client()
                 {
-                    IsActive = false,
-                    //  ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i).ToString(),
-                    // ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i).ToString(),
-                    Mg = "MG" + i * 0.4,
-                    IrdCard = i * 19.00002 + "IrdCard",
-                    Invoicing = i + "asdasd",
-                    // DateOfSigning = DateTime.Now.ToString(),
-                    // DateOfExpiring = DateTime.Now.ToString(),
-                    Currency = (i * 20).ToString(),
-                    InvoicesIssued = i + "Some Random" + (i / 19.2),
-                    PaymentsReceived = i.ToString(),
-                    Contract = "Contract" + i
+                    //IsActive = false,
+                    //ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i).ToString(),
+                    //ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i).ToString(),
+                    //Mg = "MG" + i * 0.4,
+                    //IrdCard = i * 19.00002 + "IrdCard",
+                    //Invoicing = i + "asdasd",
+                    //DateOfSigning = DateTime.Now.ToString(),
+                    //DateOfExpiring = DateTime.Now.ToString(),
+                    //Currency = (i * 20).ToString(),
+                    //InvoicesIssued = i + "Some Random" + (i / 19.2),
+                    //PaymentsReceived = i.ToString(),
+                    //Contract = "Contract" + i
                 };
 
                 this.Data.Clients.Add(firstClient);

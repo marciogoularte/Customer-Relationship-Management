@@ -37,68 +37,68 @@ namespace TVChannelsCRM.Data.Migrations
 
         private void AddClientsAndProviders(TVChannelsCRMDbContext context)
         {
-            for (int i = 100; i < 200; i++)
-            {
-                var provider = new Provider()
-                {
-                    Name = "Name " + (i * 23),
-                    Type = TypeOfCompany.OOD,
-                    Address = "Al Malinow" + (i * 23),
-                    Commission = (i * 23).ToString(),
-                    ContactPerson = "Pesho" + (i * 23),
-                    Term = "Term" + (i * 23),
-                    CPS = "CPS" + (i * 23),
-                    Eik = "Eik" + (i * 23),
-                    ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
-                    NetworkPage = "NetworkPage" + i * 3.6,
-                    PhoneNumber = "0891929384",
-                    Email = "Pesho" + i + "@gmail.com"
-                };
+            //for (int i = 100; i < 200; i++)
+            //{
+            //    var provider = new Provider()
+            //    {
+            //        Name = "Name " + (i * 23),
+            //        Type = TypeOfCompany.OOD,
+            //        Address = "Al Malinow" + (i * 23),
+            //        Commission = (i * 23).ToString(),
+            //        ContactPerson = "Pesho" + (i * 23),
+            //        Term = "Term" + (i * 23),
+            //        CPS = "CPS" + (i * 23),
+            //        Eik = "Eik" + (i * 23),
+            //        ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
+            //        NetworkPage = "NetworkPage" + i * 3.6,
+            //        PhoneNumber = "0891929384",
+            //        Email = "Pesho" + i + "@gmail.com"
+            //    };
 
-                context.Providers.AddOrUpdate(provider);
-            }
-
-
+            //    context.Providers.AddOrUpdate(provider);
+            //}
 
 
-            for (int i = 100; i < 200; i++)
-            {
-                var firstClient = new Client()
-                {
-                    IsActive = true,
-                    ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i),
-                    ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i),
-                    Mg = "MG" + i*0.4,
-                    IrdCard = i*19.00002 + "IrdCard",
-                    Invoicing = i + "asdasd",
-                    DateOfSigning = DateTime.Now,
-                    DateOfExpiring = DateTime.Now,
-                    Currency = (i*20).ToString(),
-                    InvoicesIssued = i + "Some Random" + (i/19.2),
-                    PaymentsReceived = i.ToString(),
-                    Contract = "Contract" + i
-                };
 
-                var secondClient = new Client()
-                {
-                    IsActive = false,
-                    ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i),
-                    ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i),
-                    Mg = "MG" + i*0.4,
-                    IrdCard = i*19.00002 + "IrdCard",
-                    Invoicing = i + "asdasd",
-                    DateOfSigning = DateTime.Now,
-                    DateOfExpiring = DateTime.Now,
-                    Currency = (i*20).ToString(),
-                    InvoicesIssued = i + "Some Random" + (i/19.2),
-                    PaymentsReceived = i.ToString(),
-                    Contract = "Contract" + i
-                };
 
-                context.Clients.AddOrUpdate(firstClient);
-                context.Clients.AddOrUpdate(secondClient);
+            //for (int i = 100; i < 200; i++)
+            //{
+            //    var firstClient = new Client()
+            //    {
+            //        IsActive = true,
+            //        ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i),
+            //        ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i),
+            //        Mg = "MG" + i*0.4,
+            //        IrdCard = i*19.00002 + "IrdCard",
+            //        Invoicing = i + "asdasd",
+            //        DateOfSigning = DateTime.Now,
+            //        DateOfExpiring = DateTime.Now,
+            //        Currency = (i*20).ToString(),
+            //        InvoicesIssued = i + "Some Random" + (i/19.2),
+            //        PaymentsReceived = i.ToString(),
+            //        Contract = "Contract" + i
+            //    };
 
-            }
+            //    var secondClient = new Client()
+            //    {
+            //        IsActive = false,
+            //        ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i),
+            //        ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i),
+            //        Mg = "MG" + i*0.4,
+            //        IrdCard = i*19.00002 + "IrdCard",
+            //        Invoicing = i + "asdasd",
+            //        DateOfSigning = DateTime.Now,
+            //        DateOfExpiring = DateTime.Now,
+            //        Currency = (i*20).ToString(),
+            //        InvoicesIssued = i + "Some Random" + (i/19.2),
+            //        PaymentsReceived = i.ToString(),
+            //        Contract = "Contract" + i
+            //    };
+
+            //    context.Clients.AddOrUpdate(firstClient);
+            //    context.Clients.AddOrUpdate(secondClient);
+
+            // }
         }
 
         private void AddDealerUserProfiles(TVChannelsCRMDbContext context)
