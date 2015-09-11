@@ -52,32 +52,15 @@
                     Name = "Name " + (i * 23),
                     Type = TypeOfCompany.OOD,
                     Address = "Al Malinow" + (i * 23),
-                    Apid = (i * 23) + " Apid Random",
-                    Beam = (i * 23) + " Bea,",
-                    ChannelName = "BTV" + (i * 23),
                     Commission = (i * 23).ToString(),
                     ContactPerson = "Pesho" + (i * 23),
-                    ContractTemplate = "ContractP" + (i * 23),
                     Term = "Term" + (i * 23),
                     CPS = "CPS" + (i * 23),
                     Eik = "Eik" + (i * 23),
                     ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
                     NetworkPage = "NetworkPage" + i * 3.6,
                     PhoneNumber = "0891929384",
-                    Email = "Pesho" + i + "@gmail.com",
-                    ReveivingOptions = i.ToString() + " " + (i * 2).ToString() + " " + (i * 4).ToString(),
-                    SatelliteData = "Data" + i * 4,
-                    Degrees = "37",
-                    Freq = "Freq" + i,
-                    Transponder = "ABCRandm" + i * 1.2,
-                    Encryption = "Hard imba0" + i * 0.2,
-                    SrFec = "SrFec" + i,
-                    Sid = "i" + i + "Leniveca",
-                    Vpid = "i" + i + "Vpid",
-                    OnidTid = "OnidTid" + i * 0.9,
-                    EpgSource = "Bbam Source00" + i,
-                    Website = "https://www.long.somerandom.website.com",
-                    Presentation = "Presentation" + i * 0.231
+                    Email = "Pesho" + i + "@gmail.com"
                 };
 
                 this.Data.Providers.Add(provider);

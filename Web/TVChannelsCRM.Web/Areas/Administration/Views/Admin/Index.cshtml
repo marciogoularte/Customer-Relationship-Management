@@ -1,8 +1,24 @@
 ﻿@using TVChannelsCRM.Web.Areas.Administration.ViewModels.Admin
+@model IEnumerable<string>
+
 @{
     ViewBag.Title = "Users";
     const string controllerName = "Admin";
 }
+
+<style>
+    .demo-section {
+        width: 250px;
+        margin: 35px auto 50px;
+        padding: 30px;
+    }
+
+        .demo-section h2 {
+            text-transform: uppercase;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+</style>
 
 <h2>Users</h2>
 
@@ -11,19 +27,18 @@
     .Name("grid-users")
     .Columns(columns =>
     {
-        columns.Bound(model => model.UserName);
-        columns.Bound(model => model.Email);
-        columns.Bound(model => model.FirstName);
-        columns.Bound(model => model.SecondName);
-        columns.Bound(model => model.ThirdName);
-        columns.Bound(model => model.Gender);
-        columns.Bound(model => model.Age);
-        columns.Bound(model => model.Town);
-        columns.Bound(model => model.Country);
-        columns.Bound(model => model.CreatedOn).Format("{0:dd/MM/yyyy}");
-        columns.Bound(model => model.EnterprisePosition);
-        columns.Bound(model => model.PhoneNumber);
-        columns.Bound(model => model.Website);
+        columns.Bound(model => model.UserName).Width(60);
+        columns.Bound(model => model.Email).Width(60);
+        columns.Bound(model => model.FirstName).Width(60);
+        columns.Bound(model => model.SecondName).Hidden(true);
+        columns.Bound(model => model.LastName).Width(60);
+        columns.Bound(model => model.Gender).Hidden(true);
+        columns.Bound(model => model.Age).Hidden(true);
+        columns.Bound(model => model.Town).Hidden(true);
+        columns.Bound(model => model.Country).Hidden(true);
+        columns.Bound(model => model.EnterprisePosition).Width(60);
+        columns.Bound(model => model.PhoneNumber).Width(60);
+        columns.Bound(model => model.Website).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Profile").Click("viewDetails");
@@ -31,61 +46,86 @@
             command.Destroy();
         });
     })
-        .ToolBar(tools =>
-        {
-            tools.Create();
-            tools.Excel();
-            tools.Pdf();
-        })
-        .Groupable()
-        .ColumnMenu()
-        .Filterable()
-        .Navigatable()
-        .Resizable(r => r.Columns(true))
-        .Reorderable(r => r.Columns(true))
-        .Events(ev => ev.Change("selectRow"))
-        .HtmlAttributes(new { style = "width:2000px" })
-        .Editable(edit => edit.Mode(GridEditMode.PopUp))
-        .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
-        .Excel(excel => excel
-            .FileName("Users Database.xlsx")
-            .Filterable(true)
-            .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
-         )
-        .Pdf(pdf => pdf
-            .AllPages()
-                 .FileName("Users Database.pdf")
-            .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+
+            @(Html.Kendo().AutoComplete()
+                .Name("searchbox-users")
+                .Placeholder("Username... ")
+                .BindTo(Model)
+                .Filter("contains")
+            )
+            <a class="k-button k-button-icontext k-grid-add" href="/Administration/Admin/ReadUsers?grid-users-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+            <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+            <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+
+        </text>);
+    })
+    .Groupable()
+    .ColumnMenu()
+    .Filterable()
+    .Navigatable()
+    .Resizable(r => r.Columns(true))
+    .Reorderable(r => r.Columns(true))
+    .Events(ev => ev.Change("selectRow"))
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .HtmlAttributes(new { @style = "word-break:break-all;" })
+    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+    .Excel(excel => excel
+        .FileName("Users Database.xlsx")
+        .Filterable(true)
+        .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
         )
-        .Pageable(pageable => pageable
-            .Refresh(true)
-            .PageSizes(true)
-            .ButtonCount(5))
-        .Sortable(sort =>
-        {
-            sort.AllowUnsort(false);
-            sort.SortMode(GridSortMode.SingleColumn);
-        })
-        .DataSource(data =>
-        {
-            data.Ajax()
-                .Model(model =>
-                {
-                    model.Id(c => c.Id);
-                    model.Field(c => c.CreatedOn).Editable(false);
-                })
-                .PageSize(10)
-                .ServerOperation(true)
-                .Events(ev => ev.Error("errorAlert"))
-                .Read(read => read.Action("ReadUsers", controllerName))
-                .Create(create => create.Action("CreateUser", controllerName))
-                .Update(update => update.Action("UpdateUser", controllerName))
-                .Destroy(destroy => destroy.Action("DestroyUser", controllerName));
-        }))
+    .Pdf(pdf => pdf
+        .AllPages()
+                .FileName("Users Database.pdf")
+        .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
+    )
+    .Pageable(pageable => pageable
+        .Refresh(true)
+        .PageSizes(true)
+        .ButtonCount(5))
+    .Sortable(sort =>
+    {
+        sort.AllowUnsort(false);
+        sort.SortMode(GridSortMode.SingleColumn);
+    })
+    .DataSource(data =>
+    {
+        data.Ajax()
+            .Model(model =>
+            {
+                model.Id(c => c.Id);
+                model.Field(c => c.CreatedOn).Editable(false);
+            })
+            .PageSize(10)
+            .ServerOperation(true)
+            .Events(ev => ev.Error("errorAlert"))
+            .Read(read => read.Action("ReadUsers", controllerName))
+            .Read(read => read.Action("SearchUser", controllerName).Data("addSearchUsers"))
+            .Create(create => create.Action("CreateUser", controllerName))
+            .Update(update => update.Action("UpdateUser", controllerName))
+            .Destroy(destroy => destroy.Action("DestroyUser", controllerName));
+    }))
 <div id="selected">
 </div>
 
 <script>
+    function onAdditionalDataUsers() {
+        return {
+            text: $("#searchbox-users").val()
+        };
+    }
+
+    function addSearchUsers() {
+        return { searchboxUsers: $('#searchbox-users').val() };
+    }
+
+    $('#searchbox-users').keyup(function () {
+        $('#grid-users').data('kendoGrid').dataSource.read();
+    });
+
     function edit(e) {
         if (!e.model.isNew()) {
             $("#CreatedOn").hide();
@@ -117,9 +157,7 @@
     }
 
     var uid = $('.k-edit-form-container').closest('[data-role=window]').data('uid'),
-
-        model = $('#grid-users').data('kendoGrid').dataSource.getByUid(uid);
-
+    model = $('#grid-users').data('kendoGrid').dataSource.getByUid(uid);
     model.set('PasswordHash', '');
 </script>
 @section Scripts {

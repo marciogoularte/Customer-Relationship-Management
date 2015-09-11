@@ -33,6 +33,10 @@
 
         public virtual IDbSet<SchedulerTask> SchedulerTasks { get; set; }
 
+        public virtual IDbSet<Channel> Channels { get; set; }
+
+        public virtual IDbSet<Contract> Contracts { get; set; }
+
         public DbContext DbContext
         {
             get

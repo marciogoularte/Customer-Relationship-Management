@@ -15,6 +15,10 @@
 
         IDeletableEntityRepository<SchedulerTask> SchedulerTasks { get; }
 
+        IDeletableEntityRepository<Channel> Channels { get; }
+
+        IDeletableEntityRepository<Contract> Contracts { get; }
+
         IRepository<User> Users { get; }
 
         int SaveChanges();

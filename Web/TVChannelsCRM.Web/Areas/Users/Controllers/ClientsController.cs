@@ -26,18 +26,45 @@
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var accountManagers = this.Data.Clients
+                .All()
+                .Select(c => c.AccountManager)
+                .ToList();
+
+            return View(accountManagers);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ClientInformation(int clientId)
+        {
+            var provider = await this.Data.Clients
+                .All()
+                .Select(ClientViewModel.FromClient)
+                .FirstOrDefaultAsync(p => p.Id == clientId);
+
+            return PartialView("_ClientInformation", provider);
         }
 
         [HttpGet]
         public async Task<ActionResult> ClientDetails(int clientId)
         {
-            var client = await this.Data.Clients
+           // var client = await this.Data.Clients
+           //     .All()
+           //     .Select(ClientViewModel.FromClient)
+           //     .FirstOrDefaultAsync(p => p.Id == clientId);
+
+            return View(clientId);
+        }
+
+        public JsonResult Search([DataSourceRequest] DataSourceRequest request, string searchboxClients)
+        {
+            var clients = this.Data.Clients
                 .All()
                 .Select(ClientViewModel.FromClient)
-                .FirstOrDefaultAsync(p => p.Id == clientId);
+                .Where(c => c.AccountManager.Contains(searchboxClients))
+                .ToList();
 
-            return View(client);
+            return Json(clients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request)
@@ -59,18 +86,41 @@
 
             var newClient = new Client
             {
-                IsActive = client.IsActive,
-                Mg = client.Mg,
-                IrdCard = client.IrdCard,
-                Invoicing = client.Invoicing,
-                Currency = client.Currency,
-                InvoicesIssued = client.InvoicesIssued,
-                PaymentsReceived = client.PaymentsReceived,
-                Contract = client.Contract,
-                ActiveFrom = client.ActiveFrom,
-                ActiveTo = client.ActiveTo,
-                DateOfSigning = client.DateOfSigning,
-                DateOfExpiring = client.DateOfExpiring
+                AccountManager = client.AccountManager,
+                Type = client.Type,
+                Eik = client.Eik,
+                ResidenceAndAddress = client.ResidenceAndAddress,
+                NetworkPage = client.NetworkPage,
+                ContactPerson = client.ContactPerson,
+                PhoneNumber = client.PhoneNumber,
+                Email = client.Email,
+                SecondaryAddress = client.SecondaryAddress,
+                ActiveCable = client.ActiveCable,
+                FixedPhoneService = client.FixedPhoneService,
+                AccessToPublicServiceThroughChoiceOperator = client.AccessToPublicServiceThroughChoiceOperator,
+                MobileVoiceServicesProvidedThroughNetwork = client.MobileVoiceServicesProvidedThroughNetwork,
+                PublicServicesProvidedByWirelessAccess = client.PublicServicesProvidedByWirelessAccess,
+                ServicesFixedAccessToInternet = client.ServicesFixedAccessToInternet,
+                ServicesMobileAccessToInternet = client.ServicesMobileAccessToInternet,
+                ServicesTransmissionData = client.ServicesTransmissionData,
+                SpreadingRadioAndTvPrograms = client.SpreadingRadioAndTvPrograms,
+                Coverage = client.Coverage,
+                CorrespondenceAddress = client.CorrespondenceAddress,
+                CorAddress = client.CorAddress,
+                PostCode = client.PostCode,
+                Management = client.Management,
+                ManagementPhone = client.ManagementPhone,
+                ManagementEmail = client.ManagementEmail,
+                ManagementTeritory = client.ManagementTeritory,
+                Finance = client.Finance,
+                FinancePhone = client.FinancePhone,
+                FinanceEmail = client.FinanceEmail,
+                TechnicalName = client.TechnicalName,
+                TechnicalPhone = client.TechnicalPhone,
+                TechnicalEmail = client.TechnicalEmail,
+                Marketing = client.Marketing,
+                MarketingPhone = client.MarketingPhone,
+                MarketingEmail = client.MarketingEmail
             };
 
             // Validate given dates from user
@@ -146,18 +196,41 @@
                 return Json(new[] { client }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
             }
 
-            clientFromDb.IsActive = client.IsActive;
-            clientFromDb.ActiveFrom = client.ActiveFrom;
-            clientFromDb.ActiveTo = client.ActiveTo;
-            clientFromDb.Mg = client.Mg;
-            clientFromDb.IrdCard = client.IrdCard;
-            clientFromDb.Invoicing = client.Invoicing;
-            clientFromDb.DateOfSigning = client.DateOfSigning;
-            clientFromDb.DateOfExpiring = client.DateOfExpiring;
-            clientFromDb.Currency = client.Currency;
-            clientFromDb.InvoicesIssued = client.InvoicesIssued;
-            clientFromDb.PaymentsReceived = client.PaymentsReceived;
-            clientFromDb.Contract = client.Contract;
+            clientFromDb.AccountManager = client.AccountManager;
+            clientFromDb.Type = client.Type;
+            clientFromDb.Eik = client.Eik;
+            clientFromDb.ResidenceAndAddress = client.ResidenceAndAddress;
+            clientFromDb.NetworkPage = client.NetworkPage;
+            clientFromDb.ContactPerson = client.ContactPerson;
+            clientFromDb.PhoneNumber = client.PhoneNumber;
+            clientFromDb.Email = client.Email;
+            clientFromDb.SecondaryAddress = client.SecondaryAddress;
+            clientFromDb.ActiveCable = client.ActiveCable;
+            clientFromDb.FixedPhoneService = client.FixedPhoneService;
+            clientFromDb.AccessToPublicServiceThroughChoiceOperator = client.AccessToPublicServiceThroughChoiceOperator;
+            clientFromDb.MobileVoiceServicesProvidedThroughNetwork = client.MobileVoiceServicesProvidedThroughNetwork;
+            clientFromDb.PublicServicesProvidedByWirelessAccess = client.PublicServicesProvidedByWirelessAccess;
+            clientFromDb.ServicesFixedAccessToInternet = client.ServicesFixedAccessToInternet;
+            clientFromDb.ServicesMobileAccessToInternet = client.ServicesMobileAccessToInternet;
+            clientFromDb.ServicesTransmissionData = client.ServicesTransmissionData;
+            clientFromDb.SpreadingRadioAndTvPrograms = client.SpreadingRadioAndTvPrograms;
+            clientFromDb.Coverage = client.Coverage;
+            clientFromDb.CorrespondenceAddress = client.CorrespondenceAddress;
+            clientFromDb.CorAddress = client.CorAddress;
+            clientFromDb.PostCode = client.PostCode;
+            clientFromDb.Management = client.Management;
+            clientFromDb.ManagementPhone = client.ManagementPhone;
+            clientFromDb.ManagementEmail = client.ManagementEmail;
+            clientFromDb.ManagementTeritory = client.ManagementTeritory;
+            clientFromDb.Finance = client.Finance;
+            clientFromDb.FinancePhone = client.FinancePhone;
+            clientFromDb.FinanceEmail = client.FinanceEmail;
+            clientFromDb.TechnicalName = client.TechnicalName;
+            clientFromDb.TechnicalPhone = client.TechnicalPhone;
+            clientFromDb.TechnicalEmail = client.TechnicalEmail;
+            clientFromDb.Marketing = client.Marketing;
+            clientFromDb.MarketingPhone = client.MarketingPhone;
+            clientFromDb.MarketingEmail = client.MarketingEmail;
 
             this.Data.SaveChanges();
 

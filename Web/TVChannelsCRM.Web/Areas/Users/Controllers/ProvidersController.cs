@@ -3,6 +3,8 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
+    using System.Data.Entity;
+    using System.Threading.Tasks;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -24,18 +26,40 @@
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var providersNames = this.Data.Providers
+                .All()
+                .Select(p => p.Name)
+                .ToList();
+
+            return View(providersNames);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ProviderInformation(int providerId)
+        {
+            var provider = await this.Data.Providers
+                .All()
+                .Select(ProviderViewModel.FromProvider)
+                .FirstOrDefaultAsync(p => p.Id == providerId);
+
+            return PartialView("_ProviderInformation", provider);
+        }
+
+        public JsonResult Search([DataSourceRequest] DataSourceRequest request, string searchboxProviders)
+        {
+            var providers = this.Data.Providers
+                .All()
+                .Select(ProviderViewModel.FromProvider)
+                .Where(p => p.Name.Contains(searchboxProviders))
+                .ToList();
+
+            return Json(providers.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public ActionResult ProviderDetails(int providerId)
         {
-            var provider = this.Data.Providers
-                .All()
-                .Select(ProviderViewModel.FromProvider)
-                .FirstOrDefault(p => p.Id == providerId);
-
-            return View(provider);
+            return View(providerId);
         }
 
         public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request)
@@ -66,26 +90,10 @@
                 PhoneNumber = provider.PhoneNumber,
                 Email = provider.Email,
                 Address = provider.Address,
-                ChannelName = provider.ChannelName,
-                ReveivingOptions = provider.ReveivingOptions,
-                SatelliteData = provider.SatelliteData,
-                Degrees = provider.Degrees,
-                Freq = provider.Freq,
-                Transponder = provider.Transponder,
-                Encryption = provider.Encryption,
-                SrFec = provider.SrFec,
-                Sid = provider.Sid,
-                Vpid = provider.Vpid,
-                Apid = provider.Apid,
-                OnidTid = provider.OnidTid,
-                Beam = provider.Beam,
-                EpgSource = provider.EpgSource,
-                Website = provider.Website,
-                Presentation = provider.Presentation,
-                ContractTemplate = provider.ContractTemplate,
                 Term = provider.Term,
                 CPS = provider.CPS,
-                Commission = provider.Commission
+                Commission = provider.Commission,
+                Comments = provider.Comments + "\n"
             };
 
             this.Data.Providers.Add(newProvider);
@@ -117,26 +125,10 @@
             providerFromDb.PhoneNumber = provider.PhoneNumber;
             providerFromDb.Email = provider.Email;
             providerFromDb.Address = provider.Address;
-            providerFromDb.ChannelName = provider.ChannelName;
-            providerFromDb.ReveivingOptions = provider.ReveivingOptions;
-            providerFromDb.SatelliteData = provider.SatelliteData;
-            providerFromDb.Degrees = provider.Degrees;
-            providerFromDb.Freq = provider.Freq;
-            providerFromDb.Transponder = provider.Transponder;
-            providerFromDb.Encryption = provider.Encryption;
-            providerFromDb.SrFec = provider.SrFec;
-            providerFromDb.Sid = provider.Sid;
-            providerFromDb.Vpid = provider.Vpid;
-            providerFromDb.Apid = provider.Apid;
-            providerFromDb.OnidTid = provider.OnidTid;
-            providerFromDb.Beam = provider.Beam;
-            providerFromDb.EpgSource = provider.EpgSource;
-            providerFromDb.Website = provider.Website;
-            providerFromDb.Presentation = provider.Presentation;
-            providerFromDb.ContractTemplate = provider.ContractTemplate;
             providerFromDb.Term = provider.Term;
             providerFromDb.CPS = provider.CPS;
             providerFromDb.Commission = provider.Commission;
+            providerFromDb.Comments = provider.Comments + "\n";
 
             this.Data.SaveChanges();
             this.CreateActivity(ActivityType.Edit, providerFromDb.Id.ToString(), ActivityTargetType.Provider);

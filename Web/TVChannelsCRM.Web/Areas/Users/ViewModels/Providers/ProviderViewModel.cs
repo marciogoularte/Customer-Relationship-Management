@@ -1,8 +1,10 @@
-﻿namespace TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
+﻿using System.Collections.Generic;
+
+namespace TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
 {
     using System;
-    using System.Linq.Expressions;
     using System.ComponentModel;
+    using System.Linq.Expressions;
     using System.ComponentModel.DataAnnotations;
 
     using Data.Models;
@@ -25,23 +27,6 @@
                     PhoneNumber = p.PhoneNumber,
                     Email = p.Email,
                     Address = p.Address,
-                    ChannelName = p.ChannelName,
-                    ReveivingOptions = p.ReveivingOptions,
-                    SatelliteData = p.SatelliteData,
-                    Degrees = p.Degrees,
-                    Freq = p.Freq,
-                    Transponder = p.Transponder,
-                    Encryption = p.Encryption,
-                    SrFec = p.SrFec,
-                    Sid = p.Sid,
-                    Vpid = p.Vpid,
-                    Apid = p.Apid,
-                    OnidTid = p.OnidTid,
-                    Beam = p.Beam,
-                    EpgSource = p.EpgSource,
-                    Website = p.Website,
-                    Presentation = p.Presentation,
-                    ContractTemplate = p.ContractTemplate,
                     Term = p.Term,
                     CPS = p.CPS,
                     Commission = p.Commission
@@ -80,52 +65,13 @@
 
         public string Address { get; set; }
 
-        [DisplayName("Channel name")]
-        public string ChannelName { get; set; }
-
-        [DisplayName("Reveiving options")]
-        public string ReveivingOptions { get; set; }
-
-        [DisplayName("Satellite data")]
-        public string SatelliteData { get; set; }
-
-        public string Degrees { get; set; }
-
-        public string Freq { get; set; }
-
-        public string Transponder { get; set; }
-
-        public string Encryption { get; set; }
-
-        [DisplayName("SR-FEC")]
-        public string SrFec { get; set; }
-
-        public string Sid { get; set; }
-
-        public string Vpid { get; set; }
-
-        public string Apid { get; set; }
-
-        [DisplayName("ONID-ID")]
-        public string OnidTid { get; set; }
-
-        public string Beam { get; set; }
-
-        [DisplayName("EPG-SOURCE")]
-        public string EpgSource { get; set; }
-
-        [DisplayName("Website")]
-        [Url(ErrorMessage = "Provider website is not valid")]
-        public string Website { get; set; }
-
-        public string Presentation { get; set; }
-
-        public string ContractTemplate { get; set; }
-
         public string Term { get; set; }
 
         public string CPS { get; set; }
 
         public string Commission { get; set; }
+
+        [UIHint("CommentsEditor")]
+        public string Comments { get; set; }
     }
 }

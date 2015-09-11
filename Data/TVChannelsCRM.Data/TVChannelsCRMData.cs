@@ -115,5 +115,15 @@
         {
             get { return this.GetDeletableEntityRepository<SchedulerTask>(); }
         }
+
+        public IDeletableEntityRepository<Channel> Channels
+        {
+            get { return this.GetDeletableEntityRepository<Channel>(); }
+        }
+
+        public IDeletableEntityRepository<Contract> Contracts
+        {
+            get { return this.GetDeletableEntityRepository<Contract>(); }
+        }
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TVChannelsCRM.Data.Migrations
 {
     using System;
@@ -26,11 +28,11 @@ namespace TVChannelsCRM.Data.Migrations
             {
                 return;
             }
-
-            this.AddDealerUserProfiles(context);
-            this.AddFinancialUserProfiles(context);
+            //
+            //this.AddDealerUserProfiles(context);
+            //this.AddFinancialUserProfiles(context);
             this.AddAdministratorUserProfiles(context);
-            this.AddClientsAndProviders(context);
+            //this.AddClientsAndProviders(context);
         }
 
         private void AddClientsAndProviders(TVChannelsCRMDbContext context)
@@ -42,32 +44,15 @@ namespace TVChannelsCRM.Data.Migrations
                     Name = "Name " + (i * 23),
                     Type = TypeOfCompany.OOD,
                     Address = "Al Malinow" + (i * 23),
-                    Apid = (i * 23) + " Apid Random",
-                    Beam = (i * 23) + " Bea,",
-                    ChannelName = "BTV" + (i * 23),
                     Commission = (i * 23).ToString(),
                     ContactPerson = "Pesho" + (i * 23),
-                    ContractTemplate = "ContractP" + (i * 23),
                     Term = "Term" + (i * 23),
                     CPS = "CPS" + (i * 23),
                     Eik = "Eik" + (i * 23),
                     ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
                     NetworkPage = "NetworkPage" + i * 3.6,
                     PhoneNumber = "0891929384",
-                    Email = "Pesho" + i + "@gmail.com",
-                    ReveivingOptions = i.ToString() + " " + (i * 2).ToString() + " " + (i * 4).ToString(),
-                    SatelliteData = "Data" + i * 4,
-                    Degrees = "37",
-                    Freq = "Freq" + i,
-                    Transponder = "ABCRandm" + i * 1.2,
-                    Encryption = "Hard imba0" + i * 0.2,
-                    SrFec = "SrFec" + i,
-                    Sid = "i" + i + "Leniveca",
-                    Vpid = "i" + i + "Vpid",
-                    OnidTid = "OnidTid" + i * 0.9,
-                    EpgSource = "Bbam Source00" + i,
-                    Website = "https://www.long.somerandom.website.com",
-                    Presentation = "Presentation" + i * 0.231
+                    Email = "Pesho" + i + "@gmail.com"
                 };
 
                 context.Providers.AddOrUpdate(provider);
@@ -139,7 +124,7 @@ namespace TVChannelsCRM.Data.Migrations
             //        SecurityStamp = Guid.NewGuid().ToString(),
             //        FirstName = "Dealer",
             //        SecondName = "Dealer",
-            //        ThirdName = "Dealer",
+            //        LastName = "Dealer",
             //        Gender = Gender.Male,
             //        CreatedOn = DateTime.Now,
             //        LockoutEnabled = true,
@@ -184,7 +169,7 @@ namespace TVChannelsCRM.Data.Migrations
             //    SecurityStamp = Guid.NewGuid().ToString(),
             //    FirstName = "Financial",
             //    SecondName = "Financial",
-            //    ThirdName = "Financial",
+            //    LastName = "Financial",
             //    Gender = Gender.Female,
             //    CreatedOn = DateTime.Now,
             //    LockoutEnabled = true,
@@ -228,17 +213,20 @@ namespace TVChannelsCRM.Data.Migrations
                 EmailConfirmed = false,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 FirstName = "Ivaylo",
-                SecondName = null,
-                ThirdName = "Ivanov",
+                SecondName = "Iva",
+                LastName = "Ivanov",
                 Gender = Gender.Male,
                 CreatedOn = DateTime.Now,
                 LockoutEnabled = true,
+                Website = "http://gmail.com",
                 Age = 25,
                 Town = "Sofia",
                 Country = "Bulgaria",
                 EnterprisePosition = EnterprisePosition.Admin,
                 PhoneNumber = "0891234567",
-                PhoneNumberConfirmed = false
+                PhoneNumberConfirmed = false,
+                LastActivities= new List<Activity>(),
+                SchedulerTasks = new List<SchedulerTask>()
             };
 
             // Add user to role and database
@@ -259,16 +247,19 @@ namespace TVChannelsCRM.Data.Migrations
                 SecurityStamp = Guid.NewGuid().ToString(),
                 FirstName = "Nikolay",
                 SecondName = "Petrov",
-                ThirdName = "Dermendzhiev",
+                LastName = "Dermendzhiev",
                 Gender = Gender.Male,
                 CreatedOn = DateTime.Now,
                 LockoutEnabled = true,
                 Age = 10,
                 Town = "Panagyurishte",
                 Country = "Bulgaria",
+                Website = "http://gmail.com",
                 EnterprisePosition = EnterprisePosition.Admin,
                 PhoneNumber = "0897654321",
-                PhoneNumberConfirmed = false
+                PhoneNumberConfirmed = false,
+                LastActivities = new List<Activity>(),
+                SchedulerTasks = new List<SchedulerTask>()
             };
 
             // Add user to role and database

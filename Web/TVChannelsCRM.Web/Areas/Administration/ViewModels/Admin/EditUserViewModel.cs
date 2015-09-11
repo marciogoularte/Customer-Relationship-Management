@@ -22,7 +22,7 @@
                     Email = u.Email,
                     FirstName = u.FirstName,
                     SecondName = u.SecondName,
-                    ThirdName = u.ThirdName,
+                    LastName = u.LastName,
                     Gender = u.Gender,
                     Age = u.Age,
                     Town = u.Town,
@@ -60,10 +60,10 @@
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Second name length should be between 2 and 40 chars")]
         public string SecondName { get; set; }
 
-        [DisplayName("Third name")]
-        [Required(ErrorMessage = "Third name is required")]
-        [StringLength(40, MinimumLength = 2, ErrorMessage = "Third name length should be between 2 and 40 chars")]
-        public string ThirdName { get; set; }
+        [DisplayName("Last name")]
+        [Required(ErrorMessage = "Last name is required")]
+        [StringLength(40, MinimumLength = 2, ErrorMessage = "Last name length should be between 2 and 40 chars")]
+        public string LastName { get; set; }
 
         [UIHint("GenderEditor")]
         [Required(ErrorMessage = "Gender is required")]

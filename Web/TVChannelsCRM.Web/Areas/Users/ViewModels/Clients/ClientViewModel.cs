@@ -1,8 +1,9 @@
 ﻿namespace TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
 {
     using System;
-    using System.Linq.Expressions;
     using System.ComponentModel;
+    using System.Linq.Expressions;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Data.Models;
@@ -16,18 +17,41 @@
                 return c => new ClientViewModel()
                 {
                     Id = c.Id,
-                    IsActive = c.IsActive,
-                    ActiveFrom = c.ActiveFrom,
-                    ActiveTo = c.ActiveTo,
-                    Mg = c.Mg,
-                    IrdCard = c.IrdCard,
-                    Invoicing = c.Invoicing,
-                    DateOfSigning = c.DateOfSigning,
-                    DateOfExpiring = c.DateOfExpiring,
-                    Currency = c.Currency,
-                    InvoicesIssued = c.InvoicesIssued,
-                    PaymentsReceived = c.PaymentsReceived,
-                    Contract = c.Contract
+                    AccountManager = c.AccountManager,
+                    Type = c.Type,
+                    Eik = c.Eik,
+                    ResidenceAndAddress = c.ResidenceAndAddress,
+                    NetworkPage = c.NetworkPage,
+                    ContactPerson = c.ContactPerson,
+                    PhoneNumber = c.PhoneNumber,
+                    Email = c.Email,
+                    SecondaryAddress = c.SecondaryAddress,
+                    ActiveCable = c.ActiveCable,
+                    FixedPhoneService = c.FixedPhoneService,
+                    AccessToPublicServiceThroughChoiceOperator = c.AccessToPublicServiceThroughChoiceOperator,
+                    MobileVoiceServicesProvidedThroughNetwork = c.MobileVoiceServicesProvidedThroughNetwork,
+                    PublicServicesProvidedByWirelessAccess = c.PublicServicesProvidedByWirelessAccess,
+                    ServicesFixedAccessToInternet = c.ServicesFixedAccessToInternet,
+                    ServicesMobileAccessToInternet = c.ServicesMobileAccessToInternet,
+                    ServicesTransmissionData = c.ServicesTransmissionData,
+                    SpreadingRadioAndTvPrograms = c.SpreadingRadioAndTvPrograms,
+                    Coverage = c.Coverage,
+                    CorrespondenceAddress = c.CorrespondenceAddress,
+                    CorAddress = c.CorAddress,
+                    PostCode = c.PostCode,
+                    Management = c.Management,
+                    ManagementPhone = c.ManagementPhone,
+                    ManagementEmail = c.ManagementEmail,
+                    ManagementTeritory = c.ManagementTeritory,
+                    Finance = c.Finance,
+                    FinancePhone = c.FinancePhone,
+                    FinanceEmail = c.FinanceEmail,
+                    TechnicalName = c.TechnicalName,
+                    TechnicalPhone = c.TechnicalPhone,
+                    TechnicalEmail = c.TechnicalEmail,
+                    Marketing = c.Marketing,
+                    MarketingPhone = c.MarketingPhone,
+                    MarketingEmail = c.MarketingEmail
                 };
             }
         }
@@ -35,48 +59,109 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [DisplayName("Is active")]
-        public bool IsActive { get; set; }
+        [DisplayName("Account Manager")]
+        [Required(ErrorMessage = "Account manager is required")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "Account Manager should be between 2 and 20 symbols")]
+        public string AccountManager { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayName("Active from")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? ActiveFrom { get; set; }
-        
-        [DisplayName("Active to")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? ActiveTo { get; set; }
+        [UIHint("TypeOfCompanyEditor")]
+        public TypeOfCompany Type { get; set; }
 
-        //public int MyProperty { get; set; }
+        [Required(ErrorMessage = "EIK is required")]
+        public string Eik { get; set; }
 
-        public string Mg { get; set; }
+        [DisplayName("Residence and address")]
+        public string ResidenceAndAddress { get; set; }
 
-        [DisplayName("IRD Card")]
-        public string IrdCard { get; set; }
+        [DisplayName("Network page")]
+        public string NetworkPage { get; set; }
 
-        // TODO: work on it, probably invoicing with enumeration
-        public string Invoicing { get; set; }
+        [DisplayName("Contact person")]
+        public string ContactPerson { get; set; }
 
-        [DisplayName("Date of signing")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? DateOfSigning { get; set; }
-        
-        [DisplayName("Date of expiring")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? DateOfExpiring { get; set; }
+        [DisplayName("Phone number")]
+        public string PhoneNumber { get; set; }
 
-        public string Currency { get; set; }
+        [EmailAddress(ErrorMessage = "Provider email is not valid!")]
+        public string Email { get; set; }
 
-        [DisplayName("Invoices issued")]
-        public string InvoicesIssued { get; set; }
+        [DisplayName("Secondary address")]
+        public string SecondaryAddress { get; set; }
 
-        [DisplayName("Payments received")]
-        public string PaymentsReceived { get; set; }
+        [DisplayName("Active cable")]
+        public string ActiveCable { get; set; }
 
-        public string Contract { get; set; }
+        [DisplayName("Fixed phone service")]
+        public string FixedPhoneService { get; set; }
+
+        [DisplayName("Public service through choice operator")]
+        public string AccessToPublicServiceThroughChoiceOperator { get; set; }
+
+        [DisplayName("Mobile voice services provided through network")]
+        public string MobileVoiceServicesProvidedThroughNetwork { get; set; }
+
+        [DisplayName("Public services provided by wireless access")]
+        public string PublicServicesProvidedByWirelessAccess { get; set; }
+
+        [DisplayName("Services fixed access to internet")]
+        public string ServicesFixedAccessToInternet { get; set; }
+
+        [DisplayName("Services mobile access to internet")]
+        public string ServicesMobileAccessToInternet { get; set; }
+
+        [DisplayName("Services transmission data")]
+        public string ServicesTransmissionData { get; set; }
+
+        [DisplayName("Spreading radio and TV programs")]
+        public string SpreadingRadioAndTvPrograms { get; set; }
+
+        public string Coverage { get; set; }
+
+        [DisplayName("Correspondence address")]
+        public string CorrespondenceAddress { get; set; }
+
+        [DisplayName("Cor address")]
+        public string CorAddress { get; set; }
+
+        [DisplayName("Post code")]
+        public string PostCode { get; set; }
+
+        public string Management { get; set; }
+
+        [DisplayName("Management phone")]
+        public string ManagementPhone { get; set; }
+
+        [DisplayName("Management email")]
+        public string ManagementEmail { get; set; }
+
+        [DisplayName("Management teritory")]
+        public string ManagementTeritory { get; set; }
+
+        public string Finance { get; set; }
+
+        [DisplayName("Finance phone")]
+        public string FinancePhone { get; set; }
+
+        [DisplayName("Finance email")]
+        public string FinanceEmail { get; set; }
+
+        [DisplayName("Technical name")]
+        public string TechnicalName { get; set; }
+
+        [DisplayName("Technical phone")]
+        public string TechnicalPhone { get; set; }
+
+        [DisplayName("Technical email")]
+        public string TechnicalEmail { get; set; }
+
+        public string Marketing { get; set; }
+
+        [DisplayName("Marketing phone")]
+        public string MarketingPhone { get; set; }
+
+        [DisplayName("Marketing email")]
+        public string MarketingEmail { get; set; }
+
         // TODO: uncomment lists
         //public List<string> SpecialConditions { get; set; }
     }

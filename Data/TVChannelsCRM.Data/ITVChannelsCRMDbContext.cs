@@ -15,6 +15,10 @@
 
         IDbSet<SchedulerTask> SchedulerTasks { get; set; }
 
+        IDbSet<Channel> Channels { get; set; }
+
+        IDbSet<Contract> Contracts { get; set; }
+
         DbContext DbContext { get; }
 
         int SaveChanges();

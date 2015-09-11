@@ -41,9 +41,9 @@ namespace TVChannelsCRM.Data.Models
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Second name length should be between 2 and 40 chars")]
         public string SecondName { get; set; }
 
-        [Required(ErrorMessage = "Third name is required")]
-        [StringLength(40, MinimumLength = 2, ErrorMessage = "Third name length should be between 2 and 40 chars")]
-        public string ThirdName { get; set; }
+        [Required(ErrorMessage = "Last name is required")]
+        [StringLength(40, MinimumLength = 2, ErrorMessage = "Last name length should be between 2 and 40 chars")]
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "Gender is required")]
         public Gender Gender { get; set; }

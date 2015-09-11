@@ -1,5 +1,5 @@
 ﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
-@model ClientViewModel
+@model int
 @{
     ViewBag.Title = "ClientDetails";
 }
@@ -32,142 +32,61 @@
 
 
 
+<div id="example" class="k-content">
+    <div class="wrapper">
+        @(Html.Kendo().TabStrip()
+              .Name("tabstrip")
+              .TabPosition(TabStripTabPosition.Top)
+              .Animation(animation =>
+              {
+                  animation.Open(config =>
+                  {
+                      config.Fade(FadeDirection.In);
+                  });
+              })
+              .SelectedIndex(0)
+              .Items(tabstrip =>
+              {
+                  tabstrip.Add().Text("Information")
+                      .Selected(true)
+                      .LoadContentFrom(Url.Action("ClientInformation", "Clients", new { clientId = Model }));
 
-<div class="table-responsive">
-    <table class="table table-condensed table-responsive table-user-information">
-        <tbody>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Is active
-                    </strong>
-                </td>
-                <td>
-                    @Model.IsActive
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Active from
-                    </strong>
-                </td>
-                <td>
-                    @Model.ActiveFrom
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Active to
-                    </strong>
-                </td>
-                <td>
-                    @Model.ActiveTo
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Mg
-                    </strong>
-                </td>
-                <td>
-                    @Model.Mg
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        IrdCard
-                    </strong>
-                </td>
-                <td>
-                    @Model.IrdCard
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Invoicing
-                    </strong>
-                </td>
-                <td>
-                    @Model.Invoicing
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Date of signing
-                    </strong>
-                </td>
-                <td>
-                    @Model.DateOfSigning
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Date of expiring
-                    </strong>
-                </td>
-                <td>
-                    @Model.DateOfExpiring
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Currency
-                    </strong>
-                </td>
-                <td>
-                    @Model.Currency
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        InvoicesIssued
-                    </strong>
-                </td>
-                <td>
-                    @Model.InvoicesIssued
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        PaymentsReceived
-                    </strong>
-                </td>
-                <td>
-                    @Model.PaymentsReceived
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Contract
-                    </strong>
-                </td>
-                <td>
-                    @Model.Contract
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                  tabstrip.Add().Text("Channels")
+                      .LoadContentFrom(Url.Action("ClientsAllChannelsData", "Channels", new { clientId = Model }));
+
+                  tabstrip.Add().Text("Contracts")
+                      .LoadContentFrom(Url.Action("AllClientsContracts", "Contracts", new { clientId = Model }));
+              })
+        )
+    </div>
 </div>
+
+<style>
+    .wrapper {
+        margin: 20px auto;
+    }
+
+    .specification {
+        margin: 10px 0;
+        padding: 0;
+        overflow: auto;
+    }
+
+        .specification dt, dd {
+            margin: 0;
+            padding: 5px 0 7px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .specification dt {
+            margin-right: 7px;
+            padding-right: 0;
+            opacity: 0.7;
+        }
+
+        .specification:after, .wrapper:after {
+            content: "";
+            visibility: hidden;
+        }
+</style>
+

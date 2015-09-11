@@ -4,6 +4,8 @@
     {
         Provider,
         Client,
-        User
+        User,
+        Channel,
+        Contract
     }
 }

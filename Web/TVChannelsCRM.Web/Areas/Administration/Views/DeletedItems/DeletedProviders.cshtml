@@ -1,8 +1,23 @@
 ﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
+@model IEnumerable<string>
 @{
     ViewBag.Title = "Deleted Providers";
     const string controllerName = "DeletedItems";
 }
+
+<style>
+    .demo-section {
+        width: 250px;
+        margin: 35px auto 50px;
+        padding: 30px;
+    }
+
+        .demo-section h2 {
+            text-transform: uppercase;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+</style>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/kendo")
@@ -10,87 +25,78 @@
 
 <h2>Deleted providers</h2>
 
-<div id="pnlContent">
     @(Html.Kendo()
      .Grid<ProviderViewModel>()
     .Name("grid-deleted-providers")
     .Columns(columns =>
     {
-        columns.Bound(model => model.Name);
-        columns.Bound(model => model.Type);
-        columns.Bound(model => model.Eik);
-        columns.Bound(model => model.Email);
-        columns.Bound(model => model.ResidenceAndAddress);
-        columns.Bound(model => model.NetworkPage);
-        columns.Bound(model => model.ContactPerson);
-        columns.Bound(model => model.PhoneNumber);
-        columns.Bound(model => model.Email);
-        columns.Bound(model => model.Address);
-        columns.Bound(model => model.ChannelName);
-        columns.Bound(model => model.ReveivingOptions);
-        columns.Bound(model => model.SatelliteData);
-        columns.Bound(model => model.Degrees);
-        columns.Bound(model => model.Freq);
-        columns.Bound(model => model.Transponder);
-        columns.Bound(model => model.Encryption);
-        columns.Bound(model => model.SrFec);
-        columns.Bound(model => model.Sid);
-        columns.Bound(model => model.Vpid);
-        columns.Bound(model => model.Apid);
-        columns.Bound(model => model.OnidTid);
-        columns.Bound(model => model.Beam);
-        columns.Bound(model => model.EpgSource);
-        columns.Bound(model => model.Website);
-        columns.Bound(model => model.Presentation);
-        columns.Bound(model => model.ContractTemplate);
-        columns.Bound(model => model.Term);
-        columns.Bound(model => model.CPS);
-        columns.Bound(model => model.Commission);
+        columns.Bound(model => model.Name).Width(200);
+        columns.Bound(model => model.Type).Width(100);
+        columns.Bound(model => model.Eik).Hidden(true);
+        columns.Bound(model => model.Email).Width(200);
+        columns.Bound(model => model.ResidenceAndAddress).Hidden(true);
+        columns.Bound(model => model.NetworkPage).Hidden(true);
+        columns.Bound(model => model.ContactPerson).Width(200);
+        columns.Bound(model => model.PhoneNumber).Hidden(true);
+        columns.Bound(model => model.Email).Hidden(true);
+        columns.Bound(model => model.Address).Hidden(true);
+        columns.Bound(model => model.Term).Hidden(true);
+        columns.Bound(model => model.CPS).Hidden(true);
+        columns.Bound(model => model.Commission).Hidden(true);
+        columns.Bound(model => model.Comments).Width(280);
         columns.Command(command => command.Custom("Restore").Click("showDetails"));
     })
-        .ToolBar(tools =>
-        {
-            tools.Excel();
-            tools.Pdf();
-        })
-        .Groupable()
-        .ColumnMenu()
-        .Filterable()
-        .Navigatable()
-        .Resizable(r => r.Columns(true))
-        .Reorderable(r => r.Columns(true))
-        .Events(ev => ev.Change("selectRow"))
-         .HtmlAttributes(new { style = "width:3740px" })
-        .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
-        .Excel(excel => excel
-            .FileName("Deleted Provides Database.xlsx")
-            .Filterable(true)
-            .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
-         )
-        .Pdf(pdf => pdf
-            .AllPages()
-                 .FileName("Deleted Providers Database.pdf")
-            .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
-        )
-        .Pageable(pageable => pageable
-            .Refresh(true)
-            .PageSizes(true)
-            .ButtonCount(5))
-        .Sortable(sort =>
-        {
-            sort.AllowUnsort(false);
-            sort.SortMode(GridSortMode.SingleColumn);
-        })
-        .DataSource(data =>
-        {
-            data.Ajax()
-                .Model(model => model.Id(c => c.Id))
-                .PageSize(10)
-                .ServerOperation(true)
-                .Events(ev => ev.Error("errorAlert"))
-                .Read(read => read.Action("ReadDeletedProviders", controllerName));
-        }))
-</div>
+          .ToolBar(toolBar =>
+          {
+              toolBar.Template(@<text>
+
+                @(Html.Kendo().AutoComplete()
+                                            .Name("searchbox-deleted-providers")
+                                         .Placeholder("Provider name... ")
+                                         .BindTo(Model)
+                                         .Filter("contains")
+                )<button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+<button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+            </text>);
+          })
+                            .Groupable()
+                            .ColumnMenu()
+                            .Filterable()
+                            .Navigatable()
+                            .Resizable(r => r.Columns(true))
+                            .Reorderable(r => r.Columns(true))
+                            .Events(ev => ev.Change("selectRow"))
+                                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                            .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                            .Excel(excel => excel
+                                .FileName("Deleted Provides Database.xlsx")
+                                .Filterable(true)
+                                .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
+                             )
+                            .Pdf(pdf => pdf
+                                .AllPages()
+                                     .FileName("Deleted Providers Database.pdf")
+                                .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
+                            )
+                            .Pageable(pageable => pageable
+                                .Refresh(true)
+                                .PageSizes(true)
+                                .ButtonCount(5))
+                            .Sortable(sort =>
+                            {
+                                sort.AllowUnsort(false);
+                                sort.SortMode(GridSortMode.SingleColumn);
+                            })
+                            .DataSource(data =>
+                            {
+                                data.Ajax()
+                                    .Model(model => model.Id(c => c.Id))
+                                    .PageSize(10)
+                                    .ServerOperation(true)
+                                    .Events(ev => ev.Error("errorAlert"))
+                                    .Read(read => read.Action("ReadDeletedProviders", controllerName))
+                   .Read(read => read.Action("SearchProviders", controllerName).Data("addSearchProviders"));
+                            }))
 <div id="selected">
 </div>
 
@@ -110,6 +116,20 @@
 </script>
 
 <script type="text/javascript">
+    function onAdditionalDataProviders() {
+        return {
+            text: $("#searchbox-deleted-providers").val()
+        };
+    }
+
+    function addSearchProviders() {
+        return { searchboxDeletedProviders: $('#searchbox-deleted-providers').val() };
+    }
+
+    $('#searchbox-deleted-providers').keyup(function () {
+        $('#grid-deleted-providers').data('kendoGrid').dataSource.read();
+    });
+
     var detailsTemplate = kendo.template($("#providers-template").html());
     var dataItem;
 
@@ -137,9 +157,7 @@
             }
         });
     });
-</script>
 
-<script>
     function selectRow() {
         var selected = $.map(this.select(), function (item) {
             return $(item).text();

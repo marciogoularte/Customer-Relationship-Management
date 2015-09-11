@@ -1,416 +1,89 @@
 ﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
-@model ProviderViewModel
-@{
-    ViewBag.Title = "ProviderDetails";
-}
-
-<style type="text/css">
-    #content {
-        min-height: 600px;
+@model int
+    @{
+        ViewBag.Title = "ProviderDetails";
     }
-</style>
- 
-<h2>Provider details</h2>
 
-@*<p>Sorry this page is still not ready and you are not allowed to check it</p>
-<h1>You will be automatically redirected after <span id="seconds-until-redirect">6</span> seconds!</h1>
-<img src="~/Content/images/sorry_not_implemented.jpg" />
-<script>
-    $(document).ready(function () {
-        var sec = 6;
-        var timer = setInterval(function () {
-            $('#seconds-until-redirect').text(--sec);
-            if (sec === 1) {
-                window.location.href = '/users/providers/index';
-                clearInterval(timer);
+    <style type="text/css">
+        #content {
+            min-height: 600px;
+        }
+    </style>
+
+    <h2>Provider details</h2>
+
+    @*<p>Sorry this page is still not ready and you are not allowed to check it</p>
+        <h1>You will be automatically redirected after <span id="seconds-until-redirect">6</span> seconds!</h1>
+        <img src="~/Content/images/sorry_not_implemented.jpg" />
+        <script>
+            $(document).ready(function () {
+                var sec = 6;
+                var timer = setInterval(function () {
+                    $('#seconds-until-redirect').text(--sec);
+                    if (sec === 1) {
+                        window.location.href = '/users/providers/index';
+                        clearInterval(timer);
+                    }
+                }, 1000);
+            });
+        </script>*@
+
+
+
+    <div id="example" class="k-content">
+        <div class="wrapper">
+            @(Html.Kendo().TabStrip()
+              .Name("tabstrip")
+              .TabPosition(TabStripTabPosition.Top)
+              .Animation(animation =>
+              {
+                  animation.Open(config =>
+                  {
+                      config.Fade(FadeDirection.In);
+                  });
+              })
+              .SelectedIndex(0)
+              .Items(tabstrip =>
+              {
+                  tabstrip.Add().Text("Information")
+                      .Selected(true)
+                      .LoadContentFrom(Url.Action("ProviderInformation", "Providers", new { providerId = Model }));
+
+                  tabstrip.Add().Text("Channels")
+                      .LoadContentFrom(Url.Action("AllChannelsData", "Channels", new { providerId = Model }));
+
+                  tabstrip.Add().Text("Contracts")
+                      .LoadContentFrom(Url.Action("AllProvidersContracts", "Contracts", new { providerId = Model }));
+              })
+            )
+        </div>
+    </div>
+
+    <style>
+        .wrapper {
+            margin: 20px auto;
+        }
+
+        .specification {
+            margin: 10px 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+            .specification dt, dd {
+                margin: 0;
+                padding: 5px 0 7px 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.3);
             }
-        }, 1000);
-    });
-</script>*@
 
+            .specification dt {
+                margin-right: 7px;
+                padding-right: 0;
+                opacity: 0.7;
+            }
 
-
-
-<div class="table-responsive">
-    <table class="table table-condensed table-responsive table-user-information">
-        <tbody>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Name
-                    </strong>
-                </td>
-                <td>
-                    @Model.Name
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Type
-                    </strong>
-                </td>
-                <td>
-                    @Model.Type
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Eik
-                    </strong>
-                </td>
-                <td>
-                    @Model.Eik
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Residence and address
-                    </strong>
-                </td>
-                <td>
-                    @Model.ResidenceAndAddress
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Network page
-                    </strong>
-                </td>
-                <td>
-                    @Model.NetworkPage
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Contact prson
-                    </strong>
-                </td>
-                <td>
-                    @Model.ContactPerson
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Phone number
-                    </strong>
-                </td>
-                <td>
-                    @Model.PhoneNumber
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Email
-                    </strong>
-                </td>
-                <td>
-                    @Model.Email
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Address
-                    </strong>
-                </td>
-                <td>
-                    @Model.Address
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Channel name
-                    </strong>
-                </td>
-                <td>
-                    @Model.ChannelName
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Reveiving options
-                    </strong>
-                </td>
-                <td>
-                    @Model.ReveivingOptions
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Satellite data
-                    </strong>
-                </td>
-                <td>
-                    @Model.SatelliteData
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Degrees
-                    </strong>
-                </td>
-                <td>
-                    @Model.Degrees
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Freq
-                    </strong>
-                </td>
-                <td>
-                    @Model.Freq
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Transponder
-                    </strong>
-                </td>
-                <td>
-                    @Model.Transponder
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Encryption
-                    </strong>
-                </td>
-                <td>
-                    @Model.Encryption
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        SrFec
-                    </strong>
-                </td>
-                <td>
-                    @Model.SrFec
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Sid
-                    </strong>
-                </td>
-                <td>
-                    @Model.Sid
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Vpid
-                    </strong>
-                </td>
-                <td>
-                    @Model.Vpid
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Apid
-                    </strong>
-                </td>
-                <td>
-                    @Model.Apid
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        OnidTid
-                    </strong>
-                </td>
-                <td>
-                    @Model.OnidTid
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Beam
-                    </strong>
-                </td>
-                <td>
-                    @Model.Beam
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        EpgSource
-                    </strong>
-                </td>
-                <td>
-                    @Model.EpgSource
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Website
-                    </strong>
-                </td>
-                <td>
-                    @Model.Website
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Presentation
-                    </strong>
-                </td>
-                <td>
-                    @Model.Presentation
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        ContractTemplate
-                    </strong>
-                </td>
-                <td>
-                    @Model.ContractTemplate
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Term
-                    </strong>
-                </td>
-                <td>
-                    @Model.Term
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        CPS
-                    </strong>
-                </td>
-                <td>
-                    @Model.CPS
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <span class="glyphicon glyphicon-user"></span>
-                        Commission
-                    </strong>
-                </td>
-                <td>
-                    @Model.Commission
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            .specification:after, .wrapper:after {
+                content: "";
+                visibility: hidden;
+            }
+    </style>

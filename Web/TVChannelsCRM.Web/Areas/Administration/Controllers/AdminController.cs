@@ -25,7 +25,28 @@
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            var currentUserId = this.User.Identity.GetUserId();
+
+            var usernames = this.Data.Users
+                .All()
+                .Where(u => u.Id != currentUserId)
+                .Select(u => u.UserName)
+                .ToList();
+
+            return View(usernames);
+        }
+
+        public JsonResult SearchUser([DataSourceRequest] DataSourceRequest request, string searchboxUsers)
+        {
+            var currentUserId = this.User.Identity.GetUserId();
+
+            var users = this.Data.Users
+                .All()
+                .Select(UserViewModel.FromUser)
+                .Where(u => u.UserName.Contains(searchboxUsers) && u.Id != currentUserId)
+                .ToList();
+
+            return Json(users.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult ReadUsers([DataSourceRequest] DataSourceRequest request)
@@ -66,7 +87,7 @@
                 Email = user.Email,
                 FirstName = user.FirstName,
                 SecondName = user.SecondName,
-                ThirdName = user.ThirdName,
+                LastName = user.LastName,
                 Gender = user.Gender,
                 Age = user.Age,
                 Town = user.Town,
@@ -121,7 +142,7 @@
             userFromDb.Email = user.Email;
             userFromDb.FirstName = user.FirstName;
             userFromDb.SecondName = user.SecondName;
-            userFromDb.ThirdName = user.ThirdName;
+            userFromDb.LastName = user.LastName;
             userFromDb.Gender = user.Gender;
             userFromDb.Age = user.Age;
             userFromDb.Town = user.Town;

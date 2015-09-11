@@ -1,11 +1,21 @@
 ﻿namespace TVChannelsCRM.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Contracts;
 
     public class Provider : DeletableEntity, IEntity
     {
+        private ICollection<Channel> channels;
+        private ICollection<Contract> contracts;
+
+        public Provider()
+        {
+            this.channels = new HashSet<Channel>();
+            this.contracts = new HashSet<Contract>();
+        }
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Provider name is required")]
@@ -30,45 +40,24 @@
 
         public string Address { get; set; }
 
-        public string ChannelName { get; set; }
-
-        public string ReveivingOptions { get; set; }
-
-        public string SatelliteData { get; set; }
-
-        public string Degrees { get; set; }
-
-        public string Freq { get; set; }
-
-        public string Transponder { get; set; }
-
-        public string Encryption { get; set; }
-
-        public string SrFec { get; set; }
-
-        public string Sid { get; set; }
-
-        public string Vpid { get; set; }
-
-        public string Apid { get; set; }
-
-        public string OnidTid { get; set; }
-
-        public string Beam { get; set; }
-
-        public string EpgSource { get; set; }
-
-        [Url(ErrorMessage = "Provider website is not valid")]
-        public string Website { get; set; }
-
-        public string Presentation { get; set; }
-
-        public string ContractTemplate { get; set; }
-
         public string Term { get; set; }
 
         public string CPS { get; set; }
 
         public string Commission { get; set; }
+
+        public string Comments { get; set; }
+
+        public ICollection<Channel> Channels
+        {
+            get { return this.channels; }
+            set { this.channels = value; }
+        }
+
+        public ICollection<Contract> Contracts
+        {
+            get { return this.contracts; }
+            set { this.contracts = value; }
+        }
     }
 }

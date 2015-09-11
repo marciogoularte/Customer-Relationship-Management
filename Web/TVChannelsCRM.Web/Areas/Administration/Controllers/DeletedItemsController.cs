@@ -29,14 +29,70 @@
         //    return View();
         //}
 
-        public ActionResult DeletedClients()
+        public async Task<ActionResult> DeletedClients()
         {
-            return View("DeletedClients");
+            var clientsNames = await this.Data.Clients
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted == true)
+                .Select(c => c.AccountManager)
+                .ToListAsync();
+
+            return View("DeletedClients", clientsNames);
         }
 
-        public ActionResult DeletedProviders()
+        public async Task<ActionResult> DeletedProviders()
         {
-            return View("DeletedProviders");
+            var providersNames = await this.Data.Providers
+                .AllWithDeleted()
+                .Where(p => p.IsDeleted == true)
+                .Select(p => p.Name)
+                .ToListAsync();
+
+            return View("DeletedProviders", providersNames);
+        }
+
+        public async Task<ActionResult> DeletedChannels()
+        {
+            var channelsNames = await this.Data.Channels
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted == true)
+                .Select(c => c.Name)
+                .ToListAsync();
+
+            return View("DeletedChannels", channelsNames);
+        }
+
+        public JsonResult SearchClients([DataSourceRequest] DataSourceRequest request, string searchboxDeletedClients)
+        {
+            var clients = this.Data.Clients
+                .AllWithDeleted()
+                .Where(c => c.AccountManager.Contains(searchboxDeletedClients) && c.IsDeleted == true)
+                .Select(ClientViewModel.FromClient)
+                .ToList();
+
+            return Json(clients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchProviders([DataSourceRequest] DataSourceRequest request, string searchboxDeletedProviders)
+        {
+            var providers = this.Data.Providers
+                .AllWithDeleted()
+                .Where(p => p.Name.Contains(searchboxDeletedProviders) && p.IsDeleted == true)
+                .Select(ProviderViewModel.FromProvider)
+                .ToList();
+
+            return Json(providers.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchChannels([DataSourceRequest] DataSourceRequest request, string searchboxDeletedChannels)
+        {
+            var channels = this.Data.Channels
+                .AllWithDeleted()
+                .Where(c => c.Name.Contains(searchboxDeletedChannels) && c.IsDeleted == true)
+                .Select(ChannelViewModel.FromChannel)
+                .ToList();
+
+            return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult ReadDeletedClients([DataSourceRequest] DataSourceRequest request)
@@ -61,12 +117,22 @@
             return Json(deletedProviders.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult ReadDeletedChannels([DataSourceRequest] DataSourceRequest request)
+        {
+            var deletedChannels = this.Data.Channels
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted)
+                .Select(ChannelViewModel.FromChannel)
+                .ToList();
+
+            return Json(deletedChannels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<ActionResult> ConfirmRestoreClient(int clientId)
         {
-            var clientIdToInt = int.Parse(clientId.ToString());
             var client = await this.Data.Clients
                 .AllWithDeleted()
-                .FirstOrDefaultAsync(c => c.Id == clientIdToInt);
+                .FirstOrDefaultAsync(c => c.Id == clientId);
 
             client.IsDeleted = false;
             client.DeletedOn = null;
@@ -79,16 +145,30 @@
 
         public async Task<ActionResult> ConfirmRestoreProvider(int providerId)
         {
-            var providerIdToInt = int.Parse(providerId.ToString());
             var provider = await this.Data.Providers
                 .AllWithDeleted()
-                .FirstOrDefaultAsync(p => p.Id == providerIdToInt);
+                .FirstOrDefaultAsync(p => p.Id == providerId);
 
             provider.IsDeleted = false;
             provider.DeletedOn = null;
             this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Restore, providerId.ToString(), ActivityTargetType.Provider);
+
+            return new EmptyResult();
+        }
+
+        public async Task<ActionResult> ConfirmRestoreChannel(int channelId)
+        {
+            var channel = await this.Data.Channels
+                .AllWithDeleted()
+                .FirstOrDefaultAsync(p => p.Id == channelId);
+
+            channel.IsDeleted = false;
+            channel.DeletedOn = null;
+            this.Data.SaveChanges();
+
+            this.CreateActivity(ActivityType.Restore, channelId.ToString(), ActivityTargetType.Channel);
 
             return new EmptyResult();
         }
