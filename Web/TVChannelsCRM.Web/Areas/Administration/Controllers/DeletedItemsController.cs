@@ -1,4 +1,6 @@
-﻿namespace TVChannelsCRM.Web.Areas.Administration.Controllers
+﻿using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts;
+
+namespace TVChannelsCRM.Web.Areas.Administration.Controllers
 {
     using System;
     using System.Linq;
@@ -62,6 +64,17 @@
             return View("DeletedChannels", channelsNames);
         }
 
+        public async Task<ActionResult> DeletedContracts()
+        {
+            var contractsNames = await this.Data.Contracts
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted == true)
+                .Select(c => c.Term.ToString())
+                .ToListAsync();
+
+            return View("DeletedContracts", contractsNames);
+        }
+
         public JsonResult SearchClients([DataSourceRequest] DataSourceRequest request, string searchboxDeletedClients)
         {
             var clients = this.Data.Clients
@@ -95,6 +108,17 @@
             return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult SearchContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
+        {
+            var contracts = this.Data.Contracts
+                .AllWithDeleted()
+                .Where(c => c.Term.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
+                .Select(ContractViewModel.FromContract)
+                .ToList();
+
+            return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult ReadDeletedClients([DataSourceRequest] DataSourceRequest request)
         {
             var deletedClients = this.Data.Clients
@@ -126,6 +150,17 @@
                 .ToList();
 
             return Json(deletedChannels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ReadDeletedContracts([DataSourceRequest] DataSourceRequest request)
+        {
+            var deletedContracts = this.Data.Contracts
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted)
+                .Select(ContractViewModel.FromContract)
+                .ToList();
+
+            return Json(deletedContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> ConfirmRestoreClient(int clientId)
@@ -169,6 +204,21 @@
             this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Restore, channelId.ToString(), ActivityTargetType.Channel);
+
+            return new EmptyResult();
+        }
+
+        public async Task<ActionResult> ConfirmRestoreContract(int contractId)
+        {
+            var contract = await this.Data.Contracts
+                .AllWithDeleted()
+                .FirstOrDefaultAsync(p => p.Id == contractId);
+
+            contract.IsDeleted = false;
+            contract.DeletedOn = null;
+            this.Data.SaveChanges();
+
+            this.CreateActivity(ActivityType.Restore, contractId.ToString(), ActivityTargetType.Contract);
 
             return new EmptyResult();
         }

@@ -697,6 +697,7 @@
     <Content Include="Areas\Users\Views\Contracts\_ProviderContracts.cshtml" />
     <Content Include="Areas\Users\Views\Contracts\_ClientContracts.cshtml" />
     <Content Include="Areas\Users\Views\Contracts\ContractDetails.cshtml" />
+    <Content Include="Areas\Administration\Views\DeletedItems\DeletedContracts.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
