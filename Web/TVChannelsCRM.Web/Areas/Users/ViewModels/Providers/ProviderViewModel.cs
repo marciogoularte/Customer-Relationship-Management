@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
+﻿namespace TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
 {
     using System;
     using System.ComponentModel;

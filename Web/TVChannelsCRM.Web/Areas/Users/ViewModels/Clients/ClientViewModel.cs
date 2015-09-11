@@ -3,7 +3,6 @@
     using System;
     using System.ComponentModel;
     using System.Linq.Expressions;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Data.Models;
@@ -162,7 +161,7 @@
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
 
-        // TODO: uncomment lists
-        //public List<string> SpecialConditions { get; set; }
+        [UIHint("CommentsEditor")]
+        public string Comments { get; set; }
     }
 }

@@ -3,7 +3,6 @@
     using System;
     using System.ComponentModel;
     using System.Linq.Expressions;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Data.Models;
@@ -34,9 +33,9 @@
                     Website = c.Website,
                     Presentation = c.Presentation,
                     ContractTemplate = c.ContractTemplate,
+                    Comments = c.Comments,
                     Provider = c.Provider,
-                    Client = c.Client,
-                    Comments = c.Comments
+                    Client = c.Client
                 };
             }
         }
@@ -87,13 +86,13 @@
         [DisplayName("Contract Template")]
         public string ContractTemplate { get; set; }
 
+        [UIHint("CommentsEditor")]
+        public string Comments { get; set; }
+
         [ScaffoldColumn(false)]
         public virtual Provider Provider { get; set; }
 
         [ScaffoldColumn(false)]
         public virtual Client Client { get; set; }
-        
-        [UIHint("CommentsEditor")]
-        public string Comments { get; set; }
     }
 }

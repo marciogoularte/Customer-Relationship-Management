@@ -50,7 +50,7 @@
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime EndDate { get; set; }
 
-        [DisplayName("Term")]
+        [DisplayName("Notice period")]
         public int NoticePeriod { get; set; }
 
         [DisplayName("Billing start date")]
@@ -81,6 +81,7 @@
         public string GoverningLaw { get; set; }
 
         [DisplayName("Comments")]
+        [UIHint("CommentsEditor")]
         public string Comments { get; set; }
 
         [ScaffoldColumn(false)]

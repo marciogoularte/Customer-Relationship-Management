@@ -90,6 +90,8 @@
 
         public string MarketingEmail { get; set; }
 
+        public string Comments { get; set; } 
+
         public ICollection<Channel> Channels
         {
             get { return this.channels; }
@@ -101,7 +103,5 @@
             get { return this.contracts; }
             set { this.contracts = value; }
         } 
-        // TODO: uncomment lists
-        //public List<string> SpecialConditions { get; set; }
     }
 }

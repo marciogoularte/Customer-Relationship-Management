@@ -52,7 +52,6 @@
 
         public virtual Client Client { get; set; }
 
-        [UIHint("CommentsEditor")]
         public string Comments { get; set; } 
     }
 }
