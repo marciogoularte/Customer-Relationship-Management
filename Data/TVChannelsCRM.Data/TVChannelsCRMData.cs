@@ -121,9 +121,14 @@
             get { return this.GetDeletableEntityRepository<Channel>(); }
         }
 
-        public IDeletableEntityRepository<Contract> Contracts
+        public IDeletableEntityRepository<ClientContract> ClientContracts
         {
-            get { return this.GetDeletableEntityRepository<Contract>(); }
+            get { return this.GetDeletableEntityRepository<ClientContract>(); }
+        }
+
+        public IDeletableEntityRepository<ProviderContract> ProviderContracts
+        {
+            get { return this.GetDeletableEntityRepository<ProviderContract>(); }
         }
     }
 }

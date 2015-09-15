@@ -26,12 +26,12 @@
         [HttpGet]
         public ActionResult Index()
         {
-            var accountManagers = this.Data.Clients
+            var names = this.Data.Clients
                 .All()
-                .Select(c => c.AccountManager)
+                .Select(c => c.Name)
                 .ToList();
 
-            return View(accountManagers);
+            return View(names);
         }
 
         [HttpGet]
@@ -48,11 +48,6 @@
         [HttpGet]
         public ActionResult ClientDetails(int clientId)
         {
-           // var client = await this.Data.Clients
-           //     .All()
-           //     .Select(ClientViewModel.FromClient)
-           //     .FirstOrDefaultAsync(p => p.Id == clientId);
-
             return View(clientId);
         }
 
@@ -61,7 +56,7 @@
             var clients = this.Data.Clients
                 .All()
                 .Select(ClientViewModel.FromClient)
-                .Where(c => c.AccountManager.Contains(searchboxClients))
+                .Where(c => c.Name.Contains(searchboxClients))
                 .ToList();
 
             return Json(clients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -86,7 +81,7 @@
 
             var newClient = new Client
             {
-                AccountManager = client.AccountManager,
+                Name = client.Name,
                 Type = client.Type,
                 Eik = client.Eik,
                 ResidenceAndAddress = client.ResidenceAndAddress,
@@ -196,7 +191,7 @@
                 return Json(new[] { client }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
             }
 
-            clientFromDb.AccountManager = client.AccountManager;
+            clientFromDb.Name = client.Name;
             clientFromDb.Type = client.Type;
             clientFromDb.Eik = client.Eik;
             clientFromDb.ResidenceAndAddress = client.ResidenceAndAddress;

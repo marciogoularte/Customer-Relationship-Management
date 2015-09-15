@@ -51,9 +51,6 @@
                       .Selected(true)
                       .LoadContentFrom(Url.Action("ClientInformation", "Clients", new { clientId = Model }));
 
-                  tabstrip.Add().Text("Channels")
-                      .LoadContentFrom(Url.Action("ClientsAllChannelsData", "Channels", new { clientId = Model }));
-
                   tabstrip.Add().Text("Contracts")
                       .LoadContentFrom(Url.Action("AllClientsContracts", "Contracts", new { clientId = Model }));
               })

@@ -25,21 +25,21 @@
 <h2>Channels</h2>
 
 @(Html.Kendo()
-    .Grid<ContractViewModel>()
+    .Grid<ClientContractViewModel>()
     .Name("grid-client-contracts")
     .Columns(columns =>
     {
-        columns.Bound(model => model.StartDate).Format("{0:dd/MM/yyyy}").Width(185);
-        columns.Bound(model => model.Term).Width(32).Hidden(true);
-        columns.Bound(model => model.EndDate).Format("{0:dd/MM/yyyy}").Width(32);
+        columns.Bound(model => model.TypeOfContract).Width(185);
+        columns.Bound(model => model.StartDate).Format("{0:MM/dd/yyyy}").Width(185);
+        columns.Bound(model => model.EndDate).Format("{0:MM/dd/yyyy}").Width(32);
         columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
-        columns.Bound(model => model.BillingStartDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
-        columns.Bound(model => model.BillingEndDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
-        columns.Bound(model => model.StartingDateOfDueDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
+        columns.Bound(model => model.BillingStartDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
+        columns.Bound(model => model.BillingEndDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
         columns.Bound(model => model.NumberOfDaysForPaymentDueDate).Width(32).Hidden(true);
         columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
         columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
         columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
+        columns.Bound(model => model.Provider).Width(32);
         columns.Bound(model => model.Comments).Width(275);
         columns.Command(command =>
         {
@@ -54,7 +54,7 @@
 
             @(Html.Kendo().AutoComplete()
                 .Name("searchbox-clients-contracts")
-                 .Placeholder("Account manager... ")
+                 .Placeholder("Type of contract... ")
                 .DataSource(datasource => datasource
                             .Read(read => read.Action("ClientsContractsNames", controllerName, null).Data("onAdditionalDataClientContracts")))
                 .Filter("contains")
@@ -103,8 +103,8 @@
                                             .Read(read => read.Action("ReadClientsContracts", controllerName, new { clientId = Model }))
                                             .Read(read => read.Action("ClientsContractsSearch", controllerName, new { clientId = Model }).Data("addSearchClientContracts"))
                                             .Create(create => create.Action("CreateClientContract", controllerName, new { clientId = Model }))
-                                            .Update(update => update.Action("UpdateContract", controllerName))
-                                            .Destroy(destroy => destroy.Action("DestroyContract", controllerName));
+                                            .Update(update => update.Action("UpdateClientContract", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyClientContract", controllerName));
                                     }))
 <div id="selected">
 </div>
@@ -127,7 +127,7 @@
         function viewDetailsClientContracts(e) {
             e.preventDefault();
             var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-            window.location = '/Users/Contracts/ContractDetails?contractId=' + dataItem.Id;
+            window.location = '/Users/Contracts/ClientContractDetails?contractId=' + dataItem.Id;
         }
 
         function selectRow() {

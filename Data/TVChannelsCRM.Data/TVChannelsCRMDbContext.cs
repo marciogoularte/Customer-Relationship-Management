@@ -35,7 +35,9 @@
 
         public virtual IDbSet<Channel> Channels { get; set; }
 
-        public virtual IDbSet<Contract> Contracts { get; set; }
+        public virtual IDbSet<ClientContract> ClientContracts { get; set; }
+
+        public virtual IDbSet<ProviderContract> ProviderContracts { get; set; }
 
         public DbContext DbContext
         {

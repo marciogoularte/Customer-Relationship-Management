@@ -30,7 +30,7 @@
         .Name("grid-deleted-clients")
     .Columns(columns =>
     {
-        columns.Bound(model => model.AccountManager).Width(190);
+        columns.Bound(model => model.Name).Width(190);
         columns.Bound(model => model.Type).Width(100);
         columns.Bound(model => model.Eik).Hidden(true);
         columns.Bound(model => model.ResidenceAndAddress).Hidden(true);
@@ -73,7 +73,7 @@
 
                 @(Html.Kendo().AutoComplete()
                                             .Name("searchbox-deleted-clients")
-                                         .Placeholder("Account manager... ")
+                                         .Placeholder("Name... ")
                                          .BindTo(Model)
                                          .Filter("contains")
                       )

@@ -73,16 +73,6 @@
                 Name = channel.Name,
                 ReveivingOptions = channel.ReveivingOptions,
                 SatelliteData = channel.SatelliteData,
-                Degrees = channel.Degrees,
-                Freq = channel.Freq,
-                Transponder = channel.Transponder,
-                Encryption = channel.Encryption,
-                SrFec = channel.SrFec,
-                Sid = channel.Sid,
-                Vpid = channel.Vpid,
-                Apid = channel.Apid,
-                OnidTid = channel.OnidTid,
-                Beam = channel.Beam,
                 EpgSource = channel.EpgSource,
                 Website = channel.Website,
                 Presentation = channel.Presentation,
@@ -101,85 +91,6 @@
             return Json(new[] { channel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         } 
         
-        [HttpGet]
-        public ActionResult ClientsAllChannelsData(int clientId)
-        {
-            return PartialView("_ClientsChannels", clientId);
-        }
-
-        public ActionResult ClientsGetChannelsNames([DataSourceRequest]DataSourceRequest request)
-        {
-            var channelsNames = this.Data.Channels
-                .All()
-                .Where(c => c.Client != null)
-                .Select(c => c.Name)
-                .ToList();
-
-            return Json(channelsNames, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ClientsSearch([DataSourceRequest] DataSourceRequest request, string searchbox, int clientId)
-        {
-            var channels = this.Data.Channels
-                .All()
-                .Select(ChannelViewModel.FromChannel)
-                .Where(c => c.Name.Contains(searchbox) && c.Client.Id == clientId)
-                .ToList();
-
-            return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ClientsReadChannels([DataSourceRequest] DataSourceRequest request, int clientId)
-        {
-            var channels = this.Data.Channels
-                .All()
-                .Where(c => c.Client.Id == clientId)
-                .Select(ChannelViewModel.FromChannel)
-                .ToList();
-
-            return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ClientsCreateChannel([DataSourceRequest]  DataSourceRequest request, ChannelViewModel channel, int clientId)
-        {
-            if (channel == null || !ModelState.IsValid)
-            {
-                return Json(new[] { channel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
-            }
-
-            var newChannel = new Channel
-            {
-                Name = channel.Name,
-                ReveivingOptions = channel.ReveivingOptions,
-                SatelliteData = channel.SatelliteData,
-                Degrees = channel.Degrees,
-                Freq = channel.Freq,
-                Transponder = channel.Transponder,
-                Encryption = channel.Encryption,
-                SrFec = channel.SrFec,
-                Sid = channel.Sid,
-                Vpid = channel.Vpid,
-                Apid = channel.Apid,
-                OnidTid = channel.OnidTid,
-                Beam = channel.Beam,
-                EpgSource = channel.EpgSource,
-                Website = channel.Website,
-                Presentation = channel.Presentation,
-                ContractTemplate = channel.ContractTemplate,
-                CreatedOn = DateTime.Now,
-                ClientId = clientId,
-                Comments = channel.Comments + "\n"
-            };
-
-            this.Data.Channels.Add(newChannel);
-            this.Data.SaveChanges();
-
-            this.CreateActivity(ActivityType.Create, newChannel.Id.ToString(), ActivityTargetType.Channel);
-            channel.Id = newChannel.Id;
-
-            return Json(new[] { channel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
-        }
-
         [HttpGet]
         public async Task<ActionResult> ChannelDetails(int channelId)
         {
@@ -205,16 +116,6 @@
             channelFromDb.Name = channel.Name;
             channelFromDb.ReveivingOptions = channel.ReveivingOptions;
             channelFromDb.SatelliteData = channel.SatelliteData;
-            channelFromDb.Degrees = channel.Degrees;
-            channelFromDb.Freq = channel.Freq;
-            channelFromDb.Transponder = channel.Transponder;
-            channelFromDb.Encryption = channel.Encryption;
-            channelFromDb.SrFec = channel.SrFec;
-            channelFromDb.Sid = channel.Sid;
-            channelFromDb.Vpid = channel.Vpid;
-            channelFromDb.Apid = channel.Apid;
-            channelFromDb.OnidTid = channel.OnidTid;
-            channelFromDb.Beam = channel.Beam;
             channelFromDb.EpgSource = channel.EpgSource;
             channelFromDb.Website = channel.Website;
             channelFromDb.Presentation = channel.Presentation;

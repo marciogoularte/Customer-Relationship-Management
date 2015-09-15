@@ -84,6 +84,7 @@
                 Name = provider.Name,
                 Type = provider.Type,
                 Eik = provider.Eik,
+                BankAccount = provider.BankAccount,
                 ResidenceAndAddress = provider.ResidenceAndAddress,
                 NetworkPage = provider.NetworkPage,
                 ContactPerson = provider.ContactPerson,
@@ -119,6 +120,7 @@
             providerFromDb.Name = provider.Name;
             providerFromDb.Type = provider.Type;
             providerFromDb.Eik = provider.Eik;
+            providerFromDb.BankAccount = provider.BankAccount;
             providerFromDb.ResidenceAndAddress = provider.ResidenceAndAddress;
             providerFromDb.NetworkPage = provider.NetworkPage;
             providerFromDb.ContactPerson = provider.ContactPerson;

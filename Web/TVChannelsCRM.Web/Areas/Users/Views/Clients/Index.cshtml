@@ -26,7 +26,7 @@
     .Name("grid-clients")
     .Columns(columns =>
     {
-        columns.Bound(model => model.AccountManager).ClientTemplate(Html.ActionLink("#=AccountManager#", "ClientDetails", new { clientId = "#=id#" }).ToHtmlString()).Width(200);
+        columns.Bound(model => model.Name).ClientTemplate(Html.ActionLink("#=Name#", "ClientDetails", new { clientId = "#=id#" }).ToHtmlString()).Width(200);
         columns.Bound(model => model.Type).Width(80);
         columns.Bound(model => model.Eik).Hidden(true);
         columns.Bound(model => model.ResidenceAndAddress).Hidden(true);
@@ -74,7 +74,7 @@
 
             @(Html.Kendo().AutoComplete()
                 .Name("searchbox-clients")
-                .Placeholder("Account manager... ")
+                .Placeholder("Name... ")
                 .BindTo(Model)
                 .Filter("contains")
             )

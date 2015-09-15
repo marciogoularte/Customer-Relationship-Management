@@ -19,16 +19,6 @@
                     Name = c.Name,
                     ReveivingOptions = c.ReveivingOptions,
                     SatelliteData = c.SatelliteData,
-                    Degrees = c.Degrees,
-                    Freq = c.Freq,
-                    Transponder = c.Transponder,
-                    Encryption = c.Encryption,
-                    SrFec = c.SrFec,
-                    Sid = c.Sid,
-                    Vpid = c.Vpid,
-                    Apid = c.Apid,
-                    OnidTid = c.OnidTid,
-                    Beam = c.Beam,
                     EpgSource = c.EpgSource,
                     Website = c.Website,
                     Presentation = c.Presentation,
@@ -49,30 +39,9 @@
         [DisplayName("Reveiving options")]
         public string ReveivingOptions { get; set; }
 
+        [UIHint("TextAreaEditor")]
         [DisplayName("Satellite data")]
         public string SatelliteData { get; set; }
-
-        public string Degrees { get; set; }
-
-        public string Freq { get; set; }
-
-        public string Transponder { get; set; }
-
-        public string Encryption { get; set; }
-
-        [DisplayName("SR-FEC")]
-        public string SrFec { get; set; }
-
-        public string Sid { get; set; }
-
-        public string Vpid { get; set; }
-
-        public string Apid { get; set; }
-
-        [DisplayName("ONID-ID")]
-        public string OnidTid { get; set; }
-
-        public string Beam { get; set; }
 
         [DisplayName("EPG-SOURCE")]
         public string EpgSource { get; set; }
@@ -81,12 +50,13 @@
         [Url(ErrorMessage = "Provider website is not valid")]
         public string Website { get; set; }
 
+        [Url(ErrorMessage = "Presentation is not valid website")]
         public string Presentation { get; set; }
 
         [DisplayName("Contract Template")]
         public string ContractTemplate { get; set; }
 
-        [UIHint("CommentsEditor")]
+        [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
 
         [ScaffoldColumn(false)]

@@ -16,7 +16,7 @@
                 return c => new ClientViewModel()
                 {
                     Id = c.Id,
-                    AccountManager = c.AccountManager,
+                    Name = c.Name,
                     Type = c.Type,
                     Eik = c.Eik,
                     ResidenceAndAddress = c.ResidenceAndAddress,
@@ -58,10 +58,10 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [DisplayName("Account Manager")]
-        [Required(ErrorMessage = "Account manager is required")]
-        [StringLength(20, MinimumLength = 2, ErrorMessage = "Account Manager should be between 2 and 20 symbols")]
-        public string AccountManager { get; set; }
+        [DisplayName("Name")]
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
+        public string Name { get; set; }
 
         [UIHint("TypeOfCompanyEditor")]
         public TypeOfCompany Type { get; set; }
@@ -88,31 +88,31 @@
         public string SecondaryAddress { get; set; }
 
         [DisplayName("Active cable")]
-        public string ActiveCable { get; set; }
+        public double ActiveCable { get; set; }
 
         [DisplayName("Fixed phone service")]
-        public string FixedPhoneService { get; set; }
+        public double FixedPhoneService { get; set; }
 
         [DisplayName("Public service through choice operator")]
-        public string AccessToPublicServiceThroughChoiceOperator { get; set; }
+        public double AccessToPublicServiceThroughChoiceOperator { get; set; }
 
         [DisplayName("Mobile voice services provided through network")]
-        public string MobileVoiceServicesProvidedThroughNetwork { get; set; }
+        public double MobileVoiceServicesProvidedThroughNetwork { get; set; }
 
         [DisplayName("Public services provided by wireless access")]
-        public string PublicServicesProvidedByWirelessAccess { get; set; }
+        public double PublicServicesProvidedByWirelessAccess { get; set; }
 
         [DisplayName("Services fixed access to internet")]
-        public string ServicesFixedAccessToInternet { get; set; }
+        public double ServicesFixedAccessToInternet { get; set; }
 
         [DisplayName("Services mobile access to internet")]
-        public string ServicesMobileAccessToInternet { get; set; }
+        public double ServicesMobileAccessToInternet { get; set; }
 
         [DisplayName("Services transmission data")]
-        public string ServicesTransmissionData { get; set; }
+        public double ServicesTransmissionData { get; set; }
 
         [DisplayName("Spreading radio and TV programs")]
-        public string SpreadingRadioAndTvPrograms { get; set; }
+        public double SpreadingRadioAndTvPrograms { get; set; }
 
         public string Coverage { get; set; }
 
@@ -161,7 +161,7 @@
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
 
-        [UIHint("CommentsEditor")]
+        [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
     }
 }

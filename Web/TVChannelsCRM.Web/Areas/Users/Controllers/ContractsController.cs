@@ -13,8 +13,8 @@
     using Data;
     using Data.Models;
     using Web.Controllers;
+    using ViewModels.Providers;
     using ViewModels.Contracts;
-
 
     public class ContractsController : BaseController
     {
@@ -31,10 +31,9 @@
 
         public ActionResult ClientsContractsNames([DataSourceRequest]DataSourceRequest request)
         {
-            var contractsNames = this.Data.Contracts
+            var contractsNames = this.Data.ClientContracts
                 .All()
-                .Where(c => c.Client != null && c.Client.Id != null && c.Client.AccountManager != null)
-                .Select(c => c.Client.AccountManager)
+                .Select(c => c.Client.Name)
                 .ToList();
 
             return Json(contractsNames, JsonRequestBehavior.AllowGet);
@@ -42,10 +41,10 @@
 
         public JsonResult ClientsContractsSearch([DataSourceRequest] DataSourceRequest request, string searchbox, int clientId)
         {
-            var contracts = this.Data.Contracts
+            var contracts = this.Data.ClientContracts
                 .All()
-                .Select(ContractViewModel.FromContract)
-                .Where(c => c.Client.AccountManager.Contains(searchbox) && c.Client.Id == clientId)
+                .Select(ClientContractViewModel.FromClientContract)
+                .Where(c => c.TypeOfContract.Contains(searchbox) && c.Client.Id == clientId)
                 .ToList();
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -53,31 +52,30 @@
 
         public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, int clientId)
         {
-            var contracts = this.Data.Contracts
+            var contracts = this.Data.ClientContracts
                 .All()
                 .Where(c => c.Client.Id == clientId)
-                .Select(ContractViewModel.FromContract)
+                .Select(ClientContractViewModel.FromClientContract)
                 .ToList();
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CreateClientContract([DataSourceRequest]  DataSourceRequest request, ContractViewModel contract, int clientId)
+        public JsonResult CreateClientContract([DataSourceRequest]  DataSourceRequest request, ClientContractViewModel contract, int clientId)
         {
             if (contract == null || !ModelState.IsValid)
             {
                 return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
             }
 
-            var newContract = new Contract
+            var newContract = new ClientContract
             {
                 StartDate = contract.StartDate,
-                Term = contract.Term,
+                TypeOfContract = contract.TypeOfContract,
                 EndDate = contract.EndDate,
                 NoticePeriod = contract.NoticePeriod,
                 BillingStartDate = contract.BillingStartDate,
                 BillingEndDate = contract.BillingEndDate,
-                StartingDateOfDueDate = contract.StartingDateOfDueDate,
                 NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate,
                 NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
                 AcceptingReports = contract.AcceptingReports,
@@ -87,7 +85,7 @@
                 Comments = contract.Comments + "\n"
             };
 
-            this.Data.Contracts.Add(newContract);
+            this.Data.ClientContracts.Add(newContract);
             this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Create, newContract.Id.ToString(), ActivityTargetType.Contract);
@@ -104,9 +102,8 @@
 
         public ActionResult ProvidersContractsNames([DataSourceRequest]DataSourceRequest request)
         {
-            var contractsNames = this.Data.Contracts
+            var contractsNames = this.Data.ProviderContracts
                 .All()
-                .Where(c => c.Provider != null && c.Provider.Id != null && c.Provider.Name != null)
                 .Select(c => c.Provider.Name)
                 .ToList();
 
@@ -115,10 +112,10 @@
 
         public JsonResult ProvidersContractsSearch([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
         {
-            var contracts = this.Data.Contracts
+            var contracts = this.Data.ProviderContracts
                 .All()
-                .Select(ContractViewModel.FromContract)
-                .Where(c => c.Provider.Name.Contains(searchbox) && c.Provider.Id == providerId)
+                .Select(ProviderContractViewModel.FromProviderContract)
+                .Where(c => c.TypeOfContract.Contains(searchbox) && c.Provider.Id == providerId)
                 .ToList();
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -126,31 +123,30 @@
 
         public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, int providerId)
         {
-            var contracts = this.Data.Contracts
+            var contracts = this.Data.ProviderContracts
                 .All()
                 .Where(c => c.Provider.Id == providerId)
-                .Select(ContractViewModel.FromContract)
+                .Select(ProviderContractViewModel.FromProviderContract)
                 .ToList();
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CreateProviderContract([DataSourceRequest]  DataSourceRequest request, ContractViewModel contract, int providerId)
+        public JsonResult CreateProviderContract([DataSourceRequest]  DataSourceRequest request, ProviderContractViewModel contract, int providerId)
         {
             if (contract == null || !ModelState.IsValid)
             {
                 return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
             }
 
-            var newContract = new Contract
+            var newContract = new ProviderContract
             {
                 StartDate = contract.StartDate,
-                Term = contract.Term,
+                TypeOfContract = contract.TypeOfContract,
                 EndDate = contract.EndDate,
                 NoticePeriod = contract.NoticePeriod,
                 BillingStartDate = contract.BillingStartDate,
                 BillingEndDate = contract.BillingEndDate,
-                StartingDateOfDueDate = contract.StartingDateOfDueDate,
                 NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate,
                 NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
                 AcceptingReports = contract.AcceptingReports,
@@ -160,7 +156,7 @@
                 Comments = contract.Comments + "\n"
             };
 
-            this.Data.Contracts.Add(newContract);
+            this.Data.ProviderContracts.Add(newContract);
             this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Create, newContract.Id.ToString(), ActivityTargetType.Contract);
@@ -170,21 +166,31 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult> ContractDetails(int contractId)
+        public async Task<ActionResult> ProviderContractDetails(int contractId)
         {
-            var contract = await this.Data.Contracts
+            var contract = await this.Data.ProviderContracts
                 .All()
-                .Select(ContractViewModel.FromContract)
+                .Select(ProviderContractViewModel.FromProviderContract)
+                .FirstOrDefaultAsync(c => c.Id == contractId);
+
+            return View(contract);
+        }
+        [HttpGet]
+        public async Task<ActionResult> ClientContractDetails(int contractId)
+        {
+            var contract = await this.Data.ClientContracts
+                .All()
+                .Select(ClientContractViewModel.FromClientContract)
                 .FirstOrDefaultAsync(c => c.Id == contractId);
 
             return View(contract);
         }
 
-        public JsonResult UpdateContract([DataSourceRequest] DataSourceRequest request, ContractViewModel contract)
+        public JsonResult UpdateClientContract([DataSourceRequest] DataSourceRequest request, ClientContractViewModel contract)
         {
-            var contractFromDb = this.Data.Contracts
+            var contractFromDb = this.Data.ClientContracts
                 .All()
-                  .FirstOrDefault(c => c.Id == contract.Id);
+                .FirstOrDefault(c => c.Id == contract.Id);
 
             if (contract == null || !ModelState.IsValid || contractFromDb == null)
             {
@@ -192,12 +198,11 @@
             }
 
             contractFromDb.StartDate = contract.StartDate;
-            contractFromDb.Term = contract.Term;
+            contractFromDb.TypeOfContract = contract.TypeOfContract;
             contractFromDb.EndDate = contract.EndDate;
             contractFromDb.NoticePeriod = contract.NoticePeriod;
             contractFromDb.BillingStartDate = contract.BillingStartDate;
             contractFromDb.BillingEndDate = contract.BillingEndDate;
-            contractFromDb.StartingDateOfDueDate = contract.StartingDateOfDueDate;
             contractFromDb.NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate;
             contractFromDb.NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered;
             contractFromDb.AcceptingReports = contract.AcceptingReports;
@@ -212,14 +217,65 @@
             return Json((new[] { contract }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DestroyContract([DataSourceRequest] DataSourceRequest request, ContractViewModel contract)
+        public JsonResult UpdateProviderContract([DataSourceRequest] DataSourceRequest request, ProviderContractViewModel contract)
         {
-            this.Data.Contracts.Delete(contract.Id);
+            var contractFromDb = this.Data.ProviderContracts
+                .All()
+                .FirstOrDefault(c => c.Id == contract.Id);
+
+            if (contract == null || !ModelState.IsValid || contractFromDb == null)
+            {
+                return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+            }
+
+            contractFromDb.StartDate = contract.StartDate;
+            contractFromDb.TypeOfContract = contract.TypeOfContract;
+            contractFromDb.EndDate = contract.EndDate;
+            contractFromDb.NoticePeriod = contract.NoticePeriod;
+            contractFromDb.BillingStartDate = contract.BillingStartDate;
+            contractFromDb.BillingEndDate = contract.BillingEndDate;
+            contractFromDb.NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate;
+            contractFromDb.NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered;
+            contractFromDb.AcceptingReports = contract.AcceptingReports;
+            contractFromDb.GoverningLaw = contract.GoverningLaw;
+            contractFromDb.CreatedOn = DateTime.Now;
+            contractFromDb.Comments = contract.Comments + "\n";
+
+            this.Data.SaveChanges();
+
+            this.CreateActivity(ActivityType.Edit, contractFromDb.Id.ToString(), ActivityTargetType.Contract);
+
+            return Json((new[] { contract }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DestroyClientContract([DataSourceRequest] DataSourceRequest request, ProviderContractViewModel contract)
+        {
+            this.Data.ClientContracts.Delete(contract.Id);
             this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Delete, contract.Id.ToString(), ActivityTargetType.Contract);
 
             return Json(new[] { contract }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DestroyProviderContract([DataSourceRequest] DataSourceRequest request, ProviderContractViewModel contract)
+        {
+            this.Data.ProviderContracts.Delete(contract.Id);
+            this.Data.SaveChanges();
+
+            this.CreateActivity(ActivityType.Delete, contract.Id.ToString(), ActivityTargetType.Contract);
+
+            return Json(new[] { contract }, JsonRequestBehavior.AllowGet);
+        }
+
+        public void GetProviders()
+        {
+            var providers = this.Data.Providers
+                .All()
+                .Select(ProviderViewModel.FromProvider)
+                .ToList();
+
+            ViewBag.Providers = providers;
         }
 
         [HttpPost]

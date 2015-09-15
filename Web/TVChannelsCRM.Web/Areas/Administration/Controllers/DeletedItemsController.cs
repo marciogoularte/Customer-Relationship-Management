@@ -36,7 +36,7 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
             var clientsNames = await this.Data.Clients
                 .AllWithDeleted()
                 .Where(c => c.IsDeleted == true)
-                .Select(c => c.AccountManager)
+                .Select(c => c.Name)
                 .ToListAsync();
 
             return View("DeletedClients", clientsNames);
@@ -64,22 +64,33 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
             return View("DeletedChannels", channelsNames);
         }
 
-        public async Task<ActionResult> DeletedContracts()
+        public async Task<ActionResult> DeletedClientContracts()
         {
-            var contractsNames = await this.Data.Contracts
+            var contractsNames = await this.Data.ClientContracts
                 .AllWithDeleted()
                 .Where(c => c.IsDeleted == true)
-                .Select(c => c.Term.ToString())
+                .Select(c => c.TypeOfContract.ToString())
                 .ToListAsync();
 
-            return View("DeletedContracts", contractsNames);
+            return View("DeletedClientContracts", contractsNames);
+        }
+
+        public async Task<ActionResult> DeletedProviderContracts()
+        {
+            var contractsNames = await this.Data.ProviderContracts
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted == true)
+                .Select(c => c.TypeOfContract.ToString())
+                .ToListAsync();
+
+            return View("DeletedProviderContracts", contractsNames);
         }
 
         public JsonResult SearchClients([DataSourceRequest] DataSourceRequest request, string searchboxDeletedClients)
         {
             var clients = this.Data.Clients
                 .AllWithDeleted()
-                .Where(c => c.AccountManager.Contains(searchboxDeletedClients) && c.IsDeleted == true)
+                .Where(c => c.Name.Contains(searchboxDeletedClients) && c.IsDeleted == true)
                 .Select(ClientViewModel.FromClient)
                 .ToList();
 
@@ -108,12 +119,23 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
             return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
+        public JsonResult SearchClientContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
         {
-            var contracts = this.Data.Contracts
+            var contracts = this.Data.ClientContracts
                 .AllWithDeleted()
-                .Where(c => c.Term.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
-                .Select(ContractViewModel.FromContract)
+                .Where(c => c.TypeOfContract.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
+                .Select(ClientContractViewModel.FromClientContract)
+                .ToList();
+
+            return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SearchProviderContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
+        {
+            var contracts = this.Data.ProviderContracts
+                .AllWithDeleted()
+                .Where(c => c.TypeOfContract.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
+                .Select(ProviderContractViewModel.FromProviderContract)
                 .ToList();
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -152,12 +174,23 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
             return Json(deletedChannels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadDeletedContracts([DataSourceRequest] DataSourceRequest request)
+        public JsonResult ReadDeletedClientContracts([DataSourceRequest] DataSourceRequest request)
         {
-            var deletedContracts = this.Data.Contracts
+            var deletedContracts = this.Data.ClientContracts
                 .AllWithDeleted()
                 .Where(c => c.IsDeleted)
-                .Select(ContractViewModel.FromContract)
+                .Select(ClientContractViewModel.FromClientContract)
+                .ToList();
+
+            return Json(deletedContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ReadDeletedProviderContracts([DataSourceRequest] DataSourceRequest request)
+        {
+            var deletedContracts = this.Data.ProviderContracts
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted)
+                .Select(ProviderContractViewModel.FromProviderContract)
                 .ToList();
 
             return Json(deletedContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -208,9 +241,24 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
             return new EmptyResult();
         }
 
-        public async Task<ActionResult> ConfirmRestoreContract(int contractId)
+        public async Task<ActionResult> ConfirmRestoreClientContract(int contractId)
         {
-            var contract = await this.Data.Contracts
+            var contract = await this.Data.ClientContracts
+                .AllWithDeleted()
+                .FirstOrDefaultAsync(p => p.Id == contractId);
+
+            contract.IsDeleted = false;
+            contract.DeletedOn = null;
+            this.Data.SaveChanges();
+
+            this.CreateActivity(ActivityType.Restore, contractId.ToString(), ActivityTargetType.Contract);
+
+            return new EmptyResult();
+        }
+
+        public async Task<ActionResult> ConfirmRestoreProviderContract(int contractId)
+        {
+            var contract = await this.Data.ProviderContracts
                 .AllWithDeleted()
                 .FirstOrDefaultAsync(p => p.Id == contractId);
 

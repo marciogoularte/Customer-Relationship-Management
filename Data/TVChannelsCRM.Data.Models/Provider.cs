@@ -8,12 +8,12 @@
     public class Provider : DeletableEntity, IEntity
     {
         private ICollection<Channel> channels;
-        private ICollection<Contract> contracts;
+        private ICollection<ClientContract> contracts;
 
         public Provider()
         {
             this.channels = new HashSet<Channel>();
-            this.contracts = new HashSet<Contract>();
+            this.contracts = new HashSet<ClientContract>();
         }
 
         public int Id { get; set; }
@@ -26,6 +26,8 @@
         public TypeOfCompany Type { get; set; }
 
         public string Eik { get; set; }
+
+        public string BankAccount { get; set; }
 
         public string ResidenceAndAddress { get; set; }
 
@@ -54,7 +56,7 @@
             set { this.channels = value; }
         }
 
-        public ICollection<Contract> Contracts
+        public ICollection<ClientContract> Contracts
         {
             get { return this.contracts; }
             set { this.contracts = value; }

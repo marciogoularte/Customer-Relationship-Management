@@ -17,7 +17,9 @@
 
         IDeletableEntityRepository<Channel> Channels { get; }
 
-        IDeletableEntityRepository<Contract> Contracts { get; }
+        IDeletableEntityRepository<ClientContract> ClientContracts { get; }
+
+        IDeletableEntityRepository<ProviderContract> ProviderContracts { get; }
 
         IRepository<User> Users { get; }
 

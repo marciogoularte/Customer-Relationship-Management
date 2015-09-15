@@ -9,17 +9,17 @@
     public class Client : DeletableEntity, IEntity
     {
         private ICollection<Channel> channels;
-        private ICollection<Contract> contracts;
+        private ICollection<ClientContract> contracts;
 
         public Client()
         {
             this.channels = new HashSet<Channel>();
-            this.contracts = new HashSet<Contract>();
+            this.contracts = new HashSet<ClientContract>();
         }
 
         public int Id { get; set; }
 
-        public string AccountManager { get; set; }
+        public string Name { get; set; }
 
         public TypeOfCompany Type { get; set; }
 
@@ -38,23 +38,23 @@
 
         public string SecondaryAddress { get; set; }
 
-        public string ActiveCable { get; set; }
-
-        public string FixedPhoneService { get; set; }
-
-        public string AccessToPublicServiceThroughChoiceOperator { get; set; }
-
-        public string MobileVoiceServicesProvidedThroughNetwork { get; set; }
-
-        public string PublicServicesProvidedByWirelessAccess { get; set; }
-
-        public string ServicesFixedAccessToInternet { get; set; }
-
-        public string ServicesMobileAccessToInternet { get; set; }
-
-        public string ServicesTransmissionData { get; set; }
-
-        public string SpreadingRadioAndTvPrograms { get; set; }
+        public double ActiveCable { get; set; }
+               
+        public double FixedPhoneService { get; set; }
+               
+        public double AccessToPublicServiceThroughChoiceOperator { get; set; }
+               
+        public double MobileVoiceServicesProvidedThroughNetwork { get; set; }
+               
+        public double PublicServicesProvidedByWirelessAccess { get; set; }
+               
+        public double ServicesFixedAccessToInternet { get; set; }
+               
+        public double ServicesMobileAccessToInternet { get; set; }
+               
+        public double ServicesTransmissionData { get; set; }
+               
+        public double SpreadingRadioAndTvPrograms { get; set; }
 
         public string Coverage { get; set; }
 
@@ -98,7 +98,7 @@
             set { this.channels = value; }
         }
 
-        public ICollection<Contract> Contracts
+        public ICollection<ClientContract> Contracts
         {
             get { return this.contracts; }
             set { this.contracts = value; }

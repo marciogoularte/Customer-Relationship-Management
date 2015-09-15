@@ -96,7 +96,7 @@
         //[DataType(DataType.Date)]
         //[DisplayName("Created on")]
         [ScaffoldColumn(false)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? CreatedOn { get; set; }
     }
 }

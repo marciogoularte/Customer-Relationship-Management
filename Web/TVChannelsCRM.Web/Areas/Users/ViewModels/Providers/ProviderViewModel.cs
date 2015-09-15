@@ -19,6 +19,7 @@
                     Name = p.Name,
                     Type = p.Type,
                     Eik = p.Eik,
+                    BankAccount = p.BankAccount,
                     ResidenceAndAddress = p.ResidenceAndAddress,
                     NetworkPage = p.NetworkPage,
                     ContactPerson = p.ContactPerson,
@@ -46,6 +47,9 @@
         [DisplayName("EIK")]
         public string Eik { get; set; }
 
+        [DisplayName("Bank Account")]
+        public string BankAccount { get; set; }
+
         [DisplayName("Residence and address")]
         public string ResidenceAndAddress { get; set; }
 
@@ -69,7 +73,7 @@
 
         public string Commission { get; set; }
 
-        [UIHint("CommentsEditor")]
+        [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
     }
 }

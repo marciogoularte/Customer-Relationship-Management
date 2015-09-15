@@ -32,19 +32,9 @@
         columns.Bound(model => model.Name).Width(185);
         columns.Bound(model => model.ReveivingOptions).Width(32).Hidden(true);
         columns.Bound(model => model.SatelliteData).Width(32).Hidden(true);
-        columns.Bound(model => model.Degrees).Width(32).Hidden(true);
-        columns.Bound(model => model.Freq).Width(32).Hidden(true);
-        columns.Bound(model => model.Transponder).Width(32).Hidden(true);
-        columns.Bound(model => model.Encryption).Width(32).Hidden(true);
-        columns.Bound(model => model.SrFec).Width(32).Hidden(true);
-        columns.Bound(model => model.Sid).Width(32).Hidden(true);
-        columns.Bound(model => model.Vpid).Width(32).Hidden(true);
-        columns.Bound(model => model.Apid).Width(32).Hidden(true);
-        columns.Bound(model => model.OnidTid).Width(32).Hidden(true);
-        columns.Bound(model => model.Beam).Width(32).Hidden(true);
         columns.Bound(model => model.EpgSource).Width(32).Hidden(true);
         columns.Bound(model => model.Website).Width(170);
-        columns.Bound(model => model.Presentation).Width(170);
+        columns.Bound(model => model.Presentation).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Width(170);
         columns.Bound(model => model.ContractTemplate).Width(32).Hidden(true);
         columns.Bound(model => model.Comments).Width(275);
         columns.Command(command =>

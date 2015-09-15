@@ -25,17 +25,16 @@
 <h2>Channels</h2>
 
 @(Html.Kendo()
-    .Grid<ContractViewModel>()
+    .Grid<ProviderContractViewModel>()
     .Name("grid-provider-contracts")
     .Columns(columns =>
         {
-            columns.Bound(model => model.StartDate).Format("{0:dd/MM/yyyy}").Width(185);
-            columns.Bound(model => model.Term).Width(32).Hidden(true);
-            columns.Bound(model => model.EndDate).Format("{0:dd/MM/yyyy}").Width(32);
+            columns.Bound(model => model.TypeOfContract).Width(185);
+            columns.Bound(model => model.StartDate).Format("{0:MM/dd/yyyy}").Width(185);
+            columns.Bound(model => model.EndDate).Format("{0:MM/dd/yyyy}").Width(32);
             columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
-            columns.Bound(model => model.BillingStartDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
-            columns.Bound(model => model.BillingEndDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
-            columns.Bound(model => model.StartingDateOfDueDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
+            columns.Bound(model => model.BillingStartDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
+            columns.Bound(model => model.BillingEndDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
             columns.Bound(model => model.NumberOfDaysForPaymentDueDate).Width(32).Hidden(true);
             columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
             columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
@@ -54,7 +53,7 @@
 
             @(Html.Kendo().AutoComplete()
                 .Name("searchbox-providers-contracts")
-                 .Placeholder("Provider name... ")
+                         .Placeholder("Type of contract... ")
                 .DataSource(datasource => datasource
                             .Read(read => read.Action("ProvidersContractsNames", controllerName, null).Data("onAdditionalData")))
                 .Filter("contains")
@@ -103,8 +102,8 @@
             .Read(read => read.Action("ReadProvidersContracts", controllerName, new { providerId = Model }))
             .Read(read => read.Action("ProvidersContractsSearch", controllerName, new { providerId = Model }).Data("addSearch"))
             .Create(create => create.Action("CreateProviderContract", controllerName, new { providerId = Model }))
-            .Update(update => update.Action("UpdateContract", controllerName))
-            .Destroy(destroy => destroy.Action("DestroyContract", controllerName));
+            .Update(update => update.Action("UpdateProviderContract", controllerName))
+            .Destroy(destroy => destroy.Action("DestroyProviderContract", controllerName));
     }))
 <div id="selected">
 </div>
@@ -127,7 +126,7 @@
     function viewDetails(e) {
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location = '/Users/Contracts/ContractDetails?contractId=' + dataItem.Id;
+        window.location = '/Users/Contracts/ProviderContractDetails?contractId=' + dataItem.Id;
     }
 
     function selectRow() {

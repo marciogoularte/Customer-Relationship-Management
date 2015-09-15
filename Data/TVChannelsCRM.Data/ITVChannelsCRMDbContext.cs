@@ -17,7 +17,9 @@
 
         IDbSet<Channel> Channels { get; set; }
 
-        IDbSet<Contract> Contracts { get; set; }
+        IDbSet<ClientContract> ClientContracts { get; set; }
+
+        IDbSet<ProviderContract> ProviderContracts { get; set; }
 
         DbContext DbContext { get; }
 
