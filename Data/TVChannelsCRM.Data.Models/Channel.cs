@@ -18,7 +18,6 @@
 
         public string EpgSource { get; set; }
 
-        [Url(ErrorMessage = "Provider website is not valid")]
         public string Website { get; set; }
 
         public string Presentation { get; set; }

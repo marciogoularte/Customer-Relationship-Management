@@ -89,14 +89,14 @@
         [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
-        [Url]
         [UIHint("Url")]
+        [Url(ErrorMessage = "User website is not valid")]
         public string Website { get; set; }
 
         //[DataType(DataType.Date)]
         //[DisplayName("Created on")]
         [ScaffoldColumn(false)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? CreatedOn { get; set; }
     }
 }

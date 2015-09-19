@@ -21,6 +21,8 @@
 
         IDbSet<ProviderContract> ProviderContracts { get; set; }
 
+        IDbSet<Invoice> Invoices { get; set; }
+
         DbContext DbContext { get; }
 
         int SaveChanges();

@@ -60,10 +60,9 @@ namespace TVChannelsCRM.Data.Models
         [Required(ErrorMessage = "Enterprise position is required")]
         public EnterprisePosition EnterprisePosition { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? CreatedOn { get; set; }
 
-        [Url(ErrorMessage = "Provider website is not valid")]
         public string Website { get; set; }
 
         public virtual ICollection<Activity> LastActivities

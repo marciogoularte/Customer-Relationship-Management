@@ -1,14 +1,13 @@
-﻿namespace TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+﻿using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers;
+
+namespace TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
 {
     using System;
-    using System.Linq;
-    using System.Linq.Expressions;
     using System.ComponentModel;
-    using System.Collections.Generic;
+    using System.Linq.Expressions;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    using Data;
-    using Providers;
     using Data.Models;
 
     public class ClientContractViewModel
@@ -32,7 +31,8 @@
                     GoverningLaw = c.GoverningLaw,
                     Comments = c.Comments,
                     Client = c.Client,
-                    Provider = c.Provider
+                    Provider = c.Provider,
+                    ProviderId = c.ProviderId.ToString()
                 };
             }
         }
@@ -42,29 +42,29 @@
 
         [DisplayName("Start date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime StartDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? StartDate { get; set; }
 
         [DisplayName("Type of contract")]
         public string TypeOfContract { get; set; }
 
         [DisplayName("End date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime EndDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? EndDate { get; set; }
 
         [DisplayName("Notice period")]
         public int NoticePeriod { get; set; }
 
         [DisplayName("Billing start date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime BillingStartDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? BillingStartDate { get; set; }
 
         [DisplayName("Billing end date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime BillingEndDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? BillingEndDate { get; set; }
 
         [DisplayName("Payment due date(number of days)")]
         public int NumberOfDaysForPaymentDueDate { get; set; }
@@ -85,7 +85,11 @@
         [ScaffoldColumn(false)]
         public virtual Client Client { get; set; }
 
+        [DisplayName("Provider")]
         [UIHint("ContractProviderEditor")]
-        public Provider Provider { get; set; }
+        public string ProviderId { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual Provider Provider { get; set; }
     }
 }

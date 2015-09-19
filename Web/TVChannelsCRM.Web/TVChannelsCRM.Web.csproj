@@ -192,12 +192,15 @@
     <Compile Include="Areas\Users\Controllers\ClientsController.cs" />
     <Compile Include="Areas\Users\Controllers\ContractsController.cs" />
     <Compile Include="Areas\Users\Controllers\EmailingController.cs" />
+    <Compile Include="Areas\Users\Controllers\InvoicesController.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Users\Controllers\ProvidersController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Users\ViewModels\Clients\ClientViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ClientContractViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ProviderContractViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\Contracts\ProviderDropdownViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\Invoices\InvoiceViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Profile\SchedulerTaskViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Providers\ChannelViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Providers\ProviderViewModel.cs" />
@@ -1219,6 +1222,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Users\Views\Emailing\" />
+    <Folder Include="Areas\Users\Views\Invoices\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

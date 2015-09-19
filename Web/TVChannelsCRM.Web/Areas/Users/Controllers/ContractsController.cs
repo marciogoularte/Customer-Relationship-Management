@@ -26,6 +26,22 @@
         [HttpGet]
         public ActionResult AllClientsContracts(int clientId)
         {
+
+            var providers = this.Data.Providers
+                .All()
+                .Select(ProviderViewModel.FromProvider)
+                .ToList();
+
+            var vm = providers
+                .Select(provider => new ProviderDropdownViewModel
+                        {
+                            Text = provider.Name,
+                            Value = provider.Id
+                        })
+                .ToList();
+
+            ViewData["Providers"] = vm;
+
             return PartialView("_ClientContracts", clientId);
         }
 
@@ -33,18 +49,18 @@
         {
             var contractsNames = this.Data.ClientContracts
                 .All()
-                .Select(c => c.Client.Name)
+                .Select(c => c.TypeOfContract)
                 .ToList();
 
             return Json(contractsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ClientsContractsSearch([DataSourceRequest] DataSourceRequest request, string searchbox, int clientId)
+        public JsonResult ClientsContractsSearch([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId)
         {
             var contracts = this.Data.ClientContracts
                 .All()
                 .Select(ClientContractViewModel.FromClientContract)
-                .Where(c => c.TypeOfContract.Contains(searchbox) && c.Client.Id == clientId)
+                .Where(c => c.TypeOfContract.Contains(searchTerm) && c.Client.Id == clientId)
                 .ToList();
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
@@ -82,7 +98,8 @@
                 GoverningLaw = contract.GoverningLaw,
                 ClientId = clientId,
                 CreatedOn = DateTime.Now,
-                Comments = contract.Comments + "\n"
+                Comments = contract.Comments + "\n",
+                ProviderId = int.Parse(contract.ProviderId)
             };
 
             this.Data.ClientContracts.Add(newContract);
@@ -104,7 +121,7 @@
         {
             var contractsNames = this.Data.ProviderContracts
                 .All()
-                .Select(c => c.Provider.Name)
+                .Select(c => c.TypeOfContract)
                 .ToList();
 
             return Json(contractsNames, JsonRequestBehavior.AllowGet);
@@ -175,6 +192,7 @@
 
             return View(contract);
         }
+
         [HttpGet]
         public async Task<ActionResult> ClientContractDetails(int contractId)
         {
@@ -182,6 +200,14 @@
                 .All()
                 .Select(ClientContractViewModel.FromClientContract)
                 .FirstOrDefaultAsync(c => c.Id == contractId);
+
+            var channels = await this.Data.Channels
+                .All()
+                .Where(c => c.ProviderId == contract.Provider.Id)
+                .Select(ChannelViewModel.FromChannel)
+                .ToListAsync();
+
+            ViewBag.Channels = channels;
 
             return View(contract);
         }
@@ -191,6 +217,24 @@
             var contractFromDb = this.Data.ClientContracts
                 .All()
                 .FirstOrDefault(c => c.Id == contract.Id);
+
+            // ModelState["Provider"].Errors.Clear();
+            // ModelState["Client"].Errors.Clear(); 
+
+            foreach (var modelError in ModelState)
+            {
+                var propertyName = modelError.Key;
+
+                if (propertyName.Contains("Client"))
+                {
+                    ModelState[propertyName].Errors.Clear();
+                }
+                else if (propertyName.Contains("Provider"))
+                {
+                    ModelState[propertyName].Errors.Clear();
+                }
+                
+            }
 
             if (contract == null || !ModelState.IsValid || contractFromDb == null)
             {
@@ -209,6 +253,7 @@
             contractFromDb.GoverningLaw = contract.GoverningLaw;
             contractFromDb.CreatedOn = DateTime.Now;
             contractFromDb.Comments = contract.Comments + "\n";
+            contractFromDb.ProviderId = int.Parse(contract.ProviderId);
 
             this.Data.SaveChanges();
 
@@ -266,16 +311,6 @@
             this.CreateActivity(ActivityType.Delete, contract.Id.ToString(), ActivityTargetType.Contract);
 
             return Json(new[] { contract }, JsonRequestBehavior.AllowGet);
-        }
-
-        public void GetProviders()
-        {
-            var providers = this.Data.Providers
-                .All()
-                .Select(ProviderViewModel.FromProvider)
-                .ToList();
-
-            ViewBag.Providers = providers;
         }
 
         [HttpPost]

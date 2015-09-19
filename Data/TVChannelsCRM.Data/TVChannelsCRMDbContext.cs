@@ -39,6 +39,8 @@
 
         public virtual IDbSet<ProviderContract> ProviderContracts { get; set; }
 
+        public virtual IDbSet<Invoice> Invoices { get; set; }
+
         public DbContext DbContext
         {
             get

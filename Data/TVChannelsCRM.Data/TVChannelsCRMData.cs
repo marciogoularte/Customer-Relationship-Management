@@ -130,5 +130,10 @@
         {
             get { return this.GetDeletableEntityRepository<ProviderContract>(); }
         }
+
+        public IDeletableEntityRepository<Invoice> Invoices
+        {
+            get { return this.GetDeletableEntityRepository<Invoice>(); }
+        }
     }
 }

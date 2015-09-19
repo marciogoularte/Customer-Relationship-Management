@@ -21,6 +21,8 @@
 
         IDeletableEntityRepository<ProviderContract> ProviderContracts { get; }
 
+        IDeletableEntityRepository<Invoice> Invoices { get; }
+
         IRepository<User> Users { get; }
 
         int SaveChanges();

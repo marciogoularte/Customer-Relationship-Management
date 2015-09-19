@@ -65,6 +65,7 @@
     <Compile Include="ActivityType.cs" />
     <Compile Include="Channel.cs" />
     <Compile Include="ClientContract.cs" />
+    <Compile Include="Invoice.cs" />
     <Compile Include="ProviderContract.cs" />
     <Compile Include="SchedulerTask.cs" />
     <Compile Include="Client.cs" />

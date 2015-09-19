@@ -22,25 +22,25 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-<h2>Channels</h2>
+<h2>Client Contracts</h2>
 
 @(Html.Kendo()
     .Grid<ClientContractViewModel>()
     .Name("grid-client-contracts")
     .Columns(columns =>
     {
-        columns.Bound(model => model.TypeOfContract).Width(185);
-        columns.Bound(model => model.StartDate).Format("{0:MM/dd/yyyy}").Width(185);
-        columns.Bound(model => model.EndDate).Format("{0:MM/dd/yyyy}").Width(32);
+        columns.Bound(model => model.TypeOfContract).Width(150);
+        columns.Bound(model => model.StartDate).Format("{0:dd/MM/yyyy}").Width(185);
+        columns.Bound(model => model.EndDate).Format("{0:dd/MM/yyyy}").Width(32);
         columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
-        columns.Bound(model => model.BillingStartDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
-        columns.Bound(model => model.BillingEndDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
+        columns.Bound(model => model.BillingStartDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
+        columns.Bound(model => model.BillingEndDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
         columns.Bound(model => model.NumberOfDaysForPaymentDueDate).Width(32).Hidden(true);
         columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
         columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
         columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
-        columns.Bound(model => model.Provider).Width(32);
-        columns.Bound(model => model.Comments).Width(275);
+        columns.Bound(model => model.ProviderId).Width(32).Hidden(true);
+        columns.Bound(model => model.Comments).Width(200);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsClientContracts");
@@ -100,7 +100,7 @@
                                             .PageSize(10)
                                             .ServerOperation(true)
                                             .Events(ev => ev.Error("errorAlert"))
-                                            .Read(read => read.Action("ReadClientsContracts", controllerName, new { clientId = Model }))
+                                            .Read(read => read.Action("ReadClientsContracts", controllerName, new{clientId = Model}))
                                             .Read(read => read.Action("ClientsContractsSearch", controllerName, new { clientId = Model }).Data("addSearchClientContracts"))
                                             .Create(create => create.Action("CreateClientContract", controllerName, new { clientId = Model }))
                                             .Update(update => update.Action("UpdateClientContract", controllerName))
@@ -117,7 +117,7 @@
         }
 
         function addSearchClientContracts() {
-            return { searchbox: $('#searchbox-clients-contracts').val() };
+            return { searchTerm: $('#searchbox-clients-contracts').val() };
         }
 
         $('#searchbox-clients-contracts').keyup(function () {
@@ -146,8 +146,11 @@
             $(".tabs").removeClass('active');
             $(tab).addClass('active');
         }
-</script>
-@section Scripts {
+</script>@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+
 

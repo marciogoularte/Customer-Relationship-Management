@@ -38,7 +38,7 @@
         columns.Bound(model => model.Country).Hidden(true);
         columns.Bound(model => model.EnterprisePosition).Width(60);
         columns.Bound(model => model.PhoneNumber).Width(60);
-        columns.Bound(model => model.Website).Hidden(true);
+        columns.Bound(model => model.Website).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Profile").Click("viewDetails");
