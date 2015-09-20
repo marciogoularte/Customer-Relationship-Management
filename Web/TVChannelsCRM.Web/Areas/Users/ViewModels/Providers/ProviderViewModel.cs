@@ -27,7 +27,7 @@
                     Email = p.Email,
                     Address = p.Address,
                     Term = p.Term,
-                    CPS = p.CPS,
+                    Cps = p.Cps,
                     Commission = p.Commission
                 };
             }
@@ -69,7 +69,8 @@
 
         public string Term { get; set; }
 
-        public string CPS { get; set; }
+        [DisplayName("Cps(years)")]
+        public int? Cps { get; set; }
 
         public string Commission { get; set; }
 

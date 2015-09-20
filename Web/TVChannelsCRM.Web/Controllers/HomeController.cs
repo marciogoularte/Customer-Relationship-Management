@@ -55,7 +55,7 @@
                     Commission = (i * 23).ToString(),
                     ContactPerson = "Pesho" + (i * 23),
                     Term = "Term" + (i * 23),
-                    CPS = "CPS" + (i * 23),
+                    Cps = i * 23,
                     Eik = "Eik" + (i * 23),
                     ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
                     NetworkPage = "NetworkPage" + i * 3.6,

@@ -1,12 +1,11 @@
-﻿using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts;
-
-namespace TVChannelsCRM.Web.Areas.Administration.Controllers
+﻿namespace TVChannelsCRM.Web.Areas.Administration.Controllers
 {
     using System;
     using System.Linq;
     using System.Web.Mvc;
     using System.Data.Entity;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -17,6 +16,7 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
     using Web.Controllers;
     using Users.ViewModels.Clients;
     using Users.ViewModels.Providers;
+    using Users.ViewModels.Contracts;
 
     [Authorize(Roles = "Admin")]
     public class DeletedItemsController : BaseController
@@ -25,11 +25,6 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
             : base(data)
         {
         }
-
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         public async Task<ActionResult> DeletedClients()
         {
@@ -86,114 +81,119 @@ namespace TVChannelsCRM.Web.Areas.Administration.Controllers
             return View("DeletedProviderContracts", contractsNames);
         }
 
-        public JsonResult SearchClients([DataSourceRequest] DataSourceRequest request, string searchboxDeletedClients)
+        public JsonResult ReadDeletedClients([DataSourceRequest] DataSourceRequest request, string searchboxDeletedClients)
         {
-            var clients = this.Data.Clients
-                .AllWithDeleted()
-                .Where(c => c.Name.Contains(searchboxDeletedClients) && c.IsDeleted == true)
-                .Select(ClientViewModel.FromClient)
-                .ToList();
+            List<ClientViewModel> clients;
+            if (searchboxDeletedClients == "")
+            {
+                clients = this.Data.Clients
+                 .AllWithDeleted()
+                 .Where(c => c.IsDeleted == true)
+                 .Select(ClientViewModel.FromClient)
+                 .ToList();
+            }
+            else
+            {
+                clients = this.Data.Clients
+                 .AllWithDeleted()
+                 .Where(c => c.Name.Contains(searchboxDeletedClients) && c.IsDeleted == true)
+                 .Select(ClientViewModel.FromClient)
+                 .ToList();
+            }
 
             return Json(clients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchProviders([DataSourceRequest] DataSourceRequest request, string searchboxDeletedProviders)
+        public JsonResult ReadDeletedProviders([DataSourceRequest] DataSourceRequest request, string searchboxDeletedProviders)
         {
-            var providers = this.Data.Providers
+            List<ProviderViewModel> providers;
+            if (searchboxDeletedProviders == "")
+            {
+                providers = this.Data.Providers
+                .AllWithDeleted()
+                .Where(p => p.IsDeleted == true)
+                .Select(ProviderViewModel.FromProvider)
+                .ToList();
+            }
+            else
+            {
+                providers = this.Data.Providers
                 .AllWithDeleted()
                 .Where(p => p.Name.Contains(searchboxDeletedProviders) && p.IsDeleted == true)
                 .Select(ProviderViewModel.FromProvider)
                 .ToList();
+            }
 
             return Json(providers.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchChannels([DataSourceRequest] DataSourceRequest request, string searchboxDeletedChannels)
+        public JsonResult ReadDeletedChannels([DataSourceRequest] DataSourceRequest request, string searchboxDeletedChannels)
         {
-            var channels = this.Data.Channels
-                .AllWithDeleted()
-                .Where(c => c.Name.Contains(searchboxDeletedChannels) && c.IsDeleted == true)
-                .Select(ChannelViewModel.FromChannel)
-                .ToList();
+            List<ChannelViewModel> channels;
+            if (searchboxDeletedChannels == "")
+            {
+                channels = this.Data.Channels
+                    .AllWithDeleted()
+                    .Where(c => c.IsDeleted == true)
+                    .Select(ChannelViewModel.FromChannel)
+                    .ToList();
+            }
+            else
+            {
+                channels = this.Data.Channels
+                   .AllWithDeleted()
+                   .Where(c => c.Name.Contains(searchboxDeletedChannels) && c.IsDeleted == true)
+                   .Select(ChannelViewModel.FromChannel)
+                   .ToList();
+            }
 
             return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchClientContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
+        public JsonResult ReadDeletedClientContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
         {
-            var contracts = this.Data.ClientContracts
+            List<ClientContractViewModel> contracts;
+            if (searchboxDeletedContracts == "")
+            {
+                contracts = this.Data.ClientContracts
+                   .AllWithDeleted()
+                   .Where(c => c.IsDeleted == true)
+                   .Select(ClientContractViewModel.FromClientContract)
+                   .ToList();
+            }
+            else
+            {
+                contracts = this.Data.ClientContracts
                 .AllWithDeleted()
                 .Where(c => c.TypeOfContract.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
                 .Select(ClientContractViewModel.FromClientContract)
                 .ToList();
+            }
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult SearchProviderContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
+        public JsonResult ReadDeletedProviderContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
         {
-            var contracts = this.Data.ProviderContracts
+            List<ProviderContractViewModel> contracts;
+            if (searchboxDeletedContracts == "")
+            {
+                contracts = this.Data.ProviderContracts
+                .AllWithDeleted()
+                .Where(c => c.IsDeleted == true)
+                .Select(ProviderContractViewModel.FromProviderContract)
+                .ToList();
+            }
+            else
+            {
+                contracts = this.Data.ProviderContracts
                 .AllWithDeleted()
                 .Where(c => c.TypeOfContract.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
                 .Select(ProviderContractViewModel.FromProviderContract)
                 .ToList();
+            }
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadDeletedClients([DataSourceRequest] DataSourceRequest request)
-        {
-            var deletedClients = this.Data.Clients
-                .AllWithDeleted()
-                .Where(c => c.IsDeleted)
-                .Select(ClientViewModel.FromClient)
-                .ToList();
-
-            return Json(deletedClients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadDeletedProviders([DataSourceRequest] DataSourceRequest request)
-        {
-            var deletedProviders = this.Data.Providers
-                .AllWithDeleted()
-                .Where(p => p.IsDeleted)
-                .Select(ProviderViewModel.FromProvider)
-                .ToList();
-
-            return Json(deletedProviders.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadDeletedChannels([DataSourceRequest] DataSourceRequest request)
-        {
-            var deletedChannels = this.Data.Channels
-                .AllWithDeleted()
-                .Where(c => c.IsDeleted)
-                .Select(ChannelViewModel.FromChannel)
-                .ToList();
-
-            return Json(deletedChannels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadDeletedClientContracts([DataSourceRequest] DataSourceRequest request)
-        {
-            var deletedContracts = this.Data.ClientContracts
-                .AllWithDeleted()
-                .Where(c => c.IsDeleted)
-                .Select(ClientContractViewModel.FromClientContract)
-                .ToList();
-
-            return Json(deletedContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadDeletedProviderContracts([DataSourceRequest] DataSourceRequest request)
-        {
-            var deletedContracts = this.Data.ProviderContracts
-                .AllWithDeleted()
-                .Where(c => c.IsDeleted)
-                .Select(ProviderContractViewModel.FromProviderContract)
-                .ToList();
-
-            return Json(deletedContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> ConfirmRestoreClient(int clientId)

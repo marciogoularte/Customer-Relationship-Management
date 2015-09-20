@@ -2,8 +2,6 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using System.Data.Entity;
-    using System.Threading.Tasks;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -22,8 +20,7 @@
             : base(data)
         {
         }
-
-        // GET: Users/Profile
+        
         public ActionResult Index(string userId)
         {
             var loggedUserId = this.User.Identity.GetUserId();

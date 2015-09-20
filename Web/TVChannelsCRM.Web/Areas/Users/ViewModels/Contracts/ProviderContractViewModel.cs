@@ -35,30 +35,34 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [DisplayName("Start date")]
+        [UIHint("DateTime")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayName("Start date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? StartDate { get; set; }
 
         [DisplayName("Type of contract")]
         public string TypeOfContract { get; set; }
 
+        [UIHint("DateTime")]
         [DisplayName("End date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? EndDate { get; set; }
 
         [DisplayName("Notice period")]
         public int NoticePeriod { get; set; }
 
-        [DisplayName("Billing start date")]
+        [UIHint("DateTime")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayName("Billing start date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? BillingStartDate { get; set; }
 
-        [DisplayName("Billing end date")]
+        [UIHint("DateTime")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayName("Billing end date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? BillingEndDate { get; set; }
 
         [DisplayName("Payment due date(number of days)")]

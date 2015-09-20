@@ -1,9 +1,8 @@
-﻿using System.Net;
-using System.Net.Mail;
-
-namespace TVChannelsCRM.Web.Areas.Users.Controllers
+﻿namespace TVChannelsCRM.Web.Areas.Users.Controllers
 {
+    using System.Net;
     using System.Web.Mvc;
+    using System.Net.Mail;
 
     public class EmailingController : Controller
     {

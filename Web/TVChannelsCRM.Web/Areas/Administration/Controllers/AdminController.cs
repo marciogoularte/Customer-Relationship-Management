@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Web.Mvc;
+    using System.Collections.Generic;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -36,33 +37,27 @@
             return View(usernames);
         }
 
-        public JsonResult SearchUser([DataSourceRequest] DataSourceRequest request, string searchboxUsers)
+        public JsonResult ReadUsers([DataSourceRequest] DataSourceRequest request, string searchboxUsers)
         {
+            List<UserViewModel> users;
             var currentUserId = this.User.Identity.GetUserId();
 
-            var users = this.Data.Users
-                .All()
-                .Select(UserViewModel.FromUser)
-                .Where(u => u.UserName.Contains(searchboxUsers) && u.Id != currentUserId)
-                .ToList();
-
-            return Json(users.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadUsers([DataSourceRequest] DataSourceRequest request)
-        {
-            var currentUserId = this.User.Identity.GetUserId();
-
-            var users = this.Data.Users
-                .All()
-                .Select(UserViewModel.FromUser)
-                .Where(u => u.Id != currentUserId)
-                .ToList();
-
-            // foreach (var user in users)
-            // {
-            //     user.PasswordHash = "";
-            // }
+            if (searchboxUsers == "")
+            {
+                users = this.Data.Users
+                 .All()
+                 .Select(UserViewModel.FromUser)
+                 .Where(u => u.Id != currentUserId)
+                 .ToList();
+            }
+            else
+            {
+                users = this.Data.Users
+                 .All()
+                 .Select(UserViewModel.FromUser)
+                 .Where(u => u.UserName.Contains(searchboxUsers) && u.Id != currentUserId)
+                 .ToList();
+            }
 
             return Json(users.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

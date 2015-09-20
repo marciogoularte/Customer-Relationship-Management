@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using System.Data.Entity;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -51,23 +52,24 @@
             return View(clientId);
         }
 
-        public JsonResult Search([DataSourceRequest] DataSourceRequest request, string searchboxClients)
+        public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request, string searchboxClients)
         {
-            var clients = this.Data.Clients
-                .All()
-                .Select(ClientViewModel.FromClient)
-                .Where(c => c.Name.Contains(searchboxClients))
-                .ToList();
-
-            return Json(clients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request)
-        {
-            var clients = this.Data.Clients
-                .All()
-                .Select(ClientViewModel.FromClient)
-                .ToList();
+            List<ClientViewModel> clients;
+            if (searchboxClients == "")
+            {
+                clients = this.Data.Clients
+                    .All()
+                    .Select(ClientViewModel.FromClient)
+                    .ToList();
+            }
+            else
+            {
+                clients = this.Data.Clients
+                    .All()
+                    .Select(ClientViewModel.FromClient)
+                    .Where(c => c.Name.Contains(searchboxClients))
+                    .ToList();
+            }
 
             return Json(clients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

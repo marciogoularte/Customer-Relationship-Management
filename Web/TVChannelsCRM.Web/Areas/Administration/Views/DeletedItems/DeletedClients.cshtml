@@ -5,20 +5,6 @@
     const string controllerName = "DeletedItems";
 }
 
-<style>
-    .demo-section {
-        width: 250px;
-        margin: 35px auto 50px;
-        padding: 30px;
-    }
-
-    .demo-section h2 {
-        text-transform: uppercase;
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
-</style>
-
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/kendo")
 @Scripts.Render("~/bundles/jqueryval")
@@ -116,8 +102,7 @@
                                     .PageSize(10)
                                     .ServerOperation(true)
                                     .Events(ev => ev.Error("errorAlert"))
-                                    .Read(read => read.Action("ReadDeletedClients", controllerName))
-                   .Read(read => read.Action("SearchClients", controllerName).Data("addSearchClients"));
+                   .Read(read => read.Action("ReadDeletedClients", controllerName).Data("addSearchClients"));
                             }))
 <div id="selected">
 </div>

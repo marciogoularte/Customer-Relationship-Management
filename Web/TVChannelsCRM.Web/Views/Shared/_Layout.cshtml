@@ -380,22 +380,27 @@
                                     <ul>
                                         <li>
                                             <a class="submenu" href="@Url.Action("DeletedClients", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Deleted clients</span>
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="submenu" href="@Url.Action("DeletedProviders", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Deleted providers</span>
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="submenu" href="@Url.Action("DeletedChannels", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Deleted channels</span>
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Channels</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="submenu" href="@Url.Action("DeletedContracts", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Deleted contracts</span>
+                                            <a class="submenu" href="@Url.Action("DeletedClientContracts", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients contracts</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedProviderContracts", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers contracts</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -505,7 +510,7 @@
     <script>
         kendo.culture("@culture");
         var culture = kendo.culture();
-        culture.calendar.patterns.F = "dd/MM/yyyy";
+        culture.calendar.patterns.F = "MM/dd/yyyy";
     </script>
     @RenderSection("scripts", required: false)
 </body>

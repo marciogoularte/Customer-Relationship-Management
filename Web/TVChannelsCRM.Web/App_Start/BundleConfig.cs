@@ -16,8 +16,6 @@
             bundles.IgnoreList.Ignore("*.intellisense.js");
             bundles.IgnoreList.Ignore("*-vsdoc.js");
             bundles.IgnoreList.Ignore("*.debug.js", OptimizationMode.WhenEnabled);
-
-            
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)

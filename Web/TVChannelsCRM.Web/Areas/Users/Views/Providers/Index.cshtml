@@ -5,20 +5,6 @@
     const string controllerName = "Providers";
 }
 
-<style>
-    .demo-section {
-        width: 250px;
-        margin: 35px auto 50px;
-        padding: 30px;
-    }
-
-    .demo-section h2 {
-        text-transform: uppercase;
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
-</style>
-
 <h2>Providers</h2>
 
 @(Html.Kendo()
@@ -38,7 +24,7 @@
         columns.Bound(model => model.Email).Width(32).Hidden(true);
         columns.Bound(model => model.Address).Width(32).Hidden(true);
         columns.Bound(model => model.Term).Width(32).Hidden(true);
-        columns.Bound(model => model.CPS).Width(32).Hidden(true);
+        columns.Bound(model => model.Cps).Width(32).Hidden(true);
         columns.Bound(model => model.Commission).Width(32).Hidden(true);
         columns.Bound(model => model.Comments).Width(265);
         columns.Command(command =>
@@ -97,8 +83,7 @@
             .PageSize(10)
             .ServerOperation(true)
             .Events(ev => ev.Error("errorAlert"))
-            .Read(read => read.Action("ReadProviders", controllerName))
-            .Read(read => read.Action("Search", controllerName).Data("addSearchProviders"))
+            .Read(read => read.Action("ReadProviders", controllerName).Data("addSearchProviders"))
             .Create(create => create.Action("CreateProvider", controllerName))
             .Update(update => update.Action("UpdateProvider", controllerName))
             .Destroy(destroy => destroy.Action("DestroyProvider", controllerName));

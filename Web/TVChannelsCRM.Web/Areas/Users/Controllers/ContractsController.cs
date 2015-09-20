@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using System.Data.Entity;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -44,6 +45,51 @@
 
             return PartialView("_ClientContracts", clientId);
         }
+      
+        [HttpGet]
+        public ActionResult AllProvidersContracts(int providerId)
+        {
+            return PartialView("_ProviderContracts", providerId);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ClientContractInformation(int contractId)
+        {
+            var contract = await this.Data.ClientContracts
+                .All()
+                .Select(ClientContractViewModel.FromClientContract)
+                .FirstOrDefaultAsync(p => p.Id == contractId);
+
+            if (contract != null && contract.Provider != null && contract.Provider.Id != null)
+            {
+                var channels = await this.Data.Channels
+                    .All()
+                    .Where(c => c.ProviderId == contract.Provider.Id)
+                    .Select(ChannelViewModel.FromChannel)
+                    .ToListAsync();
+
+                ViewBag.Channels = channels;
+            }
+
+            return PartialView("_ClientContractInformation", contract);
+        }
+
+        [HttpGet]
+        public ActionResult ClientContractDetails(int contractId)
+        {
+            return View(contractId);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ProviderContractDetails(int contractId)
+        {
+            var contract = await this.Data.ProviderContracts
+                .All()
+                .Select(ProviderContractViewModel.FromProviderContract)
+                .FirstOrDefaultAsync(c => c.Id == contractId);
+
+            return View(contract);
+        }
 
         public ActionResult ClientsContractsNames([DataSourceRequest]DataSourceRequest request)
         {
@@ -55,24 +101,58 @@
             return Json(contractsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ClientsContractsSearch([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId)
+        public ActionResult ProvidersContractsNames([DataSourceRequest]DataSourceRequest request)
         {
-            var contracts = this.Data.ClientContracts
+            var contractsNames = this.Data.ProviderContracts
+                .All()
+                .Select(c => c.TypeOfContract)
+                .ToList();
+
+            return Json(contractsNames, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId)
+        {
+            List<ClientContractViewModel> contracts;
+            if (searchTerm == "")
+            {
+                contracts = this.Data.ClientContracts
+                .All()
+                .Select(ClientContractViewModel.FromClientContract)
+                .Where(c => c.Client.Id == clientId)
+                .ToList();
+            }
+            else
+            {
+                contracts = this.Data.ClientContracts
                 .All()
                 .Select(ClientContractViewModel.FromClientContract)
                 .Where(c => c.TypeOfContract.Contains(searchTerm) && c.Client.Id == clientId)
                 .ToList();
+            }
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, int clientId)
+        public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
         {
-            var contracts = this.Data.ClientContracts
-                .All()
-                .Where(c => c.Client.Id == clientId)
-                .Select(ClientContractViewModel.FromClientContract)
-                .ToList();
+            List<ProviderContractViewModel> contracts;
+            if (searchbox == "")
+            {
+                contracts = this.Data.ProviderContracts
+                   .All()
+                   .Select(ProviderContractViewModel.FromProviderContract)
+                   .Where(c => c.Provider.Id == providerId)
+                   .ToList();
+            }
+            else
+            {
+                contracts = this.Data.ProviderContracts
+                   .All()
+                   .Select(ProviderContractViewModel.FromProviderContract)
+                   .Where(c => c.TypeOfContract.Contains(searchbox) && c.Provider.Id == providerId)
+                   .ToList();
+            }
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
@@ -99,8 +179,12 @@
                 ClientId = clientId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments + "\n",
-                ProviderId = int.Parse(contract.ProviderId)
             };
+
+            if (contract.ProviderId != null)
+            {
+                newContract.ProviderId = int.Parse(contract.ProviderId);
+            }
 
             this.Data.ClientContracts.Add(newContract);
             this.Data.SaveChanges();
@@ -109,44 +193,6 @@
             contract.Id = newContract.Id;
 
             return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public ActionResult AllProvidersContracts(int providerId)
-        {
-            return PartialView("_ProviderContracts", providerId);
-        }
-
-        public ActionResult ProvidersContractsNames([DataSourceRequest]DataSourceRequest request)
-        {
-            var contractsNames = this.Data.ProviderContracts
-                .All()
-                .Select(c => c.TypeOfContract)
-                .ToList();
-
-            return Json(contractsNames, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ProvidersContractsSearch([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
-        {
-            var contracts = this.Data.ProviderContracts
-                .All()
-                .Select(ProviderContractViewModel.FromProviderContract)
-                .Where(c => c.TypeOfContract.Contains(searchbox) && c.Provider.Id == providerId)
-                .ToList();
-
-            return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, int providerId)
-        {
-            var contracts = this.Data.ProviderContracts
-                .All()
-                .Where(c => c.Provider.Id == providerId)
-                .Select(ProviderContractViewModel.FromProviderContract)
-                .ToList();
-
-            return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult CreateProviderContract([DataSourceRequest]  DataSourceRequest request, ProviderContractViewModel contract, int providerId)
@@ -182,44 +228,11 @@
             return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public async Task<ActionResult> ProviderContractDetails(int contractId)
-        {
-            var contract = await this.Data.ProviderContracts
-                .All()
-                .Select(ProviderContractViewModel.FromProviderContract)
-                .FirstOrDefaultAsync(c => c.Id == contractId);
-
-            return View(contract);
-        }
-
-        [HttpGet]
-        public async Task<ActionResult> ClientContractDetails(int contractId)
-        {
-            var contract = await this.Data.ClientContracts
-                .All()
-                .Select(ClientContractViewModel.FromClientContract)
-                .FirstOrDefaultAsync(c => c.Id == contractId);
-
-            var channels = await this.Data.Channels
-                .All()
-                .Where(c => c.ProviderId == contract.Provider.Id)
-                .Select(ChannelViewModel.FromChannel)
-                .ToListAsync();
-
-            ViewBag.Channels = channels;
-
-            return View(contract);
-        }
-
         public JsonResult UpdateClientContract([DataSourceRequest] DataSourceRequest request, ClientContractViewModel contract)
         {
             var contractFromDb = this.Data.ClientContracts
                 .All()
                 .FirstOrDefault(c => c.Id == contract.Id);
-
-            // ModelState["Provider"].Errors.Clear();
-            // ModelState["Client"].Errors.Clear(); 
 
             foreach (var modelError in ModelState)
             {
@@ -233,7 +246,7 @@
                 {
                     ModelState[propertyName].Errors.Clear();
                 }
-                
+
             }
 
             if (contract == null || !ModelState.IsValid || contractFromDb == null)
@@ -267,6 +280,14 @@
             var contractFromDb = this.Data.ProviderContracts
                 .All()
                 .FirstOrDefault(c => c.Id == contract.Id);
+
+            foreach (var propertyName in ModelState.Select(modelError => modelError.Key))
+            {
+                if (propertyName.Contains("Provider"))
+                {
+                    ModelState[propertyName].Errors.Clear();
+                }
+            }
 
             if (contract == null || !ModelState.IsValid || contractFromDb == null)
             {

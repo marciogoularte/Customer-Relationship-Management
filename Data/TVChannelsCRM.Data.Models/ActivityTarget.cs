@@ -6,6 +6,7 @@
         Client,
         User,
         Channel,
-        Contract
+        Contract,
+        Invoice
     }
 }

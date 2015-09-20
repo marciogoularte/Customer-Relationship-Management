@@ -4,25 +4,10 @@
     ViewBag.Title = "Contracts";
     const string controllerName = "Contracts";
 }
-<style>
-    .demo-section {
-        width: 250px;
-        margin: 35px auto 50px;
-        padding: 30px;
-    }
-
-        .demo-section h2 {
-            text-transform: uppercase;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-</style>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
-
-<h2>Provider Contracts</h2>
 
 @(Html.Kendo()
     .Grid<ProviderContractViewModel>()
@@ -30,11 +15,11 @@
     .Columns(columns =>
         {
             columns.Bound(model => model.TypeOfContract).Width(185);
-            columns.Bound(model => model.StartDate).Format("{0:dd/MM/yyyy}").Width(185);
-            columns.Bound(model => model.EndDate).Format("{0:dd/MM/yyyy}").Width(32);
+            columns.Bound(model => model.StartDate).Format("{0:MM/dd/yyyy}").Width(185);
+            columns.Bound(model => model.EndDate).Format("{0:MM/dd/yyyy}").Width(32);
             columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
-            columns.Bound(model => model.BillingStartDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
-            columns.Bound(model => model.BillingEndDate).Format("{0:dd/MM/yyyy}").Width(32).Hidden(true);
+            columns.Bound(model => model.BillingStartDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
+            columns.Bound(model => model.BillingEndDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
             columns.Bound(model => model.NumberOfDaysForPaymentDueDate).Width(32).Hidden(true);
             columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
             columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
@@ -99,8 +84,7 @@
             .PageSize(10)
             .ServerOperation(true)
             .Events(ev => ev.Error("errorAlert"))
-            .Read(read => read.Action("ReadProvidersContracts", controllerName, new { providerId = Model }))
-            .Read(read => read.Action("ProvidersContractsSearch", controllerName, new { providerId = Model }).Data("addSearchProviderContracts"))
+            .Read(read => read.Action("ReadProvidersContracts", controllerName, new { providerId = Model }).Data("addSearchProviderContracts"))
             .Create(create => create.Action("CreateProviderContract", controllerName, new { providerId = Model }))
             .Update(update => update.Action("UpdateProviderContract", controllerName))
             .Destroy(destroy => destroy.Action("DestroyProviderContract", controllerName));

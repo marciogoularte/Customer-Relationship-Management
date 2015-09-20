@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using System.Data.Entity;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -39,24 +40,25 @@
             return Json(channelsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Search([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
+        public JsonResult ReadChannels([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
         {
-            var channels = this.Data.Channels
-                .All()
-                .Select(ChannelViewModel.FromChannel)
-                .Where(c => c.Name.Contains(searchbox) && c.Provider.Id == providerId)
-                .ToList();
-
-            return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult ReadChannels([DataSourceRequest] DataSourceRequest request, int providerId)
-        {
-            var channels = this.Data.Channels
-                .All()
-                .Where(c => c.Provider.Id == providerId)
-                .Select(ChannelViewModel.FromChannel)
-                .ToList();
+            List<ChannelViewModel> channels;
+            if (searchbox == "")
+            {
+                channels = this.Data.Channels
+                    .All()
+                    .Select(ChannelViewModel.FromChannel)
+                    .Where(c => c.Provider.Id == providerId)
+                    .ToList();
+            }
+            else
+            {
+                channels = this.Data.Channels
+                    .All()
+                    .Select(ChannelViewModel.FromChannel)
+                    .Where(c => c.Name.Contains(searchbox) && c.Provider.Id == providerId)
+                    .ToList();
+            }
 
             return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
@@ -89,8 +91,8 @@
             channel.Id = newChannel.Id;
 
             return Json(new[] { channel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
-        } 
-        
+        }
+
         [HttpGet]
         public async Task<ActionResult> ChannelDetails(int channelId)
         {
@@ -101,12 +103,24 @@
 
             return View(channel);
         }
-       
+
         public JsonResult UpdateChannel([DataSourceRequest] DataSourceRequest request, ChannelViewModel channel)
         {
             var channelFromDb = this.Data.Channels
                 .All()
                   .FirstOrDefault(c => c.Id == channel.Id);
+
+            foreach (var propertyName in ModelState.Select(modelError => modelError.Key))
+            {
+                if (propertyName.Contains("Client"))
+                {
+                    ModelState[propertyName].Errors.Clear();
+                }
+                else if (propertyName.Contains("Provider"))
+                {
+                    ModelState[propertyName].Errors.Clear();
+                }
+            }
 
             if (channel == null || !ModelState.IsValid || channelFromDb == null)
             {

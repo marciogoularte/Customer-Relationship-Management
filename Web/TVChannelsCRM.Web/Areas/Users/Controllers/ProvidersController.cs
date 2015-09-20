@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using System.Data.Entity;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
@@ -45,29 +46,31 @@
             return PartialView("_ProviderInformation", provider);
         }
 
-        public JsonResult Search([DataSourceRequest] DataSourceRequest request, string searchboxProviders)
-        {
-            var providers = this.Data.Providers
-                .All()
-                .Select(ProviderViewModel.FromProvider)
-                .Where(p => p.Name.Contains(searchboxProviders))
-                .ToList();
-
-            return Json(providers.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
-        }
-
         [HttpGet]
         public ActionResult ProviderDetails(int providerId)
         {
             return View(providerId);
         }
 
-        public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request)
+        public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request, string searchboxProviders)
         {
-            var providers = this.Data.Providers
+            List<ProviderViewModel> providers;
+            if (searchboxProviders == "")
+            {
+                providers = this.Data.Providers
                 .All()
                 .Select(ProviderViewModel.FromProvider)
                 .ToList();
+            }
+            else
+            {
+                providers = this.Data.Providers
+                .All()
+                .Select(ProviderViewModel.FromProvider)
+                .Where(p => p.Name.Contains(searchboxProviders))
+                .ToList();
+            }
+
 
             return Json(providers.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
@@ -92,7 +95,7 @@
                 Email = provider.Email,
                 Address = provider.Address,
                 Term = provider.Term,
-                CPS = provider.CPS,
+                Cps = provider.Cps,
                 Commission = provider.Commission,
                 Comments = provider.Comments + "\n"
             };
@@ -128,7 +131,7 @@
             providerFromDb.Email = provider.Email;
             providerFromDb.Address = provider.Address;
             providerFromDb.Term = provider.Term;
-            providerFromDb.CPS = provider.CPS;
+            providerFromDb.Cps = provider.Cps;
             providerFromDb.Commission = provider.Commission;
             providerFromDb.Comments = provider.Comments + "\n";
 

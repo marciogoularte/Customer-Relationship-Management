@@ -5,20 +5,6 @@
     const string controllerName = "Clients";
 }
 
-<style>
-    .demo-section {
-        width: 250px;
-        margin: 35px auto 50px;
-        padding: 30px;
-    }
-
-        .demo-section h2 {
-            text-transform: uppercase;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-</style>
-
 <h2>Clients</h2>
 
 @(Html.Kendo()
@@ -120,8 +106,7 @@
             .PageSize(10)
             .ServerOperation(true)
             .Events(ev => ev.Error("errorAlert"))
-            .Read(read => read.Action("ReadClients", controllerName))
-            .Read(read => read.Action("Search", controllerName).Data("addSearchClients"))
+            .Read(read => read.Action("ReadClients", controllerName).Data("addSearchClients"))
             .Create(create => create.Action("CreateClient", controllerName))
             .Update(update => update.Action("UpdateClient", controllerName))
             .Destroy(destroy => destroy.Action("DestroyClient", controllerName));

@@ -11,9 +11,7 @@
     using Data.Models;
     using Web.Controllers;
 
-    // TODO: Uncomment Authorize with Roles
-    //[Authorize(Roles = "Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ActivitiesController : BaseController
     {
         public ActivitiesController(ITVChannelsCRMData data)

@@ -4,25 +4,10 @@
         ViewBag.Title = "Channels";
         const string controllerName = "Channels";
     }
-    <style>
-        .demo-section {
-            width: 250px;
-            margin: 35px auto 50px;
-            padding: 30px;
-        }
-
-            .demo-section h2 {
-                text-transform: uppercase;
-                font-size: 1.2em;
-                margin-bottom: 10px;
-            }
-    </style>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/kendo")
-
-    <h2>Channels</h2>
 
     @(Html.Kendo()
     .Grid<ChannelViewModel>()
@@ -33,7 +18,7 @@
         columns.Bound(model => model.ReveivingOptions).Width(32).Hidden(true);
         columns.Bound(model => model.SatelliteData).Width(32).Hidden(true);
         columns.Bound(model => model.EpgSource).Width(32).Hidden(true);
-        columns.Bound(model => model.Website).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Width(170);
+        columns.Bound(model => model.Website).ClientTemplate("<a target='_blank' href='#=Website#'>link</a>").Width(170);
         columns.Bound(model => model.Presentation).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Width(170);
         columns.Bound(model => model.ContractTemplate).Width(32).Hidden(true);
         columns.Bound(model => model.Comments).Width(275);
@@ -96,8 +81,7 @@
                             .PageSize(10)
                             .ServerOperation(true)
                             .Events(ev => ev.Error("errorAlert"))
-                            .Read(read => read.Action("ReadChannels", controllerName, new { providerId = Model }))
-                            .Read(read => read.Action("Search", controllerName, new { providerId = Model }).Data("addSearch"))
+                            .Read(read => read.Action("ReadChannels", controllerName, new { providerId = Model }).Data("addSearch"))
                             .Create(create => create.Action("CreateChannel", controllerName, new { providerId = Model }))
                             .Update(update => update.Action("UpdateChannel", controllerName))
                             .Destroy(destroy => destroy.Action("DestroyChannel", controllerName));

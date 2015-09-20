@@ -60,7 +60,7 @@ namespace TVChannelsCRM.Data.Models
         [Required(ErrorMessage = "Enterprise position is required")]
         public EnterprisePosition EnterprisePosition { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? CreatedOn { get; set; }
 
         public string Website { get; set; }

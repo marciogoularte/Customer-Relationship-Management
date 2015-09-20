@@ -654,7 +654,6 @@
     <Content Include="Areas\Users\Views\Clients\ClientDetails.cshtml" />
     <Content Include="Areas\Users\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Users\Views\Profile\NoProfileAccess.cshtml" />
-    <Content Include="Areas\Administration\Views\DeletedItems\Index.cshtml" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-Bold.ttf" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
@@ -704,6 +703,9 @@
     <Content Include="Areas\Users\Views\Shared\EditorTemplates\ContractProviderEditor.cshtml" />
     <Content Include="Areas\Users\Views\Contracts\ClientContractDetails.cshtml" />
     <Content Include="Areas\Administration\Views\DeletedItems\DeletedProviderContracts.cshtml" />
+    <Content Include="Areas\Users\Views\Invoices\_ContractInvoices.cshtml" />
+    <Content Include="Areas\Users\Views\Contracts\_ClientContractInformation.cshtml" />
+    <Content Include="Areas\Users\Views\Invoices\InvoiceDetails.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
@@ -1222,7 +1224,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Users\Views\Emailing\" />
-    <Folder Include="Areas\Users\Views\Invoices\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
