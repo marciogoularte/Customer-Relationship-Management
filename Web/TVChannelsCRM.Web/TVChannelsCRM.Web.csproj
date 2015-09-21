@@ -192,7 +192,7 @@
     <Compile Include="Areas\Users\Controllers\ClientsController.cs" />
     <Compile Include="Areas\Users\Controllers\ContractsController.cs" />
     <Compile Include="Areas\Users\Controllers\DiscussionsController.cs" />
-    <Compile Include="Areas\Users\Controllers\EmailingController.cs" />
+    <Compile Include="Areas\Users\Controllers\FeedbacksController.cs" />
     <Compile Include="Areas\Users\Controllers\InvoicesController.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Users\Controllers\ProvidersController.cs" />
@@ -202,6 +202,7 @@
     <Compile Include="Areas\Users\ViewModels\Contracts\ProviderContractViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ProviderDropdownViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Discussions\DiscussionViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\Feedbacks\FeedbackViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Invoices\InvoiceViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Profile\SchedulerTaskViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Providers\ChannelViewModel.cs" />
@@ -713,6 +714,7 @@
     <Content Include="Areas\Users\Views\Discussions\DiscussionInformation.cshtml" />
     <Content Include="Areas\Administration\Views\DeletedItems\DeletedDiscussions.cshtml" />
     <Content Include="Areas\Administration\Views\DeletedItems\DeletedInvoices.cshtml" />
+    <Content Include="Areas\Users\Views\Feedbacks\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
@@ -1230,7 +1232,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Users\Views\Emailing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
