@@ -1,0 +1,17 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+
+@{
+    var data = ViewData["Providers"];
+    var providers = new List<ProviderDropdownViewModel>();
+    if (data != null)
+    {
+        var providersVm = (List<ProviderDropdownViewModel>)data;
+        providers.AddRange(providersVm);
+    }
+}
+
+@(Html.Kendo().DropDownListFor(m => m)
+        .DataTextField("Text")
+        .DataValueField("Value")
+          .BindTo(providers)
+)
