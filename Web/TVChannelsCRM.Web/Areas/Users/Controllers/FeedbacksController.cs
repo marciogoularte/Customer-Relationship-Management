@@ -13,23 +13,25 @@
         {
             return View(new FeedbackViewModel());
         }
-
-        [HttpPost]
+ [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SendEmail(string to, FeedbackViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Index", model);
+            }
             try
             {
                 if (string.IsNullOrEmpty(to))
                 {
-                    to = "dermendzhiev.n@gmail.com";
+                    to = "n.dermendjievsvc@gmail.com";
                 }
 
-                var fromAddress = new MailAddress("n.dermendjievsvc@gmail.com", "Nikolay");
+                var fromAddress = new MailAddress("NikolayCRMExample@gmail.com", "Nikolay");
                 var toFirstAddress = new MailAddress(to);
-                //var toSecondAddress = new MailAddress("ivaylo.ivanov@virgin.bg");
 
-                const string fromPassword = "1673258nd";
+                const string fromPassword = "123456nd";
                 string subject = string.Format("CRM System Feedback - {0}", model.From);
                 string body = string.Format(
                     "From: {0}<br />Title: {1}<br />Table: {2}<br />Table link: {3}<br />Message: {4}",
@@ -48,9 +50,9 @@
                 var firstMessage = new MailMessage(fromAddress, toFirstAddress)
                 {
                     Subject = subject,
-                    Body = body
+                    Body = body,
+                    IsBodyHtml = true
                 };
-                firstMessage.IsBodyHtml = true;
 
                 //var secondMessage = new MailMessage(fromAddress, toSecondAddress)
                 //{
@@ -59,13 +61,20 @@
                 //};
                 //secondMessage.IsBodyHtml = true;
 
-                smtp.Send(firstMessage);
+                try
+                {
+                    smtp.Send(firstMessage);
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Index", "Activities");
+                }
                 //smtp.Send(secondMessage);
 
             }
-            catch (Exception) 
-            { 
-            return RedirectToAction("Index", "Profile");
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Profile");
             }
 
             return RedirectToAction("Index", "Profile");
