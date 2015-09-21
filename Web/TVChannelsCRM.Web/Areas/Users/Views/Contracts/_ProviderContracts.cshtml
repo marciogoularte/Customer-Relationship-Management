@@ -15,11 +15,11 @@
     .Columns(columns =>
         {
             columns.Bound(model => model.TypeOfContract).Width(185);
-            columns.Bound(model => model.StartDate).Format("{0:MM/dd/yyyy}").Width(185);
-            columns.Bound(model => model.EndDate).Format("{0:MM/dd/yyyy}").Width(32);
+            columns.Bound(model => model.StartDate).Width(185);
+            columns.Bound(model => model.EndDate).Width(32);
             columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
-            columns.Bound(model => model.BillingStartDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
-            columns.Bound(model => model.BillingEndDate).Format("{0:MM/dd/yyyy}").Width(32).Hidden(true);
+            columns.Bound(model => model.BillingStartDate).Width(32).Hidden(true);
+            columns.Bound(model => model.BillingEndDate).Width(32).Hidden(true);
             columns.Bound(model => model.NumberOfDaysForPaymentDueDate).Width(32).Hidden(true);
             columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
             columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
@@ -85,7 +85,7 @@
             .ServerOperation(true)
             .Events(ev => ev.Error("errorAlert"))
             .Read(read => read.Action("ReadProvidersContracts", controllerName, new { providerId = Model }).Data("addSearchProviderContracts"))
-            .Create(create => create.Action("CreateProviderContract", controllerName, new { providerId = Model }))
+            .Create(create => create.Action("CreateProviderContract", controllerName, new { currentProviderId = Model }))
             .Update(update => update.Action("UpdateProviderContract", controllerName))
             .Destroy(destroy => destroy.Action("DestroyProviderContract", controllerName));
     }))

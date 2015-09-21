@@ -135,5 +135,10 @@
         {
             get { return this.GetDeletableEntityRepository<Invoice>(); }
         }
+
+        public IDeletableEntityRepository<Discussion> Discussions
+        {
+            get { return this.GetDeletableEntityRepository<Discussion>(); }
+        }
     }
 }

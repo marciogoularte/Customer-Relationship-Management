@@ -45,7 +45,7 @@
 
             return PartialView("_ClientContracts", clientId);
         }
-      
+
         [HttpGet]
         public ActionResult AllProvidersContracts(int providerId)
         {
@@ -60,15 +60,21 @@
                 .Select(ClientContractViewModel.FromClientContract)
                 .FirstOrDefaultAsync(p => p.Id == contractId);
 
-            if (contract != null && contract.Provider != null && contract.Provider.Id != null)
+            if (contract != null && contract.ProviderId != null)
             {
-                var channels = await this.Data.Channels
-                    .All()
-                    .Where(c => c.ProviderId == contract.Provider.Id)
-                    .Select(ChannelViewModel.FromChannel)
-                    .ToListAsync();
+                try
+                {
+                    var providerAsInt = int.Parse(contract.ProviderId);
 
-                ViewBag.Channels = channels;
+                    var channels = await this.Data.Channels
+                        .All()
+                        .Where(c => c.ProviderId == providerAsInt)
+                        .Select(ChannelViewModel.FromChannel)
+                        .ToListAsync();
+
+                    ViewBag.Channels = channels;
+                }
+                catch (Exception) { }
             }
 
             return PartialView("_ClientContractInformation", contract);
@@ -114,12 +120,12 @@
         public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId)
         {
             List<ClientContractViewModel> contracts;
-            if (searchTerm == "")
+            if (string.IsNullOrEmpty(searchTerm) || searchTerm == "")
             {
                 contracts = this.Data.ClientContracts
                 .All()
                 .Select(ClientContractViewModel.FromClientContract)
-                .Where(c => c.Client.Id == clientId)
+                .Where(c => c.ClientId == clientId)
                 .ToList();
             }
             else
@@ -127,7 +133,7 @@
                 contracts = this.Data.ClientContracts
                 .All()
                 .Select(ClientContractViewModel.FromClientContract)
-                .Where(c => c.TypeOfContract.Contains(searchTerm) && c.Client.Id == clientId)
+                .Where(c => c.TypeOfContract.Contains(searchTerm) && c.ClientId == clientId)
                 .ToList();
             }
 
@@ -137,12 +143,12 @@
         public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
         {
             List<ProviderContractViewModel> contracts;
-            if (searchbox == "")
+            if (string.IsNullOrEmpty(searchbox) || searchbox == "")
             {
                 contracts = this.Data.ProviderContracts
                    .All()
                    .Select(ProviderContractViewModel.FromProviderContract)
-                   .Where(c => c.Provider.Id == providerId)
+                   .Where(c => c.ProviderId == providerId)
                    .ToList();
             }
             else
@@ -150,14 +156,14 @@
                 contracts = this.Data.ProviderContracts
                    .All()
                    .Select(ProviderContractViewModel.FromProviderContract)
-                   .Where(c => c.TypeOfContract.Contains(searchbox) && c.Provider.Id == providerId)
+                   .Where(c => c.TypeOfContract.Contains(searchbox) && c.ProviderId == providerId)
                    .ToList();
             }
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CreateClientContract([DataSourceRequest]  DataSourceRequest request, ClientContractViewModel contract, int clientId)
+        public JsonResult CreateClientContract([DataSourceRequest]  DataSourceRequest request, ClientContractViewModel contract, int currentClientId)
         {
             if (contract == null || !ModelState.IsValid)
             {
@@ -176,7 +182,7 @@
                 NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
                 AcceptingReports = contract.AcceptingReports,
                 GoverningLaw = contract.GoverningLaw,
-                ClientId = clientId,
+                ClientId = currentClientId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments + "\n",
             };
@@ -195,7 +201,7 @@
             return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CreateProviderContract([DataSourceRequest]  DataSourceRequest request, ProviderContractViewModel contract, int providerId)
+        public JsonResult CreateProviderContract([DataSourceRequest]  DataSourceRequest request, ProviderContractViewModel contract, int currentProviderId)
         {
             if (contract == null || !ModelState.IsValid)
             {
@@ -214,7 +220,7 @@
                 NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
                 AcceptingReports = contract.AcceptingReports,
                 GoverningLaw = contract.GoverningLaw,
-                ProviderId = providerId,
+                ProviderId = currentProviderId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments + "\n"
             };

@@ -6,14 +6,14 @@
 
     @* Import style bundles*@
     @*@Styles.Render("~/Content/bootstrap")
-        @Styles.Render("~/Content/css")*@
+    @Styles.Render("~/Content/css")*@
 
     <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
 
     @* Import main jquery bundle and modernizr*@
     @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.Render("~/bundles/modernizr")*@
 
     <script type="text/javascript" src="~/Scripts/kendo/jquery.min.js"></script>
     <script type="text/javascript" src="~/Scripts/modernizr-2.8.3.min.js"></script>
@@ -403,6 +403,16 @@
                                                 <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers contracts</span>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedDiscussions", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Discussions</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedInvoices", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Invoices</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -492,7 +502,7 @@
 
     @* Kendo UI *@
     @*@Styles.Render("~/Content/kendo")
-        @Scripts.Render("~/bundles/kendo")*@
+    @Scripts.Render("~/bundles/kendo")*@
     <link rel="stylesheet" type="text/css" href="~/Content/kendo/kendo.common.min.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/kendo/kendo.common-bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/kendo/kendo.flat.min.css" />
@@ -502,16 +512,9 @@
     <script type="text/javascript" src="~/Scripts/kendo/pako_deflate.min.js"></script>
     <script type="text/javascript" src="~/Scripts/kendo/jszip.min.js"></script>
 
-    @* Kendo UI culture for DateTime format*@
-    <script src="~/Scripts/kendo/cultures/kendo.culture.bg-BG.min.js"></script>
-    @{
-        var culture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
-    }
-    <script>
-        kendo.culture("@culture");
-        var culture = kendo.culture();
-        culture.calendar.patterns.F = "MM/dd/yyyy";
-    </script>
+
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

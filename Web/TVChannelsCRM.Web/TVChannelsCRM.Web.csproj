@@ -191,6 +191,7 @@
     <Compile Include="Areas\Users\Controllers\ChannelsController.cs" />
     <Compile Include="Areas\Users\Controllers\ClientsController.cs" />
     <Compile Include="Areas\Users\Controllers\ContractsController.cs" />
+    <Compile Include="Areas\Users\Controllers\DiscussionsController.cs" />
     <Compile Include="Areas\Users\Controllers\EmailingController.cs" />
     <Compile Include="Areas\Users\Controllers\InvoicesController.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Areas\Users\ViewModels\Contracts\ClientContractViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ProviderContractViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ProviderDropdownViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\Discussions\DiscussionViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Invoices\InvoiceViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Profile\SchedulerTaskViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Providers\ChannelViewModel.cs" />
@@ -706,6 +708,11 @@
     <Content Include="Areas\Users\Views\Invoices\_ContractInvoices.cshtml" />
     <Content Include="Areas\Users\Views\Contracts\_ClientContractInformation.cshtml" />
     <Content Include="Areas\Users\Views\Invoices\InvoiceDetails.cshtml" />
+    <Content Include="Areas\Users\Views\Discussions\_ProviderDiscussions.cshtml" />
+    <Content Include="Areas\Users\Views\Discussions\_ClientDiscussions.cshtml" />
+    <Content Include="Areas\Users\Views\Discussions\DiscussionInformation.cshtml" />
+    <Content Include="Areas\Administration\Views\DeletedItems\DeletedDiscussions.cshtml" />
+    <Content Include="Areas\Administration\Views\DeletedItems\DeletedInvoices.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />

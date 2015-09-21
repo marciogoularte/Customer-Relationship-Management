@@ -15,8 +15,10 @@
     using Data.Models;
     using Web.Controllers;
     using Users.ViewModels.Clients;
+    using Users.ViewModels.Invoices;
     using Users.ViewModels.Providers;
     using Users.ViewModels.Contracts;
+    using Users.ViewModels.Discussions;
 
     [Authorize(Roles = "Admin")]
     public class DeletedItemsController : BaseController
@@ -81,10 +83,32 @@
             return View("DeletedProviderContracts", contractsNames);
         }
 
+        public async Task<ActionResult> DeletedDiscussions()
+        {
+            var discussionsSubjects = await this.Data.Discussions
+                .AllWithDeleted()
+                .Where(d => d.IsDeleted == true)
+                .Select(d => d.SubjectOfDiscussion)
+                .ToListAsync();
+
+            return View("DeletedDiscussions", discussionsSubjects);
+        }
+
+        public async Task<ActionResult> DeletedInvoices()
+        {
+            var mgSubs = await this.Data.Invoices
+                .AllWithDeleted()
+                .Where(i => i.IsDeleted == true)
+                .Select(i => i.MgSubs)
+                .ToListAsync();
+
+            return View("DeletedInvoices", mgSubs);
+        }
+
         public JsonResult ReadDeletedClients([DataSourceRequest] DataSourceRequest request, string searchboxDeletedClients)
         {
             List<ClientViewModel> clients;
-            if (searchboxDeletedClients == "")
+            if (string.IsNullOrEmpty(searchboxDeletedClients) || searchboxDeletedClients == "")
             {
                 clients = this.Data.Clients
                  .AllWithDeleted()
@@ -107,7 +131,7 @@
         public JsonResult ReadDeletedProviders([DataSourceRequest] DataSourceRequest request, string searchboxDeletedProviders)
         {
             List<ProviderViewModel> providers;
-            if (searchboxDeletedProviders == "")
+            if (string.IsNullOrEmpty(searchboxDeletedProviders) || searchboxDeletedProviders == "")
             {
                 providers = this.Data.Providers
                 .AllWithDeleted()
@@ -130,7 +154,7 @@
         public JsonResult ReadDeletedChannels([DataSourceRequest] DataSourceRequest request, string searchboxDeletedChannels)
         {
             List<ChannelViewModel> channels;
-            if (searchboxDeletedChannels == "")
+            if (string.IsNullOrEmpty(searchboxDeletedChannels) || searchboxDeletedChannels == "")
             {
                 channels = this.Data.Channels
                     .AllWithDeleted()
@@ -153,7 +177,7 @@
         public JsonResult ReadDeletedClientContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
         {
             List<ClientContractViewModel> contracts;
-            if (searchboxDeletedContracts == "")
+            if (string.IsNullOrEmpty(searchboxDeletedContracts) || searchboxDeletedContracts == "")
             {
                 contracts = this.Data.ClientContracts
                    .AllWithDeleted()
@@ -176,7 +200,7 @@
         public JsonResult ReadDeletedProviderContracts([DataSourceRequest] DataSourceRequest request, string searchboxDeletedContracts)
         {
             List<ProviderContractViewModel> contracts;
-            if (searchboxDeletedContracts == "")
+            if (string.IsNullOrEmpty(searchboxDeletedContracts) || searchboxDeletedContracts == "")
             {
                 contracts = this.Data.ProviderContracts
                 .AllWithDeleted()
@@ -194,6 +218,52 @@
             }
 
             return Json(contracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ReadDeletedDiscussions([DataSourceRequest] DataSourceRequest request, string searchboxDeletedDiscussions)
+        {
+            List<DiscussionViewModel> discussions;
+            if (string.IsNullOrEmpty(searchboxDeletedDiscussions) || searchboxDeletedDiscussions == "")
+            {
+                discussions = this.Data.Discussions
+                .AllWithDeleted()
+                .Where(d => d.IsDeleted == true)
+                .Select(DiscussionViewModel.FromDiscussion)
+                .ToList();
+            }
+            else
+            {
+                discussions = this.Data.Discussions
+                .AllWithDeleted()
+                .Where(d => d.SubjectOfDiscussion.ToString().Contains(searchboxDeletedDiscussions) && d.IsDeleted == true)
+                .Select(DiscussionViewModel.FromDiscussion)
+                .ToList();
+            }
+
+            return Json(discussions.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ReadDeletedInvoices([DataSourceRequest] DataSourceRequest request, string searchboxDeletedInvoices)
+        {
+            List<InvoiceViewModel> invoices;
+            if (string.IsNullOrEmpty(searchboxDeletedInvoices) || searchboxDeletedInvoices == "")
+            {
+                invoices = this.Data.Invoices
+                .AllWithDeleted()
+                .Where(i => i.IsDeleted == true)
+                .Select(InvoiceViewModel.FromInvoice)
+                .ToList();
+            }
+            else
+            {
+                invoices = this.Data.Invoices
+                .AllWithDeleted()
+                .Where(i => i.MgSubs.ToString().Contains(searchboxDeletedInvoices) && i.IsDeleted == true)
+                .Select(InvoiceViewModel.FromInvoice)
+                .ToList();
+            }
+
+            return Json(invoices.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
         public async Task<ActionResult> ConfirmRestoreClient(int clientId)
@@ -267,6 +337,36 @@
             this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Restore, contractId.ToString(), ActivityTargetType.Contract);
+
+            return new EmptyResult();
+        }
+
+        public async Task<ActionResult> ConfirmRestoreDiscussion(int discussionId)
+        {
+            var discussion = await this.Data.Discussions
+                .AllWithDeleted()
+                .FirstOrDefaultAsync(d => d.Id == discussionId);
+
+            discussion.IsDeleted = false;
+            discussion.DeletedOn = null;
+            this.Data.SaveChanges();
+
+            this.CreateActivity(ActivityType.Restore, discussionId.ToString(), ActivityTargetType.Discussion);
+
+            return new EmptyResult();
+        }
+
+        public async Task<ActionResult> ConfirmRestoreInvoice(int invoiceId)
+        {
+            var invoice = await this.Data.Invoices
+                .AllWithDeleted()
+                .FirstOrDefaultAsync(p => p.Id == invoiceId);
+
+            invoice.IsDeleted = false;
+            invoice.DeletedOn = null;
+            this.Data.SaveChanges();
+
+            this.CreateActivity(ActivityType.Restore, invoiceId.ToString(), ActivityTargetType.Invoice);
 
             return new EmptyResult();
         }

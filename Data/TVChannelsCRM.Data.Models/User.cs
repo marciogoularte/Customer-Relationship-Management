@@ -19,11 +19,13 @@ namespace TVChannelsCRM.Data.Models
     {
         private ICollection<Activity> lastActivities;
         private ICollection<SchedulerTask> schedulerTasks;
+        private ICollection<Discussion> discussions;
 
         public User()
         {
             this.lastActivities = new HashSet<Activity>();
             this.schedulerTasks = new HashSet<SchedulerTask>();
+            this.discussions = new HashSet<Discussion>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
@@ -60,7 +62,6 @@ namespace TVChannelsCRM.Data.Models
         [Required(ErrorMessage = "Enterprise position is required")]
         public EnterprisePosition EnterprisePosition { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? CreatedOn { get; set; }
 
         public string Website { get; set; }
@@ -75,6 +76,12 @@ namespace TVChannelsCRM.Data.Models
         {
             get { return this.schedulerTasks; }
             set { this.schedulerTasks = value; }
+        }
+
+        public virtual ICollection<Discussion> Discussions
+        {
+            get { return this.discussions; }
+            set { this.discussions = value; }
         }
     }
 }

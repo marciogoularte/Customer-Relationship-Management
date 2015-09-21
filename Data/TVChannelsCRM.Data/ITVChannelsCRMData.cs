@@ -23,6 +23,8 @@
 
         IDeletableEntityRepository<Invoice> Invoices { get; }
 
+        IDeletableEntityRepository<Discussion> Discussions { get; }
+
         IRepository<User> Users { get; }
 
         int SaveChanges();

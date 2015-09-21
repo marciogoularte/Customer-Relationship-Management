@@ -1,7 +1,6 @@
 ﻿namespace TVChannelsCRM.Web.Areas.Administration.ViewModels.Admin
 {
     using System;
-    using System.Web.Mvc;
     using System.Linq.Expressions;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
@@ -29,8 +28,7 @@
                     Country = u.Country,
                     EnterprisePosition = u.EnterprisePosition,
                     PhoneNumber = u.PhoneNumber,
-                    Website = u.Website,
-                   // CreatedOn = u.CreatedOn
+                    Website = u.Website
                 };
             }
         }
@@ -85,7 +83,6 @@
         public EnterprisePosition EnterprisePosition { get; set; }
 
         [DisplayName("Phone number")]
-        //[Phone(ErrorMessage = "Provider phone is not valid!")]
         public string PhoneNumber { get; set; }
 
         [Url]
@@ -94,9 +91,5 @@
 
         //[DisplayName("Profile photo")]
         //public byte[] ProfilePhoto { get; set; }
-        
-        //[ScaffoldColumn(false)]
-        //[HiddenInput(DisplayValue = false)]
-        //public DateTime? CreatedOn { get; set; }
     }
 }

@@ -41,6 +41,8 @@
 
         public virtual IDbSet<Invoice> Invoices { get; set; }
 
+        public virtual IDbSet<Discussion> Discussions { get; set; }
+
         public DbContext DbContext
         {
             get

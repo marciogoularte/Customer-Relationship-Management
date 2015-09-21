@@ -55,7 +55,7 @@
         public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request, string searchboxClients)
         {
             List<ClientViewModel> clients;
-            if (searchboxClients == "")
+                if (string.IsNullOrEmpty(searchboxClients) || searchboxClients == "")
             {
                 clients = this.Data.Clients
                     .All()
@@ -117,7 +117,9 @@
                 TechnicalEmail = client.TechnicalEmail,
                 Marketing = client.Marketing,
                 MarketingPhone = client.MarketingPhone,
-                MarketingEmail = client.MarketingEmail
+                MarketingEmail = client.MarketingEmail,
+                Contracts = new List<ClientContract>(),
+                Discussions = new List<Discussion>()
             };
 
             // Validate given dates from user

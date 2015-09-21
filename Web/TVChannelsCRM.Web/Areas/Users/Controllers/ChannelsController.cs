@@ -43,12 +43,12 @@
         public JsonResult ReadChannels([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
         {
             List<ChannelViewModel> channels;
-            if (searchbox == "")
+            if (string.IsNullOrEmpty(searchbox) || searchbox == "")
             {
                 channels = this.Data.Channels
                     .All()
                     .Select(ChannelViewModel.FromChannel)
-                    .Where(c => c.Provider.Id == providerId)
+                    .Where(c => c.ProviderId == providerId)
                     .ToList();
             }
             else
@@ -56,14 +56,14 @@
                 channels = this.Data.Channels
                     .All()
                     .Select(ChannelViewModel.FromChannel)
-                    .Where(c => c.Name.Contains(searchbox) && c.Provider.Id == providerId)
+                    .Where(c => c.Name.Contains(searchbox) && c.ProviderId == providerId)
                     .ToList();
             }
 
             return Json(channels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CreateChannel([DataSourceRequest]  DataSourceRequest request, ChannelViewModel channel, int providerId)
+        public JsonResult CreateChannel([DataSourceRequest]  DataSourceRequest request, ChannelViewModel channel, int currentProviderId)
         {
             if (channel == null || !ModelState.IsValid)
             {
@@ -80,9 +80,18 @@
                 Presentation = channel.Presentation,
                 ContractTemplate = channel.ContractTemplate,
                 CreatedOn = DateTime.Now,
-                ProviderId = providerId,
+                ProviderId = currentProviderId,
                 Comments = channel.Comments + "\n"
             };
+
+            if (newChannel.Website == null || string.IsNullOrEmpty(newChannel.Website) || newChannel.Website == "")
+            {
+                newChannel.Website = "#";
+            }
+            if (newChannel.Presentation == null || string.IsNullOrEmpty(newChannel.Presentation) || newChannel.Website == "")
+            {
+                newChannel.Presentation = "#";
+            }
 
             this.Data.Channels.Add(newChannel);
             this.Data.SaveChanges();

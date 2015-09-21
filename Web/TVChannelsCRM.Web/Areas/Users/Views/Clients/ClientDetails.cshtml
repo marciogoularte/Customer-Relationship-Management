@@ -28,7 +28,9 @@
         });
     </script>*@
 
-
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
 
 
 
@@ -53,6 +55,9 @@
 
                   tabstrip.Add().Text("Contracts")
                       .LoadContentFrom(Url.Action("AllClientsContracts", "Contracts", new { clientId = Model }));
+
+                  tabstrip.Add().Text("Discussions")
+                      .LoadContentFrom(Url.Action("AllClientsDiscussions", "Discussions", new { clientId = Model }));
               })
         )
     </div>

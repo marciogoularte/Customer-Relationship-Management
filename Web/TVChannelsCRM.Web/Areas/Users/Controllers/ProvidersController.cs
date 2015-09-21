@@ -55,7 +55,7 @@
         public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request, string searchboxProviders)
         {
             List<ProviderViewModel> providers;
-            if (searchboxProviders == "")
+             if (string.IsNullOrEmpty(searchboxProviders) || searchboxProviders == "")
             {
                 providers = this.Data.Providers
                 .All()
@@ -97,7 +97,10 @@
                 Term = provider.Term,
                 Cps = provider.Cps,
                 Commission = provider.Commission,
-                Comments = provider.Comments + "\n"
+                Comments = provider.Comments + "\n",
+                Channels = new List<Channel>(),
+                Contracts = new List<ProviderContract>(),
+                Discussions = new List<Discussion>()
             };
 
             this.Data.Providers.Add(newProvider);

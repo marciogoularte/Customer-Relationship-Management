@@ -24,8 +24,8 @@
                     Presentation = c.Presentation,
                     ContractTemplate = c.ContractTemplate,
                     Comments = c.Comments,
-                    Provider = c.Provider,
-                    Client = c.Client
+                    ProviderId = c.ProviderId,
+                    ClientId = c.ClientId
                 };
             }
         }
@@ -60,9 +60,9 @@
         public string Comments { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual Provider Provider { get; set; }
+        public int? ProviderId { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual Client Client { get; set; }
+        public int? ClientId { get; set; }
     }
 }

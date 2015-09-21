@@ -7,10 +7,15 @@
 
     public class Provider : DeletableEntity, IEntity
     {
+        private ICollection<Channel> channels;
+        private ICollection<ProviderContract> contracts;
+        private ICollection<Discussion> discussions;
+
         public Provider()
         {
-            this.Channels = new HashSet<Channel>();
-            this.Contracts = new HashSet<ClientContract>();
+            this.channels = new HashSet<Channel>();
+            this.contracts = new HashSet<ProviderContract>();
+            this.discussions = new HashSet<Discussion>();
         }
 
         public int Id { get; set; }
@@ -47,8 +52,22 @@
 
         public string Comments { get; set; }
 
-        public ICollection<Channel> Channels { get; set; }
+        public virtual ICollection<Channel> Channels
+        {
+            get { return this.channels; }
+            set { this.channels = value; }
+        }
 
-        public ICollection<ClientContract> Contracts { get; set; }
+        public virtual ICollection<ProviderContract> Contracts
+        {
+            get { return this.contracts; }
+            set { this.contracts = value; }
+        }
+
+        public virtual ICollection<Discussion> Discussions
+        {
+            get { return this.discussions; }
+            set { this.discussions = value; }
+        }
     }
 }

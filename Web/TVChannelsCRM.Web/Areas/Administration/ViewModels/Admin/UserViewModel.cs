@@ -1,7 +1,6 @@
 ﻿namespace TVChannelsCRM.Web.Areas.Administration.ViewModels.Admin
 {
     using System;
-    using System.Web;
     using System.Linq.Expressions;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
@@ -93,9 +92,7 @@
         [Url(ErrorMessage = "User website is not valid")]
         public string Website { get; set; }
 
-        [UIHint("DateTime")]
         [ScaffoldColumn(false)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? CreatedOn { get; set; }
     }
 }

@@ -54,6 +54,9 @@
 
                   tabstrip.Add().Text("Contracts")
                       .LoadContentFrom(Url.Action("AllProvidersContracts", "Contracts", new { providerId = Model }));
+
+                  tabstrip.Add().Text("Discussions")
+                      .LoadContentFrom(Url.Action("AllProvidersDiscussions", "Discussions", new { providerId = Model }));
               })
             )
         </div>

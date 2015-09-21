@@ -1,7 +1,3 @@
 @model DateTime?
-<div style="background-color: red; color: aqua; font-size: 28px;">
-    @(Html.Kendo()
-    .DatePickerFor(m => m)
-    .Value(DateTime.Today)
-    .Format("MM/dd/yyyy"))
-</div>
+
+@(Html.Kendo().DateTimePickerFor(m => m))

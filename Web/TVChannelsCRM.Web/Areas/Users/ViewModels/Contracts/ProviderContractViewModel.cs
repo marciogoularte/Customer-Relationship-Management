@@ -27,7 +27,7 @@
                     AcceptingReports = c.AcceptingReports,
                     GoverningLaw = c.GoverningLaw,
                     Comments = c.Comments,
-                    Provider = c.Provider
+                    ProviderId = c.ProviderId
                 };
             }
         }
@@ -35,34 +35,26 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [UIHint("DateTime")]
         [DataType(DataType.Date)]
         [DisplayName("Start date")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? StartDate { get; set; }
 
         [DisplayName("Type of contract")]
         public string TypeOfContract { get; set; }
 
-        [UIHint("DateTime")]
-        [DisplayName("End date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayName("End date")]
         public DateTime? EndDate { get; set; }
 
         [DisplayName("Notice period")]
         public int NoticePeriod { get; set; }
 
-        [UIHint("DateTime")]
         [DataType(DataType.Date)]
         [DisplayName("Billing start date")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? BillingStartDate { get; set; }
 
-        [UIHint("DateTime")]
         [DataType(DataType.Date)]
         [DisplayName("Billing end date")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? BillingEndDate { get; set; }
 
         [DisplayName("Payment due date(number of days)")]
@@ -82,6 +74,6 @@
         public string Comments { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual Provider Provider { get; set; }
+        public int? ProviderId { get; set; }
     }
 }

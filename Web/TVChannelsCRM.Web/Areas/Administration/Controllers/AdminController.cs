@@ -42,7 +42,7 @@
             List<UserViewModel> users;
             var currentUserId = this.User.Identity.GetUserId();
 
-            if (searchboxUsers == "")
+            if (string.IsNullOrEmpty(searchboxUsers) || searchboxUsers == "")
             {
                 users = this.Data.Users
                  .All()

@@ -7,6 +7,7 @@
         User,
         Channel,
         Contract,
-        Invoice
+        Invoice,
+        Discussion
     }
 }

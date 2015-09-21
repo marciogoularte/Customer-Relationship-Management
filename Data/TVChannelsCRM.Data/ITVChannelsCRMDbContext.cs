@@ -23,6 +23,8 @@
 
         IDbSet<Invoice> Invoices { get; set; }
 
+        IDbSet<Discussion> Discussions { get; set; }
+
         DbContext DbContext { get; }
 
         int SaveChanges();

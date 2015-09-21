@@ -1,6 +1,5 @@
 ﻿namespace TVChannelsCRM.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -8,13 +7,13 @@
 
     public class Client : DeletableEntity, IEntity
     {
-        private ICollection<Channel> channels;
         private ICollection<ClientContract> contracts;
+        private ICollection<Discussion> discussions;
 
         public Client()
         {
-            this.channels = new HashSet<Channel>();
             this.contracts = new HashSet<ClientContract>();
+            this.discussions = new HashSet<Discussion>();
         }
 
         public int Id { get; set; }
@@ -90,18 +89,18 @@
 
         public string MarketingEmail { get; set; }
 
-        public string Comments { get; set; } 
+        public string Comments { get; set; }
 
-        public ICollection<Channel> Channels
-        {
-            get { return this.channels; }
-            set { this.channels = value; }
-        }
-
-        public ICollection<ClientContract> Contracts
+        public virtual ICollection<ClientContract> Contracts
         {
             get { return this.contracts; }
             set { this.contracts = value; }
-        } 
+        }
+
+        public virtual ICollection<Discussion> Discussions
+        {
+            get { return this.discussions; }
+            set { this.discussions = value; }
+        }
     }
 }
