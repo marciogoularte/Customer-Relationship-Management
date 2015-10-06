@@ -17,15 +17,22 @@
     .Columns(columns =>
     {
         columns.Bound(model => model.Name).Width(190);
+<<<<<<< HEAD
         columns.Bound(model => model.TypeId).Width(100);
         columns.Bound(model => model.Uic).Hidden(true);
         columns.Bound(model => model.Vat).Hidden(true);
         columns.Bound(model => model.ResidenceAndAddress).Hidden(true);
         columns.Bound(model => model.PostCode).Hidden(true);
+=======
+        columns.Bound(model => model.Type).Width(100);
+        columns.Bound(model => model.Eik).Hidden(true);
+        columns.Bound(model => model.ResidenceAndAddress).Hidden(true);
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.NetworkPage).Hidden(true);
         columns.Bound(model => model.ContactPerson).Width(190);
         columns.Bound(model => model.PhoneNumber).Width(100);
         columns.Bound(model => model.Email).Width(190);
+<<<<<<< HEAD
         columns.Bound(model => model.Correspondence).Hidden(true);
         columns.Bound(model => model.FixedPhoneService).Hidden(true);
         columns.Bound(model => model.MobileVoiceServicesProvidedThroughNetwork).Hidden(true);
@@ -36,6 +43,26 @@
         columns.Bound(model => model.Management).Hidden(true);
         columns.Bound(model => model.ManagementPhone).Hidden(true);
         columns.Bound(model => model.ManagementEmail).Hidden(true);
+=======
+        columns.Bound(model => model.SecondaryAddress).Hidden(true);
+        columns.Bound(model => model.ActiveCable).Hidden(true);
+        columns.Bound(model => model.FixedPhoneService).Hidden(true);
+        columns.Bound(model => model.AccessToPublicServiceThroughChoiceOperator).Hidden(true);
+        columns.Bound(model => model.MobileVoiceServicesProvidedThroughNetwork).Hidden(true);
+        columns.Bound(model => model.PublicServicesProvidedByWirelessAccess).Hidden(true);
+        columns.Bound(model => model.ServicesFixedAccessToInternet).Hidden(true);
+        columns.Bound(model => model.ServicesMobileAccessToInternet).Hidden(true);
+        columns.Bound(model => model.ServicesTransmissionData).Hidden(true);
+        columns.Bound(model => model.SpreadingRadioAndTvPrograms).Hidden(true);
+        columns.Bound(model => model.Coverage).Hidden(true);
+        columns.Bound(model => model.CorrespondenceAddress).Hidden(true);
+        columns.Bound(model => model.CorAddress).Hidden(true);
+        columns.Bound(model => model.PostCode).Hidden(true);
+        columns.Bound(model => model.Management).Hidden(true);
+        columns.Bound(model => model.ManagementPhone).Hidden(true);
+        columns.Bound(model => model.ManagementEmail).Hidden(true);
+        columns.Bound(model => model.ManagementTeritory).Hidden(true);
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.Finance).Hidden(true);
         columns.Bound(model => model.FinancePhone).Hidden(true);
         columns.Bound(model => model.FinanceEmail).Hidden(true);
@@ -73,12 +100,20 @@
                             .Excel(excel => excel
                                     .FileName("Deleted Clients Database.xlsx")
                                 .Filterable(true)
+<<<<<<< HEAD
                                 .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+=======
+                                .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                              )
                             .Pdf(pdf => pdf
                                 .AllPages()
                                      .FileName("Deleted Clients Database.pdf")
+<<<<<<< HEAD
                                 .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+=======
+                                .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                             )
                             .Pageable(pageable => pageable
                                 .Refresh(true)

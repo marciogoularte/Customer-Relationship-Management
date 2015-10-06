@@ -17,9 +17,14 @@
     .Columns(columns =>
     {
         columns.Bound(model => model.Name).Width(200);
+<<<<<<< HEAD
         columns.Bound(model => model.TypeId).Width(100);
         columns.Bound(model => model.Uic).Hidden(true);
         columns.Bound(model => model.Vat).Hidden(true);
+=======
+        columns.Bound(model => model.Type).Width(100);
+        columns.Bound(model => model.Eik).Hidden(true);
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.BankAccount).Hidden(true);
         columns.Bound(model => model.Email).Width(200);
         columns.Bound(model => model.ResidenceAndAddress).Hidden(true);
@@ -31,8 +36,11 @@
         columns.Bound(model => model.Term).Hidden(true);
         columns.Bound(model => model.Cps).Hidden(true);
         columns.Bound(model => model.Commission).Hidden(true);
+<<<<<<< HEAD
         columns.Bound(model => model.LogoLink).Hidden(true);
         columns.Bound(model => model.ContractTemplate).Hidden(true);
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.Comments).Width(280);
         columns.Command(command => command.Custom("Restore").Click("showDetails"));
     })
@@ -61,12 +69,20 @@
                             .Excel(excel => excel
                                 .FileName("Deleted Provides Database.xlsx")
                                 .Filterable(true)
+<<<<<<< HEAD
                                 .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+=======
+                                .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                              )
                             .Pdf(pdf => pdf
                                 .AllPages()
                                      .FileName("Deleted Providers Database.pdf")
+<<<<<<< HEAD
                                 .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+=======
+                                .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                             )
                             .Pageable(pageable => pageable
                                 .Refresh(true)

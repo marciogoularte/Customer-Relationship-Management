@@ -45,10 +45,13 @@
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     <Reference Include="Kendo.Mvc, Version=2015.2.805.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\Kendo.Mvc.dll</HintPath>
@@ -70,10 +73,13 @@
       <HintPath>..\..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
       <Private>True</Private>
     </Reference>
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -204,6 +210,7 @@
     <Compile Include="Areas\Users\Controllers\InvoicesController.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Users\Controllers\ProvidersController.cs" />
+<<<<<<< HEAD
     <Compile Include="Areas\Users\Controllers\TrdsController.cs" />
     <Compile Include="Areas\Users\Controllers\TypeOfCompaniesController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
@@ -212,14 +219,24 @@
     <Compile Include="Areas\Users\ViewModels\Contracts\ClientContractViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ProviderContractViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\DatabaseDataDropdownViewModel.cs" />
+=======
+    <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
+    <Compile Include="Areas\Users\ViewModels\Clients\ClientViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\Contracts\ClientContractViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\Contracts\ProviderContractViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\Contracts\ProviderDropdownViewModel.cs" />
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     <Compile Include="Areas\Users\ViewModels\Discussions\DiscussionViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Feedbacks\FeedbackViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Invoices\InvoiceViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Profile\SchedulerTaskViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Providers\ChannelViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Providers\ProviderViewModel.cs" />
+<<<<<<< HEAD
     <Compile Include="Areas\Users\ViewModels\Trds\TrdViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\TypeOfCompanies\TypeOfCompanyViewModel.cs" />
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -227,15 +244,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\LastActivityViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+=======
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\LastActivityViewModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+<<<<<<< HEAD
     <Content Include="Content\contracts\box.css" />
     <Content Include="Content\contracts\ectv.css" />
     <Content Include="Content\contracts\fishing.css" />
@@ -244,6 +268,8 @@
     <Content Include="Content\contracts\sct.css" />
     <Content Include="Content\contracts\imagine.css" />
     <Content Include="Content\contracts\theWorld.css" />
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     <Content Include="Content\images\default-user.png" />
     <Content Include="Content\images\none-activities.jpg" />
     <Content Include="Content\images\sorry_not_implemented.jpg" />
@@ -736,6 +762,7 @@
     <Content Include="Areas\Administration\Views\DeletedItems\DeletedDiscussions.cshtml" />
     <Content Include="Areas\Administration\Views\DeletedItems\DeletedInvoices.cshtml" />
     <Content Include="Areas\Users\Views\Feedbacks\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Areas\Users\Views\Providers\_GetProviderName.cshtml" />
     <Content Include="Areas\Users\Views\Shared\EditorTemplates\ContractTemplateEditor.cshtml" />
     <Content Include="Areas\Users\Views\Shared\EditorTemplates\ContractChannelsEditor.cshtml" />
@@ -750,6 +777,11 @@
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
+=======
+    <None Include="Properties\PublishProfiles\CRM.pubxml" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
+    <Content Include="Libraries\Kendo.Mvc.dll" />
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.min.js" />
@@ -1260,6 +1292,7 @@
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Shared\SampleContract.cshtml" />
     <Content Include="Views\Shared\ContractsTemplates\Box.cshtml" />
     <Content Include="Views\Shared\ContractsTemplates\---Ebu_la.cshtml" />
@@ -1275,6 +1308,8 @@
     <Content Include="Views\Shared\ContractsTemplates\Sct.cshtml" />
     <Content Include="Views\Shared\ContractsTemplates\---SuperOne.cshtml" />
     <Content Include="Views\Shared\ContractsTemplates\TheWorld.cshtml" />
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

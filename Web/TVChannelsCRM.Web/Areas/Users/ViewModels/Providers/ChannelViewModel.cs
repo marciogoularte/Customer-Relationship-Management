@@ -23,11 +23,17 @@
                     Website = c.Website,
                     Presentation = c.Presentation,
                     ContractTemplate = c.ContractTemplate,
+<<<<<<< HEAD
                     LogoLink = c.LogoLink,
                     Comments = c.Comments,
                     ProviderId = c.ProviderId,
                     ClientId = c.ClientId,
                     ClientContractId = c.ClientContractId
+=======
+                    Comments = c.Comments,
+                    ProviderId = c.ProviderId,
+                    ClientId = c.ClientId
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                 };
             }
         }
@@ -46,6 +52,7 @@
         public string SatelliteData { get; set; }
 
         [DisplayName("EPG-SOURCE")]
+<<<<<<< HEAD
         [Url(ErrorMessage = "Channel Epg Source is not valid website")]
         public string EpgSource { get; set; }
 
@@ -64,6 +71,20 @@
         [Url(ErrorMessage = "Channel logo link is not valid website")]
         public string LogoLink { get; set; }
 
+=======
+        public string EpgSource { get; set; }
+
+        [DisplayName("Website")]
+        [Url(ErrorMessage = "Provider website is not valid")]
+        public string Website { get; set; }
+
+        [Url(ErrorMessage = "Presentation is not valid website")]
+        public string Presentation { get; set; }
+
+        [DisplayName("Contract Template")]
+        public string ContractTemplate { get; set; }
+
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
 
@@ -72,8 +93,11 @@
 
         [ScaffoldColumn(false)]
         public int? ClientId { get; set; }
+<<<<<<< HEAD
 
         [ScaffoldColumn(false)]
         public int? ClientContractId { get; set; }
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     }
 }

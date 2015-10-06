@@ -28,8 +28,12 @@
                     GoverningLaw = c.GoverningLaw,
                     Comments = c.Comments,
                     ClientId = c.ClientId,
+<<<<<<< HEAD
                     ProviderId = c.ProviderId.ToString(),
                     Tier = c.Tier
+=======
+                    ProviderId = c.ProviderId.ToString()
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                 };
             }
         }
@@ -37,25 +41,40 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
+<<<<<<< HEAD
         [Required]
         [DataType(DataType.Date)]
         [DisplayName("Start date")]
         public DateTime StartDate { get; set; }
+=======
+        [DisplayName("Start date")]
+        [DataType(DataType.Date)]
+        public DateTime? StartDate { get; set; }
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
         [DisplayName("Type of contract")]
         public string TypeOfContract { get; set; }
 
+<<<<<<< HEAD
         [Required]
         [DisplayName("End date")]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
+=======
+        [DisplayName("End date")]
+        [DataType(DataType.Date)]
+        public DateTime? EndDate { get; set; }
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
         [DisplayName("Notice period")]
         public int NoticePeriod { get; set; }
 
+<<<<<<< HEAD
         [UIHint("TierEditor")]
         public Tier Tier { get; set; }
 
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         [DataType(DataType.Date)]
         [DisplayName("Billing start date")]
         public DateTime? BillingStartDate { get; set; }
@@ -71,7 +90,11 @@
         public int NumberOfDaysToBeConsidered { get; set; }
 
         [DisplayName("Accepting reports")]
+<<<<<<< HEAD
         public bool AcceptingReports { get; set; }
+=======
+        public int AcceptingReports { get; set; }
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
         [DisplayName("Governing law")]
         public string GoverningLaw { get; set; }

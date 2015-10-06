@@ -24,7 +24,10 @@
         columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
         columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
         columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
+<<<<<<< HEAD
         columns.Bound(model => model.Tier).Width(32).Hidden(true);
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.ProviderId).Width(32).Hidden(true);
         columns.Bound(model => model.Comments).Width(200);
         columns.Command(command =>
@@ -60,15 +63,26 @@
                                     .Editable(edit => edit.Mode(GridEditMode.PopUp))
                                     .HtmlAttributes(new { @style = "word-break:break-all;" })
                                     .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+<<<<<<< HEAD
                                    .Excel(excel => excel
                                         .FileName("Clients contracts Database.xlsx")
                                         .Filterable(true)
                                         .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+=======
+                                    .Excel(excel => excel
+                                        .FileName("Clients contracts Database.xlsx")
+                                        .Filterable(true)
+                                        .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                                         )
                                     .Pdf(pdf => pdf
                                         .AllPages()
                                                         .FileName("Clients contracts Database.pdf")
+<<<<<<< HEAD
                                         .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+=======
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                                     )
                                     .Pageable(pageable => pageable
                                         .Refresh(true)
@@ -95,6 +109,7 @@
 </div>
 
 <script>
+<<<<<<< HEAD
     function onAdditionalDataClientContracts() {
         return {
             text: $("#searchbox-clients-contracts").val()
@@ -131,4 +146,42 @@
         $(".tabs").removeClass('active');
         $(tab).addClass('active');
     }
+=======
+        function onAdditionalDataClientContracts() {
+            return {
+                text: $("#searchbox-clients-contracts").val()
+            };
+        }
+
+        function addSearchClientContracts() {
+            return { searchTerm: $('#searchbox-clients-contracts').val() };
+        }
+
+        $('#searchbox-clients-contracts').keyup(function () {
+            $('#grid-client-contracts').data('kendoGrid').dataSource.read();
+        });
+
+        function viewDetailsClientContracts(e) {
+            e.preventDefault();
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            window.location = '/Users/Contracts/ClientContractDetails?contractId=' + dataItem.Id;
+        }
+
+        function selectRow() {
+            var selected = $.map(this.select(), function (item) {
+                return $(item).text();
+            });
+
+            $('#selected').text(selected);
+        }
+
+        function errorAlert() {
+            console.log("An error ocurred");
+        }
+
+        function makeActiveOnClick(tab) {
+            $(".tabs").removeClass('active');
+            $(tab).addClass('active');
+        }
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 </script>

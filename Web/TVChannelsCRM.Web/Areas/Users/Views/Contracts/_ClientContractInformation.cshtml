@@ -2,11 +2,14 @@
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
 @model ClientContractViewModel
 
+<<<<<<< HEAD
 @Html.ActionLink("Generate PDF", "GenerateContractTemplate", "Contracts", new { providerId= Model.ProviderId, contractId = Model.Id},new{@class="btn btn-default"})
 
 <br/>
 <br/>
 
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 <div class="table-responsive">
     <table class="table table-condensed table-responsive table-user-information">
         <tbody>
@@ -114,6 +117,7 @@
             <tr>
                 <td>
                     <strong>
+<<<<<<< HEAD
                         Tier
                     </strong>
                 </td>
@@ -124,6 +128,8 @@
             <tr>
                 <td>
                     <strong>
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                         Comments
                     </strong>
                 </td>
@@ -196,7 +202,11 @@
                         }
                         @if (channel.Website != null)
                         {
+<<<<<<< HEAD
                             <td><a href="@channel.Website">Link</a></td>
+=======
+                            <td>@channel.Website</td>
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                         }
                         else
                         {
@@ -204,7 +214,11 @@
                         }
                         @if (channel.Presentation != null)
                         {
+<<<<<<< HEAD
                             <td><a href="@channel.Presentation">Link</a></td>
+=======
+                            <td>@channel.Presentation</td>
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                         }
                         else
                         {

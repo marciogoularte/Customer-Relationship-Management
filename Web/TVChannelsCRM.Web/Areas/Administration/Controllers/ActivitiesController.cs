@@ -7,8 +7,13 @@
     using System.Threading.Tasks;
 
     using Data;
+<<<<<<< HEAD
     using Data.Models;
     using Web.ViewModels;
+=======
+    using Models;
+    using Data.Models;
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     using Web.Controllers;
 
     [Authorize(Roles = "Admin")]

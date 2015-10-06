@@ -43,12 +43,15 @@
 
         public virtual IDbSet<Discussion> Discussions { get; set; }
 
+<<<<<<< HEAD
         public virtual IDbSet<Trd> Trds { get; set; }
 
         public virtual IDbSet<TypeOfCompany> TypeOfCompanies { get; set; }
 
         //public virtual IDbSet<ContractTemplate> ContractTemplates { get; set; }
 
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         public DbContext DbContext
         {
             get

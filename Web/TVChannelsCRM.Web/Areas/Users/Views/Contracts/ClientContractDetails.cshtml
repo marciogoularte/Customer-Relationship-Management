@@ -50,10 +50,14 @@
                       .Selected(true)
                       .LoadContentFrom(Url.Action("ClientContractInformation", "Contracts", new { contractId = Model }));
 
+<<<<<<< HEAD
                   tabstrip.Add().Text("Channels")
                       .LoadContentFrom(Url.Action("AllClientContractChannels", "Contracts", new { clientContractId = Model }));
 
                   tabstrip.Add().Text("Invoicing")
+=======
+                  tabstrip.Add().Text("Invoices")
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                       .LoadContentFrom(Url.Action("AllContractInvoices", "Invoices", new { contractId = Model }));
               })
         )

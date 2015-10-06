@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 namespace TVChannelsCRM.Data.Migrations
 {
     using System;
     using System.Linq;
+<<<<<<< HEAD
     using System.Collections.Generic;
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     using System.Data.Entity.Migrations;
 
     using Microsoft.AspNet.Identity;
@@ -10,7 +18,10 @@ namespace TVChannelsCRM.Data.Migrations
 
     using Data;
     using Models;
+<<<<<<< HEAD
     using Common.Statics;
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
     internal sealed class Configuration : DbMigrationsConfiguration<TVChannelsCRMDbContext>
     {
@@ -31,11 +42,16 @@ namespace TVChannelsCRM.Data.Migrations
             //
             //this.AddDealerUserProfiles(context);
             //this.AddFinancialUserProfiles(context);
+<<<<<<< HEAD
             //this.AddClientsAndProviders(context);
             
             this.AddAdministratorUserProfiles(context);
 
             //this.AddContractTemplates(context);
+=======
+            this.AddAdministratorUserProfiles(context);
+            //this.AddClientsAndProviders(context);
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         }
 
         private void AddClientsAndProviders(TVChannelsCRMDbContext context)
@@ -51,7 +67,11 @@ namespace TVChannelsCRM.Data.Migrations
             //        ContactPerson = "Pesho" + (i * 23),
             //        Term = "Term" + (i * 23),
             //        CPS = "CPS" + (i * 23),
+<<<<<<< HEAD
             //        Uic = "Uic" + (i * 23),
+=======
+            //        Eik = "Eik" + (i * 23),
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             //        ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
             //        NetworkPage = "NetworkPage" + i * 3.6,
             //        PhoneNumber = "0891929384",
@@ -100,7 +120,10 @@ namespace TVChannelsCRM.Data.Migrations
 
             //    context.Clients.AddOrUpdate(firstClient);
             //    context.Clients.AddOrUpdate(secondClient);
+<<<<<<< HEAD
             //    context.SaveChanges();
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
             // }
         }
@@ -116,7 +139,10 @@ namespace TVChannelsCRM.Data.Migrations
             };
 
             context.Roles.AddOrUpdate(userRole);
+<<<<<<< HEAD
             context.SaveChanges();
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
             //// Create user
             //var hasher = new PasswordHasher();
@@ -149,7 +175,10 @@ namespace TVChannelsCRM.Data.Migrations
             //});
             //
             //context.Users.AddOrUpdate(user);
+<<<<<<< HEAD
             //context.SaveChanges();
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         }
 
         private void AddFinancialUserProfiles(TVChannelsCRMDbContext context)
@@ -163,7 +192,10 @@ namespace TVChannelsCRM.Data.Migrations
             };
 
             context.Roles.AddOrUpdate(userRole);
+<<<<<<< HEAD
             context.SaveChanges();
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             //
             //// Create user
             //var hasher = new PasswordHasher();
@@ -196,7 +228,10 @@ namespace TVChannelsCRM.Data.Migrations
             //});
             //
             //context.Users.AddOrUpdate(user);
+<<<<<<< HEAD
             //context.SaveChanges();
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         }
 
         private void AddAdministratorUserProfiles(TVChannelsCRMDbContext context)
@@ -210,7 +245,10 @@ namespace TVChannelsCRM.Data.Migrations
             };
 
             context.Roles.AddOrUpdate(userRole);
+<<<<<<< HEAD
             context.SaveChanges();
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
             // Create users
             var hasher = new PasswordHasher();
@@ -246,6 +284,7 @@ namespace TVChannelsCRM.Data.Migrations
             });
 
             context.Users.AddOrUpdate(user);
+<<<<<<< HEAD
             context.SaveChanges();
 
             //var secondUser = new User()
@@ -410,3 +449,41 @@ namespace TVChannelsCRM.Data.Migrations
         //}
     }
 }
+=======
+
+            var secondUser = new User()
+            {
+                UserName = "Nikolay",
+                PasswordHash = hasher.HashPassword("123456"),
+                Email = "Nikolay@gmail.com",
+                EmailConfirmed = false,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                FirstName = "Nikolay",
+                SecondName = "Petrov",
+                LastName = "Dermendzhiev",
+                Gender = Gender.Male,
+                CreatedOn = DateTime.Now,
+                LockoutEnabled = true,
+                Age = 10,
+                Town = "Panagyurishte",
+                Country = "Bulgaria",
+                Website = "http://gmail.com",
+                EnterprisePosition = EnterprisePosition.Admin,
+                PhoneNumber = "0897654321",
+                PhoneNumberConfirmed = false,
+                LastActivities = new List<Activity>(),
+                SchedulerTasks = new List<SchedulerTask>()
+            };
+
+            // Add user to role and database
+            secondUser.Roles.Add(new IdentityUserRole()
+            {
+                RoleId = userRole.Id,
+                UserId = user.Id
+            });
+
+            context.Users.AddOrUpdate(secondUser);
+        }
+    }
+}
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8

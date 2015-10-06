@@ -9,7 +9,11 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     
+<<<<<<< HEAD
     using ViewModels;
+=======
+    using Models;
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
     [Authorize]
     public class ManageController : Controller

@@ -25,11 +25,17 @@
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Type is required")]
+<<<<<<< HEAD
         public string TypeId { get; set; }
 
         public string Uic { get; set; }
 
         public string Vat { get; set; }
+=======
+        public TypeOfCompany Type { get; set; }
+
+        public string Eik { get; set; }
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
         public string BankAccount { get; set; }
 
@@ -52,12 +58,17 @@
 
         public string Commission { get; set; }
 
+<<<<<<< HEAD
         public string LogoLink { get; set; }
 
         public string Comments { get; set; }
 
         public ContractTemplate ContractTemplate { get; set; }
 
+=======
+        public string Comments { get; set; }
+
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         public virtual ICollection<Channel> Channels
         {
             get { return this.channels; }

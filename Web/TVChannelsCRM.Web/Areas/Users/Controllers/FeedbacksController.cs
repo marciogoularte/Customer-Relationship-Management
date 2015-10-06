@@ -9,12 +9,20 @@
 
     public class FeedbacksController : Controller
     {
+<<<<<<< HEAD
         public ActionResult Index(FeedbackViewModel model)
         {
             return View(model);
         }
 
         [HttpPost]
+=======
+        public ActionResult Index()
+        {
+            return View(new FeedbackViewModel());
+        }
+ [HttpPost]
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         [ValidateAntiForgeryToken]
         public ActionResult SendEmail(string to, FeedbackViewModel model)
         {
@@ -81,4 +89,8 @@
             return RedirectToAction("Index", "Profile");
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8

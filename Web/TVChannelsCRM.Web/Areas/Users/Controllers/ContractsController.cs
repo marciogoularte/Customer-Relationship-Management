@@ -9,13 +9,20 @@
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
+<<<<<<< HEAD
+=======
+    using Microsoft.AspNet.Identity;
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
     using Data;
     using Data.Models;
     using Web.Controllers;
+<<<<<<< HEAD
     using ViewModels.Trds;
     using ViewModels.Clients;
     using ViewModels.Invoices;
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     using ViewModels.Providers;
     using ViewModels.Contracts;
 
@@ -29,13 +36,21 @@
         [HttpGet]
         public ActionResult AllClientsContracts(int clientId)
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             var providers = this.Data.Providers
                 .All()
                 .Select(ProviderViewModel.FromProvider)
                 .ToList();
 
             var vm = providers
+<<<<<<< HEAD
                 .Select(provider => new DatabaseDataDropdownViewModel
+=======
+                .Select(provider => new ProviderDropdownViewModel
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                         {
                             Text = provider.Name,
                             Value = provider.Id
@@ -69,8 +84,12 @@
 
                     var channels = await this.Data.Channels
                         .All()
+<<<<<<< HEAD
                         .Where(c => c.ClientContractId == contractId)
                      //   .Where(c => c.ProviderId == providerAsInt)
+=======
+                        .Where(c => c.ProviderId == providerAsInt)
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                         .Select(ChannelViewModel.FromChannel)
                         .ToListAsync();
 
@@ -184,11 +203,17 @@
                 NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
                 AcceptingReports = contract.AcceptingReports,
                 GoverningLaw = contract.GoverningLaw,
+<<<<<<< HEAD
                 Tier = contract.Tier,
                 ClientId = currentClientId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments + "\n",
                 Channels = new List<Channel>()
+=======
+                ClientId = currentClientId,
+                CreatedOn = DateTime.Now,
+                Comments = contract.Comments + "\n",
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             };
 
             if (contract.ProviderId != null)
@@ -221,6 +246,10 @@
                 BillingStartDate = contract.BillingStartDate,
                 BillingEndDate = contract.BillingEndDate,
                 NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate,
+<<<<<<< HEAD
+=======
+                NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                 AcceptingReports = contract.AcceptingReports,
                 GoverningLaw = contract.GoverningLaw,
                 ProviderId = currentProviderId,
@@ -273,7 +302,10 @@
             contractFromDb.NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered;
             contractFromDb.AcceptingReports = contract.AcceptingReports;
             contractFromDb.GoverningLaw = contract.GoverningLaw;
+<<<<<<< HEAD
             contractFromDb.Tier = contract.Tier;
+=======
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             contractFromDb.CreatedOn = DateTime.Now;
             contractFromDb.Comments = contract.Comments + "\n";
             contractFromDb.ProviderId = int.Parse(contract.ProviderId);
@@ -311,6 +343,10 @@
             contractFromDb.BillingStartDate = contract.BillingStartDate;
             contractFromDb.BillingEndDate = contract.BillingEndDate;
             contractFromDb.NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate;
+<<<<<<< HEAD
+=======
+            contractFromDb.NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered;
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             contractFromDb.AcceptingReports = contract.AcceptingReports;
             contractFromDb.GoverningLaw = contract.GoverningLaw;
             contractFromDb.CreatedOn = DateTime.Now;
@@ -343,6 +379,7 @@
             return Json(new[] { contract }, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public ActionResult AllClientContractChannels(int clientContractId)
         {
             var clientContractProviderId = this.Data.ClientContracts
@@ -531,6 +568,50 @@
             }
 
             return new EmptyResult();
+=======
+        [HttpPost]
+        public ActionResult Excel_Export_Save(string contentType, string base64, string fileName)
+        {
+            var fileContents = Convert.FromBase64String(base64);
+            return File(fileContents, contentType, fileName);
+        }
+
+        [HttpPost]
+        public ActionResult Pdf_Export_Save(string contentType, string base64, string fileName)
+        {
+            var fileContents = Convert.FromBase64String(base64);
+            return File(fileContents, contentType, fileName);
+        }
+
+        private void CreateActivity(ActivityType type, string targetId, ActivityTargetType targetType)
+        {
+            var loggedUserId = this.User.Identity.GetUserId();
+
+            // If activities are more than 200 just override the oldest one so will not have more than 200 activities
+            if (this.Data.Activities.All().Count() >= 200)
+            {
+                var activity = this.Data.Activities.All().OrderBy(a => a.CreatedOn).FirstOrDefault();
+                activity.UserId = loggedUserId;
+                activity.Type = type;
+                activity.TargetId = targetId;
+                activity.TargetType = targetType;
+                activity.CreatedOn = DateTime.Now;
+            }
+            else
+            {
+                var activity = new Activity()
+                {
+                    UserId = loggedUserId,
+                    Type = type,
+                    TargetId = targetId,
+                    TargetType = targetType
+                };
+
+                this.Data.Activities.Add(activity);
+            }
+
+            this.Data.SaveChanges();
+>>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         }
     }
 }
