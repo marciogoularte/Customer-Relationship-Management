@@ -1,0 +1,488 @@
+﻿@import url('https://themes.googleusercontent.com/fonts/css?kit=MSSLfUayeNh9PW3ng9UWrnyI0-VqwCFmIEXfDNyvSCD3rGVtsTkPsbDajuO5ueQw');
+
+ol.lst-kix_list_1-3 {
+    list-style-type: none;
+}
+
+ol.lst-kix_list_1-4 {
+    list-style-type: none;
+}
+
+.lst-kix_list_2-6 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_2-7 > li:before {
+    content: " ";
+}
+
+ol.lst-kix_list_1-5 {
+    list-style-type: none;
+}
+
+ol.lst-kix_list_1-6 {
+    list-style-type: none;
+}
+
+ol.lst-kix_list_1-0 {
+    list-style-type: none;
+}
+
+.lst-kix_list_2-4 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_2-5 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_2-8 > li:before {
+    content: " ";
+}
+
+ol.lst-kix_list_1-1 {
+    list-style-type: none;
+}
+
+ol.lst-kix_list_1-2 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-1 > li {
+    counter-increment: lst-ctn-kix_list_1-1;
+}
+
+ol.lst-kix_list_1-8.start {
+    counter-reset: lst-ctn-kix_list_1-8 0;
+}
+
+ol.lst-kix_list_1-5.start {
+    counter-reset: lst-ctn-kix_list_1-5 0;
+}
+
+ol.lst-kix_list_1-7 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-7 > li {
+    counter-increment: lst-ctn-kix_list_1-7;
+}
+
+ol.lst-kix_list_1-8 {
+    list-style-type: none;
+}
+
+.lst-kix_list_2-0 > li {
+    counter-increment: lst-ctn-kix_list_2-0;
+}
+
+ol.lst-kix_list_1-7.start {
+    counter-reset: lst-ctn-kix_list_1-7 0;
+}
+
+.lst-kix_list_1-2 > li {
+    counter-increment: lst-ctn-kix_list_1-2;
+}
+
+.lst-kix_list_1-5 > li {
+    counter-increment: lst-ctn-kix_list_1-5;
+}
+
+.lst-kix_list_1-8 > li {
+    counter-increment: lst-ctn-kix_list_1-8;
+}
+
+ol.lst-kix_list_1-4.start {
+    counter-reset: lst-ctn-kix_list_1-4 0;
+}
+
+ol.lst-kix_list_1-1.start {
+    counter-reset: lst-ctn-kix_list_1-1 0;
+}
+
+.lst-kix_list_1-4 > li {
+    counter-increment: lst-ctn-kix_list_1-4;
+}
+
+ol.lst-kix_list_2-0 {
+    list-style-type: none;
+}
+
+ol.lst-kix_list_1-6.start {
+    counter-reset: lst-ctn-kix_list_1-6 0;
+}
+
+ol.lst-kix_list_1-3.start {
+    counter-reset: lst-ctn-kix_list_1-3 0;
+}
+
+ul.lst-kix_list_2-8 {
+    list-style-type: none;
+}
+
+ol.lst-kix_list_1-2.start {
+    counter-reset: lst-ctn-kix_list_1-2 0;
+}
+
+ul.lst-kix_list_2-2 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-0 > li:before {
+    content: " ";
+}
+
+ul.lst-kix_list_2-3 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_2-1 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_2-6 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-1 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_1-2 > li:before {
+    content: " ";
+}
+
+ol.lst-kix_list_2-0.start {
+    counter-reset: lst-ctn-kix_list_2-0 0;
+}
+
+ul.lst-kix_list_2-7 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_2-4 {
+    list-style-type: none;
+}
+
+ul.lst-kix_list_2-5 {
+    list-style-type: none;
+}
+
+.lst-kix_list_1-3 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_1-4 > li:before {
+    content: " ";
+}
+
+ol.lst-kix_list_1-0.start {
+    counter-reset: lst-ctn-kix_list_1-0 0;
+}
+
+.lst-kix_list_1-0 > li {
+    counter-increment: lst-ctn-kix_list_1-0;
+}
+
+.lst-kix_list_1-6 > li {
+    counter-increment: lst-ctn-kix_list_1-6;
+}
+
+.lst-kix_list_1-7 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_1-3 > li {
+    counter-increment: lst-ctn-kix_list_1-3;
+}
+
+.lst-kix_list_1-5 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_1-6 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_2-0 > li:before {
+    content: "" counter(lst-ctn-kix_list_2-0,decimal) ". ";
+}
+
+.lst-kix_list_2-1 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_1-8 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_2-2 > li:before {
+    content: " ";
+}
+
+.lst-kix_list_2-3 > li:before {
+    content: " ";
+}
+
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+.c15 {
+    border-right-style: solid;
+    padding: 5pt 5pt 5pt 5pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 317.2pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c5 {
+    border-right-style: solid;
+    padding: 5pt 5pt 5pt 5pt;
+    border-bottom-color: #000000;
+    border-top-width: 1pt;
+    border-right-width: 1pt;
+    border-left-color: #000000;
+    vertical-align: top;
+    border-right-color: #000000;
+    border-left-width: 1pt;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-bottom-width: 1pt;
+    width: 126.8pt;
+    border-top-color: #000000;
+    border-bottom-style: solid;
+}
+
+.c7 {
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 10pt;
+    font-family: "Times New Roman";
+    font-style: normal;
+}
+
+.c10 {
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 12pt;
+    font-family: "Times New Roman";
+    font-style: normal;
+}
+
+.c16 {
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 10pt;
+    font-family: "Times New Roman";
+    font-style: normal;
+}
+
+.c13 {
+    padding-top: 35.4pt;
+    text-indent: 42.5pt;
+    padding-bottom: 0pt;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.c3 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.0;
+    text-align: justify;
+}
+
+.c14 {
+    background-color: #ffffff;
+    max-width: 453.5pt;
+    padding: 28.4pt 56.7pt 72pt 85pt;
+}
+
+.c12 {
+    border-collapse: collapse;
+    margin-right: auto;
+}
+
+.c0 {
+    orphans: 2;
+    widows: 2;
+    direction: ltr;
+}
+
+.c17 {
+    font-size: 12pt;
+    font-family: "Times New Roman";
+}
+
+.c11 {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.c18 {
+    color: #1155cc;
+    text-decoration: underline;
+}
+
+.c4 {
+    height: 0pt;
+}
+
+.c6 {
+    font-family: "Calibri";
+}
+
+.c1 {
+    height: 12pt;
+}
+
+.c2 {
+    font-weight: bold;
+}
+
+.c9 {
+    text-align: center;
+}
+
+.title {
+    padding-top: 24pt;
+    color: #000000;
+    font-weight: bold;
+    font-size: 36pt;
+    padding-bottom: 6pt;
+    font-family: "Times New Roman";
+    line-height: 1.0;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+.subtitle {
+    padding-top: 18pt;
+    color: #666666;
+    font-size: 24pt;
+    padding-bottom: 4pt;
+    font-family: "Georgia";
+    line-height: 1.0;
+    page-break-after: avoid;
+    font-style: italic;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+li {
+    color: #000000;
+    font-size: 12pt;
+    font-family: "Times New Roman";
+}
+
+p {
+    margin: 0;
+    color: #000000;
+    font-size: 12pt;
+    font-family: "Times New Roman";
+}
+
+h1 {
+    padding-top: 12pt;
+    color: #000000;
+    font-weight: bold;
+    font-size: 16pt;
+    padding-bottom: 3pt;
+    font-family: "Cambria";
+    line-height: 1.0;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+h2 {
+    padding-top: 12pt;
+    color: #000000;
+    font-weight: bold;
+    font-size: 16pt;
+    padding-bottom: 3pt;
+    font-family: "Tahoma";
+    line-height: 1.0;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+h3 {
+    padding-top: 14pt;
+    color: #000000;
+    font-weight: bold;
+    font-size: 14pt;
+    padding-bottom: 4pt;
+    font-family: "Times New Roman";
+    line-height: 1.0;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+h4 {
+    padding-top: 12pt;
+    color: #000000;
+    font-weight: bold;
+    font-size: 12pt;
+    padding-bottom: 2pt;
+    font-family: "Times New Roman";
+    line-height: 1.0;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+h5 {
+    padding-top: 11pt;
+    color: #000000;
+    font-weight: bold;
+    font-size: 11pt;
+    padding-bottom: 2pt;
+    font-family: "Times New Roman";
+    line-height: 1.0;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}
+
+h6 {
+    padding-top: 10pt;
+    color: #000000;
+    font-weight: bold;
+    font-size: 10pt;
+    padding-bottom: 2pt;
+    font-family: "Times New Roman";
+    line-height: 1.0;
+    page-break-after: avoid;
+    orphans: 2;
+    widows: 2;
+    text-align: justify;
+}

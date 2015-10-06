@@ -1,0 +1,17 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+
+@{
+    var data = ViewData["TypeOfCompanies"];
+    var typeOfCompanies = new List<DatabaseDataDropdownViewModel>();
+    if (data != null)
+    {
+        var typeOfCompaniesVm = (List<DatabaseDataDropdownViewModel>)data;
+        typeOfCompanies.AddRange(typeOfCompaniesVm);
+    }
+}
+
+@(Html.Kendo().DropDownListFor(m => m)
+        .DataTextField("Text")
+        .DataValueField("Value")
+         .BindTo(typeOfCompanies)
+)

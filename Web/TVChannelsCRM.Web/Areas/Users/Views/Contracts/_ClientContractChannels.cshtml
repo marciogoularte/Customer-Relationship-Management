@@ -1,0 +1,108 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+@model ClientContractChannelViewModel
+<style>
+    .treeview-back {
+        float: left;
+        width: 220px;
+        margin: 30px;
+        padding: 20px;
+        -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), inset 0 0 30px rgba(0, 0, 0, 0.07);
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), inset 0 0 30px rgba(0, 0, 0, 0.07);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), inner 0 0 30px rgba(0, 0, 0, 0.07);
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+    }
+</style>
+
+<script>
+    function onCheck(e) {
+        var data = $('#treeview-provider-channels').data('kendoTreeView').dataItem(e.node);
+        console.log(data.id);
+        $.ajax({
+            url: '@Url.Action("AddOrRemoveChannelFromClientContract", "Contracts")',
+            data: { clientContractId: @Model.ClientContractId, channelId: parseInt(data.id.toString()) }
+        });
+    }
+</script>
+
+@if (Model != null && Model.ProviderChannels != null && Model.ClientContractChannels != null)
+{
+    <div class="treeview-back">
+
+        @(Html.Kendo().TreeView()
+                .Name("treeview-provider-channels")
+                .Checkboxes(true)
+                .Events(events => events
+                    .Check("onCheck")
+                )
+                .Items(treeview =>
+            {
+                if (Model.ProviderChannels.Any())
+                {
+                    foreach (var providerChannel in Model.ProviderChannels)
+                    {
+                        treeview.Add().Text(providerChannel.Name.ToString()).Id(providerChannel.Id.ToString()).Checked(false);
+                    }
+                }
+                if (Model.ClientContractChannels.Any())
+                {
+                    foreach (var clientContractChannels in Model.ClientContractChannels)
+                    {
+                        treeview.Add().Text(clientContractChannels.Name.ToString()).Id(clientContractChannels.Id.ToString()).Checked(true);
+                    }
+                }
+            })
+        )
+
+    </div>
+
+    @*<div class="treeview-back">
+
+            @(Html.Kendo().TreeView()
+                .Name("treeview-provider-channels")
+                .DragAndDrop(true)
+                .Items(treeview =>
+                {
+                    if (Model.ProviderChannels.Any())
+                    {
+                        foreach (var providerChannel in Model.ProviderChannels)
+                        {
+                            treeview.Add().Text(providerChannel.Name.ToString()).Id(providerChannel.Id.ToString());
+                        }
+                    }
+                    else
+                    {
+                        treeview.Add().Text("No Channels");
+                    }
+                })
+            )
+
+        </div>*@
+
+    @*<div class="treeview-back">
+
+            @(Html.Kendo().TreeView()
+                .Name("treeview-client-contract-channels")
+                .DragAndDrop(true)
+                .Events(events => events
+                     .DragEnd("onDragEndToClientContract")
+                )
+                .Items(treeview =>
+                {
+                    if (Model.ClientContractChannels.Any())
+                    {
+                        foreach (var clientContractChannel in Model.ClientContractChannels)
+                        {
+                            treeview.Add().Text(clientContractChannel.Name.ToString()).Id(clientContractChannel.Id.ToString());
+                        }
+                    }
+                    else
+                    {
+                        treeview.Add().Text("No Channels");
+                    }
+                })
+            )
+
+        </div>*@
+}

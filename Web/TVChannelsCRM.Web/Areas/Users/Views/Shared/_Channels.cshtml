@@ -1,0 +1,134 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
+@model int
+@{
+    ViewBag.Title = "Channels";
+    const string controllerName = "Channels";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<ChannelViewModel>()
+    .Name("grid-channels")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Name).Width(185);
+        columns.Bound(model => model.ReveivingOptions).Width(32).Hidden(true);
+        columns.Bound(model => model.SatelliteData).Width(32).Hidden(true);
+        columns.Bound(model => model.EpgSource).ClientTemplate("<a target='_blank' href='#=EpgSource#'>link</a>").Width(32).Hidden(true);
+        columns.Bound(model => model.Website).ClientTemplate("<a target='_blank' href='#=Website#'>link</a>").Width(170);
+        columns.Bound(model => model.Presentation).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Width(170);
+        columns.Bound(model => model.ContractTemplate).ClientTemplate("<a target='_blank' href='#=ContractTemplate#'>link</a>").Width(32).Hidden(true);
+        columns.Bound(model => model.LogoLink).ClientTemplate("<a target='_blank' href='#=LogoLink#'>link</a>").Width(32).Hidden(true);
+        columns.Bound(model => model.Comments).Width(275);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetails");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+
+            @(Html.Kendo().AutoComplete()
+                .Name("searchbox-channels")
+                 .Placeholder("Channel name... ")
+                .DataSource(datasource => datasource
+                    .Read(read => read.Action("GetChannelsNames", controllerName, null).Data("onAdditionalData")))
+                .Filter("contains")
+            )
+            <a class="k-button k-button-icontext k-grid-add" href="/Users/Channels/ReadChannels?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+            <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+            <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                    .Excel(excel => excel
+                                        .FileName("Providers Database.xlsx")
+                                        .Filterable(true)
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                        .FileName("Providers Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("ReadChannels", controllerName, new { providerId = Model }).Data("addSearch"))
+                                            .Create(create => create.Action("CreateChannel", controllerName, new { currentProviderId = Model }))
+                                            .Update(update => update.Action("UpdateChannel", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyChannel", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalData() {
+        return {
+            text: $("#searchbox-channels").val()
+        };
+    }
+
+    function addSearch() {
+        return { searchbox: $('#searchbox-channels').val() };
+    }
+
+    $('#searchbox-channels').keyup(function () {
+        $('#grid-channels').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetails(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Users/Channels/ChannelDetails?channelId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

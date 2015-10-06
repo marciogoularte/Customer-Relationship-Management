@@ -1,0 +1,178 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
+@model IEnumerable<string>
+@{
+    ViewBag.Title = "Deleted Clients";
+    const string controllerName = "DeletedItems";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/kendo")
+@Scripts.Render("~/bundles/jqueryval")
+
+<h2>Deleted clients</h2>
+
+    @(Html.Kendo()
+    .Grid<ClientViewModel>()
+        .Name("grid-deleted-clients")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Name).Width(190);
+        columns.Bound(model => model.TypeId).Width(100);
+        columns.Bound(model => model.Uic).Hidden(true);
+        columns.Bound(model => model.Vat).Hidden(true);
+        columns.Bound(model => model.ResidenceAndAddress).Hidden(true);
+        columns.Bound(model => model.PostCode).Hidden(true);
+        columns.Bound(model => model.NetworkPage).Hidden(true);
+        columns.Bound(model => model.ContactPerson).Width(190);
+        columns.Bound(model => model.PhoneNumber).Width(100);
+        columns.Bound(model => model.Email).Width(190);
+        columns.Bound(model => model.Correspondence).Hidden(true);
+        columns.Bound(model => model.FixedPhoneService).Hidden(true);
+        columns.Bound(model => model.MobileVoiceServicesProvidedThroughNetwork).Hidden(true);
+        columns.Bound(model => model.InternetSubs).Hidden(true);
+        columns.Bound(model => model.ServicesMobileAccessToInternet).Hidden(true);
+        columns.Bound(model => model.TvSubs).Hidden(true);
+        columns.Bound(model => model.Coverage).Hidden(true);
+        columns.Bound(model => model.Management).Hidden(true);
+        columns.Bound(model => model.ManagementPhone).Hidden(true);
+        columns.Bound(model => model.ManagementEmail).Hidden(true);
+        columns.Bound(model => model.Finance).Hidden(true);
+        columns.Bound(model => model.FinancePhone).Hidden(true);
+        columns.Bound(model => model.FinanceEmail).Hidden(true);
+        columns.Bound(model => model.TechnicalName).Hidden(true);
+        columns.Bound(model => model.TechnicalPhone).Hidden(true);
+        columns.Bound(model => model.TechnicalEmail).Hidden(true);
+        columns.Bound(model => model.Marketing).Hidden(true);
+        columns.Bound(model => model.MarketingPhone).Hidden(true);
+        columns.Bound(model => model.MarketingEmail).Hidden(true);
+        columns.Command(command => command.Custom("Restore").Click("showDetails"));
+    })
+          .ToolBar(toolBar =>
+          {
+              toolBar.Template(@<text>
+
+                @(Html.Kendo().AutoComplete()
+                                            .Name("searchbox-deleted-clients")
+                                         .Placeholder("Name... ")
+                                         .BindTo(Model)
+                                         .Filter("contains")
+                      )
+    <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+<button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+            </text>);
+          })
+                            .Groupable()
+                            .ColumnMenu()
+                            .Filterable()
+                            .Navigatable()
+                            .Resizable(r => r.Columns(true))
+                            .Reorderable(r => r.Columns(true))
+                            .Events(ev => ev.Change("selectRow"))
+                             .HtmlAttributes(new { @style = "word-break:break-all;" })
+                            .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                            .Excel(excel => excel
+                                    .FileName("Deleted Clients Database.xlsx")
+                                .Filterable(true)
+                                .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+                             )
+                            .Pdf(pdf => pdf
+                                .AllPages()
+                                     .FileName("Deleted Clients Database.pdf")
+                                .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+                            )
+                            .Pageable(pageable => pageable
+                                .Refresh(true)
+                                .PageSizes(true)
+                                .ButtonCount(5))
+                            .Sortable(sort =>
+                            {
+                                sort.AllowUnsort(false);
+                                sort.SortMode(GridSortMode.SingleColumn);
+                            })
+                            .DataSource(data =>
+                            {
+                                data.Ajax()
+                                    .Model(model => model.Id(c => c.Id))
+                                    .PageSize(10)
+                                    .ServerOperation(true)
+                                    .Events(ev => ev.Error("errorAlert"))
+                   .Read(read => read.Action("ReadDeletedClients", controllerName).Data("addSearchClients"));
+                            }))
+<div id="selected">
+</div>
+
+@(Html.Kendo().Window().Name("restore-client-box")
+    .Title("Restore client")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .Width(300)
+)
+
+<script type="text/x-kendo-template" id="clients-template">
+    <div id="clients-restore-container">
+        <h4>Are you sure that you want to restore that client?</h4>
+        <button id="restore-client-button" class="btn btn-primary">Restore</button>
+    </div>
+</script>
+
+<script type="text/javascript">
+    function onAdditionalDataClients() {
+        return {
+            text: $("#searchbox-deleted-clients").val()
+        };
+    }
+
+    function addSearchClients() {
+        return { searchboxDeletedClients: $('#searchbox-deleted-clients').val() };
+    }
+
+    $('#searchbox-deleted-clients').keyup(function () {
+        $('#grid-deleted-clients').data('kendoGrid').dataSource.read();
+    });
+
+    var detailsTemplate = kendo.template($("#clients-template").html());
+    var dataItem;
+
+    function showDetails(e) {
+        e.preventDefault();
+
+        dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var wnd = $("#restore-client-box").data("kendoWindow");
+
+        wnd.content(detailsTemplate(dataItem));
+        wnd.center().open();
+    }
+
+    $(document).on('click', '#restore-client-button', function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ConfirmRestoreClient", "DeletedItems")',
+            data: { clientId: dataItem.Id.toString() },
+            datatype: "JSON",
+            success: function () {
+                var grid = $("#grid-deleted-clients").data("kendoGrid");
+                grid.dataSource.fetch();
+                var wnd = $("#restore-client-box").data("kendoWindow");
+                wnd.close();
+            }
+        });
+    });
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

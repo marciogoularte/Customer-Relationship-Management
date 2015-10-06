@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "CustomErrorPage";
+}
+
+<h2>CustomErrorPage</h2>
+<style type="text/css">
+    #content {
+        min-height: 600px;
+    }
+</style>
+ 
+<h1>Ops.. sorry! Something happened. You will be automatically redirected after <span id="seconds-until-redirect">6</span> seconds!</h1>
+
+<script>
+    $(document).ready(function () {
+        var sec = 6;
+        var timer = setInterval(function () {
+            $('#seconds-until-redirect').text(--sec);
+            if (sec === 1) {
+                window.location.href = '/home/index';
+                clearInterval(timer);
+            }
+        }, 1000);
+    });
+</script>

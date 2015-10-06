@@ -1,0 +1,134 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+@model int
+@{
+    ViewBag.Title = "Contracts";
+    const string controllerName = "Contracts";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<ClientContractViewModel>()
+    .Name("grid-client-contracts")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.TypeOfContract).Width(150);
+        columns.Bound(model => model.StartDate).Width(185);
+        columns.Bound(model => model.EndDate).Width(32);
+        columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
+        columns.Bound(model => model.BillingStartDate).Width(32).Hidden(true);
+        columns.Bound(model => model.BillingEndDate).Width(32).Hidden(true);
+        columns.Bound(model => model.NumberOfDaysForPaymentDueDate).Width(32).Hidden(true);
+        columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
+        columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
+        columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
+        columns.Bound(model => model.Tier).Width(32).Hidden(true);
+        columns.Bound(model => model.ProviderId).Width(32).Hidden(true);
+        columns.Bound(model => model.Comments).Width(200);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsClientContracts");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+
+            @(Html.Kendo().AutoComplete()
+                .Name("searchbox-clients-contracts")
+                 .Placeholder("Type of contract... ")
+                .DataSource(datasource => datasource
+                            .Read(read => read.Action("ClientsContractsNames", controllerName, null).Data("onAdditionalDataClientContracts")))
+                .Filter("contains")
+            )
+            <a class="k-button k-button-icontext k-grid-add" href="/Users/Contracts/ReadClientsContracts?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+            <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+            <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                   .Excel(excel => excel
+                                        .FileName("Clients contracts Database.xlsx")
+                                        .Filterable(true)
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                                        .FileName("Clients contracts Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("ReadClientsContracts", controllerName, new { clientId = Model }).Data("addSearchClientContracts"))
+                                            .Create(create => create.Action("CreateClientContract", controllerName, new { currentClientId = Model }))
+                                            .Update(update => update.Action("UpdateClientContract", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyClientContract", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataClientContracts() {
+        return {
+            text: $("#searchbox-clients-contracts").val()
+        };
+    }
+
+    function addSearchClientContracts() {
+        return { searchTerm: $('#searchbox-clients-contracts').val() };
+    }
+
+    $('#searchbox-clients-contracts').keyup(function () {
+        $('#grid-client-contracts').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsClientContracts(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Users/Contracts/ClientContractDetails?contractId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

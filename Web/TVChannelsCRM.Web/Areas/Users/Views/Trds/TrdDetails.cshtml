@@ -1,0 +1,58 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Trds
+@model TrdViewModel
+@{
+    ViewBag.Title = "TrdDetails";
+}
+
+<h2>Trd details</h2>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Decoder
+                    </strong>
+                </td>
+                <td>
+                    @Model.Decoder
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Sim
+                    </strong>
+                </td>
+                <td>
+                    @Model.Sim
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Cas
+                    </strong>
+                </td>
+                <td>
+                    @Model.Cas
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Cam
+                    </strong>
+                </td>
+                <td>
+                    @Model.Cam
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,15 @@
+﻿@model Dictionary<int, string>
+
+<div>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var channel in Model)
+        {
+            <input type="checkbox" data-channel-id="@channel.Key"/><span> @channel.Value</span>
+        }
+    }
+    else
+    {
+        <span>There are no channels from that provider</span>
+    }
+</div>

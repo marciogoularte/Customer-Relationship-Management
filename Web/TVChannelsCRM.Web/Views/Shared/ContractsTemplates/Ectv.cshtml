@@ -1,0 +1,1876 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Invoices
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+@model ClientContractViewModel
+@{
+    Layout = null;
+
+    var client = (ClientViewModel)ViewBag.Client;
+    var invoices = (List<InvoiceViewModel>)ViewBag.Invoices;
+}
+
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" href="~/Content/contracts/ectv" type="text/css" />
+</head>
+<body class="c48">
+    <div>
+        <p class="c60">
+            <span class="c23">
+                Cable Affiliation Agreement
+            </span>
+        </p>
+        <p class="c21">
+            <span class="c23 c52">
+            </span>
+        </p>
+    </div>
+    <p class="c20">
+        <span class="c23">
+        </span>
+    </p>
+    <a href="#" name="08a9106cb6ec5059194963108b10e7f5cba0e25f">
+    </a>
+    <a href="#" name="0">
+    </a>
+    <table cellpadding="0" cellspacing="0" class="c10">
+        <tbody>
+            <tr class="c4">
+                <td class="c42" colspan="1" rowspan="1">
+                    <p class="c56">
+                        <span class="c11">
+                            No
+                        </span>
+                        <span class="c11 c53">
+                            &nbsp;
+                        </span>
+                        <span class="c11">
+                            _________________
+                        </span>
+                        <span class="c11 c53">
+                            &nbsp;
+                        </span>
+                    </p>
+                    <p class="c40 c41">
+                        <span class="c6">
+                        </span>
+                    </p>
+                    <p class="c40">
+                        <span class="c6">
+                            AGREEMENT
+                        </span>
+                    </p>
+                    <p class="c40">
+                        <span class="c6">
+                            DATED &nbsp;____ &nbsp; 2015_
+                        </span>
+                    </p>
+                    <p class="c40">
+                        <span class="c6">
+                            Dnipropetrovsk, Ukraine
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c6">
+                        </span>
+                    </p>
+                    <p class="c25">
+                        <span class="c6">
+                            BETWEEN:
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c32">
+                        <span class="c51">
+                            1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                        <span class="c11">
+                            English Club TV LLC
+                        </span>
+                        <span class="c30">
+                            with its seat at
+                        </span>
+                        <span class="c3">
+                            &nbsp;5
+                        </span>
+                        <span class="c47 c57">
+                            th
+                        </span>
+                        <span class="c3">
+                            &nbsp; Floor, 5a, Ploschad Krasnaya Str., Dnipropetrovsk, 49000, Ukraine (&quot;
+                        </span>
+                        <span class="c11">
+                            ECTV
+                        </span>
+                        <span class="c0">
+                            &quot;) represented by Andrew Semchenko (Director), &nbsp;acting in accordance with the Statue; and
+                            <br>
+                        </span>
+                    </p>
+                    <p class="c25">
+                        <span class="c11">
+                            2. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <span class="c36">
+                            @client.NameBulgarian @client.TypeInBulgarian
+                        </span>
+                        <span class="c30">
+                            with its seat at &nbsp;
+                        </span>
+                        <span class="c36">
+                            @client.ResidenceAndAddress, @client.Vat
+                        </span>
+                        <span class="c3">
+                            &nbsp;(&quot;
+                        </span>
+                        <span class="c11">
+                            Operator
+                        </span>
+                        <span class="c3">
+                            &quot;) represented by
+                        </span>
+                        <span class="c36">
+                            @client.Management
+                        </span>
+                        <span class="c0">
+                            , acting in accordance with the Statue.
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c25">
+                        <span class="c11">
+                            IT IS AGREED as follows:
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c19">
+                        <span class="c11">
+                            1. DEFINITIONS AND INTERPRETATION
+                            <br>
+                        </span>
+                    </p>
+                    <p class="c33 c24 c37">
+                        <span class="c0">
+                            Unless otherwise indicated by the context, the following
+                        </span>
+                    </p>
+                    <p class="c33 c24 c37">
+                        <span class="c0">
+                            words and expressions, as well as all capital letter words will have
+                        </span>
+                    </p>
+                    <p class="c33 c24 c37">
+                        <span class="c0">
+                            the following meanings:
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            1.1. &ldquo;Average Number of Subscribers per Month&quot; means the number calculated by adding the number of subscribers on the last day of the reporting month and the last day of the previous reporting month and dividing the total by two (the result is rounded to the next full number).
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            1.2. &quot;Multichannel Digital Network&quot; (the &quot;Network&quot;) means the cable television and multichannel telecommunications networks, and cable telecommunication network intended for data transfer (as well as IPTV, OTT), including the radio and television.
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.3. &ldquo;TV program package&quot; means a package of programs defined in clause .2.2.1 of this Agreement.
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.4. &quot;Program&quot; means the program referred to in clause 2.2.3 of this Agreement.
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.5. &ldquo;Subscriber(s)&quot; mean(s) service users receiving any services access to ECTV TV packages, according to appropriate agreement for using equipment provided by the Operator, including, without limitation, each household (one family or building).
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.6. &quot;Force Majeure&quot; means any circumstance that is beyond the control of the Parties, including natural disasters, regulations, orders or restrictive government measures, strikes, labor disputes, war, fire, riots, sabotage and terrorism, and also any other cause or causes that are similar or different from these circumstances that are beyond the control of the Parties and directly affect the ability to perform obligations of a Party / Parties under the Agreement;
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.7. &quot;Intellectual Property&quot; means (a) patents, trademarks, services marks on registered designs, applications for such rights, trade names and trade names (including the names of Internet domain names and email addresses), unregistered trademarks and service marks on copyrights, know-how, the right to a database, the right to development and inventions; and (b) law, the content and nature of similar rights set out in subsection (a), in each case in any jurisdiction;
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.8. &quot;Party&quot; or &quot;Parties&quot; means one or both of the parties under this Agreement and their successors;
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.9. &quot;Documentation&quot; means all contracts, business correspondence, computer data and other documents relevant to the Customer, including accurate and reliable information about the number of subscribers, all contracts with subscribers, information on connection and disconnection, accounting documents and registers related to payments made to subscribers of the Operator.
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.10.&rdquo;Satelite&quot; means satellite signal used to transfer the Program, the specifications of which are given in clause 2.2.8.
+                        </span>
+                    </p>
+                    <p class="c39">
+                        <span class="c0">
+                            1.11. &quot;Subscriber Report&quot; means a report which confirmed the accuracy of the manager or operator authorized person, in a form required and provided English Club TV.
+                        </span>
+                    </p>
+                    <p class="c15 c41">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_28-0 start" start="2">
+                        <li class="c28">
+                            <span class="c11">
+                                SUBJECT OF THE AGREEMENT
+                                <br>
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c25">
+                        <span class="c0">
+                            2.1. Subject to the terms and conditions of this Agreement, ECTV grants Operator the Rights with immediate effect from the Commencement Date and throughout the Term to distribute the Channel on each Cable System within the Territory in accordance with this Agreement.
+                        </span>
+                    </p>
+                    <p class="c20">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            2.2 Main terms of an Agreement: ____________________
+                        </span>
+                    </p>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c25 c24 c37">
+                        <span class="c3">
+                            &nbsp;2.2.1. Agreed Tier:
+                        </span>
+                        <span class="c3">
+                            @Model.Tier.ToString()
+                        </span>
+                    </p>
+                    <p class="c25 c24 c37">
+                        <span class="c0">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            2.2.2. Broadcast Licence: ______________________
+                        </span>
+                    </p>
+                    <p class="c20">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c25 c35">
+                        <span class="c0">
+                            2.2.3. Channel: &nbsp; &nbsp; &nbsp; &nbsp;ENGLISH CLUB TV CHANNEL
+                        </span>
+                    </p>
+                    <p class="c25">
+                        <span class="c0">
+                            at least 24 hours English language television programme &nbsp; &nbsp;service currently known as English Club TV. 100 % of programming voiced-over in English consisting of a block of different types of programs (educational programs including but not limiting) programmes repeated (and all associated advertising, if any, promotions, video, audio, text and VBI signals).
+                        </span>
+                    </p>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            2.2.4. Commencement Date:
+                        </span>
+                        <span class="c45">
+                            Start Date
+                        </span>
+                        <span class="c3">
+                            &nbsp;
+                        </span>
+                        <span class="c0">
+                            &nbsp;
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            &nbsp; &nbsp;
+                        </span>
+                    </p>
+                    <p class="c25 c24 c37">
+                        <span class="c0">
+                            2.2.5 Loan Equipment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___________________________
+                        </span>
+                    </p>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c25 c35">
+                        <span class="c0">
+                            2.2.6. Rights : &nbsp; &nbsp;The non-exclusive right to receive the Channel from the Satellite and simultaneously with such reception to retransmit the Channel, as and when delivered, by means of all the Cable Systems in digital form for reception by Subscribers in the Territory.
+                        </span>
+                    </p>
+                    <p class="c20">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            2.2.7. Subscribers:
+                        </span>
+                        <span class="c22">
+                            @if (invoices != null && invoices.Any())
+                            {
+                                var lastInvoice = invoices[invoices.Count - 1];
+                                foreach (var invoice in invoices)
+                                {
+                                    if (invoice != lastInvoice)
+                                    {
+                                        @invoice.MgSubs;@:, 
+                                    }
+                                    else
+                                    {
+                                        @invoice.MgSubs
+                                    }
+                                }
+                            }
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            2.2.8. Satellite: ____________________________________
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            2.2.9. Subscriber Fee:
+                        </span>
+                        <span class="c22">
+                            @if (invoices != null && invoices.Any())
+                                  {
+                                      var lastInvoice = invoices[invoices.Count - 1];
+                                      foreach (var invoice in invoices)
+                                      {
+                                          if (invoice != lastInvoice)
+                                          {
+                                              @invoice.Cps;@:, 
+                                          }
+                                          else
+                                          {
+                                              @invoice.Cps
+                                          }
+                                      }
+                                  }
+                        </span>
+                    </p>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c25 c35">
+                        <span class="c3">
+                            2.2.10. Billing Frequency:
+                        </span>
+                        <span class="c38">
+                            @client.Frequency.ToString()
+                        </span>
+                    </p>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            2.2.11. Term:
+                        </span>
+                        <span class="c38">
+                            =
+                        </span>
+                        <span class="c45">
+@{
+    var time = Model.EndDate - Model.StartDate;
+}
+                            @time
+                        </span>
+                        <span class="c0">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </p>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            2.2.12. Territory:
+                        </span>
+                        <span class="c6">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@client.Coverage
+                        </span>
+                    </p>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            2.2.13. Number of Subscribers as at the Commencement Date:
+                        </span>
+                        <span class="c47">
+                            &nbsp;1500
+                        </span>
+                    </p>
+                    <p class="c20">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            2.2.14.. Security System:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Viaccess
+                        </span>
+                    </p>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            2.2.15. Address for Notices:
+                        </span>
+                    </p>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            Operator
+                        </span>
+                        <span class="c36">
+@client.Correspondence
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            Phone: +
+                        </span>
+                        <span class="c36">
+                            @client.ManagementPhone
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c3">
+                            Attention to:
+                        </span>
+                        <span class="c36">
+                            @client.Management
+                        </span>
+                    </p>
+                    <p class="c20">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            ECTV:
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c3">
+                            ECTV : ENGLISH CLUB TV LLC of 5th &nbsp;Floor, &nbsp; &nbsp; &nbsp;
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            &nbsp;5a, Ploschad Krasnaya Str., &#1080; Dnipropetrovsk, 49000, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ukraine Fax: (+38 0562 318 717) &nbsp;
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            Attention to: Managing Director
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            Andrii Semchenko &nbsp; &nbsp;
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            &nbsp; &nbsp;
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            &nbsp;2.3. All rights not expressly granted to the Operator by ECTV are reserved absolutely to ECTV, including any and all rights in and to all signal distribution capacity contained within the bandwidth of the Channel as received by the Operator.
+                        </span>
+                    </p>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_22-0 start" start="3">
+                        <li class="c27">
+                            <span class="c11">
+                                &nbsp;TERM
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c13">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_22-1 start" start="1">
+                        <li class="c25 c54">
+                            <span class="c0">
+                                This Agreement shall commence on the Commencement Date and subject to earlier termination in accordance with the terms of this Agreement, shall continue for the Term. &nbsp;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c13 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c19">
+                        <span class="c11">
+                            4. &nbsp;PAYMENT AND AUDIT
+                            <br>
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.1. Calculation - Following receipt of Operator&rsquo;s Subscriber Report in accordance with clause 5, ECTV shall calculate the Subscriber Fees due to ECTV by multiplying the Average Number of Subscribers by the Subscriber Fee.
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.2. Failure to submit a report - If the Operator fails to submit a Subscriber Report, ECTV may submit an invoice in respect of the Reporting Month, for the amount invoiced for the month before the Reporting Month, which the Operator shall pay within ten days of the date of that invoice provided that the Operator shall be not relieved of its obligation to:
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            (a) provide any Subscriber report for the Reporting Month; or
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            (b) pay ECTV the full amount due.
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.3. Advance Payment &ndash; If the Operator has less than 2000 Subscribers, Operator agrees to pay ECTV the Subscriber Fee six months in advance during the Term. The advance payment shall be based on the number of subscribers as of the Commencement Date for the first six month period and then for each following six month period based on the Reports provided in accordance with clause 5 for the previous six month period. &nbsp;At the end of each relevant six month period of the Term, ECTV will invoice or credit the Operator for any difference between the Advance Payment and the actual amount due for that six month period based on the Reports. &nbsp;
+                        </span>
+                    </p>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            4.4. If the Operator fails to deliver any Subscriber Report on time, ECTV may make an administration charge of five percent (5%) of the amount payable by the Operator in respect of the month before the Reporting Month. If the Operator fails to deliver Subscriber Report to ECTV, it shall constitute a material breach of this Agreement incapable of remedy entitling ECTV to terminate.
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.5. Exclusive of VAT - The amounts payable by the Operator to ECTV shall be exclusive of VAT which shall be payable by the Operator.
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.6. Withholding tax - Operator represents and warrants that it will pay and hold ECTV harmless from any taxes, fees or other amounts, levied in the Territory, in respect of the amounts payable to ECTV pursuant to this Agreement (including withholding or similar taxes but excluding any corporate income tax payable by ECTV in the Ukraine). &nbsp;If any such taxes, fees or other amounts, for which Operator is responsible under the preceding sentence, are required to be deducted or withheld from any amount required to be paid to ECTV under any provision of this Agreement, then Operator shall make such deduction or withholding and shall pay the full amount required to be paid to the relevant authority, file any forms required to be filed, and shall increase the amounts payable to or for the account of ECTV under this Agreement as may be necessary, so that after making all such required deductions or withholdings ECTV receives an amount equal to the amount ECTV would have received had no such deductions or withholdings been made. &nbsp;Operator agrees to indemnify and hold ECTV harmless from any claims and liabilities for any such taxes, fees or other amounts that Operator fails to withhold or to pay to the applicable taxing authority and any interest and penalties in connection with them.
+                        </span>
+                    </p>
+                    <p class="c26 c41">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c3">
+                            4.7. Payment - Operator shall pay the amount payable to ECTV &nbsp;within 30 days of the date of ECTV&rsquo;s invoice.
+                        </span>
+                        <span class="c11">
+                            The invoice is considered as a proof of payment for provided services.
+                        </span>
+                        <span class="c0">
+                            &nbsp;Interest may be charged by ECTV on all late payments from the time such payment became due until full payment is made at the rate of 2% (two per cent) per annum above the National Bank of Ukraine base rate from time to time. Bank details of ECTV are the following:
+                        </span>
+                    </p>
+                    <p class="c26 c41">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c20">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            &nbsp;BENEFICIARY &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;English Club TV LLC
+                        </span>
+                    </p>
+                    <p class="c33">
+                        <span class="c0">
+                            VAT : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 355444804626
+                        </span>
+                    </p>
+                    <p class="c15">
+                        <span class="c0">
+                            ACCOUNT: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;26006057001178
+                        </span>
+                    </p>
+                    <p class="c15">
+                        <span class="c0">
+                            BENEFICIARY`S BANK: COMMERCIAL BANK &nbsp;&quot;PRIVATBANK&rdquo; 320094, UKRAINE DNIEPROPETROVSK &nbsp; &nbsp;
+                        </span>
+                    </p>
+                    <p class="c15">
+                        <span class="c0">
+                            NABEREZHNAYA POBEDY 50
+                        </span>
+                    </p>
+                    <p class="c15">
+                        <span class="c0">
+                            &nbsp;SWIFT: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PBANUA2X
+                        </span>
+                    </p>
+                    <p class="c15">
+                        <span class="c0">
+                            BANK-CORRESPONDENT: &nbsp;DEUTSCHE BANK AG, FRANKFURT, GERMANY
+                        </span>
+                    </p>
+                    <p class="c15">
+                        <span class="c0">
+                            &nbsp;SWIFT: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DEUTDEFF
+                        </span>
+                    </p>
+                    <p class="c15">
+                        <span class="c0">
+                            CORR. ACCOUNT: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;100-947012110
+                        </span>
+                    </p>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.8. The Operator shall pay the Subscriber Fees monthly for each Subscriber whether or not
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            (a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the Operator actually charges or receives payment from that Subscriber;
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            (b )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;there is any interruption or other failure in the reception or transmission of the Channel. &nbsp;
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.9. Increases - ECTV shall be entitled to increase the Subscriber Fees on 1 January each year of the Term by the greater of:
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            &nbsp;a) 3% of the Subscriber Fee.
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.10. Acceptance by ECTV of any payments shall not constitute acceptance of the correctness &nbsp;of that payment or of any Subscriber report submitted by the Operator.
+                        </span>
+                    </p>
+                    <p class="c26 c41">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c26">
+                        <span class="c0">
+                            4.11.No set off - The Operator shall not be entitled to make any deductions from the Subscriber Fees and shall not have any right of set-off against the Subscriber Fees.
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c3">
+                            4.12.Throughout the Term, for one year after the expiry of the Term (&quot;
+                        </span>
+                        <span class="c11">
+                            Audit Period
+                        </span>
+                        <span class="c3">
+                            &quot;) the Operator shall keep full, complete and accurate books of account and records concerning the distribution of the Channel and all revenue derived from that distribution (&quot;
+                        </span>
+                        <span class="c11">
+                            Books and Records
+                        </span>
+                        <span class="c0">
+                            &quot;). &nbsp;The Books and Records shall be kept separate and distinct from accounts or records for any other television channel.
+                        </span>
+                    </p>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            4.13 .ECTV shall be entitled to examine, inspect, copy and audit the Books and Records in relation to the Channel twice a year during the Audit Period on not less than 7 days &nbsp;notice during normal business hours. &nbsp;If the inspection or audit reveals an underpayment to ECTV, the Operator shall immediately:
+                            <br>
+                        </span>
+                    </p>
+                    <p class="c32">
+                        <span class="c3">
+                            (&#1072;) pay ECTV &nbsp;the amount of any underpayment, together with interest on that amount calculated at the rate of two per cent (2%) over the National Bank of Ukraine
+                        </span>
+                        <span class="c11">
+                            &nbsp;
+                        </span>
+                        <span class="c0">
+                            base rate from time to time; and
+                        </span>
+                    </p>
+                    <p class="c32">
+                        <span class="c3">
+                            (b) pay the costs of the audit and/or inspection where that audit or inspection reveals an underpayment in excess of five per cent (5%)
+                        </span>
+                        <span class="c11">
+                            .
+                        </span>
+                    </p>
+                    <p class="c20">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c25 c24 c37 c31">
+                        <span class="c11">
+                            5. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;REPORTING
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c3">
+                            5.1. Within 10 days of the end of each calendar month during the Term, the Operator shall provide ECTV with a true and accurate written report certified by the Operator&rsquo;s Chief Financial Officer or an employee of the Operator with appropriate authority, showing all reasonable information required to substantiate the calculation of the Subscriber Fees payable for that month (&quot;
+                        </span>
+                        <span class="c11">
+                            Reporting Month
+                        </span>
+                        <span class="c0">
+                            &quot;) including:
+                        </span>
+                    </p>
+                    <p class="c32">
+                        <span class="c3 c53">
+                            (
+                        </span>
+                        <span class="c0">
+                            a) the total number of Subscribers to the Channel for each Cable System as at the last day of the Reporting Month and the last day of the month prior to the Reporting Month; and
+                        </span>
+                    </p>
+                    <p class="c32">
+                        <span class="c0">
+                            (b) the total Fee due and payable to ECTV in respect of each category of Subscriber.
+                            <br>
+                        </span>
+                    </p>
+                    <p class="c25">
+                        <span class="c0">
+                            The Operator certifies that, as of the Commencement Date, there are the number of Subscribers on the Cable Systems as set out in clause 2.2.13 of this Agreement.
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c32 c24 c37 c31">
+                        <span class="c11">
+                            6. RECEPTION AND DISTRIBUTION OF THE CHANNEL
+                        </span>
+                    </p>
+                    <p class="c39 c24 c41">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            6.1.ECTV shall deliver the Channel signal to the Satellite. &nbsp;The pick-up and downlink of the Channel from the Satellite and the retransmission of the Channel throughout the Cable Systems, including any and all related costs, shall be the Operator&rsquo;s sole responsibility.
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            6.2.ECTV reserves the right at any time to switch the transmission of the Channel from the Satellite to another satellite, from one transponder to another transponder within the Satellite, or to make any other change in satellite transmission (each a &quot;Change&quot;), provided that:
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_1-2 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                ECTV gives notice to the Operator within a reasonable period of time before the Change, except that if a Change is required because a technical problem occurs relating to the satellite transmission, ECTV will not be required to give the Operator prior notice, and
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_1-2" start="2">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                the footprint of the satellite transmission after the Change continues to cover the premises at which the Operator&#39;s receiving equipment is located at the date of this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            6.3.The Operator shall distribute to Subscribers any Enhancements included in the Channel that become available during the Term upon notification by ECTV, unless the Operator demonstrates to the reasonable satisfaction of ECTV that the Cable Systems are not able to carry the Enhancements, in which case the Operator will co-operate with ECTV to agree a timetable for the upgrade of the Cable Systems to enable the Enhancements to be carried as soon as reasonably practicable.
+                        </span>
+                    </p>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            6.4.During the Term, the Operator shall ensure that:
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            (a) .It operates and maintains an efficient subscriber management and authorisation service;
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            (b). the Channel is included in the Agreed Tier on each Cable System;
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_1-2" start="3">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                the Channel is encrypted and distributed over the Cable Systems in accordance with first class technical quality;
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                it uses its best endeavours to maximise the number of Subscribers to the Channel;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c20">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_1-2" start="5">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                except as required by law, the Operator does not, and does not permit any third party to record or reproduce any part of the Channel. ECTV acknowledges that Subscribers may be able to record part of the Channel due to the functionality of the set top box provided to the Subscriber by the Operator provided that any such recording is restricted to private use;
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                the Channel is not transmitted for reception in any public or common areas or places including hotel lobbies, bars, restaurants or public squares;
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                if any sub-titling of the Channel is provided, that the sub-titling is &quot;burnt in&quot; and relayed to all Subscribers without any Subscriber action or payment of any kind, at Operator&rsquo;s cost;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_1-2" start="8">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                that it shall obtain and maintain throughout the Term all permissions, licenses and consents including the Broadcast Licence required to fulfil its obligations as contemplated by this Agreement (&quot;
+                            </span>
+                            <span class="c11">
+                                Licences
+                            </span>
+                            <span class="c0">
+                                &quot;);
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_1-2" start="9">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                it will not do anything nor omit to do anything that causes the Licences to be suspended or revoked; and
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_1-2" start="10">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                upon ECTV&rsquo;s request, the Operator shall provide ECTV with a subscription to the Agreed Tier of the Cable System and a relevant domestic set-top box and smart card for monitoring purposes, at no cost to ECTV.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c17">
+                        <span class="c0">
+                            6.5.Any Loan Equipment provided to the Operator during the Term by or on behalf of ECTV shall be provided to the Operator on a loan basis. &nbsp;The Loan Equipment shall at all times remain the property of ECTV and the Operator shall not acquire any proprietary or other right in or title to such Loan Equipment. The Operator shall at its sole cost keep the Loan Equipment secure and maintain it in good working order at all times. &nbsp;The Operator shall return the Loan Equipment to ECTV immediately on the end or termination of this Agreement or ECTV&rsquo;s written request.
+                        </span>
+                    </p>
+                    <p class="c32 c41">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0 start" start="7">
+                        <li class="c19 c50">
+                            <span class="c11">
+                                TRADE MARKS
+                                <br>
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-1 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                ECTV grants to the Operator the non-exclusive right to use the ECTV Marks, strictly for the purpose of exercising the rights granted under this Agreement and in accordance with the terms of this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="2">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                The Operator acknowledges that the ECTV Marks are the exclusive property of ECTV. &nbsp;Operator shall not acquire any proprietary or other right or goodwill in the ECTV Marks.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="3">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                The Operator shall only use the ECTV Marks as authorised by ECTV. &nbsp;The Operator shall not use the ECTV Marks in any way that adversely affects, reflects on or derogates from the ECTV marks.
+                                <br>
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                The Operator shall provide representative samples of any intended materials incorporating the ECTV Marks to ECTV for ECTV&rsquo;s prior approval. &nbsp;If required by ECTV, Operator shall make any changes to the materials before they are distributed.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="8">
+                        <li class="c17 c2 c31">
+                            <span class="c11">
+                                MARKETING
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c32 c41">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="5">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                ECTV shall provide the Operator with ECTV&#39;s standard marketing kit if requested at no cost to the Operator. &nbsp;ECTV shall provide additional promotional materials, if available, as requested by Operator and at Operator&#39;s cost.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="6">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                The Operator shall use its best endeavours to promote the Channel widely and efficiently in a manner which shall not reflect adversely upon the Channel or ECTV.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="7">
+                        <li class="c2 c17">
+                            <span class="c0">
+                                The Operator shall cooperate with ECTV in market research by making available to ECTV, if available and to the extent permitted by law, information regarding the popularity of the Channel and the viewing habits of Subscribers.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="9">
+                        <li class="c17 c2 c31">
+                            <span class="c11">
+                                INFRINGEMENT
+                                <br>
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-1 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                The Operator shall employ security systems, procedures and policies designed to prevent all unauthorised use, piracy or infringement of the Channel or the ECTV Marks. &nbsp;The security systems shall be subject to ECTV&#39;s prior approval (not to be unreasonably withheld or delayed) and any approval granted will be conditional upon:
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                the security systems not being able to be decoded by any known products in the Territory at the time of granting the approval; and
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c17">
+                        <span class="c0">
+                            the security system being operated at all times in the most secure mode possible
+                        </span>
+                    </p>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="2">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                If the Operator becomes aware of or reasonably suspects any unauthorised use, piracy or infringement by any third party of any rights in the Channel or the ECTV Marks it shall immediately:
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-2 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                notify ECTV; and
+                                <br>
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                take all reasonable actions to stop and to prevent any further unauthorised use, piracy and/or infringement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="10">
+                        <li class="c17 c2 c31">
+                            <span class="c11">
+                                WARRANTIES AND INDEMNITIES
+                                <br>
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-1 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                The Operator represents warrants and undertakes:
+                                <br>
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-2 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                rights
+                            </span>
+                            <span class="c0">
+                                ) that it has the right to enter into and fully perform this Agreement;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="2">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                cable systems
+                            </span>
+                            <span class="c0">
+                                ) that each Cable System is operated or managed by the Operator or by any entity controlled by, under common control with or who controls the Operator;
+                                <br>
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                licences
+                            </span>
+                            <span class="c0">
+                                ) that all licences and consents required by law to transmit the Channel over each Cable System, including broadcast and copyright licences, if any, have been obtained and shall be maintained throughout the Term;
+                                <br>
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                security
+                            </span>
+                            <span class="c0">
+                                ) that it shall distribute the Channel encrypted or otherwise secured, in its entirety so that only Subscribers authorised by the Operator can receive the Channel;
+                                <br>
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                no changes
+                            </span>
+                            <span class="c0">
+                                ) that it will distribute the Channel, as and when delivered, without deletion, editing, addition, interruption of any description other than expressly permitted by this Agreement and that the Operator shall not make any use of the Channel except as specifically authorised by this Agreement;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="6">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                content
+                            </span>
+                            <span class="c0">
+                                ) that the content of the Local Ad Avails, if any, will not infringe the copyright, right of privacy or literary or dramatic right of any third party;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="7">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                marketing
+                            </span>
+                            <span class="c0">
+                                ) that it will, at its cost, market and promote the Channel at least in the same manner and with equal prominence as it markets and promotes any other programme service in the Agreed Tier;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="8">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                no Internet
+                            </span>
+                            <span class="c0">
+                                ) that any broadcast of the Channel shall not be via means of interactive or on-line delivery system such as the so-called Internet or World Wide Web (or any comparable system);
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="9">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                television only
+                            </span>
+                            <span class="c0">
+                                ) that the Channel signal is only available for display to subscribers using a television receiver;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="10">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                no computer
+                            </span>
+                            <span class="c0">
+                                ) that the broadcast of the Channel is not conducted through a computer network using TCP/IP protocol or similar technology for display on any device which is a computer or has computer processing devices or similar technology.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c17">
+                        <span class="c0">
+                            &nbsp;
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="2">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                The Operator indemnifies and holds ECTV, on its own behalf and as trustee for its parents and affiliated entities, and their officers, directors and employees harmless from and against any claims, damages, liabilities, costs and expenses (including reasonable legal expenses) arising out of the breach of any representation, warranty, agreement or undertaking made by the Operator in this Agreement.
+                                <br>
+
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                ECTV represents warrants and undertakes:
+                                <br>
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-2 start" start="1">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                right
+                            </span>
+                            <span class="c3">
+                                ) that it is entitled to enter into and perform this Agreement and to grant all those rights granted to the Operator &nbsp;in this Agreement; and
+                                <br>
+                                (
+                            </span>
+                            <span class="c11">
+                                content
+                            </span>
+                            <span class="c0">
+                                ) that the content of the Channel, other than the Local Ad Avails, if any, will not infringe the copyright, right of privacy or literary or dramatic right of any third party.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="4">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                ECTV makes no representation regarding the continuing availability, content or quality of reception of the Channel during the Term.
+                                <br>
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                ECTV indemnifies and holds the Operator harmless from and against any claims, damages, liabilities, costs and expenses (including reasonable legal expenses) arising out of the breach of any warranty made by ECTV in this clause.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="11">
+                        <li class="c17 c2 c31">
+                            <span class="c11">
+                                MUSIC
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9 c31">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="6">
+                        <li class="c17 c2 c31">
+                            <span class="c0">
+                                With respect to the performing rights to or in any musical works and/or sound recordings reproduced in the Channel, ECTV warrants that such rights are either:
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c16">
+                        <span class="c14">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="2">
+                        <li class="c17 c2">
+                            <span class="c3">
+                                owned or controlled by ECTV;
+                            </span>
+                        </li>
+                        <li class="c17 c2">
+                            <span class="c0">
+                                in the public domain
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="7">
+                        <li class="c17 c2">
+                            <span class="c0">
+                                As regards musical works and sound recordings contained in the Channel, the Operator shall be responsible for obtaining and paying for any music or performing rights licences which may be required to distribute the Channel in accordance with this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c24">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="12">
+                        <li class="c12 c31">
+                            <span class="c11">
+                                TERMINATION
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c13">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c25 c31">
+                        <span class="c0">
+                            12A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Suspension
+                        </span>
+                    </p>
+                    <p class="c25 c24">
+                        <span class="c0">
+                            If Operator breaches a material term of this Agreement, including clauses 4 (Payment and Audit), 5 (Reporting), 6.5 (Distribution), 9 (Infringement) and Part 7 (Payment) of Schedule 3 to this Agreement, in addition to ECTV&rsquo;s other rights and remedies in accordance with this Agreement and at law, ECTV shall be entitled to suspend delivery of the Channel to Operator. &nbsp;The parties agree that the suspension for Operator&rsquo;s breach will not be repudiation or breach of this Agreement by ECTV nor will it give rise to liability for ECTV.
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="8">
+                        <li class="c12">
+                            <span class="c0">
+                                Either party may terminate this Agreement on 14 days written notice if:
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-2" start="4">
+                        <li class="c25 c43">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                material breach
+                            </span>
+                            <span class="c0">
+                                ) the other party commits a material breach of this Agreement which is not capable of remedy or a material breach which is capable of remedy but which the other party has not remedied within 30 days of receipt of written notice to do so; or
+                            </span>
+                        </li>
+                        <li class="c25 c43">
+                            <span class="c3">
+                                (
+                            </span>
+                            <span class="c11">
+                                ceases business
+                            </span>
+                            <span class="c0">
+                                ) the other party ceases to carry on business (or in the case of the Operator, clause 10.1(b) of this Agreement ceases to be true in respect of one or more of the Cable Systems) or makes any composition with creditors or if any action or proceeding under bankruptcy or insolvency law is taken against the other party and is not dismissed or discharged within 30 (thirty) days or if a receiver is appointed over all or part of the others assets or if the other shall effect a voluntary or compulsory liquidation of assets (other than for the purposes of a bona fide reconstruction or amalgamation) or an analogous event happens to that party.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="9">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                In addition to the termination rights set out, ECTV shall have the right to terminate the Agreement with immediate effect if:
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-2 start" start="1">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                any clearances, licenses or approvals required by the Operator to perform its obligations under this Agreement are not obtained or are revoked, or
+                            </span>
+                        </li>
+                        <li class="c1 c2">
+                            <span class="c0">
+                                the Channel ceases, for any reason, to be made available by ECTV in the Territory.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="10">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                Termination will not affect the rights and liabilities of the parties which are expressly or impliedly stated to survive termination and the Operator shall not be released from its payment and reporting obligations or any other liabilities arising prior to the date of termination.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="11">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                The Operator &nbsp;shall, on termination of this Agreement immediately cease transmission of the Channel and shall promptly deliver up to ECTV all promotional, Channel materials and other materials incorporating the ECTV Marks in the Operator&rsquo;s possession together with the Loan Equipment in accordance with clause 6.6 of this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="13">
+                        <li class="c1 c2 c31">
+                            <span class="c11">
+                                FORCE MAJEURE
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="12">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                If either party suffers a Force Majeure Event which prevents it from performing any of its obligations under this Agreement then, except in the case of a failure by the Operator to make any payment due to ECTV in accordance with this Agreement, that non-performance will not constitute a breach of this Agreement. The party suffering the Force Majeure Event must notify the other party immediately and take all reasonable steps to alleviate the effects of the Force Majeure Event. &nbsp;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="13">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                If the Force Majeure Event continues for more than 3 months then either party can elect to terminate the Agreement by 14 days notice in writing to the other party.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="14">
+                        <li class="c1 c2 c31">
+                            <span class="c11">
+                                ASSIGNMENT
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="14">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                The Operator shall not assign, sub-lease or otherwise transfer its rights or obligations under this Agreement. &nbsp;ECTV may assign the benefit of this Agreement to any third party without the consent of the Operator. &nbsp;If ECTV wishes to novate any of its obligations in this Agreement to a third party the Operator agrees to execute all documents necessary to effect such novation.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="15">
+                        <li class="c1 c2 c31">
+                            <span class="c11">
+                                NOTICES
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="15">
+                        <li class="c1 c2">
+                            <span class="c3">
+                                Any notice given in accordance with this Agreement shall be in writing and shall be sent to the address of the
+                            </span>
+                            <span class="c11">
+                                &nbsp;
+                            </span>
+                            <span class="c0">
+                                party set out in part 15 of Schedule 1.
+                            </span>
+                        </li>
+                        <li class="c1 c2">
+                            <span class="c0">
+                                All notices shall be delivered by hand, sent by a registered or recorded delivery letter or faxed. &nbsp;All notices shall be deemed to have been received when delivered by hand or if posted on the date on which they would have been received in the normal course of posting, or if faxed, on the date that the fax confirmation indicates the fax was sent.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="16">
+                        <li class="c1 c2 c31">
+                            <span class="c11">
+                                CONFIDENTIALITY
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="17">
+                        <li class="c1 c2">
+                            <span class="c3">
+                                Each party shall keep the terms of this Agreement and all other information relating to the business and affairs of the other party that is communicated to it by the other &nbsp; &nbsp;
+                                <br>
+                                confidential (&quot;
+                            </span>
+                            <span class="c11">
+                                Confidential Information
+                            </span>
+                            <span class="c0">
+                                &quot;) and will not disclose the Confidential Information to any person or entity except:
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-2 start" start="1">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                to its affiliated entities, auditors and professional advisers on a need to know basis;
+                            </span>
+                        </li>
+                        <li class="c1 c2">
+                            <span class="c0">
+                                with the prior written consent of the other party; or
+                            </span>
+                        </li>
+                        <li class="c1 c2">
+                            <span class="c0">
+                                where the Confidential Information is in the public domain, other than due to a breach of this clause by that party. &nbsp;
+                            </span>
+                        </li>
+                    </ol>
+                    <ol class="c7 lst-kix_list_37-1" start="18">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                Each party shall only use Confidential Information for the purposes of this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="19">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                The obligations in this clause shall endure for 3 years beyond termination or expiry of this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="17">
+                        <li class="c1 c2 c31">
+                            <span class="c11">
+                                MISCELLANEOUS
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="20">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                No waiver, express or implied, by either the Operator or ECTV of any breach of the provisions of this Agreement shall operate as a waiver of any preceding or succeeding breach of that provision or any other provision of this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="21">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                Nothing in this Agreement shall be deemed to constitute a partnership or joint venture between the parties. &nbsp;
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c9">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="22">
+                        <li class="c1 c2">
+                            <span class="c0">
+                                Neither party shall hold itself out as an agent for the other nor purport to bind the other in any way.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c29">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c1">
+                        <span class="c0">
+                            17.4 &nbsp; &nbsp;If any provision of these terms and conditions is held by any court or other competent authority to be invalid or unenforceable, these terms and conditions shall continue to be valid as to all the remaining provisions.
+                        </span>
+                    </p>
+                    <p class="c21 c24">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c25">
+                        <span class="c0">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Operator shall from time to time forthwith upon request from ECTV at its own expense do or procure the doing of all such acts and/or execute or procure the execution of all such documents in a form reasonably satisfactory to ECTV to give full effect and meaning to this Agreement.
+                        </span>
+                    </p>
+                    <p class="c21">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-0" start="18">
+                        <li class="c12 c31">
+                            <span class="c11">
+                                LAW AND EXTENT OF CONTRACT
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c21 c49">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="23">
+                        <li class="c12">
+                            <span class="c3">
+                                This Agreement contains the entire agreement between the parties with respect to its subject matter and supersedes all prior arrangements and agreements between the parties. &nbsp; This Agreement is executed in two language versions,
+                            </span>
+                            <span class="c3 c55">
+                                English and Ukrainian
+                            </span>
+                            <span class="c0">
+                                . In the event of any inconsistency between the two language versions, the English language version shall prevail.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c5">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="24">
+                        <li class="c12">
+                            <span class="c0">
+                                Any amendment to this Agreement must be in writing and signed by both parties.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c5">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <ol class="c7 lst-kix_list_37-1" start="25">
+                        <li class="c12">
+                            <span class="c0">
+                                This Agreement shall be governed by the laws of Ukraine and the parties submit to the jurisdiction of the courts of Ukraine in the event of any dispute arising with respect to this Agreement.
+                            </span>
+                        </li>
+                    </ol>
+                    <p class="c5">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c5">
+                        <span class="c0">
+                        </span>
+                    </p>
+                    <p class="c25 c46">
+                        <span class="c11">
+                            Signed by &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <span class="c30">
+                            Signed by
+                        </span>
+                    </p>
+                    <p class="c25 c46">
+                        <span class="c11">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </p>
+                    <p class="c25 c46">
+                        <span class="c11">
+                            &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <span class="c30">
+                            &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+                        </span>
+                    </p>
+                    <p class="c5">
+                        <span class="c6">
+                        </span>
+                    </p>
+                    <p class="c25 c46">
+                        <span class="c11">
+                            For and on behalf of ECTV &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        </span>
+                        <span class="c30">
+                            For and on behalf of __________________
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="c4">
+                <td class="c8" colspan="1" rowspan="1">
+                    <p class="c56 c41">
+                        <span class="c6">
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="c4">
+                <td class="c8" colspan="1" rowspan="1">
+                    <p class="c56 c41">
+                        <span class="c6">
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="c4">
+                <td class="c8" colspan="1" rowspan="1">
+                    <p class="c41 c56">
+                        <span class="c6">
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="c4">
+                <td class="c8" colspan="1" rowspan="1">
+                    <p class="c32 c41">
+                        <span class="c6">
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="c4">
+                <td class="c8" colspan="1" rowspan="1">
+                    <p class="c56 c41">
+                        <span class="c6">
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="c4">
+                <td class="c8" colspan="1" rowspan="1">
+                    <p class="c56 c41">
+                        <span class="c6">
+                        </span>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="c21">
+        <span class="c11">
+        </span>
+    </p>
+    <div>
+        <p class="c34">
+            <span class="c23">
+            </span>
+        </p>
+        <p class="c34">
+            <span class="c23">
+            </span>
+        </p>
+        <p class="c41 c58">
+            <span class="c59">
+            </span>
+        </p>
+    </div>
+</body>
+</html>

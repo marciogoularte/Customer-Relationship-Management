@@ -1,0 +1,150 @@
+﻿@using TVChannelsCRM.Web.Areas.Administration.ViewModels.Admin
+@model UserViewModel
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+<div class="row-fluid">
+    <div class="col-md-6">
+        <div>
+            <img src="~/Content/images/default-user.png" class="img-responsive col-md-8" id="profie-picture" />
+        </div>
+        <div>
+            <h3>@Model.FirstName @Model.SecondName</h3>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel-body inf-content">
+            <div>
+                <div>
+                    <hr />
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-responsive table-user-information">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-user"></span>
+                                            Username
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        @Model.UserName
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-cloud"></span>
+                                            Name
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        @if (Model.SecondName == null)
+                                        {
+                                            <span>@Model.FirstName @Model.LastName</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@Model.FirstName @Model.SecondName @Model.LastName</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-bookmark"></span>
+                                            Gender
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        @Model.Gender
+                                    </td>
+                                </tr>
+                                @if (Model.Town != null || Model.Country != null)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-plane"></span>
+                                                Town, Country
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            @if (Model.Town == null && Model.Country != null)
+                                            {
+                                                <span>@Model.Country</span>
+                                            }
+                                            else if (Model.Town != null && Model.Country == null)
+                                            {
+                                                <span>@Model.Town</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@Model.Town, @Model.Country</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-list-alt"></span>
+                                            Enterprise position
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        @Model.EnterprisePosition
+                                    </td>
+                                </tr>
+                                @if (Model.Website != null)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-globe"></span>
+                                                Website
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            @Model.Website
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.PhoneNumber != null)
+                                {
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-phone"></span>
+                                                Phone number
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            @Model.PhoneNumber
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                            Account created
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        @Model.CreatedOn
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    @Html.Action("CalendarScheduler", "Profile", new { userId = Model.Id })
+</div>

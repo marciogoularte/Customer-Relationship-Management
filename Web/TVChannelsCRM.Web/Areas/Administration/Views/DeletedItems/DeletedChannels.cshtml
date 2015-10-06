@@ -1,0 +1,159 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
+@model IEnumerable<string>
+@{
+    ViewBag.Title = "Deleted Channels";
+    const string controllerName = "DeletedItems";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/kendo")
+@Scripts.Render("~/bundles/jqueryval")
+
+<h2>Deleted Channels</h2>
+
+    @(Html.Kendo()
+          .Grid<ChannelViewModel>()
+         .Name("grid-deleted-channels")
+          .Columns(columns =>
+          {
+              columns.Bound(model => model.Name).Width(185);
+              columns.Bound(model => model.ReveivingOptions).Width(32).Hidden(true);
+              columns.Bound(model => model.SatelliteData).Width(32).Hidden(true);
+              columns.Bound(model => model.EpgSource).ClientTemplate("<a target='_blank' href='#=EpgSource#'>link</a>").Width(32).Hidden(true);
+              columns.Bound(model => model.Website).ClientTemplate("<a target='_blank' href='#=Website#'>link</a>").Width(170);
+              columns.Bound(model => model.Presentation).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Width(170);
+              columns.Bound(model => model.ContractTemplate).ClientTemplate("<a target='_blank' href='#=ContractTemplate#'>link</a>").Width(32).Hidden(true);
+              columns.Bound(model => model.LogoLink).ClientTemplate("<a target='_blank' href='#=LogoLink#'>link</a>").Width(32).Hidden(true);
+              columns.Bound(model => model.Comments).Width(275);
+              columns.Command(command => command.Custom("Restore").Click("showDetails"));
+          })
+          .ToolBar(toolBar =>
+          {
+              toolBar.Template(@<text>
+
+                                   @(Html.Kendo().AutoComplete()
+                                            .Name("searchbox-deleted-channels")
+                                         .Placeholder("Channel name... ")
+                                         .BindTo(Model)
+                                         .Filter("contains")
+                                         )
+                                   <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+                                   <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+                                </text>);
+          })
+          .Groupable()
+          .ColumnMenu()
+          .Filterable()
+          .Navigatable()
+          .Resizable(r => r.Columns(true))
+          .Reorderable(r => r.Columns(true))
+          .Events(ev => ev.Change("selectRow"))
+          .Editable(edit => edit.Mode(GridEditMode.PopUp))
+          .HtmlAttributes(new { @style = "word-break:break-all;" })
+          .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+          .Excel(excel => excel
+              .FileName("Deleted Channels Database.xlsx")
+              .Filterable(true)
+              .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+          )
+          .Pdf(pdf => pdf
+              .AllPages()
+             .FileName("Deleted Channels Database.pdf")
+              .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+          )
+          .Pageable(pageable => pageable
+              .Refresh(true)
+              .PageSizes(true)
+              .ButtonCount(5))
+          .Sortable(sort =>
+          {
+              sort.AllowUnsort(false);
+              sort.SortMode(GridSortMode.SingleColumn);
+          })
+          .DataSource(data =>
+          {
+              data.Ajax()
+                .Model(model => model.Id(c => c.Id))
+                .PageSize(10)
+                .ServerOperation(true)
+                .Events(ev => ev.Error("errorAlert"))
+                   .Read(read => read.Action("ReadDeletedChannels", controllerName).Data("addSearchChannels")); 
+          }))
+<div id="selected">
+</div>
+
+@(Html.Kendo().Window().Name("restore-channel-box")
+    .Title("Restore channel")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .Width(300)
+)
+
+<script type="text/x-kendo-template" id="channels-template">
+    <div id="channels-restore-container">
+        <h4>Are you sure that you want to restore that channel?</h4>
+        <button id="restore-channel-button" class="btn btn-primary">Restore</button>
+    </div>
+</script>
+
+<script>
+    function onAdditionalDataChannels() {
+        return {
+            text: $("#searchbox-deleted-channels").val()
+        };
+    }
+
+    function addSearchChannels() {
+        return { searchboxDeletedChannels: $('#searchbox-deleted-channels').val() };
+    }
+
+    $('#searchbox-deleted-channels').keyup(function () {
+        $('#grid-deleted-channels').data('kendoGrid').dataSource.read();
+    });
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+
+    var detailsTemplate = kendo.template($("#channels-template").html());
+    var dataItem;
+
+    function showDetails(e) {
+        e.preventDefault();
+
+        dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var wnd = $("#restore-channel-box").data("kendoWindow");
+
+        wnd.content(detailsTemplate(dataItem));
+        wnd.center().open();
+    }
+
+    $(document).on('click', '#restore-channel-button', function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ConfirmRestoreChannel", "DeletedItems")',
+            data: { channelId: dataItem.Id.toString() },
+            datatype: "JSON",
+            success: function () {
+                var grid = $("#grid-deleted-channels").data("kendoGrid");
+                grid.dataSource.fetch();
+                var wnd = $("#restore-channel-box").data("kendoWindow");
+                wnd.close();
+            }
+        });
+    });
+</script>

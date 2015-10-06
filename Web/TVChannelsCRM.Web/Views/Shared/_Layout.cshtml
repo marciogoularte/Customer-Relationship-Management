@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - CRM</title>
+
+    @* Import style bundles*@
+    @*@Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")*@
+
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
+
+    @* Import main jquery bundle and modernizr*@
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")*@
+
+    <script type="text/javascript" src="~/Scripts/kendo/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/modernizr-2.8.3.min.js"></script>
+
+    @* Resources for bootstrap metro theme *@
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext" rel="stylesheet" type="text/css" />
+    @*@Styles.Render("~/Content/bootstrap-theme-metro")*@
+
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/elfinder.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/elfinder.theme.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/font-awesome-ie7.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/fullcalendar.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/glyphicons.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/halflings.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/ie.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/ie9.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/jquery-ui-1.8.21.custom.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/jquery.cleditor.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/jquery.iphone.toggle.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/jquery.noty.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/noty_theme_default.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/style-forms.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/style-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/uniform.default.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-styles/uploadify.css" />
+</head>
+<body>
+    <!-- start: Header -->
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">
+                    <span>Customer Relationship Management</span>
+                </a>
+
+                <!-- start: Header Menu -->
+                <div class="nav-no-collapse header-nav">
+                    <ul class="nav pull-right">
+                        <li class="dropdown hidden-phone">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="halflings-icon white warning-sign"></i>
+                            </a>
+                            <ul class="dropdown-menu notifications">
+                                <li class="dropdown-menu-title">
+                                    <span>You have 11 notifications</span>
+                                    <a href="#refresh">
+                                        <i class="icon-repeat"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon blue"><i class="icon-user"></i></span>
+                                        <span class="message">New user registration</span>
+                                        <span class="time">1 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon green"><i class="icon-comment-alt"></i></span>
+                                        <span class="message">New comment</span>
+                                        <span class="time">7 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon green"><i class="icon-comment-alt"></i></span>
+                                        <span class="message">New comment</span>
+                                        <span class="time">8 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon green"><i class="icon-comment-alt"></i></span>
+                                        <span class="message">New comment</span>
+                                        <span class="time">16 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon blue"><i class="icon-user"></i></span>
+                                        <span class="message">New user registration</span>
+                                        <span class="time">36 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon yellow"><i class="icon-shopping-cart"></i></span>
+                                        <span class="message">2 items sold</span>
+                                        <span class="time">1 hour</span>
+                                    </a>
+                                </li>
+                                <li class="warning">
+                                    <a href="#">
+                                        <span class="icon red"><i class="icon-user"></i></span>
+                                        <span class="message">User deleted account</span>
+                                        <span class="time">2 hour</span>
+                                    </a>
+                                </li>
+                                <li class="warning">
+                                    <a href="#">
+                                        <span class="icon red"><i class="icon-shopping-cart"></i></span>
+                                        <span class="message">New comment</span>
+                                        <span class="time">6 hour</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon green"><i class="icon-comment-alt"></i></span>
+                                        <span class="message">New comment</span>
+                                        <span class="time">yesterday</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon blue"><i class="icon-user"></i></span>
+                                        <span class="message">New user registration</span>
+                                        <span class="time">yesterday</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-menu-sub-footer">
+                                    <a>View all notifications</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- start: Notifications Dropdown -->
+                        <li class="dropdown hidden-phone">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="halflings-icon white tasks"></i>
+                            </a>
+                            <ul class="dropdown-menu tasks">
+                                <li class="dropdown-menu-title">
+                                    <span>You have 17 tasks in progress</span>
+                                    <a href="#refresh">
+                                        <i class="icon-repeat"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="header">
+                                            <span class="title">iOS Development</span>
+                                            <span class="percent"></span>
+                                        </span>
+                                        <div class="taskProgress progressSlim red">80</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="header">
+                                            <span class="title">Android Development</span>
+                                            <span class="percent"></span>
+                                        </span>
+                                        <div class="taskProgress progressSlim green">47</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="header">
+                                            <span class="title">ARM Development</span>
+                                            <span class="percent"></span>
+                                        </span>
+                                        <div class="taskProgress progressSlim yellow">32</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="header">
+                                            <span class="title">ARM Development</span>
+                                            <span class="percent"></span>
+                                        </span>
+                                        <div class="taskProgress progressSlim greenLight">63</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="header">
+                                            <span class="title">ARM Development</span>
+                                            <span class="percent"></span>
+                                        </span>
+                                        <div class="taskProgress progressSlim orange">80</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-menu-sub-footer">View all tasks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end: Notifications Dropdown -->
+                        <!-- start: Message Dropdown -->
+                        <li class="dropdown hidden-phone">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="halflings-icon white envelope"></i>
+                            </a>
+                            <ul class="dropdown-menu messages">
+                                <li class="dropdown-menu-title">
+                                    <span>You have 9 messages</span>
+                                    <a href="#refresh">
+                                        <i class="icon-repeat"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
+                                        <span class="header">
+                                            <span class="from">
+                                                Dennis Ji
+                                            </span>
+                                            <span class="time">
+                                                6 min
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
+                                        <span class="header">
+                                            <span class="from">
+                                                Dennis Ji
+                                            </span>
+                                            <span class="time">
+                                                56 min
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
+                                        <span class="header">
+                                            <span class="from">
+                                                Dennis Ji
+                                            </span>
+                                            <span class="time">
+                                                3 hours
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
+                                        <span class="header">
+                                            <span class="from">
+                                                Dennis Ji
+                                            </span>
+                                            <span class="time">
+                                                yesterday
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
+                                        <span class="header">
+                                            <span class="from">
+                                                Dennis Ji
+                                            </span>
+                                            <span class="time">
+                                                Jul 25, 2012
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-menu-sub-footer">View all messages</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end: Message Dropdown -->
+                        <li>
+                            <a class="btn" href="#">
+                                <i class="halflings-icon white wrench"></i>
+                            </a>
+                        </li>
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+                <!-- end: Header Menu -->
+
+            </div>
+        </div>
+    </div>
+    <!-- start: Header -->
+
+    <div class="container-fluid-full" style="margin-top: 40px;">
+        <div class="row-fluid">
+
+            <!-- start: Main Menu -->
+            <div id="sidebar-left" class="span2">
+                <div class="nav-collapse sidebar-nav">
+                    <ul class="nav nav-tabs nav-stacked main-menu">
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                        <li>
+                            <a href="@Url.Action("Index", "Activities", new {area = "Administration"})">
+                                <i class="icon-bar-chart"></i><span class="hidden-tablet"> Last activities</span>
+                            </a>
+                        </li>
+                        }
+                        <li>
+                            <a href="@Url.Action("Index", "Profile", new {area = "Users"})">
+                                <i class="icon-eye-open"></i><span class="hidden-tablet"> Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropmenu" href="#">
+                                <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Contractors</span><span class="label label-important"> 2 </span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Index", "Providers", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Index", "Clients", new {area = "Users"})">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropmenu" href="#">
+                                <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Additional</span><span class="label label-important"> 1 </span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Index", "TypeOfCompanies", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Type of Company</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                        <li>
+                            <a class="dropmenu" href="#">
+                                <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Administration</span><span class="label label-important"> 2 </span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Index", "Admin", new { area = "Administration" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Employees</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropmenu" href="#">
+                                        <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Deleted items</span><span class="label label-important"> 2 </span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedClients", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedProviders", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedChannels", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Channels</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedClientContracts", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients contracts</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedProviderContracts", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers contracts</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedDiscussions", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Discussions</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="submenu" href="@Url.Action("DeletedInvoices", "DeletedItems", new { area = "Administration" })">
+                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Invoices</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        }
+                    <li>
+                        <a href="@Url.Action("Index", "Feedbacks", new {area = "Users"})">
+                            <i class="icon-eye-open"></i><span class="hidden-tablet"> Send Feedback</span>
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end: Main Menu -->
+
+            <noscript>
+                <div class="alert alert-block span10">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>
+                        You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.
+                    </p>
+                </div>
+            </noscript>
+
+            <!-- start: Content -->
+            <div id="content" class="span10">
+                @RenderBody()
+
+
+
+
+            </div><!--/.fluid-container-->
+            <!-- end: Content -->
+        </div><!--/#content.span10-->
+    </div><!--/fluid-row-->
+
+    <div class="modal hide fade" id="myModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h3>Settings</h3>
+        </div>
+        <div class="modal-body">
+            <p>Here settings can be configured...</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <footer>
+        <p>
+            <span style="float: left; text-align: left;">&copy; 2015 <a href="http://jiji262.github.io/Bootstrap_Metro_Dashboard/" alt="Bootstrap_Metro_Dashboard">Made by: <i>Nikolay Dermendzhiev</i></a></span>
+
+        </p>
+    </footer>
+
+    @*@Scripts.Render("~/bundles/bootstrap-theme-metro")*@
+
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery-migrate-1.0.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery-ui-1.10.0.custom.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.ui.touch-punch.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/modernizr.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/excanvas.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.flot.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.flot.stack.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.chosen.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.cleditor.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.noty.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.elfinder.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.raty.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.iphone.toggle.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.uploadify-3.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.gritter.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.imagesloaded.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.knob.modified.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/counter.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/retina.js"></script>
+    <script type="text/javascript" src="~/Scripts/theme-scripts/custom.js"></script>
+
+    @* Kendo UI *@
+    @*@Styles.Render("~/Content/kendo")
+    @Scripts.Render("~/bundles/kendo")*@
+    <link rel="stylesheet" type="text/css" href="~/Content/kendo/kendo.common.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/kendo/kendo.common-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/kendo/kendo.flat.min.css" />
+
+    <script type="text/javascript" src="~/Scripts/kendo/kendo.all.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/kendo/pako_deflate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/kendo/jszip.min.js"></script>
+
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

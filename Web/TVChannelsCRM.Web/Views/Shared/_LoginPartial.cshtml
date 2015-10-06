@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+
+@*@Scripts.Render("~/bundles/bootstrap")*@
+<script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Scripts/respond.min.js" type="text/javascript"></script>
+
+<li class="dropdown">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="halflings-icon white user"></i> @this.User.Identity.GetUserName()
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="dropdown-menu-title">
+            <span>Account Settings</span>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Profile", new {area = "Users"})"><i class="halflings-icon user"></i> Profile</a>
+        </li>
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Account", new {area = ""}, FormMethod.Post, new {id = "logoutForm"}))
+            {
+                @Html.AntiForgeryToken()
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()"><i class="halflings-icon off"></i> Logout</a>
+                </li>
+            }
+        }
+    </ul>
+</li>

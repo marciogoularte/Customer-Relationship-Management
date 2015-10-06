@@ -1,0 +1,57 @@
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Feedbacks
+@model FeedbackViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Send feedback</h2>
+
+<div class="alert alert-warning" role="alert">
+    You have some problem or you saw some bug? You want to add, modify, remove something or just add a new function? Here is the place where you can notify developer for all you want and all your requirements.
+</div>
+
+@using (Html.BeginForm("SendEmail", "Feedbacks", FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        <strong>
+            Please write your name:
+        </strong>
+        @Html.LabelFor(m => m.From)
+
+        @Html.TextBoxFor(m => m.From, new { placeholder = "example: Nikolay" })
+        @Html.ValidationMessageFor(m => m.From)
+    </div>
+    <div class="form-group">
+        <strong>  Please write the main topic of your feedback</strong>
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { placeholder = "example: Add new field" })
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+    <div class="form-group">
+        <strong>
+            Please give a name of table which you will require to be modified(if possible with full path)
+        </strong>
+        @Html.LabelFor(m => m.Table)
+        @Html.TextBoxFor(m => m.Table, new { placeholder = "example: Clients, Clients/Contracts/Invoices" })
+        @Html.ValidationMessageFor(m => m.Table)
+    </div>
+    <div class="form-group">
+        <strong>
+            Please give a link to table which you will require to modify
+        </strong>
+        @Html.LabelFor(m => m.TableLink)
+        @Html.TextAreaFor(m => m.TableLink, new { placeholder = "example: http://tvchannelscrm.apphb.com/Users/Providers/Index" })
+        @Html.ValidationMessageFor(m => m.TableLink)
+    </div>
+    <div class="form-group">
+        <strong>
+            Please give your feedback with more details as you can
+        </strong>
+        @Html.LabelFor(m => m.Message)
+        @Html.TextAreaFor(m => m.Message)
+        @Html.ValidationMessageFor(m => m.Message)
+    </div>
+    <button type="submit" class="btn btn-default">Send email</button>
+}
