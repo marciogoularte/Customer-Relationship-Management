@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
 
 @{
@@ -10,19 +9,9 @@
         typeOfCompanies.AddRange(typeOfCompaniesVm);
     }
 }
-=======
-﻿@using TVChannelsCRM.Common.Extensions
-@using TVChannelsCRM.Data.Models
-@model TypeOfCompany
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
 @(Html.Kendo().DropDownListFor(m => m)
         .DataTextField("Text")
         .DataValueField("Value")
-<<<<<<< HEAD
          .BindTo(typeOfCompanies)
 )
-=======
-        .BindTo(KendoGridExtensions.EnumToSelectList(typeof(TypeOfCompany)))
-)
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8

@@ -1,1624 +1,1595 @@
-﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Trds
+﻿@using TVChannelsCRM.Common.Extensions
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.Trds
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Invoices
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.TypeOfCompanies
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+@using System.Globalization
 @model ClientContractViewModel
 @{
     Layout = null;
 
     var client = (ClientViewModel)ViewBag.Client;
     var provider = (ProviderViewModel)ViewBag.Provider;
-    var invoices = (List<InvoiceViewModel>)ViewBag.Invoices;
-    var trds = (List<TrdViewModel>)ViewBag.Trds;
-    var channels = (List<ChannelViewModel>)ViewBag.Channels;
+    var invoices = (List<InvoiceViewModel>
+    )ViewBag.Invoices;
+    var trds = (List<TrdViewModel>
+        )ViewBag.Trds;
+        var channels = (List<ChannelViewModel>
+            )ViewBag.Channels;
+            var type = (TypeOfCompanyViewModel)ViewBag.ClientContractType;
 
-    var time = DateTime.Now;
-    string format = "dd.MM.yyyy";
-}
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <link rel="stylesheet" href="~/Content/contracts/fishing.css" type="text/css" />
-</head>
-
-<body class="c52 c58">
-    <p class="c12 c39 c62">
-        <span class="c4 c5">
-            DISTRIBUTION AGREEMENT
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            &nbsp;(hereinafter referred to as &bdquo;
-        </span>
-        <span class="c4 c5">
-            Agreement
-        </span>
-        <span class="c4">
-            &rdquo;)
-        </span>
-        <span class="c4 c5">
-            &nbsp;
-        </span>
-        <span class="c4">
-            concluded by and between
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c5 c13">
-            SC FISHING&amp;HUNTING TEMATIC SRL (
-        </span>
-        <span class="c4">
-            seat
-        </span>
-        <span class="c28">
-            Oradea,
-        </span>
-        <span class="c4">
-            str.C&#259;l&#259;ra&#351;ilor, nr. 15/A, Jude&#355;ul Bihor, Romania, registration number: J05/433/2014, tax number: RO32921259 represented by: Nicoleta Szabo -Morar) as supplier (hereinafter referred to as &bdquo;
-        </span>
-        <span class="c4 c5 c13">
-            PROGRAMME SERVICE PROVIDER
-        </span>
-        <span class="c4">
-            &rdquo;)
-        </span>
-    </p>
-    <p class="c0 c16">
-        <span class="c1">
-            and &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        </span>
-    </p>
-    <p class="c0 c16">
-        <span class="c26 c31 c5">
-            @client.NameBulgarian
-        </span>
-        <span class="c5 c24">
-            &nbsp;
-        </span>
-        <span class="c26 c31 c5">
-            @client.TypeInBulgarian
-        </span>
-        <span class="c24 c5">
-            , &nbsp;
-        </span>
-        <span class="c26 c31 c5">
-            @client.ResidenceAndAddress
-        </span>
-        <span class="c24 c5">
-            , with registration number
-        </span>
-        <span class="c26 c31 c5">
-            @client.Uic
-        </span>
-        <span class="c24 c5">
-            , VatNo:
-        </span>
-        <span class="c24 c36">
-            &nbsp;
-        </span>
-        <span class="c26 c31 c5">
-            @client.Vat
-        </span>
-        <span class="c24 c36">
-            , Bulgaria represented by
-        </span>
-        <span class="c26 c5 c31">
-            @client.Management
-        </span>
-        <span class="c24 c36">
-            ,
-        </span>
-        <span class="c24 c36">
-            &nbsp;
-        </span>
-        <span class="c1">
-            (hereinafter referred to as &bdquo;
-        </span>
-        <span class="c4 c5">
-            OPERATOR
-        </span>
-        <span class="c1">
-            &rdquo;),
-        </span>
-    </p>
-    <p class="c12 c10 c39">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c9">
-        <span class="c4">
-            (
-        </span>
-        <span class="c4 c13">
-            PROGRAMME SERVICE PROVIDER
-        </span>
-        <span class="c4">
-            &nbsp;and OPERATOR hereinafter are jointly referred to as &bdquo;
-        </span>
-        <span class="c4 c5">
-            Parties
-        </span>
-        <span class="c4">
-            &rdquo;, individually as &bdquo;
-        </span>
-        <span class="c4 c5">
-            Party
-        </span>
-        <span class="c4">
-            &rdquo;)
-        </span>
-    </p>
-    <p class="c6">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            With the following conditions:
-        </span>
-    </p>
-    <p class="c12 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            DEFINITIONS
-        </span>
-    </h1>
-    <p class="c12 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5 c13">
-            AGREEMENT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c13">
-            shall mean the agreement between
-        </span>
-        <span class="c4 c13">
-            &nbsp;PROGRAMME SERVICE PROVIDER
-        </span>
-        <span class="c4 c13">
-            and
-        </span>
-        <span class="c4 c13">
-            &nbsp;OPERATOR,
-        </span>
-        <span class="c4 c13">
-            including its annexes, entered into
-        </span>
-        <span class="c4 c13">
-            &nbsp;
-        </span>
-        <span class="c4">
-            in relation to the distribution of the PROGRAMME
-        </span>
-        <span class="c4 c13">
-            .
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5 c13">
-            BASIC TIER
-        </span>
-        <span class="c4 c13">
-            :
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c13">
-            means the TIER subscribed to by the most numerous group of SUBSCRIBERS on the relevant TRANSMISSION SYSTEM, save that where a TRANSMISSION SYSTEM is required by any relevant law or regulation to carry certain public interest programme services as a separate tier (life-line tier), BASIC TIER shall mean that TIER subscribed to by the second most numerous group of SUBSCRIBERS on such TRANSMISSION SYSTEM;
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            CABLE-SYSTEM
-        </span>
-        <span class="c4">
-            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            means the cable systems (whether fibre, wire or co-axial cable or a combination thereof, or any other technical solution), owned and/or operated by the OPERATOR in the TERRITORY for the digital and/or analogue transmission of television-programme services.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            DTH-
-        </span>
-        <span class="c4 c5">
-            SYSTEM
-        </span>
-        <span class="c4">
-            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean any direct broadcast satellite (&ldquo;DBS&rdquo;) or direct-to-home (&ldquo;DTH&rdquo;) television service systems used to distribute programme content to home television sets
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            EXTENDED BASIC TIER (EBS):
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            means the TIER subscribed to by the next most numerous group of SUBSCRIBERS after the BASIC TIER
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            EPG:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean Electronic Programme Guide.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            HEAD-END(S):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean the head-end(s) as set out in Section 5 of the present AGREEMENT.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            HOTEL SUBSCRIBER &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean any business entity, business unit, association or other organisation providing accommodation services as a main activity and operating premises for multiple accommodation (including but not limited to hotels, ships, prisons, hospitals and any premises other than a private dwelling which contains rooms provided or available as temporary or permanent accommodation) which is capable of and entitled to the reception of the PROGRAMME in its rooms by virtue of a contract or arrangement with the OPERATOR. Subscription fee for HOTEL SUBSCRIBERS shall be calculated according to the number of rooms, each room counting as an individual subscriber.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            OPERATOR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean the PARTY distributing the PROGRAMME through its HEAD-END(s) &ndash; irrespectively of the technology applied &ndash; on the CABLE-SYSTEM, or on the DTH-SYSTEM, in the TERRITORY, in the TIER.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            PARTIES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean
-        </span>
-        <span class="c4">
-            &nbsp;PROGRAMME SERVICE PROVIDER AND OPERATOR
-        </span>
-        <span class="c4">
-            together.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            PARTY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean either the PROGRAMME SERVICE PROVIDER or the OPERATOR.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            PROGRAMME SERVICE PROVIDER
-        </span>
-        <span class="c4">
-            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c5">
-            S.C. Fishing &amp;Hunting Tematic SRL
-        </span>
-        <span class="c4">
-            (seat
-        </span>
-        <span class="c28">
-            Oradea,
-        </span>
-        <span class="c4">
-            str. C&#259;l&#259;ra&#351;ilor, nr. 15/A, Jude&#355;ul Bihor, Romania, registration number: J05/433/2014, tax number: RO32921259)
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            PROGRAMME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the television programme services provided under the AGREEMENT as set out under Section 2 of present Agreement.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5 c13">
-            PROMOTIONAL POSTS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c13">
-            Registered seat, branch offices, head-ends and customer service units of OPERATOR
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            PVR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Personal Video Recorder, a recording equipment or service controlled by the SUBSCRIBER.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            RESIDENTIAL SUBSCRIBER
-        </span>
-        <span class="c4 c5">
-            :
-        </span>
-        <span class="c4 c5">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean a
-        </span>
-        <span class="c4 c13">
-            person who is entitled to receive Programme by virtue of a contract.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5 c13">
-            SERVICE PACKAGE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean an offer that consists of more than one service (audio, internet, television programme, optional and value-added service elements, variations of such services), where the
-        </span>
-        <span class="c4">
-            TIER
-        </span>
-        <span class="c4">
-            &nbsp;including the
-        </span>
-        <span class="c4">
-            PROGRAMME
-        </span>
-        <span class="c4">
-            &nbsp;is distributed by the
-        </span>
-        <span class="c4">
-            OPERATOR
-        </span>
-        <span class="c4">
-            &nbsp;as part thereof.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            STB:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean Set-Top-Box, access control device.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            SUBSCRIBER:
-        </span>
-        <span class="c4 c5">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean RESIDENTIAL SUBSCRIBER, and HOTEL SUBSCRIBER
-        </span>
-        <span class="c4">
-            .
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            TELEVISION PROGRAMME:
-        </span>
-        <span class="c4">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the television programme service provided under the AGREEMENT as described under clause 2.1
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c5">
-            TIER:
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            a tier of television programmes offered and distributed by the OPERATOR via its TRANSMISSION SYSTEM or DTH-SYSTEM to SUBSCRIBERS, based on an effective subscriber agreement.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c5">
-            TERRITORY
-        </span>
-        <span class="c4">
-            :
-        </span>
-        <span class="c4 c5">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean the territory of Bulgaria.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4 c5">
-            TRANSMISSION SYSTEM:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            means the transmission system &ndash; irrespectively of the applied technical solution &ndash; owned and/or operated by the OPERATOR, including the DTH-SYSTEM.
-        </span>
-    </p>
-    <p class="c0 c2">
-        <span class="c4 c5">
-            THEMATIC TIER:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            shall mean a programme tier offered by the OPERATOR to SUBSCRIBERS already subscribed to the TIER and consisting of extra television programme services in addition to those included in the TIER.
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0 c41">
-        <span class="c4 c5">
-            SUBJECT
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Distribution of the television programme currently known as &bdquo;
-        </span>
-        <span class="c28 c5">
-            The Fishing and Hunting Channel
-        </span>
-        <span class="c4">
-            &rdquo;
-        </span>
-    </p>
-    <p class="c0 c41 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0 c41">
-        <span class="c4 c5">
-            TERM
-        </span>
-    </p>
-    <p class="c25 c39 c45">
-        <span class="c4">
-            The present AGREEMENT shall be effective from 1 July 2015 until 30 June 2017 and shall be automatically extended with one further year unless either Party terminates the AGREEMENT with a written notice to the other Party until 60 days before the last day of the TERM.
-        </span>
-    </p>
-    <p class="c0 c41 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0 c41">
-        <span class="c4 c5">
-            LICENSE FEE
-        </span>
-    </p>
-    <p class="c0 c41">
-        <span class="c4">
-            In case of RESIDENTIAL and HOTEL SUBSCRIBERS
-        </span>
-        <span class="c4 c5">
-            &nbsp;
-        </span>
-        <span class="c4">
-            (
-        </span>
-        <span class="c4">
-            in Euro + VAT / month / subscriber)
-        </span>
-        <span class="c4 c5">
-            &nbsp;
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c9 c17">
-        <span class="c4 c5">
-            @Model.Tier.ToString()
-        </span>
-    </p>
-    <p class="c6 c17">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c9">
-        <span class="c37 c5">
-            0
-        </span>
-        <span class="c4">
-            &nbsp;
-        </span>
-        <span class="c4">
-            + taxes if applicable / month / subscriber.
-        </span>
-    </p>
-    <p class="c6">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c9 c63">
-        <span class="c1">
-            Monthly Minimum Guarantee:
-        </span>
-        <span class="c23 c5">
-            <br />
-            @foreach (var invoice in invoices)
-            {
-                @: From: @invoice.From To: @invoice.To Mg Subs: @invoice.MgSubs Cps @invoice.Cps
-                <br />
+            var time = DateTime.Now;
+            string format = "dd.MM.yyyy";
             }
-        </span>
-    </p>
-    <p class="c12 c38">
-        <span class="c4">
-            Payment period: &nbsp;
-        </span>
-        <span class="c4">
-            Quarterly - @client.Frequency
-        </span>
-    </p>
-    <p class="c10 c12">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c12">
-        <span class="c4">
-            The License Fee is payable within 15 days from the date of the receipt of the invoice
-        </span>
-    </p>
-    <p class="c12 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0 c44">
-        <span class="c4">
-            For the avoidance of doubt, the Parties acknowledge that the licence fee is a royalty which is the consideration payable for the transmission and distribution of the PROGRAMME falling under copyright protection.
-        </span>
-    </p>
-    <p class="c0 c10 c44">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The PROGRAMME SERVICE PROVIDER must issue an invoice regarding the licence fee following the relevant month, which invoice must include all considerations and fees payable by the OPERATOR to the PROGRAMME SERVICE PROVIDER on the basis of present AGREEMENT. The Parties agree that the completion date in respect of each relevant month is the deadline for the provision of the subscribers&rsquo; report, i.e. the tenth (10
-        </span>
-        <span class="c7">
-            th
-        </span>
-        <span class="c4">
-            ) day following each month. &nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Should the OPERATOR not provide the PROGRAMME SERVICE PROVIDER with the subscribers&rsquo; report in due time, the PROGRAMME SERVICE PROVIDER shall be entitled to issue its invoice on the basis of the number of subscribers of the month preceding the relevant month, not affecting its right for the entire licence fee. The PROGRAMME SERVICE PROVIDER shall be entitled to include the unpaid amount of the due licence fee into any of its subsequent invoices. &nbsp;
-        </span>
-    </p>
-    <p class="c0 c16 c43">
-        <span class="c1">
-            The Parties agree that if the invoiced number of subscribers in respect of the subject month exceeds the actual number of subscribers, the OPERATOR shall be entitled to reclaim the additional fee invoiced and the PROGRAMME SERVICE PROVIDER shall be obliged to issue a credit note in that regard. The Parties agree that, in this case, the OPERATOR shall not be entitled for interest payment.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall be obliged to pay the invoiced amount to the PROGRAMME SERVICE PROVIDER via bank transfer within fifteen (15) days following the receipt of the invoice. ( quarterly)
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            In the case of default in the payment obligations of the OPERATOR, including the case of reporting a lower number of subscribers than the actual number of subscribers, the OPERATOR shall be obliged to pay a default interest in accordance with the provisions of the Romanian Civil Code.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The payment of the licence fee set out in this clause does not exempt the OPERATOR from any other payment obligation arising from legal regulations or authorities&rsquo; decisions etc. related to the distribution of the PROGRAMME, including but not limited to the license fees payable to any society of authors or performers.&nbsp;
-        </span>
-    </p>
-    <p class="c0 c44 c51">
-        <span class="c4 c5">
-            HEAD-ENDS
-        </span>
-        <span class="c4 c5">
-            on which &ldquo;
-        </span>
-        <span class="c28 c5">
-            The Fishing and Hunting Channel
-        </span>
-        <span class="c4 c5">
-            &rdquo; shall be distributed:
-        </span>
-    </p>
-    <p class="c6">
-        <span class="c20">
-        </span>
-    </p>
-    <a href="#" name="92d85ad3b662289b67078cde1308572aa548acec">
-    </a>
-    <a href="#" name="0">
-    </a>
-    <table cellpadding="0" cellspacing="0" class="c29">
-        <tbody>
-            <tr class="c48">
-                <td class="c57" colspan="1" rowspan="1">
-                    <p class="c9 c14">
-                        <span class="c47">
-                            Adress
-                        </span>
-                    </p>
-                </td>
-                <td class="c59" colspan="1" rowspan="1">
-                    <p class="c9 c14">
-                        <span class="c47">
-                            Decoder number
-                        </span>
-                    </p>
-                </td>
-                <td class="c27" colspan="1" rowspan="1">
-                    <p class="c9 c14">
-                        <span class="c47">
-                            SIM card number
-                        </span>
-                    </p>
-                </td>
-                <td class="c46" colspan="1" rowspan="1">
-                    <p class="c9 c14">
-                        <span class="c47">
-                            Package
-                        </span>
-                    </p>
-                </td>
-                <td class="c60" colspan="1" rowspan="1">
-                    <p class="c9 c14">
-                        <span class="c47">
-                            Number of Households
-                        </span>
-                    </p>
-                </td>
-                <td class="c49" colspan="1" rowspan="1">
-                    <p class="c9 c14">
-                        <span class="c47">
-                            Starting day
-                        </span>
-                    </p>
-                </td>
-                <td class="c18" colspan="1" rowspan="1">
-                    <p class="c9 c14">
-                        <span class="c47">
-                            Payable from
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            @if (trds != null && trds.Any())
-            {
-                foreach (var trd in trds)
-                {
-                    <tr class="c48">
-                        <td class="c57" colspan="1" rowspan="1">
-                            <p class="c6 c14">
-                                <span class="c20 c19 c13">
-                                </span>
-                            </p>
-                        </td>
-                        <td class="c59" colspan="1" rowspan="1">
-                            <p class="c6 c14">
-                                <span class="c20 c19 c13">
-                                    @trd.Decoder
-                                </span>
-                            </p>
-                        </td>
-                        <td class="c27" colspan="1" rowspan="1">
-                            <p class="c6 c14">
-                                <span class="c20 c19 c13">
-                                    @trd.Sim
-                                </span>
-                            </p>
-                        </td>
-                        <td class="c46" colspan="1" rowspan="1">
-                            <p class="c6 c14">
-                                <span class="c20 c19 c13">
-                                    @Model.Tier.ToString()
-                                </span>
-                            </p>
-                        </td>
-                        <td class="c60" colspan="1" rowspan="1">
-                            <p class="c6 c14">
-                                <span class="c20 c19 c13">
-                                </span>
-                            </p>
-                        </td>
-                        <td class="c49" colspan="1" rowspan="1">
-                            <p class="c6 c14">
-                                <span class="c20 c19 c13">
-                                </span>
-                            </p>
-                        </td>
-                        <td class="c18" colspan="1" rowspan="1">
-                            <p class="c6 c14">
-                                <span class="c20 c19 c13">
-                                </span>
-                            </p>
-                        </td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
-    <p class="c6">
-        <a name="h.gjdgxs">
-        </a>
-    </p>
-    <h1 class="c9 c25 c68">
-        <span class="c4 c5">
-            RIGHTS AND OBLIGATIONS OF THE OPERATOR
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall be granted with the non-exclusive right to distribute and shall be obliged to distribute the PROGRAMME through the HEAD-END(s) of the CABLE-SYSTEM or the DTH-SYSTEM, in the TERRITORY to the SUBSCRIBERS within the TIER, but not as PAY-TV.
-        </span>
-    </p>
-    <p class="c0 c54">
-        <span class="c4">
-            The OPERATOR shall be entitled to distribute the PROGRAMME in a THEMATIC TIER with the prior written approval of the
-        </span>
-        <span class="c4">
-            PROGRAMME SERVICE PROVIDER.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            THE OPERATOR
-        </span>
-        <span class="c4">
-            shall be entitled to the digital distribution of the PROGRAMME, to the same subscribers and in parallel with the analogue distribution (simulcasting). The OPERATOR shall be entitled to provide PVR services either as a network service or by STB.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall be entitled to distribute the PROGRAMME in the languages and/or with the subtitles provided by the PROGRAMME SERVICE PROVIDER.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall be entitled to provide EPG services to the SUBSCRIBER.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall be entitled to the simultaneous, unchanged and analogue distribution of the PROGRAMME &ndash; including the distribution of any titles, logo and subtitles, without any restrictions &ndash; as a single separate channel to the SUBSCRIBER. However, the OPERATOR shall not be entitled to edit, supplement, cut, modify, interrupt, record, etc. the PROGRAMME, subject to the exceptions set out in this AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            In the case of digital distribution, the OPERATOR shall encode the PROGRAMME by a secure encoding system. The OPERATOR &ndash; irrespectively to the technology applied &ndash; shall make all necessary steps to ensure that the PROGRAMME shall only be received by SUBSCRIBERS who have valid subscription to the PROGRAMME.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            In the case of digital distribution, the OPERATOR shall make all necessary steps to prevent any unauthorized decryption of the PROGRAMME in digital form. In the case of digital distribution, the OPERATOR undertakes not to grant any permission or licence to SUBSCRIBERS to the redistribution of the PROGRAMME. The OPERATOR undertakes to apply and operate only such technologies, equipment and device that comply with the industrial standards, and that provides effective protection of the PROGRAMME secured with HDCP technology.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall promptly notify the PROGRAMME SERVICE PROVIDER, if it becomes aware that any third person accessed, distributed or copied the PROGRAMME, or any programme being part of the PROGRAMME. In any such case, the OPERATOR shall co-operate with the PROGRAMME SERVICE PROVIDER in order to act against such third person.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Upon the termination of this AGREEMENT the OPERATOR shall return the Smart Cards in an undamaged (apart from damages resulting from proper use), operable condition to the PROGRAMME SERVICE PROVIDER, within five (5) business days. The OPERATOR shall bear liability for all damages arising from the improper use of the Smart Card.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Within ten (10) days following the end of each calendar month the OPERATOR shall send a subscribers report to the PROGRAMME SERVICE PROVIDER. The subscribers report shall indicate the total number of subscribers entitled to receive the PROGRAMME on the first and last day of the relevant month. The reported figures shall be detailed per HEAD-END. The OPERATOR shall be entitled and obliged to amend and correct the subscribers report and notify the PROGRAMME SERVICE PROVIDER without delay, if the OPERATOR becomes aware that the reported subscriber numbers are not accurate. The Parties establish that any failure of the OPERATOR to comply with such reporting obligation shall qualify as material breach to the AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            If the OPERATOR intends to distribute the PROGRAMME on HEAD-ENDS other than those indicated in this AGREEMENT, the OPERATOR shall send the updated list to the PROGRAMME SERVICE PROVIDER thirty (30) days prior to the start of distribution on such HEAD-ENDS. The OPERATOR shall not be entitled to distribute the PROGRAMME on any CABLE-SYSTEM, HEAD-END or DTH-SYSTEM not indicated in the present AGREEMENT until the scope of this AGREEMENT is not extended to such CABLE-SYSTEM, HEAD-END or DTH-SYSTEM by the mutual agreement of the Parties. The Parties establish that any failure of the OPERATOR to comply with this clause shall qualify as material breach to the AGREEMENT.
-        </span>
-    </p>
-    <p class="c0 c16 c10">
-        <a name="h.30j0zll">
-        </a>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            RIGHTS AND OBLIGATIONS OF THE PROGRAMME SERVICE PROVIDER
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            PROGRAMME SERVICE PROVIDER shall provide the PROGRAMME in accordance with the requirements and parameters set out below:
-        </span>
-    </p>
-    <a href="#" name="27e57bbbb843dbe9d8c4d30a52b0576fc8173477">
-    </a>
-    <a href="#" name="1">
-    </a>
-    <table cellpadding="0" cellspacing="0" class="c29">
-        <tbody>
-            <tr class="c50">
-                <td class="c65" colspan="1" rowspan="1">
-                    <p class="c0 c16 c44">
-                        <span class="c4">
-                            TITLE:
-                        </span>
-                    </p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c3">
-                        <span class="c5 c26">
-                            @if (channels != null && channels.Any() && channels.FirstOrDefault() != null && !string.IsNullOrEmpty(channels.FirstOrDefault().Name))
-                            {
-                                @: @channels.FirstOrDefault().Name
+
+            <!DOCTYPE html>
+            <html>
+
+            <head>
+                <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+                <link rel="stylesheet" href="~/Content/contracts/fishing.css" type="text/css" />
+            </head>
+
+            <body class="c52 c58">
+                <p class="c12 c39 c62">
+                    <span class="c4 c5">
+                        DISTRIBUTION AGREEMENT
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        &nbsp;(hereinafter referred to as &bdquo;
+                    </span>
+                    <span class="c4 c5">
+                        Agreement
+                    </span>
+                    <span class="c4">
+                        &rdquo;)
+                    </span>
+                    <span class="c4 c5">
+                        &nbsp;
+                    </span>
+                    <span class="c4">
+                        concluded by and between
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c5 c13">
+                        SC FISHING&amp;HUNTING TEMATIC SRL (
+                    </span>
+                    <span class="c4">
+                        seat
+                    </span>
+                    <span class="c28">
+                        Oradea,
+                    </span>
+                    <span class="c4">
+                        str.C&#259;l&#259;ra&#351;ilor, nr. 15/A, Jude&#355;ul Bihor, Romania, registration number: J05/433/2014, tax number: RO32921259 represented by: Nicoleta Szabo -Morar) as supplier (hereinafter referred to as &bdquo;
+                    </span>
+                    <span class="c4 c5 c13">
+                        PROGRAMME SERVICE PROVIDER
+                    </span>
+                    <span class="c4">
+                        &rdquo;)
+                    </span>
+                </p>
+                <p class="c0 c16">
+                    <span class="c1">
+                        and &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    </span>
+                </p>
+                <p class="c0 c16">
+                    <span class="c26 c31 c5">
+                        @client.NameBulgarian
+                    </span>
+                    <span class="c5 c24">
+                        &nbsp;
+                    </span>
+                    <span class="c26 c31 c5">
+                        @type.TypeInBulgarian
+                    </span>
+                    <span class="c24 c5">
+                        , &nbsp;
+                    </span>
+                    <span class="c26 c31 c5">
+                        @client.ResidenceAndAddress
+                    </span>
+                    <span class="c24 c5">
+                        , with registration number
+                    </span>
+                    <span class="c26 c31 c5">
+                        @client.Uic
+                    </span>
+                    <span class="c24 c5">
+                        , VatNo:
+                    </span>
+                    <span class="c24 c36">
+                        &nbsp;
+                    </span>
+                    <span class="c26 c31 c5">
+                        @client.Vat
+                    </span>
+                    <span class="c24 c36">
+                        , Bulgaria represented by
+                    </span>
+                    <span class="c26 c5 c31">
+                        @client.Management
+                    </span>
+                    <span class="c24 c36">
+                        ,
+                    </span>
+                    <span class="c24 c36">
+                        &nbsp;
+                    </span>
+                    <span class="c1">
+                        (hereinafter referred to as &bdquo;
+                    </span>
+                    <span class="c4 c5">
+                        OPERATOR
+                    </span>
+                    <span class="c1">
+                        &rdquo;),
+                    </span>
+                </p>
+                <p class="c12 c10 c39">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c9">
+                    <span class="c4">
+                        (
+                    </span>
+                    <span class="c4 c13">
+                        PROGRAMME SERVICE PROVIDER
+                    </span>
+                    <span class="c4">
+                        &nbsp;and OPERATOR hereinafter are jointly referred to as &bdquo;
+                    </span>
+                    <span class="c4 c5">
+                        Parties
+                    </span>
+                    <span class="c4">
+                        &rdquo;, individually as &bdquo;
+                    </span>
+                    <span class="c4 c5">
+                        Party
+                    </span>
+                    <span class="c4">
+                        &rdquo;)
+                    </span>
+                </p>
+                <p class="c6">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        With the following conditions:
+                    </span>
+                </p>
+                <p class="c12 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        DEFINITIONS
+                    </span>
+                </h1>
+                <p class="c12 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5 c13">
+                        AGREEMENT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c13">
+                        shall mean the agreement between
+                    </span>
+                    <span class="c4 c13">
+                        &nbsp;PROGRAMME SERVICE PROVIDER
+                    </span>
+                    <span class="c4 c13">
+                        and
+                    </span>
+                    <span class="c4 c13">
+                        &nbsp;OPERATOR,
+                    </span>
+                    <span class="c4 c13">
+                        including its annexes, entered into
+                    </span>
+                    <span class="c4 c13">
+                        &nbsp;
+                    </span>
+                    <span class="c4">
+                        in relation to the distribution of the PROGRAMME
+                    </span>
+                    <span class="c4 c13">
+                        .
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5 c13">
+                        BASIC TIER
+                    </span>
+                    <span class="c4 c13">
+                        :
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c13">
+                        means the TIER subscribed to by the most numerous group of SUBSCRIBERS on the relevant TRANSMISSION SYSTEM, save that where a TRANSMISSION SYSTEM is required by any relevant law or regulation to carry certain public interest programme services as a separate tier (life-line tier), BASIC TIER shall mean that TIER subscribed to by the second most numerous group of SUBSCRIBERS on such TRANSMISSION SYSTEM;
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        CABLE-SYSTEM
+                    </span>
+                    <span class="c4">
+                        :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        means the cable systems (whether fibre, wire or co-axial cable or a combination thereof, or any other technical solution), owned and/or operated by the OPERATOR in the TERRITORY for the digital and/or analogue transmission of television-programme services.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        DTH-
+                    </span>
+                    <span class="c4 c5">
+                        SYSTEM
+                    </span>
+                    <span class="c4">
+                        :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean any direct broadcast satellite (&ldquo;DBS&rdquo;) or direct-to-home (&ldquo;DTH&rdquo;) television service systems used to distribute programme content to home television sets
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        EXTENDED BASIC TIER (EBS):
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        means the TIER subscribed to by the next most numerous group of SUBSCRIBERS after the BASIC TIER
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        EPG:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean Electronic Programme Guide.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        HEAD-END(S):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean the head-end(s) as set out in Section 5 of the present AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        HOTEL SUBSCRIBER &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean any business entity, business unit, association or other organisation providing accommodation services as a main activity and operating premises for multiple accommodation (including but not limited to hotels, ships, prisons, hospitals and any premises other than a private dwelling which contains rooms provided or available as temporary or permanent accommodation) which is capable of and entitled to the reception of the PROGRAMME in its rooms by virtue of a contract or arrangement with the OPERATOR. Subscription fee for HOTEL SUBSCRIBERS shall be calculated according to the number of rooms, each room counting as an individual subscriber.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        OPERATOR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean the PARTY distributing the PROGRAMME through its HEAD-END(s) &ndash; irrespectively of the technology applied &ndash; on the CABLE-SYSTEM, or on the DTH-SYSTEM, in the TERRITORY, in the TIER.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        PARTIES:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean
+                    </span>
+                    <span class="c4">
+                        &nbsp;PROGRAMME SERVICE PROVIDER AND OPERATOR
+                    </span>
+                    <span class="c4">
+                        together.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        PARTY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean either the PROGRAMME SERVICE PROVIDER or the OPERATOR.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        PROGRAMME SERVICE PROVIDER
+                    </span>
+                    <span class="c4">
+                        :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c5">
+                        S.C. Fishing &amp;Hunting Tematic SRL
+                    </span>
+                    <span class="c4">
+                        (seat
+                    </span>
+                    <span class="c28">
+                        Oradea,
+                    </span>
+                    <span class="c4">
+                        str. C&#259;l&#259;ra&#351;ilor, nr. 15/A, Jude&#355;ul Bihor, Romania, registration number: J05/433/2014, tax number: RO32921259)
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        PROGRAMME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the television programme services provided under the AGREEMENT as set out under Section 2 of present Agreement.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5 c13">
+                        PROMOTIONAL POSTS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c13">
+                        Registered seat, branch offices, head-ends and customer service units of OPERATOR
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        PVR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Personal Video Recorder, a recording equipment or service controlled by the SUBSCRIBER.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        RESIDENTIAL SUBSCRIBER
+                    </span>
+                    <span class="c4 c5">
+                        :
+                    </span>
+                    <span class="c4 c5">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean a
+                    </span>
+                    <span class="c4 c13">
+                        person who is entitled to receive Programme by virtue of a contract.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5 c13">
+                        SERVICE PACKAGE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean an offer that consists of more than one service (audio, internet, television programme, optional and value-added service elements, variations of such services), where the
+                    </span>
+                    <span class="c4">
+                        TIER
+                    </span>
+                    <span class="c4">
+                        &nbsp;including the
+                    </span>
+                    <span class="c4">
+                        PROGRAMME
+                    </span>
+                    <span class="c4">
+                        &nbsp;is distributed by the
+                    </span>
+                    <span class="c4">
+                        OPERATOR
+                    </span>
+                    <span class="c4">
+                        &nbsp;as part thereof.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        STB:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean Set-Top-Box, access control device.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        SUBSCRIBER:
+                    </span>
+                    <span class="c4 c5">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean RESIDENTIAL SUBSCRIBER, and HOTEL SUBSCRIBER
+                    </span>
+                    <span class="c4">
+                        .
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        TELEVISION PROGRAMME:
+                    </span>
+                    <span class="c4">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the television programme service provided under the AGREEMENT as described under clause 2.1
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c5">
+                        TIER:
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        a tier of television programmes offered and distributed by the OPERATOR via its TRANSMISSION SYSTEM or DTH-SYSTEM to SUBSCRIBERS, based on an effective subscriber agreement.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c5">
+                        TERRITORY
+                    </span>
+                    <span class="c4">
+                        :
+                    </span>
+                    <span class="c4 c5">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean the territory of Bulgaria.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4 c5">
+                        TRANSMISSION SYSTEM:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        means the transmission system &ndash; irrespectively of the applied technical solution &ndash; owned and/or operated by the OPERATOR, including the DTH-SYSTEM.
+                    </span>
+                </p>
+                <p class="c0 c2">
+                    <span class="c4 c5">
+                        THEMATIC TIER:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        shall mean a programme tier offered by the OPERATOR to SUBSCRIBERS already subscribed to the TIER and consisting of extra television programme services in addition to those included in the TIER.
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0 c41">
+                    <span class="c4 c5">
+                        SUBJECT
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Distribution of the television programme currently known as &bdquo;
+                    </span>
+                    <span class="c28 c5">
+                        The Fishing and Hunting Channel
+                    </span>
+                    <span class="c4">
+                        &rdquo;
+                    </span>
+                </p>
+                <p class="c0 c41 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0 c41">
+                    <span class="c4 c5">
+                        TERM
+                    </span>
+                </p>
+                <p class="c25 c39 c45">
+                    <span class="c4">
+                        The present AGREEMENT shall be effective from 1 July 2015 until 30 June 2017 and shall be automatically extended with one further year unless either Party terminates the AGREEMENT with a written notice to the other Party until 60 days before the last day of the TERM.
+                    </span>
+                </p>
+                <p class="c0 c41 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0 c41">
+                    <span class="c4 c5">
+                        LICENSE FEE
+                    </span>
+                </p>
+                <p class="c0 c41">
+                    <span class="c4">
+                        In case of RESIDENTIAL and HOTEL SUBSCRIBERS
+                    </span>
+                    <span class="c4 c5">
+                        &nbsp;
+                    </span>
+                    <span class="c4">
+                        (
+                    </span>
+                    <span class="c4">
+                        in Euro + VAT / month / subscriber)
+                    </span>
+                    <span class="c4 c5">
+                        &nbsp;
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c9 c17">
+                    <span class="c4 c5">
+                        @Model.Tier.GetDescription()
+                    </span>
+                </p>
+                <p class="c6 c17">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c9">
+                    <span class="c37 c5">
+                        0
+                    </span>
+                    <span class="c4">
+                        &nbsp;
+                    </span>
+                    <span class="c4">
+                        + taxes if applicable / month / subscriber.
+                    </span>
+                </p>
+                <p class="c6">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c9 c63">
+                    <span class="c1">
+                        Monthly Minimum Guarantee:
+                    </span>
+                    <span class="c23 c5">
+                        <br />
+                        @foreach (var invoice in invoices)
+                        {
+                        @: From: @invoice.From.ToString(format, new CultureInfo("de-DE")), To: @invoice.To.ToString(format, new CultureInfo("de-DE")), Mg Subs: @invoice.MgSubs, Cps @invoice.Cps
+                        <br />
+                        }
+                    </span>
+                </p>
+                <p class="c12 c38">
+                    <span class="c4">
+                        Payment period: &nbsp;
+                    </span>
+                    <span class="c4">
+                        Quarterly - @client.Frequency
+                    </span>
+                </p>
+                <p class="c10 c12">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c12">
+                    <span class="c4">
+                        The License Fee is payable within 15 days from the date of the receipt of the invoice
+                    </span>
+                </p>
+                <p class="c12 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0 c44">
+                    <span class="c4">
+                        For the avoidance of doubt, the Parties acknowledge that the licence fee is a royalty which is the consideration payable for the transmission and distribution of the PROGRAMME falling under copyright protection.
+                    </span>
+                </p>
+                <p class="c0 c10 c44">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The PROGRAMME SERVICE PROVIDER must issue an invoice regarding the licence fee following the relevant month, which invoice must include all considerations and fees payable by the OPERATOR to the PROGRAMME SERVICE PROVIDER on the basis of present AGREEMENT. The Parties agree that the completion date in respect of each relevant month is the deadline for the provision of the subscribers&rsquo; report, i.e. the tenth (10
+                    </span>
+                    <span class="c7">
+                        th
+                    </span>
+                    <span class="c4">
+                        ) day following each month. &nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Should the OPERATOR not provide the PROGRAMME SERVICE PROVIDER with the subscribers&rsquo; report in due time, the PROGRAMME SERVICE PROVIDER shall be entitled to issue its invoice on the basis of the number of subscribers of the month preceding the relevant month, not affecting its right for the entire licence fee. The PROGRAMME SERVICE PROVIDER shall be entitled to include the unpaid amount of the due licence fee into any of its subsequent invoices. &nbsp;
+                    </span>
+                </p>
+                <p class="c0 c16 c43">
+                    <span class="c1">
+                        The Parties agree that if the invoiced number of subscribers in respect of the subject month exceeds the actual number of subscribers, the OPERATOR shall be entitled to reclaim the additional fee invoiced and the PROGRAMME SERVICE PROVIDER shall be obliged to issue a credit note in that regard. The Parties agree that, in this case, the OPERATOR shall not be entitled for interest payment.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall be obliged to pay the invoiced amount to the PROGRAMME SERVICE PROVIDER via bank transfer within fifteen (15) days following the receipt of the invoice. ( quarterly)
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        In the case of default in the payment obligations of the OPERATOR, including the case of reporting a lower number of subscribers than the actual number of subscribers, the OPERATOR shall be obliged to pay a default interest in accordance with the provisions of the Romanian Civil Code.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The payment of the licence fee set out in this clause does not exempt the OPERATOR from any other payment obligation arising from legal regulations or authorities&rsquo; decisions etc. related to the distribution of the PROGRAMME, including but not limited to the license fees payable to any society of authors or performers.&nbsp;
+                    </span>
+                </p>
+                <p class="c0 c44 c51">
+                    <span class="c4 c5">
+                        HEAD-ENDS
+                    </span>
+                    <span class="c4 c5">
+                        on which &ldquo;
+                    </span>
+                    <span class="c28 c5">
+                        The Fishing and Hunting Channel
+                    </span>
+                    <span class="c4 c5">
+                        &rdquo; shall be distributed:
+                    </span>
+                </p>
+                <p class="c6">
+                    <span class="c20">
+                    </span>
+                </p>
+                <a href="#" name="92d85ad3b662289b67078cde1308572aa548acec">
+                </a>
+                <a href="#" name="0">
+                </a>
+                <table cellpadding="0" cellspacing="0" class="c29">
+                    <tbody>
+                        <tr class="c48">
+                            <td class="c57" colspan="1" rowspan="1">
+                                <p class="c9 c14">
+                                    <span class="c47">
+                                        Adress
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c59" colspan="1" rowspan="1">
+                                <p class="c9 c14">
+                                    <span class="c47">
+                                        Decoder number
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c27" colspan="1" rowspan="1">
+                                <p class="c9 c14">
+                                    <span class="c47">
+                                        SIM card number
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c46" colspan="1" rowspan="1">
+                                <p class="c9 c14">
+                                    <span class="c47">
+                                        Package
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c60" colspan="1" rowspan="1">
+                                <p class="c9 c14">
+                                    <span class="c47">
+                                        Number of Households
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c49" colspan="1" rowspan="1">
+                                <p class="c9 c14">
+                                    <span class="c47">
+                                        Starting day
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c18" colspan="1" rowspan="1">
+                                <p class="c9 c14">
+                                    <span class="c47">
+                                        Payable from
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        @if (trds != null && trds.Any())
+                        {
+                        foreach (var trd in trds)
+                        {
+                        <tr class="c48">
+                            <td class="c57" colspan="1" rowspan="1">
+                                <p class="c6 c14">
+                                    <span class="c20 c19 c13">
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c59" colspan="1" rowspan="1">
+                                <p class="c6 c14">
+                                    <span class="c20 c19 c13">
+                                        @trd.Decoder
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c27" colspan="1" rowspan="1">
+                                <p class="c6 c14">
+                                    <span class="c20 c19 c13">
+                                        @trd.Sim
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c46" colspan="1" rowspan="1">
+                                <p class="c6 c14">
+                                    <span class="c20 c19 c13">
+                                        @Model.Tier.GetDescription()
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c60" colspan="1" rowspan="1">
+                                <p class="c6 c14">
+                                    <span class="c20 c19 c13">
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c49" colspan="1" rowspan="1">
+                                <p class="c6 c14">
+                                    <span class="c20 c19 c13">
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c18" colspan="1" rowspan="1">
+                                <p class="c6 c14">
+                                    <span class="c20 c19 c13">
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        }
+                        }
+                    </tbody>
+                </table>
+                <p class="c6">
+                    <a name="h.gjdgxs">
+                    </a>
+                </p>
+                <h1 class="c9 c25 c68">
+                    <span class="c4 c5">
+                        RIGHTS AND OBLIGATIONS OF THE OPERATOR
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall be granted with the non-exclusive right to distribute and shall be obliged to distribute the PROGRAMME through the HEAD-END(s) of the CABLE-SYSTEM or the DTH-SYSTEM, in the TERRITORY to the SUBSCRIBERS within the TIER, but not as PAY-TV.
+                    </span>
+                </p>
+                <p class="c0 c54">
+                    <span class="c4">
+                        The OPERATOR shall be entitled to distribute the PROGRAMME in a THEMATIC TIER with the prior written approval of the
+                    </span>
+                    <span class="c4">
+                        PROGRAMME SERVICE PROVIDER.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        THE OPERATOR
+                    </span>
+                    <span class="c4">
+                        shall be entitled to the digital distribution of the PROGRAMME, to the same subscribers and in parallel with the analogue distribution (simulcasting). The OPERATOR shall be entitled to provide PVR services either as a network service or by STB.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall be entitled to distribute the PROGRAMME in the languages and/or with the subtitles provided by the PROGRAMME SERVICE PROVIDER.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall be entitled to provide EPG services to the SUBSCRIBER.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall be entitled to the simultaneous, unchanged and analogue distribution of the PROGRAMME &ndash; including the distribution of any titles, logo and subtitles, without any restrictions &ndash; as a single separate channel to the SUBSCRIBER. However, the OPERATOR shall not be entitled to edit, supplement, cut, modify, interrupt, record, etc. the PROGRAMME, subject to the exceptions set out in this AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        In the case of digital distribution, the OPERATOR shall encode the PROGRAMME by a secure encoding system. The OPERATOR &ndash; irrespectively to the technology applied &ndash; shall make all necessary steps to ensure that the PROGRAMME shall only be received by SUBSCRIBERS who have valid subscription to the PROGRAMME.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        In the case of digital distribution, the OPERATOR shall make all necessary steps to prevent any unauthorized decryption of the PROGRAMME in digital form. In the case of digital distribution, the OPERATOR undertakes not to grant any permission or licence to SUBSCRIBERS to the redistribution of the PROGRAMME. The OPERATOR undertakes to apply and operate only such technologies, equipment and device that comply with the industrial standards, and that provides effective protection of the PROGRAMME secured with HDCP technology.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall promptly notify the PROGRAMME SERVICE PROVIDER, if it becomes aware that any third person accessed, distributed or copied the PROGRAMME, or any programme being part of the PROGRAMME. In any such case, the OPERATOR shall co-operate with the PROGRAMME SERVICE PROVIDER in order to act against such third person.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Upon the termination of this AGREEMENT the OPERATOR shall return the Smart Cards in an undamaged (apart from damages resulting from proper use), operable condition to the PROGRAMME SERVICE PROVIDER, within five (5) business days. The OPERATOR shall bear liability for all damages arising from the improper use of the Smart Card.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Within ten (10) days following the end of each calendar month the OPERATOR shall send a subscribers report to the PROGRAMME SERVICE PROVIDER. The subscribers report shall indicate the total number of subscribers entitled to receive the PROGRAMME on the first and last day of the relevant month. The reported figures shall be detailed per HEAD-END. The OPERATOR shall be entitled and obliged to amend and correct the subscribers report and notify the PROGRAMME SERVICE PROVIDER without delay, if the OPERATOR becomes aware that the reported subscriber numbers are not accurate. The Parties establish that any failure of the OPERATOR to comply with such reporting obligation shall qualify as material breach to the AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        If the OPERATOR intends to distribute the PROGRAMME on HEAD-ENDS other than those indicated in this AGREEMENT, the OPERATOR shall send the updated list to the PROGRAMME SERVICE PROVIDER thirty (30) days prior to the start of distribution on such HEAD-ENDS. The OPERATOR shall not be entitled to distribute the PROGRAMME on any CABLE-SYSTEM, HEAD-END or DTH-SYSTEM not indicated in the present AGREEMENT until the scope of this AGREEMENT is not extended to such CABLE-SYSTEM, HEAD-END or DTH-SYSTEM by the mutual agreement of the Parties. The Parties establish that any failure of the OPERATOR to comply with this clause shall qualify as material breach to the AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0 c16 c10">
+                    <a name="h.30j0zll">
+                    </a>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        RIGHTS AND OBLIGATIONS OF THE PROGRAMME SERVICE PROVIDER
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        PROGRAMME SERVICE PROVIDER shall provide the PROGRAMME in accordance with the requirements and parameters set out below:
+                    </span>
+                </p>
+                <a href="#" name="27e57bbbb843dbe9d8c4d30a52b0576fc8173477">
+                </a>
+                <a href="#" name="1">
+                </a>
+                <table cellpadding="0" cellspacing="0" class="c29">
+                    <tbody>
+                        <tr class="c50">
+                            <td class="c65" colspan="1" rowspan="1">
+                                <p class="c0 c16 c44">
+                                    <span class="c4">
+                                        TITLE:
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c40" colspan="1" rowspan="1">
+                                <p class="c3">
+                                    <span class="c5 c26">
+                                        @if (channels != null && channels.Any() && channels.FirstOrDefault() != null && !string.IsNullOrEmpty(channels.FirstOrDefault().Name))
+                                        {
+                                        @: @channels.FirstOrDefault().Name
                                         }
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            <tr class="c8">
-                <td class="c65" colspan="1" rowspan="1">
-                    <p class="c0 c16 c44">
-                        <span class="c4">
-                            LANGUAGE:
-                        </span>
-                    </p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c3 c10">
-                        <span class="c1 c19 c13">
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            <tr class="c66">
-                <td class="c32" colspan="1" rowspan="1">
-                    <p class="c0 c16 c44">
-                        <span class="c4">
-                            BROADCASTING FREQUENCY IN MHz AND POLARIZATION
-                        </span>
-                    </p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c3">
-                        <span class="c23 c5">
-                            Satellite data
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            <tr class="c50">
-                <td class="c32" colspan="1" rowspan="1">
-                    <p class="c0 c16 c44">
-                        <span class="c4">
-                            Symbol Rate ksps,
-                        </span>
-                    </p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c3">
-                        <span class="c5 c23">
-                            Satellite data
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            <tr class="c50">
-                <td class="c32" colspan="1" rowspan="1">
-                    <p class="c0 c16 c44">
-                        <span class="c4">
-                            FEC
-                        </span>
-                    </p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c3">
-                        <span class="c23 c5">
-                            Satellite data
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            <tr class="c8">
-                <td class="c32" colspan="1" rowspan="1">
-                    <p class="c11">
-                        <span class="c4">
-                            Satellite
-                        </span>
-                    </p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c14 c12 c56">
-                        <span class="c47 c64">
-                            &nbsp; &nbsp; &nbsp;
-                        </span>
-                        <span class="c23 c5">
-                            Satellite data
-                        </span>
-                    </p>
-                </td>
-            </tr>
-            <tr class="c50">
-                <td class="c65" colspan="1" rowspan="1">
-                    <p class="c11">
-                        <span class="c4">
-                            Encoding:
-                        </span>
-                    </p>
-                </td>
-                <td class="c40" colspan="1" rowspan="1">
-                    <p class="c3">
-                        <span class="c64 c47 c36 c67">
-                            @if (trds != null && trds.Any())
-                            {
-                                foreach (var trd in trds)
-                                {
-                                    @trd.Cas; @:;
-                                            }
-                            }
-                        </span>
-                    </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            CHARACTERISTICS OF PROGRAMME
-        </span>
-        <span class="c4">
-            :
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c5 c28">
-            The Fishing and Hunting Channel
-        </span>
-        <span class="c4">
-            : means a channel comprising
-        </span>
-        <span class="c28 c5">
-            The Fishing and Hunting Channel
-        </span>
-        <span class="c4">
-            &nbsp;- a television programme service to be broadcasted from 00.00 to 24.00 C.E.T., containing fishing, hunting and outdoor activity related short movies and documentaries, magazines related to the thematic of the channel, gastronomy related programmes and their trailers.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Parties agree that in the case of that the OPERATOR fails to comply with any of its due payment obligations in relation to the PROGRAMME, the PROGRAMME SERVICE PROVIDER shall be entitled to issue payment notice by recorded delivery mail. In the case of that the due amounts are not transferred to the bank account of the PROGRAMME SERVICE PROVIDER within five (5) days from the receipt of such payment notice by the OPERATOR, the PROGRAMME SERVICE PROVIDER shall be entitled to immediately suspend its services under this AGREEMENT. If the OPERATOR complies with all its payment obligations, the PROGRAMME SERVICE PROVIDER shall continue to provide its services.
-        </span>
-    </p>
-    <p class="c0 c54">
-        <span class="c4">
-            The Parties agree that if the services of the PROGRAMME SERVICE PROVIDER had been suspended at least twice within twelve (12) months, the PROGRAMME SERVICE PROVIDER shall be entitled to immediately suspend its services without any notification to the OPERATOR in the case of a repeated payment default of at least seven (7) days of the OPERATOR.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            With prior notice sent to the OPERATOR, at a time agreed by the Parties in advance, the PROGRAMME SERVICE PROVIDER shall have the right to examine through its employees or assignees the registry of subscribers kept by the OPERATOR serving as basis to the accounting of the OPERATOR, in order to determine the accuracy of any or all subscriber reports of the OPERATOR. Such examination shall take place on business days between 9:00 and 16:00, at least five (5) days following the notice sent to the OPERATOR. The course and results of such examination shall be drawn up in a minutes by the Parties. PROGRAMME SERVICE PROVIDER declares that such examination shall not be regarded as the financial or accounting audit of the company of the OPERATOR. Upon such examination, PROGRAMME SERVICE PROVIDER shall not be entitled to request any information not in connection with subscriber numbers of the PROGRAMME or to inspect or investigate any information not related to the number of the OPERATOR&rsquo;s subscribers, such as specific subscriber numbers of other television programme services or the business activities of OPERATOR. In the case of PROGRAMME SERVICE PROVIDER executing such examination by its assignee, it shall be responsible for the acts of such assignee as for the acts of itself.
-        </span>
-    </p>
-    <p class="c0 c43 c16">
-        <span class="c1">
-            In the event that any such examination reveals an under-payment in excess of five (5) per cent (%), the OPERATOR shall bear, further to the arrears and default interests, all reasonable costs of the examination, provided that the total amount of such costs shall not exceed the amount of three (3) month&rsquo;s licence fee payable on the basis of this AGREEMENT.
-        </span>
-    </p>
-    <p class="c0 c43 c16">
-        <span class="c1">
-            Parties agree that they shall co-operate in good faith in relation to the provisions of this clause. Furthermore both Parties shall comply with the provisions of Romanian Law on the Protection of Personal Data and the Disclosure of Information of Public Interest and of other relevant Romanian legislation.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            EPG
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Should the OPERATOR provide EPG as a supplementary service to its subscribers, the PROGRAMME SERVICE PROVIDER shall be obliged, upon the OPERATOR&rsquo;s written request, to provide the OPERATOR with the planned broadcast schedule of the PROGRAMME at least two (2) weeks in advance via e-mail, free of charge.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Should EPG be a supplementary service provided by the PROGRAMME SERVICE PROVIDER, this supplementary service should be produced by the PROGRAMME SERVICE PROVIDER at its own expense.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The Parties represent that the service set out in the present clause shall in every case be deemed as a supplementary service, therefore, none of the Parties will be entitled for any reimbursement, penalty or decrease of licence fee due to the interruption of the of such service.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The PROGRAMME SERVICE PROVIDER is obliged to provide the OPERATOR with the Smart Card necessary for the reception of the PROGRAMME free of charge. The PROGRAM SERVICE PROVIDER shall provide the OPERATOR with the reception equipment at cost detailed in point 8.4.1.1 of this contract. The OPERATOR shall be liable for the validity and validation of the Smart Card.
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            DISTRIBUTION OF THE PROGRAMME
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            The encrypted signal of the PROGRAMME shall be transmitted by the PROGRAMME SERVICE PROVIDER to the HEAD-ENDS of the OPERATOR set out in present AGREEMENT, by means of digital satellite transmission system. The PROGRAMME SERVICE PROVIDER fulfils this obligation itself or via third party contributors (contractors, agents, assistants, other contributors etc.). Should such transmission be accomplished via contributors, the PROGRAMME SERVICE PROVIDER shall be liable for the acts of the contributors as the transmission was carried out by itself.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The place of performance of the services provided by the PROGRAMME SERVICE PROVIDER is the surface of the receiving aerial installed at the HEAD-ENDS. The PROGRAMME SERVICE PROVIDER is obliged to ensure that the quality of the signal of the PROGRAMME complies with all legal regulations, standards (irrespective of the fact whether such standards are legal requirements), industrial specifications at the place of performance and the requirements of the present AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The lowest and average speed of the signal of the PROGRAMME must at all times comply with the acknowledged industrial standards and the characteristics of the PROGRAMME.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            In no event shall PROGRAMME SERVICE PROVIDER be liable for damages or for loss of profits of OPERATOR.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The PROGRAMME SERVICE PROVIDER is obliged to ensure the proper operation of the receiving decryption equipment (the receiving device provided by the PROGRAMME SERVICE PROVIDER at OPERATORS cost, and the validated Smart Card provided by the PROGRAMME SERVICE PROVIDER free of charge) together with the transmitter equipment, provided that the receiving equipment co-operate with the transmitter equipment by software and/or by hardware, or the receiving equipment&rsquo;s operation is controlled by or depends on the transmitter equipment. This means that in the case of modification of the distribution method or of the digital data flow of the distributed channel, the PROGRAMME SERVICE PROVIDER must test it in advance, provided that it is technically possible in any another way than through a separate data flow, and, if necessary, the PROGRAMME SERVICE PROVIDER must inform the OPERATOR of the source from where the amendment of the software of the recommended DVB-S receiving unit can be downloaded. If the replacement of the Smart Card becomes necessary, the PROGRAMME SERVICE PROVIDER must provide for the replacement of the required equipment free of charge at least five (5) business days prior to the modification.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The PROGRAMME SERVICE PROVIDER recommends the OPERATOR to use an aerial dish with a diameter of at least ninety (90) centimetres (more preferably one hundred twenty, that is 120 centimetres) for the reception of the PROGRAMME. The PROGRAMME SERVICE PROVIDER will provide the OPERATOR with the following type of reception equipment, which makes the undisturbed, continuous reception of the PROGRAMME possible, with automatic return in the case of power-cut: the reception equipment
-        </span>
-    </p>
-    <p class="c0 c10 c55">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            In the case of any failure requiring the replacement of the Smart Card provided by the PROGRAMME SERVICE PROVIDER, the PROGRAMME SERVICE PROVIDER must provide the OPERATOR with the new, operable Smart Card at the place and time previously agreed with the OPERATOR. If the replacement of the Smart Card is necessary due to its improper use by the OPERATOR, the costs of replacement shall be borne by the OPERATOR. In all other cases, the replacement shall be carried out by the PROGRAMME SERVICE PROVIDER free of charge.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Under the scope of this AGREEMENT, the PROGRAMME SERVICE PROVIDER shall be entitled to change the satellite used for the distribution of the signal and/or the encryption system and/or the frequency upon notifying the OPERATOR in writing at least sixty (60) days prior to such change; in addition, the PROGRAMME SERVICE PROVIDER shall be obliged to provide parallel services on the previous and the new satellites for the maximum of fifteen (15) days.
-        </span>
-    </p>
-    <p class="c0 c54">
-        <span class="c4">
-            In the case where, due to any of the above changes, additional costs occur on the side of the OPERATOR resulting from the purchase and installation of absolutely necessary equipment, the PROGRAMME SERVICE PROVIDER shall be obliged to undertake one or a variation of the following obligations: &nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            To bear the costs of the above changes,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            To provide the OPERATOR with the equipment necessary for the reception of the PROGRAMME,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            To provide a discount from the licence fee in the amount equal to the costs of the above changes.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR carrying analogue distribution at the time of the conclusion of the AGREEMENT shall be entitled to switch over to the digital distribution of the PROGRAMME at any time under the scope of this AGREEMENT, provided that the number of SUBSCRIBERS and the TIERS do not change, and the OPERATOR does not breach any of its obligations under the present AGREEMENT. All costs related to such a switchover shall be borne by the OPERATOR. &nbsp;
-        </span>
-    </p>
-    <p class="c0 c16 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            TERM AND TERMINATION OF THE AGREEMENT
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            The present AGREEMENT enters into effect on the date set out in the AGREEMENT (or, if OPERATOR is not in the possession of Smart Card, at that date, upon the handover of the properly operating Smart Card), and shall be in force until the date set out in the AGREEMENT. Before that date, the AGREEMENT can be terminated only in the events set out in the AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The Parties agree that the term of the AGREEMENT shall be automatically extended with additional one (1) year unless either Party notifies the other Party at the latest two (2) months before the expiry date of its intention to terminate the AGREEMENT on the expiry date. This provision on automatic extension of term shall be applicable to further extensions of term in accordance with the above.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The AGREEMENT cannot be terminated by ordinary termination.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The AGREEMENT terminates or can be terminated
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            upon the expiry of its definite term subject to clause 3. or 9.2 whichever is applicable,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            by the mutual agreement of the Parties,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            if the completion of the AGREEMENT or the basic services of either Party under the AGREEMENT become impossible,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            in the case of material breach of obligations of either Party with immediate termination by the other Party,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            in the case of force majeure exceeding thirty (30) days.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The following shall qualify as a material breach of contract:
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            by the PROGRAMME SERVICE PROVIDER:
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            a failure to provide programme service for an perpetual period of seventy two (72) hours or six (6) times within a one hundred sixty eight (168) hours period for periods longer than ten (10) minutes in each occasion.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            by the OPERATOR:
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            failure to fulfil its reporting obligation at due date or providing false or incomplete report,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            a breach of any provision in connection with the payment obligation of the OPERATOR in relation to the PROGRAMME.,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            By both Parties:
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            a breach of any representation set out in clause 10 of the present AGREEMENT.,
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            if any breach of contract indicated in a written notice by the other party is not remedied as soon as possible, i.e. within a reasonable period of time but not later than within thirty (30) days.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            a breach of the provisions set out in clause 13 of the present AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The Parties agree that all declarations made in connection with the termination of the AGREEMENT shall be made in writing indicating the reasons of such termination and shall be sent by registered mail to the other Party.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Should the AGREEMENT terminate for any reason, the Parties shall make a settlement within thirty (30) days following the date of termination in accordance with the provisions of the AGREEMENT or if this is not possible, by the proper application of the provisions of the AGREEMENT having regard to the purpose of such provisions.
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            REPRESENTATIONS OF THE PARTIES
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            The PROGRAMME SERVICE PROVIDER represents that:
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            it has all contractual relationships, authorizations and other licences necessary for the transfer of programme distribution rights under the AGREEMENT, it has complied with all announcement and publication obligations prescribed by law and its activity fully satisfies all applicable and relevant legal requirements. &nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the PROGRAMME delivered by itself or its contributor to the OPERATOR satisfies all legal requirements and the requirements prescribed by the Parties.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the distribution of the PROGRAMME to the SUBSCRIBERS by the OPERATOR does not infringe or endanger any third party copyrights or neighbouring rights.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            during the transmission time it shall not broadcast the programme of any other programme service provider or any other television programme of the PROGRAMME SERVICE PROVIDER.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            it shall use its best efforts in order to prevent any unauthorised access, retransmission or recording of the PROGRAMME or any programming thereof.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the persons signing this AGREEMENT on the PROGRAMME SERVICE PROVIDER&rsquo;s part have all necessary authorisations to enter into the AGREEMENT and to undertake the obligations hereunder on behalf of the PROGRAMME SERVICE PROVIDER.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the conclusion and contractual performance of the AGREEMENT does not infringe and/or endanger third party rights and lawful interests.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR represents that
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            it has all authorizations and other licences necessary for the programme distribution under the AGREEMENT, it has complied with all announcement and publication obligations prescribed by law and its business activities in connection with programme distribution fully satisfy all applicable and relevant legal requirements.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the CABLE-SYSTEM and the DTH-SYSTEM system operated by the OPERATOR are suitable to distribute the PROGRAMME on a high quality level to the subscribers in compliance with all relevant legal requirements and standards and the provisions of the AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            It shall use its best efforts within the boundaries of the currently available technologies to distribute the PROGRAMME using a technical solution that ensures that the PROGRAMME shall be available for the SUBSCRIBER&rsquo;s exclusively through a television set in the case of a functional and lawful use.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            it shall not distribute any other television programme of the PROGRAMME SERVICE PROVIDER or another programme service provider on the separate channel used for the distribution of the PROGRAMME, unless otherwise agreed by the Parties.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the persons signing this AGREEMENT on the OPERATOR&rsquo;s part have all necessary authorisations to enter into the AGREEMENT and to undertake the obligations hereunder on behalf of the OPERATOR.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            the conclusion and contractual performance of the AGREEMENT does not infringe and/or endanger third party rights and lawful interests.
-        </span>
-    </p>
-    <p class="c0 c16 c10">
-        <a name="h.1fob9te">
-        </a>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            TRADEMARKS
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR explicitly acknowledges that, the PROGRAMME SERVICE PROVIDER, as the exclusive holder of the (word and colour figurative) trademark(s) set out in clause 12.1.1, gives its consent to the use of such trademark(s) only to the extent (in the terms of time limits, territory and the manner of such use) required for the full performance of OPERATOR&rsquo;s duties under the AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Trademark:, &ldquo;
-        </span>
-        <span class="c28 c5">
-            The Fishing and Hunting Channel
-        </span>
-        <span class="c4">
-            &rdquo;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The Parties agree that if the slightest doubt may occur in connection with the lawfulness of the use of the trademark(s), the OPERATOR shall request the prior written opinion and permission of the PROGRAMME SERVICE PROVIDER related to such use. The breach of the provisions set out in this chapter by the OPERATOR shall qualify as a material breach of contract.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall, in any communication related to the PROGRAMME, whether written or verbal, use the full name of the PROGRAMME (i.e. the expression(s) set out in clause 12.1.1).
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR shall be entitled to use the logo of the PROGRAMME in any type of media to promote the services of the PROGRAMME SERVICE PROVIDER without prior discussion with the PROGRAMME SERVICE PROVIDER.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The PROGRAMME SERVICE PROVIDER warrants that it holds the right of use of the trademarks set out in clause 12.1.1 and that it is entitled to grant approvals as set out above. However, the PROGRAMME SERVICE PROVIDER reserves all rights not granted explicitly to the OPERATOR related to the trademarks.
-        </span>
-    </p>
-    <p class="c0 c16 c10">
-        <a name="h.3znysh7">
-        </a>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            INDEMNIFICATION, FORCE MAJEURE
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            Neither Party shall be liable for any technical or transmission failure, a suspension of programme service or distribution, or any other delay or non-performance of its representations, warranties, undertakings, conditions or obligations hereunder arising from a force majeure event. Any natural or human impact occurring as a result of an event or phenomenon beyond the control and sphere of interest of the given Party, the consequences of which may not be avoided on the given state of technological development, shall be deemed as a force majeure event, including but not limited to earthquake, lightening, thunder, flood, natural disaster, war, riot, terrorism, general strike, a failure of public utilities, authority measure, a significant change in the relevant laws restricting or impeding the performance of the AGREEMENT. &nbsp; &nbsp;
-        </span>
-    </p>
-    <p class="c0 c10 c16">
-        <span class="c1">
-        </span>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            CONFIDENTIALITY
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            The Parties shall keep and handle as strictly confidential the content of present AGREEMENT and any and all facts, data and information related to their own or the other Party&rsquo;s rights and obligations and they shall only disclose such information to third parties or the public with the other Party&rsquo;s prior written consent, except as may be required by law, regulation or judicial order; provided, however, that the Party being subject to such regulation or order shall immediately notify the other Party in writing of such regulation or order, and shall take all reasonable steps to protect the confidential treatment of such information.
-        </span>
-    </p>
-    <p class="c0 c16 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <h1 class="c9 c25">
-        <span class="c4 c5">
-            MISCELLANEOUS PROVISIONS
-        </span>
-    </h1>
-    <p class="c0">
-        <span class="c4">
-            The Parties agree tha
-        </span>
-        <span class="c4 c13 c52">
-            t neither of them shall be entitled to assign its rights and obligations under the AGREEMENT to third parties without the prior written consent by the other Party. The Parties declare that the OPERATOR, by signing present AGREEMENT, expressly gives its consent to the PROGRAMME SERVICE PROVIDER to assign the AGREEMENT to third parties controlling, controlled by or under common control with the PROGRAMME SERVICE PROVIDER.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The Parties agree that any notification or statement in connection with the AGREEMENT shall be made in writing (via email, fax, and registered mail). The Parties declare that clause 9.7 of chapter 9 hereof sets out additional provisions in relation to legal statements made in connection with the termination of the AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The OPERATOR and the PROGRAMME SERVICE PROVIDER undertake to immediately take any steps necessary for the fulfilment of their duties in order to facilitate the objectives set out in the AGREEMENT.
-        </span>
-        <span class="c4">
-            &nbsp;
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            This AGREEMENT constitutes the entire understanding and agreement between the PARTIES with respect to the subject matter of this AGREEMENT, supersedes all prior negotiations and agreements between the PARTIES, and may not be modified, altered or amended in any manner except by agreement in writing duly executed by the PARTIES to this AGREEMENT.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The Parties declare that the governing law shall be Romanian and that to any matters not regulated in the AGREEMENT all other Romanian laws concerning programme service provision and programme distribution shall apply
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            The Parties agree that disputes arising from the AGREEMENT shall be exclusively settled by Romanian law. The language of the procedure and applicable law shall be Romanian.
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            Contact persons for Parties shall be:
-        </span>
-    </p>
-    <p class="c12 c39">
-        <span class="c4">
-            For PROGRAMME SERVICE PROVIDER: Anca Matiesc, 0040745204444
-        </span>
-        <span class="c4 c34">
-            <a class="c22" href="mailto:anca.matiesc@tematic-cable.ro">
-                anca.matiesc@tematic-cable.ro
-            </a>
-        </span>
-        <span class="c4">
-            , &nbsp;Str. Elena Cuza, No. 8, Bucharest, Romania
-        </span>
-    </p>
-    <p class="c12 c39">
-        <span class="c4">
-            Agent:
-        </span>
-        <span class="c4 c34">
-            <a class="c22" href="mailto:Diana.jawad@mediapartners.bg">
-                Diana.jawad@mediapartners.bg
-            </a>
-        </span>
-        <span class="c4">
-            , Tel +359 89 29 05555
-        </span>
-    </p>
-    <p class="c0">
-        <span class="c4">
-            For OPERATOR: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c53">
-            @client.Management
-        </span>
-        <span class="c4">
-            &nbsp;
-        </span>
-        <span class="c26 c5">
-            @client.ManagementPhone
-        </span>
-        <span class="c4">
-            ,
-        </span>
-        <span class="c26 c5">
-            @client.ManagementEmail
-        </span>
-        <span class="c4">
-            &nbsp;
-        </span>
-        <span class="c26 c5">
-            @client.Correspondence
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <p class="c0 c10">
-        <span class="c1">
-        </span>
-    </p>
-    <a href="#" name="a86cec184bc871970fed897ff3d694805d047a95">
-    </a>
-    <a href="#" name="2">
-    </a>
-    <table cellpadding="0" cellspacing="0" class="c29">
-        <tbody>
-            <tr class="c33">
-                <td class="c30" colspan="1" rowspan="1">
-                    <p class="c3">
-                        <span class="c4">
-                            _____________________________________
-                        </span>
-                    </p>
-                    <p class="c3">
-                        <span class="c4 c5">
-                            PROGRAMME SERVICE PROVIDER
-                        </span>
-                    </p>
-                    <p class="c3">
-                        <span class="c4">
-                            rep.by: Victor Hodorog
-                        </span>
-                    </p>
-                </td>
-                <td class="c30" colspan="1" rowspan="1">
-                    <p class="c3">
-                        <span class="c4">
-                            _____________________________________
-                        </span>
-                    </p>
-                    <p class="c3">
-                        <span class="c4 c5">
-                            OPERATOR
-                        </span>
-                    </p>
-                    <p class="c3">
-                        <span class="c4">
-                            rep. by:
-                        </span>
-                        <span class="c53">
-                            @client.Management
-                        </span>
-                    </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p class="c12 c10">
-        <span class="c1">
-        </span>
-    </p>
-</body>
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="c8">
+                            <td class="c65" colspan="1" rowspan="1">
+                                <p class="c0 c16 c44">
+                                    <span class="c4">
+                                        LANGUAGE:
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c40" colspan="1" rowspan="1">
+                                <p class="c3 c10">
+                                    <span class="c1 c19 c13">
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="c8">
+                            <td class="c65" colspan="1" rowspan="1">
+                                <p class="c0 c16 c44">
+                                    <span class="c4">
+                                        SATELLITE DATA:
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c40" colspan="1" rowspan="1">
+                                <p class="c3 c10">
+                                    <span class="c1 c19 c13">
+                                        @if (channels != null && channels.Any())
+                                        {
+                                        var firstOrDefaultChannel = channels.FirstOrDefault();
+                                        if (firstOrDefaultChannel != null)
+                                        {
+                                        @firstOrDefaultChannel.SatelliteData
+                                        }
+                                        }
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="c8">
+                            <td class="c65" colspan="1" rowspan="1">
+                                <p class="c0 c16 c44">
+                                    <span class="c4">
+                                        ENCODING:
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c40" colspan="1" rowspan="1">
+                                <p class="c3 c10">
+                                    <span class="c1 c19 c13">
+                                        @if (trds != null && trds.Any())
+                                        {
+                                        var lastTrd = trds[trds.Count - 1];
+                                        foreach (var trd in trds)
+                                        {
+                                        if (lastTrd == trd)
+                                        {
+                                        @trd.Cas
+                                        }
+                                        else
+                                        {
+                                        @trd.Cas; @:,
+                                        }
+                                        }
+                                        }
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        CHARACTERISTICS OF PROGRAMME
+                    </span>
+                    <span class="c4">
+                        :
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c5 c28">
+                        The Fishing and Hunting Channel
+                    </span>
+                    <span class="c4">
+                        : means a channel comprising
+                    </span>
+                    <span class="c28 c5">
+                        The Fishing and Hunting Channel
+                    </span>
+                    <span class="c4">
+                        &nbsp;- a television programme service to be broadcasted from 00.00 to 24.00 C.E.T., containing fishing, hunting and outdoor activity related short movies and documentaries, magazines related to the thematic of the channel, gastronomy related programmes and their trailers.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Parties agree that in the case of that the OPERATOR fails to comply with any of its due payment obligations in relation to the PROGRAMME, the PROGRAMME SERVICE PROVIDER shall be entitled to issue payment notice by recorded delivery mail. In the case of that the due amounts are not transferred to the bank account of the PROGRAMME SERVICE PROVIDER within five (5) days from the receipt of such payment notice by the OPERATOR, the PROGRAMME SERVICE PROVIDER shall be entitled to immediately suspend its services under this AGREEMENT. If the OPERATOR complies with all its payment obligations, the PROGRAMME SERVICE PROVIDER shall continue to provide its services.
+                    </span>
+                </p>
+                <p class="c0 c54">
+                    <span class="c4">
+                        The Parties agree that if the services of the PROGRAMME SERVICE PROVIDER had been suspended at least twice within twelve (12) months, the PROGRAMME SERVICE PROVIDER shall be entitled to immediately suspend its services without any notification to the OPERATOR in the case of a repeated payment default of at least seven (7) days of the OPERATOR.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        With prior notice sent to the OPERATOR, at a time agreed by the Parties in advance, the PROGRAMME SERVICE PROVIDER shall have the right to examine through its employees or assignees the registry of subscribers kept by the OPERATOR serving as basis to the accounting of the OPERATOR, in order to determine the accuracy of any or all subscriber reports of the OPERATOR. Such examination shall take place on business days between 9:00 and 16:00, at least five (5) days following the notice sent to the OPERATOR. The course and results of such examination shall be drawn up in a minutes by the Parties. PROGRAMME SERVICE PROVIDER declares that such examination shall not be regarded as the financial or accounting audit of the company of the OPERATOR. Upon such examination, PROGRAMME SERVICE PROVIDER shall not be entitled to request any information not in connection with subscriber numbers of the PROGRAMME or to inspect or investigate any information not related to the number of the OPERATOR&rsquo;s subscribers, such as specific subscriber numbers of other television programme services or the business activities of OPERATOR. In the case of PROGRAMME SERVICE PROVIDER executing such examination by its assignee, it shall be responsible for the acts of such assignee as for the acts of itself.
+                    </span>
+                </p>
+                <p class="c0 c43 c16">
+                    <span class="c1">
+                        In the event that any such examination reveals an under-payment in excess of five (5) per cent (%), the OPERATOR shall bear, further to the arrears and default interests, all reasonable costs of the examination, provided that the total amount of such costs shall not exceed the amount of three (3) month&rsquo;s licence fee payable on the basis of this AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0 c43 c16">
+                    <span class="c1">
+                        Parties agree that they shall co-operate in good faith in relation to the provisions of this clause. Furthermore both Parties shall comply with the provisions of Romanian Law on the Protection of Personal Data and the Disclosure of Information of Public Interest and of other relevant Romanian legislation.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        EPG
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Should the OPERATOR provide EPG as a supplementary service to its subscribers, the PROGRAMME SERVICE PROVIDER shall be obliged, upon the OPERATOR&rsquo;s written request, to provide the OPERATOR with the planned broadcast schedule of the PROGRAMME at least two (2) weeks in advance via e-mail, free of charge.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Should EPG be a supplementary service provided by the PROGRAMME SERVICE PROVIDER, this supplementary service should be produced by the PROGRAMME SERVICE PROVIDER at its own expense.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties represent that the service set out in the present clause shall in every case be deemed as a supplementary service, therefore, none of the Parties will be entitled for any reimbursement, penalty or decrease of licence fee due to the interruption of the of such service.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The PROGRAMME SERVICE PROVIDER is obliged to provide the OPERATOR with the Smart Card necessary for the reception of the PROGRAMME free of charge. The PROGRAM SERVICE PROVIDER shall provide the OPERATOR with the reception equipment at cost detailed in point 8.4.1.1 of this contract. The OPERATOR shall be liable for the validity and validation of the Smart Card.
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        DISTRIBUTION OF THE PROGRAMME
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        The encrypted signal of the PROGRAMME shall be transmitted by the PROGRAMME SERVICE PROVIDER to the HEAD-ENDS of the OPERATOR set out in present AGREEMENT, by means of digital satellite transmission system. The PROGRAMME SERVICE PROVIDER fulfils this obligation itself or via third party contributors (contractors, agents, assistants, other contributors etc.). Should such transmission be accomplished via contributors, the PROGRAMME SERVICE PROVIDER shall be liable for the acts of the contributors as the transmission was carried out by itself.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The place of performance of the services provided by the PROGRAMME SERVICE PROVIDER is the surface of the receiving aerial installed at the HEAD-ENDS. The PROGRAMME SERVICE PROVIDER is obliged to ensure that the quality of the signal of the PROGRAMME complies with all legal regulations, standards (irrespective of the fact whether such standards are legal requirements), industrial specifications at the place of performance and the requirements of the present AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The lowest and average speed of the signal of the PROGRAMME must at all times comply with the acknowledged industrial standards and the characteristics of the PROGRAMME.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        In no event shall PROGRAMME SERVICE PROVIDER be liable for damages or for loss of profits of OPERATOR.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The PROGRAMME SERVICE PROVIDER is obliged to ensure the proper operation of the receiving decryption equipment (the receiving device provided by the PROGRAMME SERVICE PROVIDER at OPERATORS cost, and the validated Smart Card provided by the PROGRAMME SERVICE PROVIDER free of charge) together with the transmitter equipment, provided that the receiving equipment co-operate with the transmitter equipment by software and/or by hardware, or the receiving equipment&rsquo;s operation is controlled by or depends on the transmitter equipment. This means that in the case of modification of the distribution method or of the digital data flow of the distributed channel, the PROGRAMME SERVICE PROVIDER must test it in advance, provided that it is technically possible in any another way than through a separate data flow, and, if necessary, the PROGRAMME SERVICE PROVIDER must inform the OPERATOR of the source from where the amendment of the software of the recommended DVB-S receiving unit can be downloaded. If the replacement of the Smart Card becomes necessary, the PROGRAMME SERVICE PROVIDER must provide for the replacement of the required equipment free of charge at least five (5) business days prior to the modification.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The PROGRAMME SERVICE PROVIDER recommends the OPERATOR to use an aerial dish with a diameter of at least ninety (90) centimetres (more preferably one hundred twenty, that is 120 centimetres) for the reception of the PROGRAMME. The PROGRAMME SERVICE PROVIDER will provide the OPERATOR with the following type of reception equipment, which makes the undisturbed, continuous reception of the PROGRAMME possible, with automatic return in the case of power-cut: the reception equipment
+                    </span>
+                </p>
+                <p class="c0 c10 c55">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        In the case of any failure requiring the replacement of the Smart Card provided by the PROGRAMME SERVICE PROVIDER, the PROGRAMME SERVICE PROVIDER must provide the OPERATOR with the new, operable Smart Card at the place and time previously agreed with the OPERATOR. If the replacement of the Smart Card is necessary due to its improper use by the OPERATOR, the costs of replacement shall be borne by the OPERATOR. In all other cases, the replacement shall be carried out by the PROGRAMME SERVICE PROVIDER free of charge.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Under the scope of this AGREEMENT, the PROGRAMME SERVICE PROVIDER shall be entitled to change the satellite used for the distribution of the signal and/or the encryption system and/or the frequency upon notifying the OPERATOR in writing at least sixty (60) days prior to such change; in addition, the PROGRAMME SERVICE PROVIDER shall be obliged to provide parallel services on the previous and the new satellites for the maximum of fifteen (15) days.
+                    </span>
+                </p>
+                <p class="c0 c54">
+                    <span class="c4">
+                        In the case where, due to any of the above changes, additional costs occur on the side of the OPERATOR resulting from the purchase and installation of absolutely necessary equipment, the PROGRAMME SERVICE PROVIDER shall be obliged to undertake one or a variation of the following obligations: &nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        To bear the costs of the above changes,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        To provide the OPERATOR with the equipment necessary for the reception of the PROGRAMME,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        To provide a discount from the licence fee in the amount equal to the costs of the above changes.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR carrying analogue distribution at the time of the conclusion of the AGREEMENT shall be entitled to switch over to the digital distribution of the PROGRAMME at any time under the scope of this AGREEMENT, provided that the number of SUBSCRIBERS and the TIERS do not change, and the OPERATOR does not breach any of its obligations under the present AGREEMENT. All costs related to such a switchover shall be borne by the OPERATOR. &nbsp;
+                    </span>
+                </p>
+                <p class="c0 c16 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        TERM AND TERMINATION OF THE AGREEMENT
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        The present AGREEMENT enters into effect on the date set out in the AGREEMENT (or, if OPERATOR is not in the possession of Smart Card, at that date, upon the handover of the properly operating Smart Card), and shall be in force until the date set out in the AGREEMENT. Before that date, the AGREEMENT can be terminated only in the events set out in the AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties agree that the term of the AGREEMENT shall be automatically extended with additional one (1) year unless either Party notifies the other Party at the latest two (2) months before the expiry date of its intention to terminate the AGREEMENT on the expiry date. This provision on automatic extension of term shall be applicable to further extensions of term in accordance with the above.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The AGREEMENT cannot be terminated by ordinary termination.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The AGREEMENT terminates or can be terminated
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        upon the expiry of its definite term subject to clause 3. or 9.2 whichever is applicable,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        by the mutual agreement of the Parties,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        if the completion of the AGREEMENT or the basic services of either Party under the AGREEMENT become impossible,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        in the case of material breach of obligations of either Party with immediate termination by the other Party,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        in the case of force majeure exceeding thirty (30) days.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The following shall qualify as a material breach of contract:
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        by the PROGRAMME SERVICE PROVIDER:
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        a failure to provide programme service for an perpetual period of seventy two (72) hours or six (6) times within a one hundred sixty eight (168) hours period for periods longer than ten (10) minutes in each occasion.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        by the OPERATOR:
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        failure to fulfil its reporting obligation at due date or providing false or incomplete report,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        a breach of any provision in connection with the payment obligation of the OPERATOR in relation to the PROGRAMME.,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        By both Parties:
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        a breach of any representation set out in clause 10 of the present AGREEMENT.,
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        if any breach of contract indicated in a written notice by the other party is not remedied as soon as possible, i.e. within a reasonable period of time but not later than within thirty (30) days.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        a breach of the provisions set out in clause 13 of the present AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties agree that all declarations made in connection with the termination of the AGREEMENT shall be made in writing indicating the reasons of such termination and shall be sent by registered mail to the other Party.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Should the AGREEMENT terminate for any reason, the Parties shall make a settlement within thirty (30) days following the date of termination in accordance with the provisions of the AGREEMENT or if this is not possible, by the proper application of the provisions of the AGREEMENT having regard to the purpose of such provisions.
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        REPRESENTATIONS OF THE PARTIES
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        The PROGRAMME SERVICE PROVIDER represents that:
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        it has all contractual relationships, authorizations and other licences necessary for the transfer of programme distribution rights under the AGREEMENT, it has complied with all announcement and publication obligations prescribed by law and its activity fully satisfies all applicable and relevant legal requirements. &nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the PROGRAMME delivered by itself or its contributor to the OPERATOR satisfies all legal requirements and the requirements prescribed by the Parties.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the distribution of the PROGRAMME to the SUBSCRIBERS by the OPERATOR does not infringe or endanger any third party copyrights or neighbouring rights.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        during the transmission time it shall not broadcast the programme of any other programme service provider or any other television programme of the PROGRAMME SERVICE PROVIDER.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        it shall use its best efforts in order to prevent any unauthorised access, retransmission or recording of the PROGRAMME or any programming thereof.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the persons signing this AGREEMENT on the PROGRAMME SERVICE PROVIDER&rsquo;s part have all necessary authorisations to enter into the AGREEMENT and to undertake the obligations hereunder on behalf of the PROGRAMME SERVICE PROVIDER.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the conclusion and contractual performance of the AGREEMENT does not infringe and/or endanger third party rights and lawful interests.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR represents that
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        it has all authorizations and other licences necessary for the programme distribution under the AGREEMENT, it has complied with all announcement and publication obligations prescribed by law and its business activities in connection with programme distribution fully satisfy all applicable and relevant legal requirements.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the CABLE-SYSTEM and the DTH-SYSTEM system operated by the OPERATOR are suitable to distribute the PROGRAMME on a high quality level to the subscribers in compliance with all relevant legal requirements and standards and the provisions of the AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        It shall use its best efforts within the boundaries of the currently available technologies to distribute the PROGRAMME using a technical solution that ensures that the PROGRAMME shall be available for the SUBSCRIBER&rsquo;s exclusively through a television set in the case of a functional and lawful use.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        it shall not distribute any other television programme of the PROGRAMME SERVICE PROVIDER or another programme service provider on the separate channel used for the distribution of the PROGRAMME, unless otherwise agreed by the Parties.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the persons signing this AGREEMENT on the OPERATOR&rsquo;s part have all necessary authorisations to enter into the AGREEMENT and to undertake the obligations hereunder on behalf of the OPERATOR.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        the conclusion and contractual performance of the AGREEMENT does not infringe and/or endanger third party rights and lawful interests.
+                    </span>
+                </p>
+                <p class="c0 c16 c10">
+                    <a name="h.1fob9te">
+                    </a>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        TRADEMARKS
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR explicitly acknowledges that, the PROGRAMME SERVICE PROVIDER, as the exclusive holder of the (word and colour figurative) trademark(s) set out in clause 12.1.1, gives its consent to the use of such trademark(s) only to the extent (in the terms of time limits, territory and the manner of such use) required for the full performance of OPERATOR&rsquo;s duties under the AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Trademark:, &ldquo;
+                    </span>
+                    <span class="c28 c5">
+                        The Fishing and Hunting Channel
+                    </span>
+                    <span class="c4">
+                        &rdquo;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties agree that if the slightest doubt may occur in connection with the lawfulness of the use of the trademark(s), the OPERATOR shall request the prior written opinion and permission of the PROGRAMME SERVICE PROVIDER related to such use. The breach of the provisions set out in this chapter by the OPERATOR shall qualify as a material breach of contract.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall, in any communication related to the PROGRAMME, whether written or verbal, use the full name of the PROGRAMME (i.e. the expression(s) set out in clause 12.1.1).
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR shall be entitled to use the logo of the PROGRAMME in any type of media to promote the services of the PROGRAMME SERVICE PROVIDER without prior discussion with the PROGRAMME SERVICE PROVIDER.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The PROGRAMME SERVICE PROVIDER warrants that it holds the right of use of the trademarks set out in clause 12.1.1 and that it is entitled to grant approvals as set out above. However, the PROGRAMME SERVICE PROVIDER reserves all rights not granted explicitly to the OPERATOR related to the trademarks.
+                    </span>
+                </p>
+                <p class="c0 c16 c10">
+                    <a name="h.3znysh7">
+                    </a>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        INDEMNIFICATION, FORCE MAJEURE
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        Neither Party shall be liable for any technical or transmission failure, a suspension of programme service or distribution, or any other delay or non-performance of its representations, warranties, undertakings, conditions or obligations hereunder arising from a force majeure event. Any natural or human impact occurring as a result of an event or phenomenon beyond the control and sphere of interest of the given Party, the consequences of which may not be avoided on the given state of technological development, shall be deemed as a force majeure event, including but not limited to earthquake, lightening, thunder, flood, natural disaster, war, riot, terrorism, general strike, a failure of public utilities, authority measure, a significant change in the relevant laws restricting or impeding the performance of the AGREEMENT. &nbsp; &nbsp;
+                    </span>
+                </p>
+                <p class="c0 c10 c16">
+                    <span class="c1">
+                    </span>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        CONFIDENTIALITY
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties shall keep and handle as strictly confidential the content of present AGREEMENT and any and all facts, data and information related to their own or the other Party&rsquo;s rights and obligations and they shall only disclose such information to third parties or the public with the other Party&rsquo;s prior written consent, except as may be required by law, regulation or judicial order; provided, however, that the Party being subject to such regulation or order shall immediately notify the other Party in writing of such regulation or order, and shall take all reasonable steps to protect the confidential treatment of such information.
+                    </span>
+                </p>
+                <p class="c0 c16 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <h1 class="c9 c25">
+                    <span class="c4 c5">
+                        MISCELLANEOUS PROVISIONS
+                    </span>
+                </h1>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties agree tha
+                    </span>
+                    <span class="c4 c13 c52">
+                        t neither of them shall be entitled to assign its rights and obligations under the AGREEMENT to third parties without the prior written consent by the other Party. The Parties declare that the OPERATOR, by signing present AGREEMENT, expressly gives its consent to the PROGRAMME SERVICE PROVIDER to assign the AGREEMENT to third parties controlling, controlled by or under common control with the PROGRAMME SERVICE PROVIDER.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties agree that any notification or statement in connection with the AGREEMENT shall be made in writing (via email, fax, and registered mail). The Parties declare that clause 9.7 of chapter 9 hereof sets out additional provisions in relation to legal statements made in connection with the termination of the AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The OPERATOR and the PROGRAMME SERVICE PROVIDER undertake to immediately take any steps necessary for the fulfilment of their duties in order to facilitate the objectives set out in the AGREEMENT.
+                    </span>
+                    <span class="c4">
+                        &nbsp;
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        This AGREEMENT constitutes the entire understanding and agreement between the PARTIES with respect to the subject matter of this AGREEMENT, supersedes all prior negotiations and agreements between the PARTIES, and may not be modified, altered or amended in any manner except by agreement in writing duly executed by the PARTIES to this AGREEMENT.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties declare that the governing law shall be Romanian and that to any matters not regulated in the AGREEMENT all other Romanian laws concerning programme service provision and programme distribution shall apply
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        The Parties agree that disputes arising from the AGREEMENT shall be exclusively settled by Romanian law. The language of the procedure and applicable law shall be Romanian.
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        Contact persons for Parties shall be:
+                    </span>
+                </p>
+                <p class="c12 c39">
+                    <span class="c4">
+                        For PROGRAMME SERVICE PROVIDER: Anca Matiesc, 0040745204444
+                    </span>
+                    <span class="c4 c34">
+                        <a class="c22" href="mailto:anca.matiesc@tematic-cable.ro">
+                            anca.matiesc@tematic-cable.ro
+                        </a>
+                    </span>
+                    <span class="c4">
+                        , &nbsp;Str. Elena Cuza, No. 8, Bucharest, Romania
+                    </span>
+                </p>
+                <p class="c12 c39">
+                    <span class="c4">
+                        Agent:
+                    </span>
+                    <span class="c4 c34">
+                        <a class="c22" href="mailto:Diana.jawad@mediapartners.bg">
+                            Diana.jawad@mediapartners.bg
+                        </a>
+                    </span>
+                    <span class="c4">
+                        , Tel +359 89 29 05555
+                    </span>
+                </p>
+                <p class="c0">
+                    <span class="c4">
+                        For OPERATOR: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                    <span class="c53">
+                        @client.Management
+                    </span>
+                    <span class="c4">
+                        &nbsp;
+                    </span>
+                    <span class="c26 c5">
+                        @client.ManagementPhone
+                    </span>
+                    <span class="c4">
+                        ,
+                    </span>
+                    <span class="c26 c5">
+                        @client.ManagementEmail
+                    </span>
+                    <span class="c4">
+                        &nbsp;
+                    </span>
+                    <span class="c26 c5">
+                        @client.Correspondence
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <p class="c0 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+                <a href="#" name="a86cec184bc871970fed897ff3d694805d047a95">
+                </a>
+                <a href="#" name="2">
+                </a>
+                <table cellpadding="0" cellspacing="0" class="c29">
+                    <tbody>
+                        <tr class="c33">
+                            <td class="c30" colspan="1" rowspan="1">
+                                <p class="c3">
+                                    <span class="c4">
+                                        _____________________________________
+                                    </span>
+                                </p>
+                                <p class="c3">
+                                    <span class="c4 c5">
+                                        PROGRAMME SERVICE PROVIDER
+                                    </span>
+                                </p>
+                                <p class="c3">
+                                    <span class="c4">
+                                        rep.by: Victor Hodorog
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="c30" colspan="1" rowspan="1">
+                                <p class="c3">
+                                    <span class="c4">
+                                        _____________________________________
+                                    </span>
+                                </p>
+                                <p class="c3">
+                                    <span class="c4 c5">
+                                        OPERATOR
+                                    </span>
+                                </p>
+                                <p class="c3">
+                                    <span class="c4">
+                                        rep. by:
+                                    </span>
+                                    <span class="c53">
+                                        @client.Management
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="c12 c10">
+                    <span class="c1">
+                    </span>
+                </p>
+            </body>
 
-</html>
+        </html>

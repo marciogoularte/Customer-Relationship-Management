@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\EnumerableExtensions.cs" />
-<<<<<<< HEAD
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
@@ -54,12 +53,6 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statics\ContractTemplatesHtml.cs" />
-=======
-    <Compile Include="Extensions\ImageExtensions.cs" />
-    <Compile Include="Extensions\KendoGridExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

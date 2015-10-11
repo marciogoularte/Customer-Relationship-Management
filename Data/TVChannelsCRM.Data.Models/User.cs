@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 ﻿namespace TVChannelsCRM.Data.Models
-=======
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Web;
-
-namespace TVChannelsCRM.Data.Models
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 {
     using System;
     using System.Security.Claims;

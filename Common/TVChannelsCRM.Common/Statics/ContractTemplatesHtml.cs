@@ -279,7 +279,7 @@
 <P STYLE='margin-bottom: 0in'>тел.0888 88 41 80</P>
 <P STYLE='margin-bottom: 0in'>София, 1618</P>
 <P STYLE='margin-bottom: 0in'>Ивайло Иванов</P>
-<P STYLE='margin-bottom: 0in'><A HREF='mailto:ivaylo.ivanov@virgin.bg'><FONT COLOR='#1155cc'><U>ivaylo.ivanov@virgin.bg</U></FONT></A>;</P>
+<P STYLE='margin-bottom: 0in'><A HREF='mailto:ivaylo.ivanov@@virgin.bg'><FONT COLOR='#1155cc'><U>ivaylo.ivanov@@virgin.bg</U></FONT></A>;</P>
 <P STYLE='margin-bottom: 0in'><BR>
 </P>
 <P STYLE='margin-bottom: 0in'>За Оператора:</P>
@@ -15182,7 +15182,7 @@ VІ<SPAN LANG='en-US'>I</SPAN>. ДРУГИ УСЛОВИЯ</H4>
 <SPAN LANG='bg-BG'>а) за Лицензополучателят: гр.
 София, </SPAN>1618, ул<SPAN LANG='bg-BG'>. „</SPAN>Любляна<SPAN LANG='bg-BG'>”</SPAN>
 42<SPAN LANG='bg-BG'> тел: </SPAN>0888<SPAN LANG='bg-BG'>-</SPAN>884<SPAN LANG='bg-BG'>-</SPAN>180<SPAN LANG='bg-BG'>;
-e-mail: </SPAN><SPAN LANG='en-US'>office@virgin.bg</SPAN><SPAN LANG='ru-RU'>;
+e-mail: </SPAN><SPAN LANG='en-US'>office@@virgin.bg</SPAN><SPAN LANG='ru-RU'>;
 </SPAN>
 </P>
 <P LANG='en-GB' CLASS='western' ALIGN=JUSTIFY STYLE='text-indent: 0.39in; margin-top: 0.08in; line-height: 100%'>
@@ -18174,7 +18174,7 @@ e-mail: </SPAN><SPAN LANG='en-US'>office@profilms.bg.</SPAN></P>
 			<p align='JUSTIFY' style='margin-bottom: 0.14in'><font face='Times New Roman, serif'><font size='2'><span style='font-weight: normal'>Òåëåôîí:
 			        Ìîáèëåí: 0898
 			481572   Ôàêñ:             Å-mail:
-			rosen.dobrev@virgin.bg</span></font></font></p>
+			rosen.dobrev@@virgin.bg</span></font></font></p>
 			<p align='JUSTIFY' style='margin-bottom: 0.14in'><br><br>
 			</p>
 			<p align='JUSTIFY' style='margin-bottom: 0.14in'><font face='Times New Roman, serif'><font size='2'><span style='font-weight: normal'>Êàòî

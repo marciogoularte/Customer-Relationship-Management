@@ -13,14 +13,9 @@
     .Columns(columns =>
     {
         columns.Bound(model => model.Name).Width(205);
-<<<<<<< HEAD
         columns.Bound(model => model.TypeId).Hidden(true).Width(100);
         columns.Bound(model => model.Uic).Width(32).Hidden(true);
         columns.Bound(model => model.Vat).Width(32).Hidden(true);
-=======
-        columns.Bound(model => model.Type).Width(100);
-        columns.Bound(model => model.Eik).Width(32).Hidden(true);
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.BankAccount).Width(32).Hidden(true);
         columns.Bound(model => model.Email).Width(215);
         columns.Bound(model => model.ResidenceAndAddress).Width(32).Hidden(true);
@@ -32,11 +27,8 @@
         columns.Bound(model => model.Term).Width(32).Hidden(true);
         columns.Bound(model => model.Cps).Width(32).Hidden(true);
         columns.Bound(model => model.Commission).Width(32).Hidden(true);
-<<<<<<< HEAD
         columns.Bound(model => model.LogoLink).ClientTemplate("<a target='_blank' href='#=LogoLink#'>link</a>").Width(32).Width(32).Hidden(true);
         columns.Bound(model => model.ContractTemplate).Width(32);
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.Comments).Width(265);
         columns.Command(command =>
         {
@@ -58,7 +50,6 @@
             <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
     })
-<<<<<<< HEAD
                     .Groupable()
                     .ColumnMenu()
                     .Filterable()
@@ -100,49 +91,6 @@
                             .Update(update => update.Action("UpdateProvider", controllerName))
                             .Destroy(destroy => destroy.Action("DestroyProvider", controllerName));
                     }))
-=======
-    .Groupable()
-    .ColumnMenu()
-    .Filterable()
-    .Navigatable()
-    .Resizable(r => r.Columns(true))
-    .Reorderable(r => r.Columns(true))
-    .Events(ev => ev.Change("selectRow"))
-    .HtmlAttributes(new { @style = "word-break:break-all;" })
-    .Editable(edit => edit.Mode(GridEditMode.PopUp))
-    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
-    .Excel(excel => excel
-        .FileName("Providers Database.xlsx")
-        .Filterable(true)
-        .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
-     )
-    .Pdf(pdf => pdf
-        .AllPages()
-        .FileName("Providers Database.pdf")
-        .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
-    )
-    .Pageable(pageable => pageable
-        .Refresh(true)
-        .PageSizes(true)
-        .ButtonCount(5))
-    .Sortable(sort =>
-    {
-        sort.AllowUnsort(false);
-        sort.SortMode(GridSortMode.SingleColumn);
-    })
-    .DataSource(data =>
-    {
-        data.Ajax()
-            .Model(model => model.Id(c => c.Id))
-            .PageSize(10)
-            .ServerOperation(true)
-            .Events(ev => ev.Error("errorAlert"))
-            .Read(read => read.Action("ReadProviders", controllerName).Data("addSearchProviders"))
-            .Create(create => create.Action("CreateProvider", controllerName))
-            .Update(update => update.Action("UpdateProvider", controllerName))
-            .Destroy(destroy => destroy.Action("DestroyProvider", controllerName));
-    }))
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 <div id="selected">
 </div>
 

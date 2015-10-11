@@ -4,11 +4,13 @@
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.TypeOfCompanies
 @model ClientContractViewModel
 @{
     Layout = null;
 
     var client = (ClientViewModel)ViewBag.Client;
+    var type = (TypeOfCompanyViewModel)ViewBag.ClientContractType;
 
     var time = DateTime.Now;
     string format = "dd.MM.yyyy";
@@ -102,7 +104,7 @@
     </p>
     <p class="c0">
         <span class="c2 c6">
-            2. @client.NameBulgarian @client.TypeInBulgarian
+            2. @client.NameBulgarian @type.TypeInBulgarian
         </span>
         <span class="c2">
             ,
@@ -537,7 +539,7 @@
     <p class="c0">
         <span class="c18">
             <a class="c11" href="mailto:ivaylo.ivanov@virgin.bg">
-                ivaylo.ivanov@virgin.bg
+                ivaylo.ivanov@@virgin.bg
             </a>
         </span>
         <span>

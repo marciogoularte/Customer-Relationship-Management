@@ -1,6 +1,5 @@
 ﻿namespace TVChannelsCRM.Web.Controllers
 {
-<<<<<<< HEAD
     using System;
     using System.Linq;
     using System.Web.Mvc;
@@ -9,11 +8,6 @@
 
     using Data;
     using Data.Models;
-=======
-    using System.Web.Mvc;
-
-    using Data;
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
     public abstract class BaseController : Controller
     {
@@ -23,7 +17,6 @@
         {
             this.Data = data;
         }
-<<<<<<< HEAD
 
         public void CreateActivity(ActivityType type, string targetId, ActivityTargetType targetType)
         {
@@ -69,7 +62,5 @@
             var fileContents = Convert.FromBase64String(base64);
             return File(fileContents, contentType, fileName);
         }
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     }
 }

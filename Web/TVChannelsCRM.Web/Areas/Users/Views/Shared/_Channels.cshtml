@@ -17,18 +17,11 @@
         columns.Bound(model => model.Name).Width(185);
         columns.Bound(model => model.ReveivingOptions).Width(32).Hidden(true);
         columns.Bound(model => model.SatelliteData).Width(32).Hidden(true);
-<<<<<<< HEAD
         columns.Bound(model => model.EpgSource).ClientTemplate("<a target='_blank' href='#=EpgSource#'>link</a>").Width(32).Hidden(true);
         columns.Bound(model => model.Website).ClientTemplate("<a target='_blank' href='#=Website#'>link</a>").Width(170);
         columns.Bound(model => model.Presentation).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Width(170);
         columns.Bound(model => model.ContractTemplate).ClientTemplate("<a target='_blank' href='#=ContractTemplate#'>link</a>").Width(32).Hidden(true);
         columns.Bound(model => model.LogoLink).ClientTemplate("<a target='_blank' href='#=LogoLink#'>link</a>").Width(32).Hidden(true);
-=======
-        columns.Bound(model => model.EpgSource).Width(32).Hidden(true);
-        columns.Bound(model => model.Website).ClientTemplate("<a target='_blank' href='#=Website#'>link</a>").Width(170);
-        columns.Bound(model => model.Presentation).ClientTemplate("<a target='_blank' href='#=Presentation#'>link</a>").Width(170);
-        columns.Bound(model => model.ContractTemplate).Width(32).Hidden(true);
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         columns.Bound(model => model.Comments).Width(275);
         columns.Command(command =>
         {
@@ -66,20 +59,12 @@
                                     .Excel(excel => excel
                                         .FileName("Providers Database.xlsx")
                                         .Filterable(true)
-<<<<<<< HEAD
                                         .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
-=======
-                                        .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                                         )
                                     .Pdf(pdf => pdf
                                         .AllPages()
                                         .FileName("Providers Database.pdf")
-<<<<<<< HEAD
                                         .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
-=======
-                                        .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                                     )
                                     .Pageable(pageable => pageable
                                         .Refresh(true)

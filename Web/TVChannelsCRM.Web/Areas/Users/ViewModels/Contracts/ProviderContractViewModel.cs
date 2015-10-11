@@ -23,10 +23,6 @@
                     BillingStartDate = c.BillingStartDate,
                     BillingEndDate = c.BillingEndDate,
                     NumberOfDaysForPaymentDueDate = c.NumberOfDaysForPaymentDueDate,
-<<<<<<< HEAD
-=======
-                    NumberOfDaysToBeConsidered = c.NumberOfDaysToBeConsidered,
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                     AcceptingReports = c.AcceptingReports,
                     GoverningLaw = c.GoverningLaw,
                     Comments = c.Comments,
@@ -63,16 +59,8 @@
         [DisplayName("Payment due date(number of days)")]
         public int NumberOfDaysForPaymentDueDate { get; set; }
 
-<<<<<<< HEAD
         [DisplayName("Accepting reports")]
         public bool AcceptingReports { get; set; }
-=======
-        [DisplayName("To be considered(number of days)")]
-        public int NumberOfDaysToBeConsidered { get; set; }
-
-        [DisplayName("Accepting reports")]
-        public int AcceptingReports { get; set; }
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
         [DisplayName("Governing law")]
         public string GoverningLaw { get; set; }

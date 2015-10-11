@@ -17,19 +17,12 @@
                 {
                     Id = p.Id,
                     Name = p.Name,
-<<<<<<< HEAD
                     TypeId = p.TypeId,
                     Uic = p.Uic,
                     Vat = p.Vat,
                     BankAccount = p.BankAccount,
                     ResidenceAndAddress = p.ResidenceAndAddress,
                     ContractTemplate = p.ContractTemplate,
-=======
-                    Type = p.Type,
-                    Eik = p.Eik,
-                    BankAccount = p.BankAccount,
-                    ResidenceAndAddress = p.ResidenceAndAddress,
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                     NetworkPage = p.NetworkPage,
                     ContactPerson = p.ContactPerson,
                     PhoneNumber = p.PhoneNumber,
@@ -37,10 +30,7 @@
                     Address = p.Address,
                     Term = p.Term,
                     Cps = p.Cps,
-<<<<<<< HEAD
                     LogoLink = p.LogoLink,
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                     Commission = p.Commission
                 };
             }
@@ -55,7 +45,6 @@
 
         [UIHint("TypeOfCompanyEditor")]
         [Required(ErrorMessage = "Type is required")]
-<<<<<<< HEAD
         public string TypeId { get; set; }
 
         [DisplayName("UIC")]
@@ -63,12 +52,6 @@
 
         [DisplayName("VAT#")]
         public string Vat { get; set; }
-=======
-        public TypeOfCompany Type { get; set; }
-
-        [DisplayName("EIK")]
-        public string Eik { get; set; }
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
         [DisplayName("Bank Account")]
         public string BankAccount { get; set; }
@@ -95,23 +78,17 @@
         [DisplayName("Cps(years)")]
         public int? Cps { get; set; }
 
-<<<<<<< HEAD
         [DisplayName("Logo Link")]
         [Url(ErrorMessage = "Channel Epg Source is not valid website")]
         public string LogoLink { get; set; }
 
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         public string Commission { get; set; }
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
-<<<<<<< HEAD
 
         [DisplayName("Contract Template")]
         [UIHint("ContractTemplateEditor")]
         public ContractTemplate ContractTemplate { get; set; }
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     }
 }

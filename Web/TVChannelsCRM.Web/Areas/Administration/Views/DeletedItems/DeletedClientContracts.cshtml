@@ -26,10 +26,7 @@
             columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
             columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
             columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
-<<<<<<< HEAD
             columns.Bound(model => model.Tier).Width(32).Hidden(true);
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             columns.Bound(model => model.Comments).Width(275);
             columns.Command(command => command.Custom("Restore").Click("showDetailsDeletedContracts"));
         })
@@ -60,20 +57,12 @@
         .Excel(excel => excel
             .FileName("Deleted Client Contracts Database.xlsx")
             .Filterable(true)
-<<<<<<< HEAD
             .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
-=======
-            .ProxyURL(Url.Action("Excel_Export_Save", controllerName))
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         )
         .Pdf(pdf => pdf
             .AllPages()
             .FileName("Deleted Client Contracts Database.pdf")
-<<<<<<< HEAD
             .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
-=======
-            .ProxyURL(Url.Action("Pdf_Export_Save", controllerName))
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         )
         .Pageable(pageable => pageable
             .Refresh(true)

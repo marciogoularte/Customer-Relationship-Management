@@ -1,16 +1,7 @@
 ﻿namespace TVChannelsCRM.Web.Controllers
 {
-<<<<<<< HEAD
     using System.Web.Mvc;
 
-=======
-    using System;
-    using System.Linq;
-    using System.Web.Mvc;
-
-    using Microsoft.AspNet.Identity;
-
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     using Data;
     using Data.Models;
 
@@ -44,11 +35,7 @@
 
             //return View(lastActivities);
 
-<<<<<<< HEAD
             return RedirectToAction("Index", "Activities", new { area = "Administration" });
-=======
-            return RedirectToAction("Index", "Activities", new {area = "Administration"});
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         }
 
         public ActionResult About()
@@ -59,21 +46,13 @@
                 var provider = new Data.Models.Provider()
                 {
                     Name = "Name " + (i * 23),
-<<<<<<< HEAD
                     //Type = TypeOfCompany.OOD,
-=======
-                    Type = TypeOfCompany.OOD,
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                     Address = "Al Malinow" + (i * 23),
                     Commission = (i * 23).ToString(),
                     ContactPerson = "Pesho" + (i * 23),
                     Term = "Term" + (i * 23),
                     Cps = i * 23,
-<<<<<<< HEAD
                     Uic = "Uic" + (i * 23),
-=======
-                    Eik = "Eik" + (i * 23),
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                     ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
                     NetworkPage = "NetworkPage" + i * 3.6,
                     PhoneNumber = "0891929384",
@@ -135,40 +114,9 @@
             return View();
         }
 
-<<<<<<< HEAD
         public ActionResult GeneratePdf()
         {
             return new Rotativa.ViewAsPdf("SampleContract") { FileName = "TestViewAsPdf.pdf" };
-=======
-        private void CreateActivity(ActivityType type, string targetId, ActivityTargetType targetType)
-        {
-            var loggedUserId = this.User.Identity.GetUserId();
-
-            // If activities are more than 200 just override the oldest one so will not have more than 200 activities
-            if (this.Data.Activities.All().Count() >= 200)
-            {
-                var activity = this.Data.Activities.All().OrderBy(a => a.CreatedOn).FirstOrDefault();
-                activity.UserId = loggedUserId;
-                activity.Type = type;
-                activity.TargetId = targetId;
-                activity.TargetType = targetType;
-                activity.CreatedOn = DateTime.Now;
-            }
-            else
-            {
-                var activity = new Activity()
-                {
-                    UserId = loggedUserId,
-                    Type = type,
-                    TargetId = targetId,
-                    TargetType = targetType
-                };
-
-                this.Data.Activities.Add(activity);
-            }
-
-            this.Data.SaveChanges();
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
         }
     }
 }

@@ -9,13 +9,12 @@
         Fcw,
         Fishing,
         Imagine,
-        MixPack,
-        MovieSels,
         Moviestar,
         Roma,
         Sct,
         SuperOne,
-        TheWorld
+        TheWorld,
+        Bulsat
     }
 
     //public class ContractTemplate : DeletableEntity, IEntity

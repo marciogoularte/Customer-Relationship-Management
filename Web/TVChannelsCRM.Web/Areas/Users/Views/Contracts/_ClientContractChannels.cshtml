@@ -13,6 +13,12 @@
         -moz-border-radius: 8px;
         border-radius: 8px;
     }
+
+    #not-loaded-channels{
+        color: red;
+        font-weight: bold;
+        font-style: italic;
+    }
 </style>
 
 <script>
@@ -56,53 +62,8 @@
         )
 
     </div>
-
-    @*<div class="treeview-back">
-
-            @(Html.Kendo().TreeView()
-                .Name("treeview-provider-channels")
-                .DragAndDrop(true)
-                .Items(treeview =>
-                {
-                    if (Model.ProviderChannels.Any())
-                    {
-                        foreach (var providerChannel in Model.ProviderChannels)
-                        {
-                            treeview.Add().Text(providerChannel.Name.ToString()).Id(providerChannel.Id.ToString());
-                        }
-                    }
-                    else
-                    {
-                        treeview.Add().Text("No Channels");
-                    }
-                })
-            )
-
-        </div>*@
-
-    @*<div class="treeview-back">
-
-            @(Html.Kendo().TreeView()
-                .Name("treeview-client-contract-channels")
-                .DragAndDrop(true)
-                .Events(events => events
-                     .DragEnd("onDragEndToClientContract")
-                )
-                .Items(treeview =>
-                {
-                    if (Model.ClientContractChannels.Any())
-                    {
-                        foreach (var clientContractChannel in Model.ClientContractChannels)
-                        {
-                            treeview.Add().Text(clientContractChannel.Name.ToString()).Id(clientContractChannel.Id.ToString());
-                        }
-                    }
-                    else
-                    {
-                        treeview.Add().Text("No Channels");
-                    }
-                })
-            )
-
-        </div>*@
+}
+else
+{
+    <div id="not-loaded-channels">Channels couldn't load. Please refresh page or try latter!</div>
 }

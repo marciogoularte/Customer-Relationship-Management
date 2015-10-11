@@ -1,18 +1,23 @@
-﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Invoices
+﻿@using TVChannelsCRM.Common.Extensions
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.Invoices
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.TypeOfCompanies
 @model ClientContractViewModel
 @{
     Layout = null;
 
     var client = (ClientViewModel)ViewBag.Client;
+    var provider = (ProviderViewModel)ViewBag.Provider;
     var invoices = (List<InvoiceViewModel>)ViewBag.Invoices;
+    var type = (TypeOfCompanyViewModel)ViewBag.ClientContractType;
 }
 
 <html>
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <link rel="stylesheet" href="~/Content/contracts/ectv" type="text/css" />
+    <link rel="stylesheet" href="~/Content/contracts/ectv.css" type="text/css" />
 </head>
 <body class="c48">
     <div>
@@ -116,7 +121,7 @@
                             2. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         </span>
                         <span class="c36">
-                            @client.NameBulgarian @client.TypeInBulgarian
+                            @client.NameBulgarian @type.TypeInBulgarian
                         </span>
                         <span class="c30">
                             with its seat at &nbsp;
@@ -268,7 +273,7 @@
                             &nbsp;2.2.1. Agreed Tier:
                         </span>
                         <span class="c3">
-                            @Model.Tier.ToString()
+                            @Model.Tier.GetDescription()
                         </span>
                     </p>
                     <p class="c25 c24 c37">
@@ -419,10 +424,7 @@
                             =
                         </span>
                         <span class="c45">
-@{
-    var time = Model.EndDate - Model.StartDate;
-}
-                            @time
+                            @provider.Term
                         </span>
                         <span class="c0">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

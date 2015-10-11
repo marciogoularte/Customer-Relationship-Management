@@ -32,13 +32,7 @@
 
         public int NumberOfDaysForPaymentDueDate { get; set; }
 
-<<<<<<< HEAD
         public bool AcceptingReports { get; set; }
-=======
-        public int NumberOfDaysToBeConsidered { get; set; }
-
-        public int AcceptingReports { get; set; }
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
         public string GoverningLaw { get; set; }
 

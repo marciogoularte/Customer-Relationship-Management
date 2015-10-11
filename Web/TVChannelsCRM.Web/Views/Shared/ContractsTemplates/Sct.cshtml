@@ -1,8 +1,11 @@
-﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Trds
+﻿@using TVChannelsCRM.Common.Extensions
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.Trds
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Invoices
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
+@using TVChannelsCRM.Web.Areas.Users.ViewModels.TypeOfCompanies
+@using System.Globalization
 @model ClientContractViewModel
 @{
     Layout = null;
@@ -11,6 +14,9 @@
     var invoices = (List<InvoiceViewModel>)ViewBag.Invoices;
     var trds = (List<TrdViewModel>)ViewBag.Trds;
     var channels = (List<ChannelViewModel>)ViewBag.Channels;
+    var type = (TypeOfCompanyViewModel)ViewBag.ClientContractType;
+
+    var format = "dd.MM.yyyy";
 }
 
 <html>
@@ -70,7 +76,7 @@
             &nbsp;
         </span>
         <span class="c29 c10">
-            @client.TypeInBulgarian
+            @type.TypeInBulgarian
         </span>
         <span class="c6 c4">
             , a company registered under the legislation of the Republic of Bulgaria, having its seat and address of management at
@@ -371,10 +377,10 @@
                         <td class="c16" colspan="1" rowspan="1">
                             <p class="c8 c26 c36 c21">
                                 <span class="c12">
-                                    @invoice.From
+                                    @invoice.From.ToString(format, new CultureInfo("de-DE"))
                                 </span>
                                 <span class="c6 c12">
-                                    &nbsp;&ndash; @invoice.To
+                                    &nbsp;&ndash; @invoice.To.ToString(format, new CultureInfo("de-DE"))
                                 </span>
                             </p>
                         </td>
@@ -720,7 +726,7 @@
             &nbsp;
         </span>
         <span class="c29 c10">
-            @client.TypeInBulgarian
+            @type.TypeInBulgarian
         </span>
         <span class="c6 c4">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -821,7 +827,7 @@
             Launch Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
         </span>
         <span class="c4">
-            @Model.StartDate
+            @Model.StartDate.ToString(format, new CultureInfo("de-DE"))
         </span>
     </p>
     <p class="c8 c22">
@@ -883,7 +889,7 @@
             Service:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         </span>
         <span class="c4">
-            @Model.Tier
+            @Model.Tier.GetDescription()
         </span>
     </p>
     <p class="c8 c14">
@@ -988,97 +994,17 @@
     </p>
     <p class="c7">
         <span class="c6 c4">
-            Frequency:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Satellite data: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </span>
         <span class="c23 c10">
-            Satellite data
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            Polarizations:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c10 c23">
-            Satellite data
-        </span>
-        <span class="c6 c4">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <br>
-            Symbol Rate (SR):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-        <span class="c6 c4">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            Forward Error Correction (FEC):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            Video Program ID (VPID):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-        <span class="c6 c4">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            Audio Program ID (APID):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            Digital: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-        <span class="c6 c4">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            Encrypted: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            System: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-        <span class="c6 c4">
-            &nbsp;
-        </span>
-    </p>
-    <p class="c7">
-        <span class="c6 c4">
-            Tele Text:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </span>
-        <span class="c23 c10">
-            Satellite data
-        </span>
-        <span class="c6 c4">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @if (channels != null && channels.Any())
+            {
+                var firstOrDefaultChannel = channels.FirstOrDefault();
+                if (firstOrDefaultChannel != null)
+                {
+                    @firstOrDefaultChannel.SatelliteData
+                }
+            }
         </span>
     </p>
     <p class="c8 c22">

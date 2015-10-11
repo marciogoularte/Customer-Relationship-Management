@@ -140,7 +140,6 @@
         {
             get { return this.GetDeletableEntityRepository<Discussion>(); }
         }
-<<<<<<< HEAD
 
         public IDeletableEntityRepository<Trd> Trds
         {
@@ -156,7 +155,5 @@
         //{
         //    get { return this.GetDeletableEntityRepository<ContractTemplate>(); }
         //}
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     }
 }

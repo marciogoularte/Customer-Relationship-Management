@@ -1,4 +1,6 @@
-﻿namespace TVChannelsCRM.Web.Areas.Users.Controllers
+﻿using TVChannelsCRM.Web.Areas.Users.ViewModels.TypeOfCompanies;
+
+namespace TVChannelsCRM.Web.Areas.Users.Controllers
 {
     using System;
     using System.Linq;
@@ -9,20 +11,13 @@
 
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
-<<<<<<< HEAD
-=======
-    using Microsoft.AspNet.Identity;
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
 
     using Data;
     using Data.Models;
     using Web.Controllers;
-<<<<<<< HEAD
     using ViewModels.Trds;
     using ViewModels.Clients;
     using ViewModels.Invoices;
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     using ViewModels.Providers;
     using ViewModels.Contracts;
 
@@ -36,25 +31,17 @@
         [HttpGet]
         public ActionResult AllClientsContracts(int clientId)
         {
-<<<<<<< HEAD
-=======
-
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             var providers = this.Data.Providers
                 .All()
                 .Select(ProviderViewModel.FromProvider)
                 .ToList();
 
             var vm = providers
-<<<<<<< HEAD
                 .Select(provider => new DatabaseDataDropdownViewModel
-=======
-                .Select(provider => new ProviderDropdownViewModel
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
-                        {
-                            Text = provider.Name,
-                            Value = provider.Id
-                        })
+                {
+                    Text = provider.Name,
+                    Value = provider.Id
+                })
                 .ToList();
 
             ViewData["Providers"] = vm;
@@ -84,12 +71,8 @@
 
                     var channels = await this.Data.Channels
                         .All()
-<<<<<<< HEAD
                         .Where(c => c.ClientContractId == contractId)
-                     //   .Where(c => c.ProviderId == providerAsInt)
-=======
-                        .Where(c => c.ProviderId == providerAsInt)
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
+                        //   .Where(c => c.ProviderId == providerAsInt)
                         .Select(ChannelViewModel.FromChannel)
                         .ToListAsync();
 
@@ -203,17 +186,11 @@
                 NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
                 AcceptingReports = contract.AcceptingReports,
                 GoverningLaw = contract.GoverningLaw,
-<<<<<<< HEAD
                 Tier = contract.Tier,
                 ClientId = currentClientId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments + "\n",
                 Channels = new List<Channel>()
-=======
-                ClientId = currentClientId,
-                CreatedOn = DateTime.Now,
-                Comments = contract.Comments + "\n",
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             };
 
             if (contract.ProviderId != null)
@@ -246,10 +223,6 @@
                 BillingStartDate = contract.BillingStartDate,
                 BillingEndDate = contract.BillingEndDate,
                 NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate,
-<<<<<<< HEAD
-=======
-                NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                 AcceptingReports = contract.AcceptingReports,
                 GoverningLaw = contract.GoverningLaw,
                 ProviderId = currentProviderId,
@@ -302,10 +275,7 @@
             contractFromDb.NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered;
             contractFromDb.AcceptingReports = contract.AcceptingReports;
             contractFromDb.GoverningLaw = contract.GoverningLaw;
-<<<<<<< HEAD
             contractFromDb.Tier = contract.Tier;
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             contractFromDb.CreatedOn = DateTime.Now;
             contractFromDb.Comments = contract.Comments + "\n";
             contractFromDb.ProviderId = int.Parse(contract.ProviderId);
@@ -343,10 +313,6 @@
             contractFromDb.BillingStartDate = contract.BillingStartDate;
             contractFromDb.BillingEndDate = contract.BillingEndDate;
             contractFromDb.NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate;
-<<<<<<< HEAD
-=======
-            contractFromDb.NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered;
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             contractFromDb.AcceptingReports = contract.AcceptingReports;
             contractFromDb.GoverningLaw = contract.GoverningLaw;
             contractFromDb.CreatedOn = DateTime.Now;
@@ -379,48 +345,31 @@
             return Json(new[] { contract }, JsonRequestBehavior.AllowGet);
         }
 
-<<<<<<< HEAD
         public ActionResult AllClientContractChannels(int clientContractId)
         {
-            var clientContractProviderId = this.Data.ClientContracts
-                .All()
-                .Where(c => c.Id == clientContractId)
-                .FirstOrDefault(c => c.Id == clientContractId)
-                .ProviderId;
-
-            var providerChannels = this.Data.Channels
-                .All()
-                .Select(ChannelViewModel.FromChannel)
-                .Where(c => c.ProviderId == clientContractProviderId)
-                .ToList();
-
-            var clientContractChannels = this.Data.Channels
-                .All()
-                .Select(ChannelViewModel.FromChannel)
-                .Where(c => c.ClientContractId == clientContractId)
-                .ToList();
-
-            var indexesOfElementForRemove = new List<int>();
-            foreach (var channel in clientContractChannels)
+            var result = new ClientContractChannelViewModel();
+            try
             {
-                indexesOfElementForRemove.AddRange(
-                    from providerChannel in providerChannels 
-                    where providerChannel.Id == channel.Id 
-                    select providerChannels
-                        .FindIndex(p => p.Id == channel.Id));
+                result = this.GetClientContractChannels(clientContractId);
             }
-
-            foreach (var index in indexesOfElementForRemove)
+            catch (Exception ex)
             {
-                providerChannels.RemoveAt(index);
+                try
+                {
+                    result = this.GetClientContractChannels(clientContractId);
+                }
+                catch (Exception ex1)
+                {
+                    try
+                    {
+                        result = this.GetClientContractChannels(clientContractId);
+                    }
+                    catch (Exception ex2)
+                    {
+                        return PartialView("_ClientContractChannels", new ClientContractChannelViewModel());
+                    }
+                }
             }
-
-            var result = new ClientContractChannelViewModel()
-            {
-                ProviderChannels = providerChannels,
-                ClientContractChannels = clientContractChannels,
-                ClientContractId = clientContractId
-            };
 
             return PartialView("_ClientContractChannels", result);
         }
@@ -490,6 +439,13 @@
                 .Where(t => t.ClientId == contract.ClientId)
                 .ToListAsync();
 
+            var clientTypeIf = int.Parse(client.TypeId);
+
+            var typeOfClientContract = this.Data.TypeOfCompanies
+                .All()
+                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .FirstOrDefault(t => t.Id == clientTypeIf);
+
             var totalMgSubs = 0;
             var totalCps = 0;
             foreach (var invoice in invoices)
@@ -508,7 +464,7 @@
                 {
                     var msSubsAsDouble = int.Parse(invoice.MgSubs);
                     var cpsAsDouble = int.Parse(invoice.Cps);
-                    sum += (msSubsAsDouble*cpsAsDouble);
+                    sum += (msSubsAsDouble * cpsAsDouble);
                 }
             }
 
@@ -520,98 +476,85 @@
             ViewBag.Trds = trds;
             ViewBag.MgSubs = totalMgSubs;
             ViewBag.Cps = totalCps;
+            ViewBag.ClientContractType = typeOfClientContract;
 
             switch (contractTemplate)
             {
                 case ContractTemplate.Box:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Box", contract) { FileName = ("Box contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.EbuLa:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Ebu_la", contract) { FileName = ("Ebu La contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Ectv:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Ectv", contract) { FileName = ("Ectv contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Fashionone:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Fashionone", contract) { FileName = ("Fashionone contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Fcw:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Fcw", contract) { FileName = ("Fcw contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Fishing:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Fishing", contract) { FileName = ("Fishing contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Imagine:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Imagine", contract) { FileName = ("Imagine contract - " + DateTime.Now + ".pdf") };
-                    break;
-                case ContractTemplate.MixPack:
-                    return new Rotativa.ViewAsPdf("ContractsTemplates/MixPack", contract) { FileName = ("Mix Pack contract - " + DateTime.Now + ".pdf") };
-                    break;
-                case ContractTemplate.MovieSels:
-                    return new Rotativa.ViewAsPdf("ContractsTemplates/MovieSels", contract) { FileName = ("Movie Sels contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Moviestar:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Moviestar", contract) { FileName = ("Moviestar contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Roma:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Roma", contract) { FileName = ("Roma contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.Sct:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/Sct", contract) { FileName = ("Sct contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.SuperOne:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/SuperOne", contract) { FileName = ("Super One contract - " + DateTime.Now + ".pdf") };
-                    break;
                 case ContractTemplate.TheWorld:
                     return new Rotativa.ViewAsPdf("ContractsTemplates/TheWorld", contract) { FileName = ("The World contract - " + DateTime.Now + ".pdf") };
-                    break;
+                case ContractTemplate.Bulsat:
+                    return new Rotativa.ViewAsPdf("ContractsTemplates/Bulsat", contract) { FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf") };
             }
 
             return new EmptyResult();
-=======
-        [HttpPost]
-        public ActionResult Excel_Export_Save(string contentType, string base64, string fileName)
-        {
-            var fileContents = Convert.FromBase64String(base64);
-            return File(fileContents, contentType, fileName);
         }
 
-        [HttpPost]
-        public ActionResult Pdf_Export_Save(string contentType, string base64, string fileName)
+        private ClientContractChannelViewModel GetClientContractChannels(int clientContractId)
         {
-            var fileContents = Convert.FromBase64String(base64);
-            return File(fileContents, contentType, fileName);
-        }
+            var clientContractProviderId = this.Data.ClientContracts
+              .All()
+              .Where(c => c.Id == clientContractId)
+              .FirstOrDefault(c => c.Id == clientContractId)
+              .ProviderId;
 
-        private void CreateActivity(ActivityType type, string targetId, ActivityTargetType targetType)
-        {
-            var loggedUserId = this.User.Identity.GetUserId();
+            var providerChannels = this.Data.Channels
+                .All()
+                .Select(ChannelViewModel.FromChannel)
+                .Where(c => c.ProviderId == clientContractProviderId)
+                .ToList();
 
-            // If activities are more than 200 just override the oldest one so will not have more than 200 activities
-            if (this.Data.Activities.All().Count() >= 200)
+            var clientContractChannels = this.Data.Channels
+                .All()
+                .Select(ChannelViewModel.FromChannel)
+                .Where(c => c.ClientContractId == clientContractId)
+                .ToList();
+
+            var indexesOfElementForRemove = new List<int>();
+            foreach (var channel in clientContractChannels)
             {
-                var activity = this.Data.Activities.All().OrderBy(a => a.CreatedOn).FirstOrDefault();
-                activity.UserId = loggedUserId;
-                activity.Type = type;
-                activity.TargetId = targetId;
-                activity.TargetType = targetType;
-                activity.CreatedOn = DateTime.Now;
+                indexesOfElementForRemove.AddRange(
+                    from providerChannel in providerChannels
+                    where providerChannel.Id == channel.Id
+                    select providerChannels
+                        .FindIndex(p => p.Id == channel.Id));
             }
-            else
+            var sortedListFromIndexes = indexesOfElementForRemove.OrderByDescending(i => i).ToList();
+
+            foreach (var index in sortedListFromIndexes)
             {
-                var activity = new Activity()
-                {
-                    UserId = loggedUserId,
-                    Type = type,
-                    TargetId = targetId,
-                    TargetType = targetType
-                };
-
-                this.Data.Activities.Add(activity);
+                providerChannels.RemoveAt(index);
             }
 
-            this.Data.SaveChanges();
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
+            var result = new ClientContractChannelViewModel()
+            {
+                ProviderChannels = providerChannels,
+                ClientContractChannels = clientContractChannels,
+                ClientContractId = clientContractId
+            };
+
+            return result;
         }
     }
 }

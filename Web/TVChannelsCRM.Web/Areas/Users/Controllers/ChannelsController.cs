@@ -79,16 +79,12 @@
                 Website = channel.Website,
                 Presentation = channel.Presentation,
                 ContractTemplate = channel.ContractTemplate,
-<<<<<<< HEAD
                 LogoLink = channel.LogoLink,
-=======
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
                 CreatedOn = DateTime.Now,
                 ProviderId = currentProviderId,
                 Comments = channel.Comments + "\n"
             };
 
-<<<<<<< HEAD
             if (string.IsNullOrEmpty(newChannel.EpgSource) || newChannel.EpgSource == "")
             {
                 newChannel.Website = "#";
@@ -106,13 +102,6 @@
                 newChannel.Presentation = "#";
             }
             if (string.IsNullOrEmpty(newChannel.LogoLink) || newChannel.LogoLink == "")
-=======
-            if (newChannel.Website == null || string.IsNullOrEmpty(newChannel.Website) || newChannel.Website == "")
-            {
-                newChannel.Website = "#";
-            }
-            if (newChannel.Presentation == null || string.IsNullOrEmpty(newChannel.Presentation) || newChannel.Website == "")
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             {
                 newChannel.Presentation = "#";
             }
@@ -163,7 +152,6 @@
             channelFromDb.Name = channel.Name;
             channelFromDb.ReveivingOptions = channel.ReveivingOptions;
             channelFromDb.SatelliteData = channel.SatelliteData;
-<<<<<<< HEAD
             channelFromDb.Comments = channel.Comments + "\n";
 
             if (string.IsNullOrEmpty(channel.EpgSource) || channel.EpgSource == "")
@@ -211,14 +199,6 @@
                 channelFromDb.LogoLink = channel.LogoLink;
             }
 
-=======
-            channelFromDb.EpgSource = channel.EpgSource;
-            channelFromDb.Website = channel.Website;
-            channelFromDb.Presentation = channel.Presentation;
-            channelFromDb.ContractTemplate = channel.ContractTemplate;
-            channelFromDb.Comments = channel.Comments + "\n";
-
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
             this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Edit, channelFromDb.Id.ToString(), ActivityTargetType.Channel);
@@ -235,52 +215,5 @@
 
             return Json(new[] { channel }, JsonRequestBehavior.AllowGet);
         }
-<<<<<<< HEAD
-=======
-
-        [HttpPost]
-        public ActionResult Excel_Export_Save(string contentType, string base64, string fileName)
-        {
-            var fileContents = Convert.FromBase64String(base64);
-            return File(fileContents, contentType, fileName);
-        }
-
-        [HttpPost]
-        public ActionResult Pdf_Export_Save(string contentType, string base64, string fileName)
-        {
-            var fileContents = Convert.FromBase64String(base64);
-            return File(fileContents, contentType, fileName);
-        }
-
-        private void CreateActivity(ActivityType type, string targetId, ActivityTargetType targetType)
-        {
-            var loggedUserId = this.User.Identity.GetUserId();
-
-            // If activities are more than 200 just override the oldest one so will not have more than 200 activities
-            if (this.Data.Activities.All().Count() >= 200)
-            {
-                var activity = this.Data.Activities.All().OrderBy(a => a.CreatedOn).FirstOrDefault();
-                activity.UserId = loggedUserId;
-                activity.Type = type;
-                activity.TargetId = targetId;
-                activity.TargetType = targetType;
-                activity.CreatedOn = DateTime.Now;
-            }
-            else
-            {
-                var activity = new Activity()
-                {
-                    UserId = loggedUserId,
-                    Type = type,
-                    TargetId = targetId,
-                    TargetType = targetType
-                };
-
-                this.Data.Activities.Add(activity);
-            }
-
-            this.Data.SaveChanges();
-        }
->>>>>>> 3ac377d6b1c3e2b22f0a38e1c651a753c80d53c8
     }
 }
