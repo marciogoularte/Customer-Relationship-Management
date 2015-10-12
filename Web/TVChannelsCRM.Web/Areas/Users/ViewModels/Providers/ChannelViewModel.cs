@@ -35,31 +35,38 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
+        [Required]
         [DisplayName("Channel name")]
         public string Name { get; set; }
 
         [DisplayName("Reveiving options")]
         public string ReveivingOptions { get; set; }
 
+        [Required]
         [UIHint("TextAreaEditor")]
         [DisplayName("Satellite data")]
         public string SatelliteData { get; set; }
 
+        [Required]
         [DisplayName("EPG-SOURCE")]
         [Url(ErrorMessage = "Channel Epg Source is not valid website")]
         public string EpgSource { get; set; }
 
+        [Required]
         [DisplayName("Website")]
         [Url(ErrorMessage = "Channel website is not valid website")]
         public string Website { get; set; }
 
+        [Required]
         [Url(ErrorMessage = "Channel presentation is not valid website")]
         public string Presentation { get; set; }
 
+        [Required]
         [DisplayName("Contract Template")]
         [Url(ErrorMessage = "Channel contract template is not valid website")]
         public string ContractTemplate { get; set; }
 
+        [Required]
         [DisplayName("Logo Link")]
         [Url(ErrorMessage = "Channel logo link is not valid website")]
         public string LogoLink { get; set; }

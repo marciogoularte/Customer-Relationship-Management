@@ -66,37 +66,48 @@
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
         public string NameBulgarian { get; set; }
 
+        [Required]
+        [DisplayName("Type")]
         [UIHint("TypeOfCompanyEditor")]
         public string TypeId { get; set; }
-
+        
         [DisplayName("UIC")]
         [Required(ErrorMessage = "UIC is required")]
         public string Uic { get; set; }
 
+        [Required]
         [DisplayName("VAT#")]
         public string Vat { get; set; }
 
+        [Required]
         [DisplayName("Residence and address")]
         public string ResidenceAndAddress { get; set; }
 
+        [Required]
         [DisplayName("Residence and address(BG)")]
         public string ResidenceAndAddressInBulgarian { get; set; }
 
+        [Required]
         [UIHint("FrequencyEditor")]
         public Frequency Frequency { get; set; }
 
+        [Required]
         [DisplayName("Network page")]
         public string NetworkPage { get; set; }
 
+        [Required]
         [DisplayName("Contact person")]
         public string ContactPerson { get; set; }
 
+        [Required]
         [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
+        [Required]
         [EmailAddress(ErrorMessage = "Provider email is not valid!")]
         public string Email { get; set; }
 
+        [Required]
         [DisplayName("Correspondence")]
         public string Correspondence { get; set; }
 
@@ -120,11 +131,14 @@
         [DisplayName("Post code")]
         public string PostCode { get; set; }
 
+        [Required]
         public string Management { get; set; }
 
+        [Required]
         [DisplayName("Managment in Bulgarian")]
         public string ManagementInBulgarian { get; set; }
 
+        [Required]
         [DisplayName("Management phone")]
         public string ManagementPhone { get; set; }
 

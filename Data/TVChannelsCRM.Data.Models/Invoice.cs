@@ -12,9 +12,9 @@
 
         public DateTime To { get; set; }
 
-        public string MgSubs { get; set; }
+        public double MgSubs { get; set; }
 
-        public string Cps { get; set; }
+        public double Cps { get; set; }
 
         public string Comments { get; set; }
 

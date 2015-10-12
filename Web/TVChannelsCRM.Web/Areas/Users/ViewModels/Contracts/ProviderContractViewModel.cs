@@ -38,6 +38,7 @@
         [DisplayName("Start date")]
         public DateTime? StartDate { get; set; }
 
+        [Required]
         [DisplayName("Type of contract")]
         public string TypeOfContract { get; set; }
 
@@ -45,6 +46,7 @@
         [DisplayName("End date")]
         public DateTime? EndDate { get; set; }
 
+        [Required]
         [DisplayName("Notice period")]
         public int NoticePeriod { get; set; }
 

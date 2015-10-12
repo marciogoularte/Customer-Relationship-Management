@@ -446,24 +446,24 @@ namespace TVChannelsCRM.Web.Areas.Users.Controllers
                 .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
                 .FirstOrDefault(t => t.Id == clientTypeIf);
 
-            var totalMgSubs = 0;
-            var totalCps = 0;
+            var totalMgSubs = 0.0;
+            var totalCps = 0.0;
             foreach (var invoice in invoices)
             {
-                var mgSubsAsInt = int.Parse(invoice.MgSubs);
-                var cpsInt = int.Parse(invoice.MgSubs);
+                var mgSubsAsInt = invoice.MgSubs;
+                var cpsInt = invoice.MgSubs;
 
                 totalMgSubs += mgSubsAsInt;
                 totalCps += cpsInt;
             }
 
-            var sum = 0;
+            var sum = 0.0;
             if (invoices.Any())
             {
                 foreach (var invoice in invoices)
                 {
-                    var msSubsAsDouble = int.Parse(invoice.MgSubs);
-                    var cpsAsDouble = int.Parse(invoice.Cps);
+                    var msSubsAsDouble = invoice.MgSubs;
+                    var cpsAsDouble = invoice.Cps;
                     sum += (msSubsAsDouble * cpsAsDouble);
                 }
             }

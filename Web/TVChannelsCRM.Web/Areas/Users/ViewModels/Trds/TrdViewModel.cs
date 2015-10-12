@@ -27,12 +27,16 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
+        [Required]
         public string Decoder { get; set; }
 
+        [Required]
         public string Sim { get; set; }
 
+        [Required]
         public string Cas { get; set; }
 
+        [Required]
         public string Cam { get; set; }
 
         [ScaffoldColumn(false)]

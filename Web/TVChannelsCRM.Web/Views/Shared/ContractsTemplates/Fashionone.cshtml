@@ -413,11 +413,9 @@
                         {
                             <p class="c2 c0">
                                 @{
-                                    var mgSubsAsInt = int.Parse(invoice.MgSubs);
-                                    var cpsAsInt = int.Parse(invoice.Cps);
-                                    var calculated = mgSubsAsInt * cpsAsInt;
+                                    var calculated = invoice.MgSubs * invoice.Cps;
                                 }
-                                <span class="c19 c7">@mgSubsAsInt EUR &nbsp; per month /</span><span class="c19 c7">&nbsp;</span><span class="c19 c51">&nbsp;@client.Frequency </span><span class="c19 c7">&nbsp; &nbsp;/</span>
+                                <span class="c19 c7">@invoice.MgSubs EUR &nbsp; per month /</span><span class="c19 c7">&nbsp;</span><span class="c19 c51">&nbsp;@client.Frequency </span><span class="c19 c7">&nbsp; &nbsp;/</span>
                             </p>
                                         }
                                     }

@@ -1,7 +1,4 @@
-﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Trds
-@using TVChannelsCRM.Web.Areas.Users.ViewModels.Invoices
-@using TVChannelsCRM.Web.Areas.Users.ViewModels.Providers
-@using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
+﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts
 @using TVChannelsCRM.Web.Areas.Users.ViewModels.TypeOfCompanies
 @model ClientContractViewModel
@@ -9,14 +6,7 @@
     Layout = null;
 
     var client = (ClientViewModel)ViewBag.Client;
-    var provider = (ProviderViewModel)ViewBag.Provider;
-    var invoices = (List<InvoiceViewModel>)ViewBag.Invoices;
-    var trds = (List<TrdViewModel>)ViewBag.Trds;
-    var channels = (List<ChannelViewModel>)ViewBag.Channels;
     var type = (TypeOfCompanyViewModel)ViewBag.ClientContractType;
-
-    var time = DateTime.Now;
-    string format = "dd.MM.yyyy";
 }
 
 <html>

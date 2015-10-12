@@ -25,8 +25,10 @@
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
+        [Required]
         public string Type { get; set; }
 
+        [Required]
         [DisplayName("Type in Bulgarian")]
         public string TypeInBulgarian { get; set; }
     }

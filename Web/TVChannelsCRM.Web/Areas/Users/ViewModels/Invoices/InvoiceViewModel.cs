@@ -34,9 +34,11 @@
         [DataType(DataType.Date)]
         public DateTime To { get; set; }
 
-        public string MgSubs { get; set; }
+        [Required]
+        public double MgSubs { get; set; }
 
-        public string Cps { get; set; }
+        [Required]
+        public double Cps { get; set; }
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }

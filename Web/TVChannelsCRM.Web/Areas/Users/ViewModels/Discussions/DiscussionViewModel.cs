@@ -33,12 +33,15 @@
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
+        [Required]
         [DisplayName("Subject of discussion")]
         public string SubjectOfDiscussion { get; set; }
 
+        [Required]
         [UIHint("TextAreaEditor")]
         public string Summary { get; set; }
 
+        [Required]
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
 

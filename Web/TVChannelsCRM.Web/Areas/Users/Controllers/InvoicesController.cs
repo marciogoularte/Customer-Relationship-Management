@@ -56,7 +56,7 @@
                 invoices = this.Data.Invoices
                    .All()
                    .Select(InvoiceViewModel.FromInvoice)
-                   .Where(i => i.ClientContractId == contractId && i.MgSubs.Contains(searchbox))
+                   .Where(i => i.ClientContractId == contractId && i.MgSubs.ToString().Contains(searchbox))
                    .ToList();
             }
 
