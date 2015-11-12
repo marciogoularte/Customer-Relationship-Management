@@ -148,7 +148,6 @@
                 Marketing = client.Marketing,
                 MarketingPhone = client.MarketingPhone,
                 MarketingEmail = client.MarketingEmail,
-                Frequency = client.Frequency,
                 Contracts = new List<ClientContract>(),
                 Discussions = new List<Discussion>()
             };
@@ -258,7 +257,6 @@
             clientFromDb.Marketing = client.Marketing;
             clientFromDb.MarketingPhone = client.MarketingPhone;
             clientFromDb.MarketingEmail = client.MarketingEmail;
-            clientFromDb.Frequency = client.Frequency;
 
             this.Data.SaveChanges();
 

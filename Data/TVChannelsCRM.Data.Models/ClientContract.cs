@@ -52,6 +52,8 @@
         
         public virtual Provider Provider { get; set; }
 
+        public Frequency Frequency { get; set; }
+
         public virtual ICollection<Invoice> Invoices
         {
             get { return this.invoices; }

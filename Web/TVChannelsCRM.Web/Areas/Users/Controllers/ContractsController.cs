@@ -190,7 +190,8 @@ namespace TVChannelsCRM.Web.Areas.Users.Controllers
                 ClientId = currentClientId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments + "\n",
-                Channels = new List<Channel>()
+                Channels = new List<Channel>(),
+                Frequency = contract.Frequency
             };
 
             if (contract.ProviderId != null)
@@ -279,6 +280,7 @@ namespace TVChannelsCRM.Web.Areas.Users.Controllers
             contractFromDb.CreatedOn = DateTime.Now;
             contractFromDb.Comments = contract.Comments + "\n";
             contractFromDb.ProviderId = int.Parse(contract.ProviderId);
+            contractFromDb.Frequency = contract.Frequency;
 
             this.Data.SaveChanges();
 

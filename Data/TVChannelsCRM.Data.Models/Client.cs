@@ -26,8 +26,6 @@
 
         public string Type { get; set; }
 
-        public Frequency Frequency { get; set; }
-
         public string Uic { get; set; }
 
         public string Vat { get; set; }

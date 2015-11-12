@@ -11,25 +11,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Administration/Views/Activities/Index.cshtml">
-      <publishTime>08/25/2015 12:57:26</publishTime>
+      <publishTime>09/28/2015 17:36:52</publishTime>
     </File>
     <File Include="Areas/Administration/Views/Admin/EditorTemplates/EnterprisePositionEditor.cshtml">
-      <publishTime>08/20/2015 13:14:29</publishTime>
+      <publishTime>08/27/2015 11:31:00</publishTime>
     </File>
     <File Include="Areas/Administration/Views/Admin/EditorTemplates/GenderEditor.cshtml">
-      <publishTime>08/20/2015 13:14:31</publishTime>
+      <publishTime>08/27/2015 11:31:00</publishTime>
     </File>
     <File Include="Areas/Administration/Views/Admin/EditorTemplates/ProfilePhotoEditor.cshtml">
       <publishTime>08/24/2015 09:48:41</publishTime>
     </File>
     <File Include="Areas/Administration/Views/Admin/Index.cshtml">
-      <publishTime>08/24/2015 10:23:31</publishTime>
+      <publishTime>09/23/2015 13:02:38</publishTime>
+    </File>
+    <File Include="Areas/Administration/Views/DeletedItems/DeletedChannels.cshtml">
+      <publishTime>09/28/2015 19:17:47</publishTime>
+    </File>
+    <File Include="Areas/Administration/Views/DeletedItems/DeletedClientContracts.cshtml">
+      <publishTime>10/02/2015 16:40:33</publishTime>
     </File>
     <File Include="Areas/Administration/Views/DeletedItems/DeletedClients.cshtml">
-      <publishTime>08/25/2015 11:55:57</publishTime>
+      <publishTime>10/10/2015 00:02:42</publishTime>
+    </File>
+    <File Include="Areas/Administration/Views/DeletedItems/DeletedDiscussions.cshtml">
+      <publishTime>09/23/2015 13:02:39</publishTime>
+    </File>
+    <File Include="Areas/Administration/Views/DeletedItems/DeletedInvoices.cshtml">
+      <publishTime>09/23/2015 13:02:39</publishTime>
+    </File>
+    <File Include="Areas/Administration/Views/DeletedItems/DeletedProviderContracts.cshtml">
+      <publishTime>09/28/2015 18:02:46</publishTime>
     </File>
     <File Include="Areas/Administration/Views/DeletedItems/DeletedProviders.cshtml">
-      <publishTime>08/25/2015 11:56:09</publishTime>
+      <publishTime>10/05/2015 23:40:38</publishTime>
     </File>
     <File Include="Areas/Administration/Views/DeletedItems/Index.cshtml">
       <publishTime>08/25/2015 11:22:34</publishTime>
@@ -41,19 +56,58 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/25/2015 11:23:29</publishTime>
     </File>
     <File Include="Areas/Administration/Views/web.config">
-      <publishTime>08/19/2015 13:51:05</publishTime>
+      <publishTime>09/21/2015 16:30:56</publishTime>
     </File>
     <File Include="Areas/Administration/Views/_ViewStart.cshtml">
       <publishTime>08/13/2015 10:37:51</publishTime>
     </File>
+    <File Include="Areas/Users/Views/Channels/ChannelDetails.cshtml">
+      <publishTime>09/30/2015 21:11:15</publishTime>
+    </File>
     <File Include="Areas/Users/Views/Clients/ClientDetails.cshtml">
-      <publishTime>08/25/2015 13:35:31</publishTime>
+      <publishTime>10/02/2015 16:54:09</publishTime>
     </File>
     <File Include="Areas/Users/Views/Clients/Index.cshtml">
-      <publishTime>08/25/2015 10:17:40</publishTime>
+      <publishTime>10/10/2015 13:15:33</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Contracts/ClientContractDetails.cshtml">
+      <publishTime>09/30/2015 19:29:56</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Contracts/ProviderContractDetails.cshtml">
+      <publishTime>09/28/2015 18:02:43</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Contracts/_ClientContractChannels.cshtml">
+      <publishTime>10/11/2015 19:25:27</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Contracts/_ClientContractInformation.cshtml">
+      <publishTime>10/20/2015 15:24:16</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Contracts/_ClientContracts.cshtml">
+      <publishTime>11/06/2015 14:33:18</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Contracts/_ProviderContracts.cshtml">
+      <publishTime>09/28/2015 18:02:46</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Discussions/DiscussionInformation.cshtml">
+      <publishTime>09/21/2015 22:28:33</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Discussions/_ClientDiscussions.cshtml">
+      <publishTime>09/23/2015 13:02:59</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Discussions/_ProviderDiscussions.cshtml">
+      <publishTime>09/23/2015 13:02:39</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Feedbacks/Index.cshtml">
+      <publishTime>09/22/2015 01:47:31</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Invoices/InvoiceDetails.cshtml">
+      <publishTime>09/19/2015 16:33:53</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Invoices/_ContractInvoices.cshtml">
+      <publishTime>09/23/2015 13:02:39</publishTime>
     </File>
     <File Include="Areas/Users/Views/Profile/Index.cshtml">
-      <publishTime>08/25/2015 12:10:09</publishTime>
+      <publishTime>09/20/2015 09:30:35</publishTime>
     </File>
     <File Include="Areas/Users/Views/Profile/NoProfileAccess.cshtml">
       <publishTime>08/14/2015 21:52:23</publishTime>
@@ -62,139 +116,229 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/20/2015 13:21:43</publishTime>
     </File>
     <File Include="Areas/Users/Views/Providers/Index.cshtml">
-      <publishTime>08/25/2015 13:29:04</publishTime>
+      <publishTime>10/07/2015 00:09:43</publishTime>
     </File>
     <File Include="Areas/Users/Views/Providers/ProviderDetails.cshtml">
-      <publishTime>08/25/2015 13:35:25</publishTime>
+      <publishTime>09/21/2015 08:30:27</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Providers/_GetProviderName.cshtml">
+      <publishTime>09/28/2015 20:15:39</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/ContractChannelsEditor.cshtml">
+      <publishTime>09/30/2015 14:53:01</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/ContractProviderEditor.cshtml">
+      <publishTime>10/05/2015 19:10:31</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/ContractTemplateEditor.cshtml">
+      <publishTime>09/30/2015 14:28:46</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/FrequencyEditor.cshtml">
+      <publishTime>10/02/2015 14:52:41</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/TextAreaEditor.cshtml">
+      <publishTime>09/02/2015 11:48:49</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/TierEditor.cshtml">
+      <publishTime>10/02/2015 16:28:33</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/TypeOfCompanyEditor.cshtml">
+      <publishTime>10/05/2015 19:10:27</publishTime>
     </File>
     <File Include="Areas/Users/Views/Shared/_CalendarScheduler.cshtml">
-      <publishTime>08/21/2015 09:47:35</publishTime>
+      <publishTime>08/27/2015 11:31:00</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/_Channels.cshtml">
+      <publishTime>10/06/2015 23:42:22</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/_ClientInformation.cshtml">
+      <publishTime>10/10/2015 13:15:59</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/_ProviderInformation.cshtml">
+      <publishTime>10/07/2015 00:00:50</publishTime>
     </File>
     <File Include="Areas/Users/Views/Shared/_TasksTreeView.cshtml">
       <publishTime>08/21/2015 08:32:31</publishTime>
     </File>
+    <File Include="Areas/Users/Views/Trds/TrdDetails.cshtml">
+      <publishTime>10/02/2015 17:03:03</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Trds/_ClientTrds.cshtml">
+      <publishTime>10/02/2015 17:44:31</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/TypeOfCompanies/Index.cshtml">
+      <publishTime>10/05/2015 23:41:00</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/TypeOfCompanies/TypeOfCompanyDetails.cshtml">
+      <publishTime>10/05/2015 19:04:07</publishTime>
+    </File>
     <File Include="Areas/Users/Views/web.config">
-      <publishTime>08/25/2015 10:55:05</publishTime>
+      <publishTime>09/21/2015 16:30:47</publishTime>
     </File>
     <File Include="Areas/Users/Views/_ViewStart.cshtml">
       <publishTime>08/12/2015 15:37:11</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>08/10/2015 09:00:31</publishTime>
+      <publishTime>11/06/2015 14:31:22</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>08/10/2015 08:34:45</publishTime>
+      <publishTime>11/06/2015 14:31:28</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>08/10/2015 08:34:45</publishTime>
+      <publishTime>11/06/2015 14:31:29</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>11/06/2015 14:31:35</publishTime>
     </File>
     <File Include="bin/Kendo.Mvc.dll">
       <publishTime>08/05/2015 09:50:00</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>08/10/2015 08:34:50</publishTime>
+      <publishTime>11/06/2015 14:31:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
-      <publishTime>08/10/2015 08:34:50</publishTime>
+      <publishTime>11/06/2015 14:31:24</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
-      <publishTime>08/10/2015 08:34:50</publishTime>
+      <publishTime>11/06/2015 14:31:22</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
-      <publishTime>08/10/2015 08:34:51</publishTime>
+      <publishTime>11/06/2015 14:31:26</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
-      <publishTime>08/10/2015 08:34:51</publishTime>
+      <publishTime>11/06/2015 14:31:26</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
-      <publishTime>08/10/2015 08:34:52</publishTime>
+      <publishTime>11/06/2015 14:31:26</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
-      <publishTime>08/10/2015 08:34:51</publishTime>
+      <publishTime>11/06/2015 14:31:26</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
-      <publishTime>08/10/2015 08:34:51</publishTime>
+      <publishTime>11/06/2015 14:31:26</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Google.dll">
-      <publishTime>08/10/2015 08:34:52</publishTime>
+      <publishTime>11/06/2015 14:31:27</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
-      <publishTime>08/10/2015 08:34:53</publishTime>
+      <publishTime>11/06/2015 14:31:27</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
-      <publishTime>08/10/2015 08:34:52</publishTime>
+      <publishTime>11/06/2015 14:31:26</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
-      <publishTime>08/10/2015 08:34:53</publishTime>
+      <publishTime>11/06/2015 14:31:34</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>08/10/2015 08:34:35</publishTime>
+      <publishTime>11/06/2015 14:31:28</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/10/2015 09:00:32</publishTime>
+      <publishTime>11/06/2015 14:31:29</publishTime>
     </File>
     <File Include="bin/Ninject.dll">
-      <publishTime>08/10/2015 13:46:04</publishTime>
+      <publishTime>11/06/2015 14:31:39</publishTime>
     </File>
     <File Include="bin/Ninject.Web.Common.dll">
-      <publishTime>08/10/2015 13:46:04</publishTime>
+      <publishTime>11/06/2015 14:31:36</publishTime>
     </File>
     <File Include="bin/Ninject.Web.Mvc.dll">
-      <publishTime>08/10/2015 13:46:04</publishTime>
+      <publishTime>11/06/2015 14:31:34</publishTime>
     </File>
     <File Include="bin/Owin.dll">
-      <publishTime>08/10/2015 08:34:50</publishTime>
+      <publishTime>11/06/2015 14:31:34</publishTime>
+    </File>
+    <File Include="bin/Rotativa.dll">
+      <publishTime>11/06/2015 14:31:53</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>08/10/2015 08:34:34</publishTime>
+      <publishTime>11/06/2015 14:31:19</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>08/10/2015 08:34:35</publishTime>
+      <publishTime>11/06/2015 14:31:18</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>08/10/2015 08:34:33</publishTime>
+      <publishTime>11/06/2015 14:31:19</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>08/10/2015 08:34:33</publishTime>
+      <publishTime>11/06/2015 14:31:19</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>08/10/2015 08:34:34</publishTime>
+      <publishTime>11/06/2015 14:31:21</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>08/10/2015 08:34:34</publishTime>
+      <publishTime>11/06/2015 14:31:19</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>08/10/2015 08:34:34</publishTime>
+      <publishTime>11/06/2015 14:31:22</publishTime>
     </File>
     <File Include="bin/TVChannelsCRM.Common.dll">
-      <publishTime>08/25/2015 18:24:29</publishTime>
+      <publishTime>11/06/2015 20:49:57</publishTime>
     </File>
     <File Include="bin/TVChannelsCRM.Data.Contracts.dll">
-      <publishTime>08/25/2015 18:24:31</publishTime>
+      <publishTime>11/06/2015 20:49:57</publishTime>
     </File>
     <File Include="bin/TVChannelsCRM.Data.dll">
-      <publishTime>08/25/2015 18:24:38</publishTime>
+      <publishTime>11/06/2015 20:50:05</publishTime>
     </File>
     <File Include="bin/TVChannelsCRM.Data.Models.dll">
-      <publishTime>08/25/2015 18:24:34</publishTime>
+      <publishTime>11/06/2015 20:50:01</publishTime>
     </File>
     <File Include="bin/TVChannelsCRM.Web.Common.dll">
-      <publishTime>08/25/2015 18:24:36</publishTime>
+      <publishTime>11/06/2015 20:49:59</publishTime>
     </File>
     <File Include="bin/TVChannelsCRM.Web.dll">
-      <publishTime>08/25/2015 18:24:42</publishTime>
+      <publishTime>11/06/2015 20:50:13</publishTime>
     </File>
     <File Include="bin/WebActivatorEx.dll">
-      <publishTime>08/10/2015 13:46:04</publishTime>
+      <publishTime>11/06/2015 14:31:35</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>08/10/2015 09:00:32</publishTime>
+      <publishTime>11/06/2015 14:31:29</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.min.css">
       <publishTime>08/10/2015 09:01:00</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>08/10/2015 09:01:00</publishTime>
+      <publishTime>09/20/2015 12:30:11</publishTime>
+    </File>
+    <File Include="Content/contracts/box.css">
+      <publishTime>10/03/2015 16:29:22</publishTime>
+    </File>
+    <File Include="Content/contracts/bulsat.css">
+      <publishTime>10/10/2015 17:55:33</publishTime>
+    </File>
+    <File Include="Content/contracts/ebu-la.css">
+      <publishTime>10/10/2015 14:43:51</publishTime>
+    </File>
+    <File Include="Content/contracts/ectv.css">
+      <publishTime>10/03/2015 16:57:58</publishTime>
+    </File>
+    <File Include="Content/contracts/fashionone.css">
+      <publishTime>10/10/2015 14:46:11</publishTime>
+    </File>
+    <File Include="Content/contracts/fcw.css">
+      <publishTime>10/10/2015 14:46:45</publishTime>
+    </File>
+    <File Include="Content/contracts/fishing.css">
+      <publishTime>10/10/2015 14:46:53</publishTime>
+    </File>
+    <File Include="Content/contracts/imagine.css">
+      <publishTime>10/10/2015 14:47:44</publishTime>
+    </File>
+    <File Include="Content/contracts/moviestar.css">
+      <publishTime>10/10/2015 14:47:44</publishTime>
+    </File>
+    <File Include="Content/contracts/roma.css">
+      <publishTime>10/10/2015 14:47:44</publishTime>
+    </File>
+    <File Include="Content/contracts/sct.css">
+      <publishTime>10/03/2015 15:56:15</publishTime>
+    </File>
+    <File Include="Content/contracts/super-one.css">
+      <publishTime>10/10/2015 14:47:44</publishTime>
+    </File>
+    <File Include="Content/contracts/theWorld.css">
+      <publishTime>10/10/2015 14:47:44</publishTime>
     </File>
     <File Include="Content/images/default-user.png">
       <publishTime>06/23/2015 06:36:10</publishTime>
@@ -1544,16 +1688,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2014 21:10:16</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>08/10/2015 08:34:06</publishTime>
+      <publishTime>08/27/2015 11:31:01</publishTime>
     </File>
     <File Include="Libraries/Kendo.Mvc.dll">
       <publishTime>08/05/2015 09:50:00</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>08/22/2015 08:36:46</publishTime>
+      <publishTime>09/30/2015 19:58:46</publishTime>
+    </File>
+    <File Include="Rotativa/wkhtmltopdf.exe">
+      <publishTime>09/25/2015 12:24:28</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>08/10/2015 09:00:59</publishTime>
+      <publishTime>09/20/2015 12:30:45</publishTime>
     </File>
     <File Include="Scripts/jquery-2.1.4.min.js">
       <publishTime>08/14/2015 18:43:30</publishTime>
@@ -2942,37 +3089,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2015 08:34:43</publishTime>
     </File>
     <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
-      <publishTime>08/10/2015 08:34:43</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Account/ExternalLoginFailure.cshtml">
       <publishTime>08/10/2015 08:34:43</publishTime>
     </File>
     <File Include="Views/Account/ForgotPassword.cshtml">
-      <publishTime>08/10/2015 08:34:43</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Account/ForgotPasswordConfirmation.cshtml">
       <publishTime>08/10/2015 08:34:43</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>08/24/2015 13:48:16</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>08/14/2015 17:10:03</publishTime>
+      <publishTime>09/28/2015 15:58:16</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
-      <publishTime>08/10/2015 08:34:44</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Account/ResetPasswordConfirmation.cshtml">
       <publishTime>08/10/2015 08:34:44</publishTime>
     </File>
     <File Include="Views/Account/SendCode.cshtml">
-      <publishTime>08/10/2015 08:34:44</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Account/VerifyCode.cshtml">
-      <publishTime>08/10/2015 08:34:44</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
-      <publishTime>08/10/2015 08:34:43</publishTime>
+      <publishTime>09/28/2015 15:57:56</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>08/10/2015 08:34:06</publishTime>
@@ -2981,25 +3128,64 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2015 08:34:06</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>08/25/2015 10:58:41</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
-      <publishTime>08/10/2015 08:34:44</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Manage/ChangePassword.cshtml">
-      <publishTime>08/10/2015 08:34:44</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Manage/Index.cshtml">
-      <publishTime>08/10/2015 08:34:45</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Manage/ManageLogins.cshtml">
-      <publishTime>08/10/2015 08:34:45</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Manage/SetPassword.cshtml">
-      <publishTime>08/10/2015 08:34:45</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
     </File>
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
-      <publishTime>08/10/2015 08:34:45</publishTime>
+      <publishTime>09/28/2015 15:58:08</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Box.cshtml">
+      <publishTime>10/12/2015 12:02:14</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Bulsat.cshtml">
+      <publishTime>10/12/2015 00:07:45</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Ebu_la.cshtml">
+      <publishTime>10/12/2015 00:07:03</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Ectv.cshtml">
+      <publishTime>10/10/2015 13:32:38</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Fashionone.cshtml">
+      <publishTime>10/12/2015 11:58:36</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Fcw.cshtml">
+      <publishTime>10/12/2015 00:12:48</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Fishing.cshtml">
+      <publishTime>10/11/2015 19:17:17</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Imagine.cshtml">
+      <publishTime>10/10/2015 12:57:30</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Moviestar.cshtml">
+      <publishTime>10/10/2015 12:59:17</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Roma.cshtml">
+      <publishTime>10/10/2015 13:00:24</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/Sct.cshtml">
+      <publishTime>10/12/2015 00:12:29</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/SuperOne.cshtml">
+      <publishTime>10/12/2015 00:15:12</publishTime>
+    </File>
+    <File Include="Views/Shared/ContractsTemplates/TheWorld.cshtml">
+      <publishTime>10/10/2015 13:01:23</publishTime>
     </File>
     <File Include="Views/Shared/CustomErrorPage.cshtml">
       <publishTime>08/25/2015 17:51:55</publishTime>
@@ -3008,10 +3194,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/05/2015 09:50:00</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Date.cshtml">
-      <publishTime>08/05/2015 09:50:00</publishTime>
+      <publishTime>09/21/2015 20:03:24</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/DateTime.cshtml">
-      <publishTime>08/20/2015 11:18:09</publishTime>
+      <publishTime>09/21/2015 15:01:59</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Email.cshtml">
       <publishTime>08/05/2015 09:50:00</publishTime>
@@ -3046,20 +3232,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Shared/Lockout.cshtml">
       <publishTime>08/10/2015 08:34:45</publishTime>
     </File>
+    <File Include="Views/Shared/SampleContract.cshtml">
+      <publishTime>09/25/2015 12:41:57</publishTime>
+    </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/25/2015 18:21:11</publishTime>
+      <publishTime>10/07/2015 00:02:53</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>08/25/2015 12:57:36</publishTime>
+      <publishTime>09/11/2015 21:31:42</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>08/25/2015 10:55:11</publishTime>
+      <publishTime>09/21/2015 16:23:29</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>08/10/2015 08:34:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/25/2015 18:24:46</publishTime>
+      <publishTime>11/06/2015 20:50:18</publishTime>
     </File>
   </ItemGroup>
 </Project>

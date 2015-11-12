@@ -24,6 +24,7 @@
         columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
         columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
         columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
+        columns.Bound(model => model.Frequency).Width(32).Hidden(true);
         columns.Bound(model => model.Tier).Width(32).Hidden(true);
         columns.Bound(model => model.ProviderId).Width(32).Hidden(true);
         columns.Bound(model => model.Comments).Width(200);
@@ -36,19 +37,19 @@
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Template(@<text>
+    toolBar.Template(@<text>
 
-            @(Html.Kendo().AutoComplete()
+        @(Html.Kendo().AutoComplete()
                 .Name("searchbox-clients-contracts")
                  .Placeholder("Type of contract... ")
                 .DataSource(datasource => datasource
                             .Read(read => read.Action("ClientsContractsNames", controllerName, null).Data("onAdditionalDataClientContracts")))
                 .Filter("contains")
-            )
-            <a class="k-button k-button-icontext k-grid-add" href="/Users/Contracts/ReadClientsContracts?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
-            <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
-            <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
-        </text>);
+        )
+        <a class="k-button k-button-icontext k-grid-add" href="/Users/Contracts/ReadClientsContracts?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+        <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+    </text>);
     })
                                     .Groupable()
                                     .ColumnMenu()
@@ -63,12 +64,12 @@
                                    .Excel(excel => excel
                                         .FileName("Clients contracts Database.xlsx")
                                         .Filterable(true)
-                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
                                         )
                                     .Pdf(pdf => pdf
                                         .AllPages()
                                                         .FileName("Clients contracts Database.pdf")
-                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
                                     )
                                     .Pageable(pageable => pageable
                                         .Refresh(true)

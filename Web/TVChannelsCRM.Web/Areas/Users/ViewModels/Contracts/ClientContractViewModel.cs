@@ -29,7 +29,8 @@
                     Comments = c.Comments,
                     ClientId = c.ClientId,
                     ProviderId = c.ProviderId.ToString(),
-                    Tier = c.Tier
+                    Tier = c.Tier,
+                    Frequency = c.Frequency
                 };
             }
         }
@@ -81,6 +82,8 @@
         [DisplayName("Comments")]
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
+
+        public Frequency Frequency { get; set; }
 
         [ScaffoldColumn(false)]
         public int? ClientId { get; set; }

@@ -47,8 +47,7 @@
                     TechnicalEmail = c.TechnicalEmail,
                     Marketing = c.Marketing,
                     MarketingPhone = c.MarketingPhone,
-                    MarketingEmail = c.MarketingEmail,
-                    Frequency = c.Frequency
+                    MarketingEmail = c.MarketingEmail
                 };
             }
         }
