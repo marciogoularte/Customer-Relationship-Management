@@ -331,14 +331,23 @@
             <div id="sidebar-left" class="span2">
                 <div class="nav-collapse sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked main-menu">
-                        @if (this.User.IsInRole("Admin"))
-                        {
                         <li>
-                            <a href="@Url.Action("Index", "Activities", new {area = "Administration"})">
-                                <i class="icon-bar-chart"></i><span class="hidden-tablet"> Last activities</span>
+                            <a class="dropmenu" href="#">
+                                <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Activities</span><span class="label label-important"> 1 </span>
                             </a>
+                            <ul>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("UpcomingDiscussions", "Discussions", new {area = "Administration"})">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Upcoming activities</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Index", "Activities", new {area = "Administration"})">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Previous activities</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        }
                         <li>
                             <a href="@Url.Action("Index", "Profile", new {area = "Users"})">
                                 <i class="icon-eye-open"></i><span class="hidden-tablet"> Profile</span>

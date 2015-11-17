@@ -1,6 +1,5 @@
 ﻿namespace TVChannelsCRM.Web.Areas.Users.Controllers
 {
-    using System;
     using System.Linq;
     using System.Web.Mvc;
     using System.Data.Entity;
@@ -216,6 +215,21 @@
             this.CreateActivity(ActivityType.Delete, discussion.Id.ToString(), ActivityTargetType.Discussion);
 
             return Json(new[] { discussion }, JsonRequestBehavior.AllowGet);
+        }
+        
+        public ActionResult UpcomingDiscussions()
+        {
+            // TODO: Implement UpcomingDiscussions
+
+            //var discussions = this.Data.Discussions
+            //    .All()
+            //    .Where(a => a.Comments != null && !string.IsNullOrEmpty(a.Comments) && a.NextDiscussionDate != null)
+            //    .Select(DiscussionViewModel.FromDiscussion)
+            //    .ToList();
+            //
+            //return View(discussions);
+
+            return new EmptyResult();
         }
     }
 }

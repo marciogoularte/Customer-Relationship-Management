@@ -753,6 +753,7 @@
     <Content Include="Areas\Users\Views\TypeOfCompanies\Index.cshtml" />
     <Content Include="Areas\Users\Views\TypeOfCompanies\TypeOfCompanyDetails.cshtml" />
     <Content Include="Areas\Users\Views\Shared\EditorTemplates\DiscussionTypeEditor.cshtml" />
+    <Content Include="Areas\Users\Views\Discussions\UpcomingDiscussions.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
