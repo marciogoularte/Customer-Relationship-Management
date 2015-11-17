@@ -19,6 +19,10 @@
                     Date = d.Date,
                     SubjectOfDiscussion = d.SubjectOfDiscussion,
                     Summary = d.Summary,
+                    Type = d.Type,
+                    NextDiscussionDate = d.NextDiscussionDate,
+                    NextDiscussionType = d.NextDiscussionType,
+                    NextDiscussionNote = d.NextDiscussionNote,
                     Comments = d.Comments,
                     UserId = d.UserId,
                     ClientId = d.ClientId,
@@ -34,12 +38,28 @@
         public DateTime Date { get; set; }
 
         [Required]
-        [DisplayName("Subject of discussion")]
+        [DisplayName("Subject of activity")]
         public string SubjectOfDiscussion { get; set; }
 
         [Required]
         [UIHint("TextAreaEditor")]
         public string Summary { get; set; }
+
+        [Required]
+        [UIHint("DiscussionTypeEditor")]
+        public DiscussionType Type { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayName("Next activity (date)")]
+        public DateTime NextDiscussionDate { get; set; }
+
+        [Required]
+        [UIHint("DiscussionTypeEditor")]
+        [DisplayName("Next activity (type)")]
+        public DiscussionType NextDiscussionType { get; set; }
+
+        [DisplayName("Next activity (note)")]
+        public string NextDiscussionNote { get; set; }
 
         [Required]
         [UIHint("TextAreaEditor")]

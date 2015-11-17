@@ -13,7 +13,15 @@
         public string SubjectOfDiscussion { get; set; }
 
         public string Summary { get; set; }
+        
+        public DiscussionType Type { get; set; }
 
+        public DateTime NextDiscussionDate { get; set; }
+
+        public DiscussionType NextDiscussionType { get; set; }
+
+        public string NextDiscussionNote { get; set; }
+        
         public string Comments { get; set; }
 
         public string UserId { get; set; }

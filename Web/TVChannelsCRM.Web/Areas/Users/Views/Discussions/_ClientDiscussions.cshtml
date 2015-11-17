@@ -1,7 +1,7 @@
 ﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Discussions
 @model int
 @{
-    ViewBag.Title = "Discussions";
+    ViewBag.Title = "Activities";
     const string controllerName = "Discussions";
 }
 
@@ -17,7 +17,11 @@
         columns.Bound(model => model.Date).Width(150);
         columns.Bound(model => model.SubjectOfDiscussion).Width(100);
         columns.Bound(model => model.Summary).Width(32).Hidden(true);
+        columns.Bound(model => model.Type).Width(50);
         columns.Bound(model => model.Comments).Width(215);
+        columns.Bound(model => model.NextDiscussionDate).Width(32).Hidden(true);
+        columns.Bound(model => model.NextDiscussionType).Width(32).Hidden(true);
+        columns.Bound(model => model.NextDiscussionNote).Width(32).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsClientDiscussion");

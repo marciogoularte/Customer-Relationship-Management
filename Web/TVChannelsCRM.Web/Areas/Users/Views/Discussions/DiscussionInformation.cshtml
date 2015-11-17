@@ -1,7 +1,7 @@
 ﻿@using TVChannelsCRM.Web.Areas.Users.ViewModels.Discussions
 @model DiscussionViewModel
 @{
-    ViewBag.Title = "Discussion Information";
+    ViewBag.Title = "Activities Information";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -42,6 +42,17 @@
                 <td>
                     <strong>
                         <span class="glyphicon glyphicon-user"></span>
+                        Type
+                    </strong>
+                </td>
+                <td>
+                    @Model.Type
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
                         Comments
                     </strong>
                 </td>
@@ -49,49 +60,39 @@
                     @Model.Comments
                 </td>
             </tr>
-            @*@if (Model.User != null)
-            {
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-user"></span>
-                            Employee
-                        </strong>
-                    </td>
-                    <td>
-                        @Model.User.FirstName + @Model.User.LastName
-                    </td>
-                </tr>
-            }
-            @if (Model.Client != null)
-            {
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-user"></span>
-                            Client name
-                        </strong>
-                    </td>
-                    <td>
-                        @Model.Client.Name
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Next activity date
+                    </strong>
+                </td>
+                <td>
+                    @Model.NextDiscussionDate
                 </td>
             </tr>
-
-            }
-            else if (Model.Provider != null)
-            {
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-user"></span>
-                            Provider name
-                        </strong>
-                    </td>
-                    <td>
-                        @Model.Provider.Name
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Next activity type
+                    </strong>
+                </td>
+                <td>
+                    @Model.NextDiscussionType
                 </td>
             </tr>
-            }*@
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Next activity note
+                    </strong>
+                </td>
+                <td>
+                    @Model.NextDiscussionNote
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

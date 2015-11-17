@@ -137,6 +137,10 @@
                 Date = discussion.Date,
                 SubjectOfDiscussion = discussion.SubjectOfDiscussion,
                 Summary = discussion.Summary,
+                Type = discussion.Type,
+                NextDiscussionDate = discussion.NextDiscussionDate,
+                NextDiscussionType = discussion.NextDiscussionType,
+                NextDiscussionNote = discussion.NextDiscussionNote,
                 UserId = loggedUserId,
                 Comments = discussion.Comments
             };
@@ -191,6 +195,10 @@
             discussionFromDb.Date = discussion.Date;
             discussionFromDb.SubjectOfDiscussion = discussion.SubjectOfDiscussion;
             discussionFromDb.Summary = discussion.Summary;
+            discussionFromDb.Type = discussion.Type;
+            discussionFromDb.NextDiscussionDate = discussion.NextDiscussionDate;
+            discussionFromDb.NextDiscussionType = discussion.NextDiscussionType;
+            discussionFromDb.NextDiscussionNote = discussion.NextDiscussionNote;
             discussionFromDb.Comments = discussion.Comments;
 
             this.Data.SaveChanges();

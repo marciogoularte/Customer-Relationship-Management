@@ -67,6 +67,7 @@
     <Compile Include="ClientContract.cs" />
     <Compile Include="ContractTemplate.cs" />
     <Compile Include="Discussion.cs" />
+    <Compile Include="DiscussionType.cs" />
     <Compile Include="Frequency.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="ProviderContract.cs" />
