@@ -16,11 +16,11 @@
         
         public DiscussionType Type { get; set; }
 
-        public DateTime NextDiscussionDate { get; set; }
-
-        public DiscussionType NextDiscussionType { get; set; }
+        public DateTime? NextDiscussionDate { get; set; }
 
         public string NextDiscussionNote { get; set; }
+
+        public DiscussionType NextDiscussionType { get; set; }
         
         public string Comments { get; set; }
 

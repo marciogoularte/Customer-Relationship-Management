@@ -1,12 +1,7 @@
-﻿using TVChannelsCRM.Web.Areas.Users.ViewModels.Contracts;
-using TVChannelsCRM.Web.Areas.Users.ViewModels.TypeOfCompanies;
-
-namespace TVChannelsCRM.Web.Areas.Users.Controllers
+﻿namespace TVChannelsCRM.Web.Areas.Users.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
-    using System.Data.Entity;
-    using System.Threading.Tasks;
     using System.Collections.Generic;
 
     using Kendo.Mvc.UI;
@@ -16,6 +11,8 @@ namespace TVChannelsCRM.Web.Areas.Users.Controllers
     using Data.Models;
     using Web.Controllers;
     using ViewModels.Providers;
+    using ViewModels.Contracts;
+    using ViewModels.TypeOfCompanies;
 
     [Authorize]
     public class ProvidersController : BaseController

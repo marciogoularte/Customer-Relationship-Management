@@ -2,6 +2,7 @@
 {
     public enum DiscussionType
     {
+        None,
         Call,
         Meeting,
         Message

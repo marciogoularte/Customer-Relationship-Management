@@ -1,5 +1,6 @@
 ﻿namespace TVChannelsCRM.Web.Areas.Users.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
     using System.Data.Entity;
@@ -138,8 +139,8 @@
                 Summary = discussion.Summary,
                 Type = discussion.Type,
                 NextDiscussionDate = discussion.NextDiscussionDate,
-                NextDiscussionType = discussion.NextDiscussionType,
                 NextDiscussionNote = discussion.NextDiscussionNote,
+                NextDiscussionType = discussion.NextDiscussionType,
                 UserId = loggedUserId,
                 Comments = discussion.Comments
             };
@@ -196,8 +197,8 @@
             discussionFromDb.Summary = discussion.Summary;
             discussionFromDb.Type = discussion.Type;
             discussionFromDb.NextDiscussionDate = discussion.NextDiscussionDate;
-            discussionFromDb.NextDiscussionType = discussion.NextDiscussionType;
             discussionFromDb.NextDiscussionNote = discussion.NextDiscussionNote;
+            discussionFromDb.NextDiscussionType = discussion.NextDiscussionType;
             discussionFromDb.Comments = discussion.Comments;
 
             this.Data.SaveChanges();
@@ -219,17 +220,25 @@
         
         public ActionResult UpcomingDiscussions()
         {
-            // TODO: Implement UpcomingDiscussions
+            var currentYear = DateTime.Now.Year;
+            var currentMonth = DateTime.Now.Month;
+            var currentDate = DateTime.Now.DayOfYear;
 
-            //var discussions = this.Data.Discussions
-            //    .All()
-            //    .Where(a => a.Comments != null && !string.IsNullOrEmpty(a.Comments) && a.NextDiscussionDate != null)
-            //    .Select(DiscussionViewModel.FromDiscussion)
-            //    .ToList();
-            //
-            //return View(discussions);
+            var allDiscussions = this.Data.Discussions
+                .All()
+                .Select(DiscussionViewModel.FromDiscussion)
+                .ToList();
 
-            return new EmptyResult();
+            var discussions = 
+                (from discussion in allDiscussions 
+                 let isScheduledForTheDayOfLogging = (discussion.NextDiscussionDate != null && discussion.NextDiscussionDate.Value.Year.CompareTo(currentYear) == 0 && discussion.NextDiscussionDate.Value.DayOfYear.CompareTo(currentDate) == 0 && discussion.NextDiscussionDate.Value.Month.CompareTo(currentMonth) == 0)
+                 let hasCommentsAndNoFutureActivities = (!string.IsNullOrEmpty(discussion.Comments) && discussion.NextDiscussionDate == null && string.IsNullOrEmpty(discussion.NextDiscussionNote) && discussion.NextDiscussionType == DiscussionType.None) 
+                 let isEmpty = (discussion.IsEmpty()) 
+                 where isScheduledForTheDayOfLogging || hasCommentsAndNoFutureActivities || isEmpty 
+                 select discussion)
+                 .ToList();
+
+            return View(discussions);
         }
     }
 }

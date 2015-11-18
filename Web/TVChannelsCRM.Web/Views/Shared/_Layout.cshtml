@@ -337,7 +337,7 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("UpcomingDiscussions", "Discussions", new {area = "Administration"})">
+                                    <a class="submenu" href="@Url.Action("UpcomingDiscussions", "Discussions", new {area = "Users"})">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Upcoming activities</span>
                                     </a>
                                 </li>
@@ -384,62 +384,62 @@
                         </li>
                         @if (this.User.IsInRole("Admin"))
                         {
-                        <li>
-                            <a class="dropmenu" href="#">
-                                <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Administration</span><span class="label label-important"> 2 </span>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a class="submenu" href="@Url.Action("Index", "Admin", new { area = "Administration" })">
-                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Employees</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropmenu" href="#">
-                                        <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Deleted items</span><span class="label label-important"> 2 </span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a class="submenu" href="@Url.Action("DeletedClients", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="submenu" href="@Url.Action("DeletedProviders", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="submenu" href="@Url.Action("DeletedChannels", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Channels</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="submenu" href="@Url.Action("DeletedClientContracts", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients contracts</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="submenu" href="@Url.Action("DeletedProviderContracts", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers contracts</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="submenu" href="@Url.Action("DeletedDiscussions", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Discussions</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="submenu" href="@Url.Action("DeletedInvoices", "DeletedItems", new { area = "Administration" })">
-                                                <i class="icon-align-justify"></i><span class="hidden-tablet"> Invoices</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                            <li>
+                                <a class="dropmenu" href="#">
+                                    <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Administration</span><span class="label label-important"> 2 </span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a class="submenu" href="@Url.Action("Index", "Admin", new { area = "Administration" })">
+                                            <i class="icon-align-justify"></i><span class="hidden-tablet"> Employees</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropmenu" href="#">
+                                            <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Deleted items</span><span class="label label-important"> 2 </span>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a class="submenu" href="@Url.Action("DeletedClients", "DeletedItems", new { area = "Administration" })">
+                                                    <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="submenu" href="@Url.Action("DeletedProviders", "DeletedItems", new { area = "Administration" })">
+                                                    <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="submenu" href="@Url.Action("DeletedChannels", "DeletedItems", new { area = "Administration" })">
+                                                    <i class="icon-align-justify"></i><span class="hidden-tablet"> Channels</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="submenu" href="@Url.Action("DeletedClientContracts", "DeletedItems", new { area = "Administration" })">
+                                                    <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients contracts</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="submenu" href="@Url.Action("DeletedProviderContracts", "DeletedItems", new { area = "Administration" })">
+                                                    <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers contracts</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="submenu" href="@Url.Action("DeletedDiscussions", "DeletedItems", new { area = "Administration" })">
+                                                    <i class="icon-align-justify"></i><span class="hidden-tablet"> Discussions</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="submenu" href="@Url.Action("DeletedInvoices", "DeletedItems", new { area = "Administration" })">
+                                                    <i class="icon-align-justify"></i><span class="hidden-tablet"> Invoices</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
                         }
-                    <li>
+                       <li>
                         <a href="@Url.Action("Index", "Feedbacks", new {area = "Users"})">
                             <i class="icon-eye-open"></i><span class="hidden-tablet"> Send Feedback</span>
                         </a>
