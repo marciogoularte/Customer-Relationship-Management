@@ -1,0 +1,12 @@
+/Source/Data/TVChannelsCRM.Data/bin
+/Source/Data/TVChannelsCRM.Data.Models/bin
+/Source/Web/TVChannelsCRM.Web.Common/bin
+/Source/Data/TVChannelsCRM.Data.Contracts/bin
+/Source/Common/TVChannelsCRM.Common/bin
+/Source/Web/TVChannelsCRM.Web/bin
+/Source/Data/TVChannelsCRM.Data/obj
+/Source/Data/TVChannelsCRM.Data.Models/obj
+/Source/Web/TVChannelsCRM.Web.Common/obj
+/Source/Data/TVChannelsCRM.Data.Contracts/obj
+/Source/Common/TVChannelsCRM.Common/obj
+/Source/Web/TVChannelsCRM.Web/obj
