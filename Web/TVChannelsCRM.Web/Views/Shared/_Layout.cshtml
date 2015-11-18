@@ -376,11 +376,66 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Index", "TypeOfCompanies", new { area = "Users" })">
+                                    <a class="submenu" href="@Url.Action("Index", "TypeOfCompanies", new {area = "Users"})">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Type of Company</span>
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li>
+                            <a class="dropmenu" href="#">
+                                <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Marketing</span><span class="label label-important"> 1 </span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Campaigns", "Marketing", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Campaigns</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Partners", "Marketing", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Partners</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Social", "Marketing", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Social</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropmenu" href="#">
+                                <i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Finance</span><span class="label label-important"> 1 </span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Invoicing", "Finance", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Invoicing</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Payments", "Finance", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Payments</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Reports", "Finance", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Reports</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Frz", "Finance", new { area = "Users" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Frz</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Products", new { area = "Users" })">
+                                <i class="icon-eye-open"></i><span class="hidden-tablet"> Products</span>
+                            </a>
                         </li>
                         @if (this.User.IsInRole("Admin"))
                         {

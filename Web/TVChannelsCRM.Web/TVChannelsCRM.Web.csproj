@@ -202,7 +202,10 @@
     <Compile Include="Areas\Users\Controllers\ContractsController.cs" />
     <Compile Include="Areas\Users\Controllers\DiscussionsController.cs" />
     <Compile Include="Areas\Users\Controllers\FeedbacksController.cs" />
+    <Compile Include="Areas\Users\Controllers\FinanceController.cs" />
     <Compile Include="Areas\Users\Controllers\InvoicesController.cs" />
+    <Compile Include="Areas\Users\Controllers\MarketingController.cs" />
+    <Compile Include="Areas\Users\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Users\Controllers\ProvidersController.cs" />
     <Compile Include="Areas\Users\Controllers\TrdsController.cs" />
@@ -754,6 +757,14 @@
     <Content Include="Areas\Users\Views\TypeOfCompanies\TypeOfCompanyDetails.cshtml" />
     <Content Include="Areas\Users\Views\Shared\EditorTemplates\DiscussionTypeEditor.cshtml" />
     <Content Include="Areas\Users\Views\Discussions\UpcomingDiscussions.cshtml" />
+    <Content Include="Areas\Users\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Marketing\Campaigns.cshtml" />
+    <Content Include="Areas\Users\Views\Marketing\Partners.cshtml" />
+    <Content Include="Areas\Users\Views\Marketing\Social.cshtml" />
+    <Content Include="Areas\Users\Views\Finance\Invoicing.cshtml" />
+    <Content Include="Areas\Users\Views\Finance\Payments.cshtml" />
+    <Content Include="Areas\Users\Views\Finance\Reports.cshtml" />
+    <Content Include="Areas\Users\Views\Finance\Frz.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
