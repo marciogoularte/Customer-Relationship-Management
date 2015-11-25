@@ -27,6 +27,7 @@
         columns.Bound(model => model.Frequency).Width(32).Hidden(true);
         columns.Bound(model => model.Tier).Width(32).Hidden(true);
         columns.Bound(model => model.ProviderId).Width(32).Hidden(true);
+        columns.Bound(model => model.MonthlyFee).Hidden(true);
         columns.Bound(model => model.Comments).Width(200);
         columns.Command(command =>
         {

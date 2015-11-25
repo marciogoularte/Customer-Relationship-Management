@@ -87,6 +87,19 @@
 
         public string Comments { get; set; }
 
+        [Required]
+        public string DealerName { get; set; }
+
+        [Required]
+        public string DealerPhone { get; set; }
+
+        [Required]
+        public string DealerEmail { get; set; }
+
+        public bool WantToReceiveEpg { get; set; }
+
+        public bool WantToReceiveNews { get; set; }
+
         public virtual ICollection<Trd> Trds
         {
             get { return this.trds; }

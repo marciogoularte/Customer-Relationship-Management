@@ -25,6 +25,7 @@
         columns.Bound(model => model.Comments).Width(275);
         columns.Command(command =>
         {
+            command.Custom("View operatrs").Click("viewOperators");
             command.Custom("Details").Click("viewDetails");
             command.Edit();
             command.Destroy();
@@ -109,6 +110,12 @@
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
         window.location = '/Users/Channels/ChannelDetails?channelId=' + dataItem.Id;
+    }
+
+    function viewOperators(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Users/Channels/ViewOperators?channelId=' + dataItem.Id;
     }
 
     function selectRow() {

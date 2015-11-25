@@ -44,7 +44,11 @@
         columns.Bound(model => model.Marketing).Hidden(true);
         columns.Bound(model => model.MarketingPhone).Hidden(true);
         columns.Bound(model => model.MarketingEmail).Hidden(true);
-        columns.Bound(model => model.Frequency).Hidden(true);
+        columns.Bound(model => model.DealerName).Hidden(true);
+        columns.Bound(model => model.DealerEmail).Hidden(true);
+        columns.Bound(model => model.DealerPhone).Hidden(true);
+        columns.Bound(model => model.WantToReceiveEpg).Hidden(true);
+        columns.Bound(model => model.WantToReceiveNews).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsClients");

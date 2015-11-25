@@ -765,6 +765,7 @@
     <Content Include="Areas\Users\Views\Finance\Payments.cshtml" />
     <Content Include="Areas\Users\Views\Finance\Reports.cshtml" />
     <Content Include="Areas\Users\Views\Finance\Frz.cshtml" />
+    <Content Include="Areas\Users\Views\Channels\Clients.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />

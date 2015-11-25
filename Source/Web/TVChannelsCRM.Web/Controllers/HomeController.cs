@@ -35,7 +35,7 @@
 
             //return View(lastActivities);
 
-            return RedirectToAction("Index", "Activities", new { area = "Administration" });
+            return RedirectToAction("UpcomingDiscussions", "Discussions", new { area = "Users" });
         }
 
         public ActionResult About()

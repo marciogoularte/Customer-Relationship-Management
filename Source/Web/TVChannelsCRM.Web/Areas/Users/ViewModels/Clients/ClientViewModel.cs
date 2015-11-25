@@ -47,7 +47,12 @@
                     TechnicalEmail = c.TechnicalEmail,
                     Marketing = c.Marketing,
                     MarketingPhone = c.MarketingPhone,
-                    MarketingEmail = c.MarketingEmail
+                    MarketingEmail = c.MarketingEmail,
+                    DealerName = c.DealerName,
+                    DealerEmail = c.DealerEmail,
+                    DealerPhone = c.DealerPhone,
+                    WantToReceiveEpg = c.WantToReceiveEpg,
+                    WantToReceiveNews = c.WantToReceiveNews
                 };
             }
         }
@@ -85,10 +90,6 @@
         [Required]
         [DisplayName("Residence and address(BG)")]
         public string ResidenceAndAddressInBulgarian { get; set; }
-
-        [Required]
-        [UIHint("FrequencyEditor")]
-        public Frequency Frequency { get; set; }
 
         [Required]
         [DisplayName("Network page")]
@@ -171,5 +172,24 @@
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
+
+        [Required]
+        [DisplayName("Dealer name")]
+        public string DealerName { get; set; }
+
+        [Required]
+        [DisplayName("Dealer phone")]
+        public string DealerPhone { get; set; }
+
+        [Required]
+        [DisplayName("Dealer email")]
+        public string DealerEmail { get; set; }
+
+        [Required]
+        [DisplayName("Want to receive EPG")]
+        public bool WantToReceiveEpg { get; set; }
+
+        [DisplayName("Want to receive Highlights / News")]
+        public bool WantToReceiveNews { get; set; }
     }
 }

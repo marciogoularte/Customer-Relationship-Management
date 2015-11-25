@@ -149,62 +149,13 @@
                 MarketingPhone = client.MarketingPhone,
                 MarketingEmail = client.MarketingEmail,
                 Contracts = new List<ClientContract>(),
-                Discussions = new List<Discussion>()
+                Discussions = new List<Discussion>(),
+                DealerPhone = client.DealerPhone,
+                DealerEmail = client.DealerEmail,
+                DealerName = client.DealerName,
+                WantToReceiveEpg = client.WantToReceiveEpg,
+                WantToReceiveNews = client.WantToReceiveNews
             };
-
-            // Validate given dates from user
-            //string date;
-            //if (client.ActiveFrom != null)
-            //{
-            //    try
-            //    {
-            //        date = client.ActiveFrom.ToString();
-            //        newClient.ActiveFrom = DateTime.Parse(date);
-            //    }
-            //    catch (FormatException e)
-            //    {
-            //        newClient.ActiveFrom = null;
-            //    }
-            //}
-
-            //if (client.ActiveTo != null)
-            //{
-            //    try
-            //    {
-            //        date = client.ActiveTo.ToString();
-            //        newClient.ActiveTo = DateTime.Parse(date);
-            //    }
-            //    catch (FormatException e)
-            //    {
-            //        newClient.ActiveTo = null;
-            //    }
-            //}
-
-            //if (client.DateOfSigning != null)
-            //{
-            //    try
-            //    {
-            //        date = client.DateOfSigning.ToString();
-            //        newClient.DateOfSigning = DateTime.Parse(date);
-            //    }
-            //    catch (FormatException e)
-            //    {
-            //        newClient.DateOfSigning = null;
-            //    }
-            //}
-
-            //if (client.DateOfExpiring != null)
-            //{
-            //    try
-            //    {
-            //        date = client.DateOfExpiring.ToString();
-            //        newClient.DateOfExpiring = DateTime.Parse(date);
-            //    }
-            //    catch (FormatException e)
-            //    {
-            //        newClient.DateOfExpiring = null;
-            //    }
-            //}
 
             this.Data.Clients.Add(newClient);
             this.Data.SaveChanges();
@@ -257,6 +208,11 @@
             clientFromDb.Marketing = client.Marketing;
             clientFromDb.MarketingPhone = client.MarketingPhone;
             clientFromDb.MarketingEmail = client.MarketingEmail;
+            clientFromDb.DealerName = client.DealerName;
+            clientFromDb.DealerEmail = client.DealerEmail;
+            clientFromDb.DealerPhone = client.DealerPhone;
+            clientFromDb.WantToReceiveNews = client.WantToReceiveNews;
+            clientFromDb.WantToReceiveEpg = client.WantToReceiveEpg;
 
             this.Data.SaveChanges();
 

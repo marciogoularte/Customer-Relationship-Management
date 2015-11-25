@@ -191,7 +191,8 @@ namespace TVChannelsCRM.Web.Areas.Users.Controllers
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments + "\n",
                 Channels = new List<Channel>(),
-                Frequency = contract.Frequency
+                Frequency = contract.Frequency,
+                MonthlyFee = contract.MonthlyFee
             };
 
             if (contract.ProviderId != null)
@@ -281,8 +282,9 @@ namespace TVChannelsCRM.Web.Areas.Users.Controllers
             contractFromDb.Comments = contract.Comments + "\n";
             contractFromDb.ProviderId = int.Parse(contract.ProviderId);
             contractFromDb.Frequency = contract.Frequency;
+            contractFromDb.MonthlyFee = contract.MonthlyFee;
 
-            this.Data.SaveChanges();
+                        this.Data.SaveChanges();
 
             this.CreateActivity(ActivityType.Edit, contractFromDb.Id.ToString(), ActivityTargetType.Contract);
 

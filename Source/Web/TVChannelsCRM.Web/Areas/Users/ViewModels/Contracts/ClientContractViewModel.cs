@@ -30,8 +30,9 @@
                     ClientId = c.ClientId,
                     ProviderId = c.ProviderId.ToString(),
                     Tier = c.Tier,
-                    Frequency = c.Frequency
-                };
+                    Frequency = c.Frequency,
+                     MonthlyFee = c.MonthlyFee
+            };
             }
         }
 
@@ -91,5 +92,9 @@
         [DisplayName("Provider")]
         [UIHint("ContractProviderEditor")]
         public string ProviderId { get; set; }
+
+        [Required]
+        [DisplayName("Monthly fee")]
+        public double MonthlyFee { get; set; }
     }
 }

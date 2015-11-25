@@ -59,7 +59,7 @@
         {
             if (this.User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Activities", new { area = "Administration" });
+                return RedirectToAction("UpcomingDiscussions", "Discussions", new { area = "Users" });
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();

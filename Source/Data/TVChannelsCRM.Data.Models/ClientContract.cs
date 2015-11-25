@@ -54,6 +54,8 @@
 
         public Frequency Frequency { get; set; }
 
+        public double MonthlyFee { get; set; }
+
         public virtual ICollection<Invoice> Invoices
         {
             get { return this.invoices; }

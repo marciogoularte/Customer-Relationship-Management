@@ -1,4 +1,6 @@
-﻿namespace TVChannelsCRM.Web.Areas.Users.Controllers
+﻿using TVChannelsCRM.Web.Areas.Users.ViewModels.Clients;
+
+namespace TVChannelsCRM.Web.Areas.Users.Controllers
 {
     using System;
     using System.Linq;
@@ -124,6 +126,30 @@
                 .FirstOrDefaultAsync(c => c.Id == channelId);
 
             return View(channel);
+        }
+
+        [HttpGet]
+        public ActionResult ViewOperators(int channelId)
+        {
+            var contracts = this.Data
+                .ClientContracts
+                .All()
+                .Where(c => c.Channels.Select(ch => ch.Id).Contains(channelId))
+                .ToList();
+
+            var clients = new List<ClientViewModel>();
+
+            foreach (var contractClients in contracts.Select(contract => this.Data
+                .Clients
+                .All()
+                .Where(c => c.Contracts.Select(co => co.Id).Contains(contract.Id))
+                .Select(ClientViewModel.FromClient)
+                .ToList()))
+            {
+                clients.AddRange(contractClients);
+            }
+
+            return View("Clients", clients);
         }
 
         public JsonResult UpdateChannel([DataSourceRequest] DataSourceRequest request, ChannelViewModel channel)
