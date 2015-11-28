@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{CE731CD2-D100-4191-A867-564C31D64386}"
 EndProject
@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B8AAB2D8-5A7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVChannelsCRM.Data", "Data\TVChannelsCRM.Data\TVChannelsCRM.Data.csproj", "{D17D9F95-3A8A-4E42-A31F-D97DAFDBA02C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVChannelsCRMM.Data.Models", "Data\TVChannelsCRM.Data.Models\TVChannelsCRMM.Data.Models.csproj", "{7CEE61E7-3CDE-42F8-BDE8-9C3647EDB282}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVChannelsCRM.Data.Models", "Data\TVChannelsCRM.Data.Models\TVChannelsCRM.Data.Models.csproj", "{7CEE61E7-3CDE-42F8-BDE8-9C3647EDB282}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVChannelsCRM.Web.Common", "Web\TVChannelsCRM.Web.Common\TVChannelsCRM.Web.Common.csproj", "{B6BB9E55-7256-4696-8352-60CF94F4674D}"
 EndProject

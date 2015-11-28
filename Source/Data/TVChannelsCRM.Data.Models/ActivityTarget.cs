@@ -10,6 +10,7 @@
         Invoice,
         Discussion,
         Trd,
-        TypeOfCompany
+        TypeOfCompany,
+        Campaign
     }
 }

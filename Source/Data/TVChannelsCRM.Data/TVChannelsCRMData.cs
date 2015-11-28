@@ -151,9 +151,9 @@
             get { return this.GetDeletableEntityRepository<TypeOfCompany>(); }
         }
 
-        //public IDeletableEntityRepository<ContractTemplate> ContractTemplates
-        //{
-        //    get { return this.GetDeletableEntityRepository<ContractTemplate>(); }
-        //}
+        public IDeletableEntityRepository<Campaign> Campaigns
+        {
+            get { return this.GetDeletableEntityRepository<Campaign>(); }
+        }
     }
 }

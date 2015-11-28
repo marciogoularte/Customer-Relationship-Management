@@ -29,6 +29,8 @@
 
         IDbSet<TypeOfCompany> TypeOfCompanies { get; set; }
 
+        IDbSet<Campaign> Campaigns { get; set; }
+
         //IDbSet<ContractTemplate> ContractTemplates { get; set; }
 
         DbContext DbContext { get; }

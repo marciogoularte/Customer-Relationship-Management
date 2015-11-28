@@ -190,7 +190,7 @@
             }
 
             // TODO: Remove db context and find way for manipulating data in other way
-            var db = new TVChannelsCRM.Data.TVChannelsCRMDbContext();
+            var db = new TVChannelsCRMDbContext();
             var role = db.Roles.FirstOrDefault(r => r.Name == roleName);
 
             user.Roles.Add(new IdentityUserRole()

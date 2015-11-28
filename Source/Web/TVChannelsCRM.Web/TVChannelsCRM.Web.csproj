@@ -197,6 +197,7 @@
     <Compile Include="Areas\Administration\Controllers\DeletedItemsController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Admin\UserViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Admin\EditUserViewModel.cs" />
+    <Compile Include="Areas\Users\Controllers\CampaignsController.cs" />
     <Compile Include="Areas\Users\Controllers\ChannelsController.cs" />
     <Compile Include="Areas\Users\Controllers\ClientsController.cs" />
     <Compile Include="Areas\Users\Controllers\ContractsController.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Areas\Users\Controllers\TrdsController.cs" />
     <Compile Include="Areas\Users\Controllers\TypeOfCompaniesController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
+    <Compile Include="Areas\Users\ViewModels\Campaigns\CampaignViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Clients\ClientViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ClientContractChannelViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\Contracts\ClientContractViewModel.cs" />
@@ -766,6 +768,8 @@
     <Content Include="Areas\Users\Views\Finance\Reports.cshtml" />
     <Content Include="Areas\Users\Views\Finance\Frz.cshtml" />
     <Content Include="Areas\Users\Views\Channels\Clients.cshtml" />
+    <Content Include="Areas\Users\Views\Campaigns\All.cshtml" />
+    <Content Include="Areas\Users\Views\Campaigns\CampaignDetails.cshtml" />
     <None Include="Properties\PublishProfiles\CRM.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.min.js" />
     <Content Include="Libraries\Kendo.Mvc.dll" />
@@ -1312,9 +1316,9 @@
       <Project>{a7582ce0-3987-4535-a4fa-0abae1257e20}</Project>
       <Name>TVChannelsCRM.Data.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Data\TVChannelsCRM.Data.Models\TVChannelsCRMM.Data.Models.csproj">
+    <ProjectReference Include="..\..\Data\TVChannelsCRM.Data.Models\TVChannelsCRM.Data.Models.csproj">
       <Project>{7cee61e7-3cde-42f8-bde8-9c3647edb282}</Project>
-      <Name>TVChannelsCRMM.Data.Models</Name>
+      <Name>TVChannelsCRM.Data.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\TVChannelsCRM.Data\TVChannelsCRM.Data.csproj">
       <Project>{d17d9f95-3a8a-4e42-a31f-d97dafdba02c}</Project>

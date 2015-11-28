@@ -10,7 +10,6 @@ namespace TVChannelsCRM.Data.Migrations
 
     using Data;
     using Models;
-    using Common.Statics;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TVChannelsCRMDbContext>
     {
@@ -28,81 +27,10 @@ namespace TVChannelsCRM.Data.Migrations
             {
                 return;
             }
-            //
-            //this.AddDealerUserProfiles(context);
-            //this.AddFinancialUserProfiles(context);
-            //this.AddClientsAndProviders(context);
             
+            this.AddDealerUserProfiles(context);
+            this.AddFinancialUserProfiles(context);
             this.AddAdministratorUserProfiles(context);
-
-            //this.AddContractTemplates(context);
-        }
-
-        private void AddClientsAndProviders(TVChannelsCRMDbContext context)
-        {
-            //for (int i = 100; i < 200; i++)
-            //{
-            //    var provider = new Provider()
-            //    {
-            //        Name = "Name " + (i * 23),
-            //        Type = TypeOfCompany.OOD,
-            //        Address = "Al Malinow" + (i * 23),
-            //        Commission = (i * 23).ToString(),
-            //        ContactPerson = "Pesho" + (i * 23),
-            //        Term = "Term" + (i * 23),
-            //        CPS = "CPS" + (i * 23),
-            //        Uic = "Uic" + (i * 23),
-            //        ResidenceAndAddress = " ResidenceAndAddress " + (i * 20),
-            //        NetworkPage = "NetworkPage" + i * 3.6,
-            //        PhoneNumber = "0891929384",
-            //        Email = "Pesho" + i + "@gmail.com"
-            //    };
-
-            //    context.Providers.AddOrUpdate(provider);
-            //}
-
-
-
-
-            //for (int i = 100; i < 200; i++)
-            //{
-            //    var firstClient = new Client()
-            //    {
-            //        IsActive = true,
-            //        ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i),
-            //        ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i),
-            //        Mg = "MG" + i*0.4,
-            //        IrdCard = i*19.00002 + "IrdCard",
-            //        Invoicing = i + "asdasd",
-            //        DateOfSigning = DateTime.Now,
-            //        DateOfExpiring = DateTime.Now,
-            //        Currency = (i*20).ToString(),
-            //        InvoicesIssued = i + "Some Random" + (i/19.2),
-            //        PaymentsReceived = i.ToString(),
-            //        Contract = "Contract" + i
-            //    };
-
-            //    var secondClient = new Client()
-            //    {
-            //        IsActive = false,
-            //        ActiveFrom = DateTime.Now.AddHours(i).AddMinutes(-i),
-            //        ActiveTo = DateTime.Now.AddHours(-i).AddMinutes(i),
-            //        Mg = "MG" + i*0.4,
-            //        IrdCard = i*19.00002 + "IrdCard",
-            //        Invoicing = i + "asdasd",
-            //        DateOfSigning = DateTime.Now,
-            //        DateOfExpiring = DateTime.Now,
-            //        Currency = (i*20).ToString(),
-            //        InvoicesIssued = i + "Some Random" + (i/19.2),
-            //        PaymentsReceived = i.ToString(),
-            //        Contract = "Contract" + i
-            //    };
-
-            //    context.Clients.AddOrUpdate(firstClient);
-            //    context.Clients.AddOrUpdate(secondClient);
-            //    context.SaveChanges();
-
-            // }
         }
 
         private void AddDealerUserProfiles(TVChannelsCRMDbContext context)
@@ -282,131 +210,5 @@ namespace TVChannelsCRM.Data.Migrations
             //context.Users.AddOrUpdate(secondUser);
             //context.SaveChanges();
         }
-
-        //private void AddContractTemplates(TVChannelsCRMDbContext context)
-        //{
-        //    // TODO: Set correct TargetContractTemplate for all contracts (target: client or provider)
-        //    var boxContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "BOX",
-        //        Html = ContractTemplatesHtml.BoxContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(boxContractTemplate);
-
-        //    var ebuLaContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "EBU_LA",
-        //        Html = ContractTemplatesHtml.EbuLaContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(ebuLaContractTemplate);
-
-        //    var ectvEnContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "ECTV-EN",
-        //        Html = ContractTemplatesHtml.EctvEnContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(ectvEnContractTemplate);
-
-        //    var ectvEnRuContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "ECTV-EN-RU",
-        //        Html = ContractTemplatesHtml.EctvEnRuContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(ectvEnRuContractTemplate);
-
-        //    var fashiononeContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "Fashionone",
-        //        Html = ContractTemplatesHtml.FashiononeContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(fashiononeContractTemplate);
-
-        //    var fcwContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "FCW",
-        //        Html = ContractTemplatesHtml.FcwContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(fcwContractTemplate);
-
-        //    var fishingContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "FISHING",
-        //        Html = ContractTemplatesHtml.FishingContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(fishingContractTemplate);
-
-        //    var imagineContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "IMAGINE",
-        //        Html = ContractTemplatesHtml.ImagineContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(imagineContractTemplate);
-
-        //    var mixPackContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "MixPack",
-        //        Html = ContractTemplatesHtml.MixPackContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(mixPackContractTemplate);
-
-        //    var movieSelsContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "MOVIE SELS",
-        //        Html = ContractTemplatesHtml.MovieSelsContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(movieSelsContractTemplate);
-
-        //    var moviestarContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "Moviestar",
-        //        Html = ContractTemplatesHtml.MoviestarContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(moviestarContractTemplate);
-
-        //    var romaContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "ROMA",
-        //        Html = ContractTemplatesHtml.RomaContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(romaContractTemplate);
-
-        //    var sctContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "SCT",
-        //        Html = ContractTemplatesHtml.SctContractTemplateHtml,
-        //        Target = TargetContractTemplate.Client
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(sctContractTemplate);
-
-        //    var superOneContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "SuperOne",
-        //        Html = ContractTemplatesHtml.SuperOneContractTemplateHtml,
-        //        Target = TargetContractTemplate.Provider
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(superOneContractTemplate);
-
-        //    var theWorldContractTemplate = new ContractTemplate()
-        //    {
-        //        Name = "The_World",
-        //        Html = ContractTemplatesHtml.TheWorldContractTemplateHtml,
-        //        Target = TargetContractTemplate.Provider
-        //    };
-        //    context.ContractTemplates.AddOrUpdate(theWorldContractTemplate);
-
-        //    context.SaveChanges();
-        //}
     }
 }

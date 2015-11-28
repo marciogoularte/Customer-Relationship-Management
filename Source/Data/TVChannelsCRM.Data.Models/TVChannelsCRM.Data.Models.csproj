@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityType.cs" />
+    <Compile Include="Campaign.cs" />
     <Compile Include="Channel.cs" />
     <Compile Include="ClientContract.cs" />
     <Compile Include="ContractTemplate.cs" />

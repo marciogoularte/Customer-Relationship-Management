@@ -47,6 +47,8 @@
 
         public virtual IDbSet<TypeOfCompany> TypeOfCompanies { get; set; }
 
+        public virtual IDbSet<Campaign> Campaigns { get; set; }
+
         //public virtual IDbSet<ContractTemplate> ContractTemplates { get; set; }
 
         public DbContext DbContext

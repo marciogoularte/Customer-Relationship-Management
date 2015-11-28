@@ -29,6 +29,8 @@
 
         IDeletableEntityRepository<TypeOfCompany> TypeOfCompanies { get; }
 
+        IDeletableEntityRepository<Campaign> Campaigns { get; }
+
         //IDeletableEntityRepository<ContractTemplate> ContractTemplates { get; }
 
         IRepository<User> Users { get; }

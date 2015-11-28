@@ -87,9 +87,9 @@
       <Project>{a7582ce0-3987-4535-a4fa-0abae1257e20}</Project>
       <Name>TVChannelsCRM.Data.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TVChannelsCRM.Data.Models\TVChannelsCRMM.Data.Models.csproj">
+    <ProjectReference Include="..\TVChannelsCRM.Data.Models\TVChannelsCRM.Data.Models.csproj">
       <Project>{7cee61e7-3cde-42f8-bde8-9c3647edb282}</Project>
-      <Name>TVChannelsCRMM.Data.Models</Name>
+      <Name>TVChannelsCRM.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
