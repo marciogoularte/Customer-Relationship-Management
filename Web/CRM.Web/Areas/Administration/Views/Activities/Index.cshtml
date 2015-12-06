@@ -1,0 +1,82 @@
+﻿@using CRM.Data.Models
+@using CRM.Services.Data.ViewModels.Users.Activities
+@model List<ActivityViewModel>
+@{
+    ViewBag.Title = "Activities";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@Scripts.Render("~/bundles/jquery")*@
+<script src="~/Scripts/kendo/jquery.min.js" type="text/javascript"></script>
+    @* TODO: Remove that hardcode of height in pixels, This should be done automatically by metro theme and javascripts from it *@
+<style type="text/css">
+    #content {
+        min-height: 600px;
+    }
+</style>
+<div class="row-fluid">
+    @if (Model != null && Model.Any())
+    {
+        <div>
+            <h1>Last activities</h1>
+            <ul class="messagesList">
+                @foreach (var activity in Model)
+                {
+                    <li>
+                        <span class="from">
+                            <span class="glyphicons star">
+                                <i></i>
+                            </span> @Html.ActionLink(activity.User.FirstName + " " + activity.User.LastName, "Index", "Profile", new { area = "Users", userId = activity.User.Id }, null)
+                            <span class="glyphicons paperclip">
+                                <i></i>
+                            </span>
+                        </span>
+                        <span class="title" style="width: 30%;">
+                            @switch (activity.Type)
+                            {
+                                case ActivityType.Create:
+                                    @:<span class="label label-info">create</span> new @activity.TargetType
+                                    break;
+                                case ActivityType.Edit:
+                                <span class="label label-warning">edit</span>
+                                @activity.TargetType
+                                    break;
+                                case ActivityType.Delete:
+                                <span class="label label-important">delete</span>
+                                @activity.TargetType
+                                    break;
+                                case ActivityType.Restore:
+                                <span class="label label-success">restore</span>
+                                @activity.TargetType
+                                    break;
+                            }
+                        </span>
+                        <span class="date" style="display: inline;">
+                            @activity.CreatedOn.ToLongDateString() <b>@activity.CreatedOn.ToLongTimeString()</b>
+                            @*@if (activity.IsDeleted == false && activity.Type != ActivityType.Delete)
+                            {
+                                switch (activity.TargetType)
+                                {
+                                    case ActivityTargetType.User:
+                                        @Html.ActionLink("Details", "Index", "Profile", new { area = "Users", userId = activity.TargetId }, new { @class = "btn btn-mini btn-inverse" })
+                                        break;
+                                    case ActivityTargetType.Client:
+                                    @Html.ActionLink("Details", "ClientDetails", "Clients", new { area = "Users", clientId = int.Parse(activity.TargetId) }, new { @class = "btn btn-mini btn-inverse" })
+                                        break;
+                                    case ActivityTargetType.Provider:
+                                    @Html.ActionLink("Details", "ProviderDetails", "Providers", new { area = "Users", providerId = int.Parse(activity.TargetId) }, new { @class = "btn btn-mini btn-inverse" })
+                                        break;
+                                }
+                            }*@
+
+                        </span>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    else
+    {
+        <h1 class="label-important">Still there aren't any activities</h1>
+        <img src="~/Content/images/none-activities.jpg" />
+    }
+</div>

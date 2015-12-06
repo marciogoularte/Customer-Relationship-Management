@@ -1,0 +1,9 @@
+﻿@using CRM.Data.Models
+@using CRM.Common.Extensions
+@model EnterprisePosition
+
+@(Html.Kendo().DropDownListFor(m => m)
+        .DataTextField("Text")
+        .DataValueField("Value")
+        .BindTo(KendoGridExtensions.EnumToSelectList(typeof(EnterprisePosition)))
+)

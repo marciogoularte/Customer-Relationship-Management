@@ -1,0 +1,131 @@
+﻿@using CRM.Services.Data.ViewModels.Users.Contracts
+@model ProviderContractViewModel
+
+<h3>Contract details</h3>
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Type of Contract
+                    </strong>
+                </td>
+                <td>
+                    @Model.TypeOfContract
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Start Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.StartDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        End Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.EndDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Notice Period
+                    </strong>
+                </td>
+                <td>
+                    @Model.NoticePeriod
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Billing Start Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.BillingStartDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Billing End Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.BillingEndDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Number Of Days For Payment Due Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.NumberOfDaysForPaymentDueDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Accepting Reports
+                    </strong>
+                </td>
+                <td>
+                    @Model.AcceptingReports
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Governing Law
+                    </strong>
+                </td>
+                <td>
+                    @Model.GoverningLaw
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Comments
+                    </strong>
+                </td>
+                <td>
+                    @Model.Comments
+                </td>
+            </tr>
+                @*<tr>
+                    <td>
+                        <strong>
+                            <span class="glyphicon glyphicon-user"></span>
+                            Provider name
+                        </strong>
+                    </td>
+                    <td>
+                        @Model.Provider.Name
+                    </td>
+                </tr>*@
+        </tbody>
+    </table>
+</div>

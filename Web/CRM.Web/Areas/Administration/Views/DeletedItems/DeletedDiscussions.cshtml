@@ -1,0 +1,154 @@
+﻿@using CRM.Services.Data.ViewModels.Users.Discussions
+@model IEnumerable<string>
+@{
+    ViewBag.Title = "Deleted Discussions";
+    const string controllerName = "DeletedItems";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/kendo")
+@Scripts.Render("~/bundles/jqueryval")
+
+<h2>Deleted Discussions</h2>
+
+@(Html.Kendo()
+            .Grid<DiscussionViewModel>()
+         .Name("grid-deleted-discussions")
+          .Columns(columns =>
+          {
+              columns.Bound(model => model.Date).Width(150);
+              columns.Bound(model => model.SubjectOfDiscussion).Width(100);
+              columns.Bound(model => model.Summary).Width(32).Hidden(true);
+              columns.Bound(model => model.Comments).Width(215);
+              columns.Command(command => command.Custom("Restore").Click("showDetailsDeletedDiscussions"));
+          })
+          .ToolBar(toolBar =>
+          {
+              toolBar.Template(@<text>
+
+                @(Html.Kendo().AutoComplete()
+                                            .Name("searchbox-deleted-discussions")
+                                                 .Placeholder("Subject... ")
+                                         .BindTo(Model)
+                                         .Filter("contains")
+                )
+                <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+                <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+            </text>);
+          })
+                              .Groupable()
+                              .ColumnMenu()
+                              .Filterable()
+                              .Navigatable()
+                              .Resizable(r => r.Columns(true))
+                              .Reorderable(r => r.Columns(true))
+                              .Events(ev => ev.Change("selectRow"))
+                              .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                              .HtmlAttributes(new { @style = "word-break:break-all;" })
+                              .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                              .Excel(excel => excel
+                                  .FileName("Deleted Discussions Database.xlsx")
+                                  .Filterable(true)
+                                  .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+                              )
+                              .Pdf(pdf => pdf
+                                  .AllPages()
+                                                     .FileName("Deleted Discussions Database.pdf")
+                                  .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+                              )
+                              .Pageable(pageable => pageable
+                                  .Refresh(true)
+                                  .PageSizes(true)
+                                  .ButtonCount(5))
+                              .Sortable(sort =>
+                              {
+                                  sort.AllowUnsort(false);
+                                  sort.SortMode(GridSortMode.SingleColumn);
+                              })
+                              .DataSource(data =>
+                              {
+                                  data.Ajax()
+                                    .Model(model => model.Id(c => c.Id))
+                                    .PageSize(10)
+                                    .ServerOperation(true)
+                                    .Events(ev => ev.Error("errorAlert"))
+                                       .Read(read => read.Action("ReadDeletedDiscussions", controllerName).Data("addSearchDiscussions"));
+                              }))
+<div id="selected">
+</div>
+
+@(Html.Kendo().Window().Name("restore-discussion-box")
+    .Title("Restore discussion")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .Width(300)
+)
+
+<script type="text/x-kendo-template" id="channels-template">
+    <div id="discussions-restore-container">
+        <h4>Are you sure that you want to restore that discussion?</h4>
+        <button id="restore-discussion-button" class="btn btn-primary">Restore</button>
+    </div>
+</script>
+
+<script>
+    function onAdditionalDataDiscussions() {
+        return {
+            text: $("#searchbox-deleted-discussions").val()
+        };
+    }
+
+    function addSearchDiscussions() {
+        return { searchboxDeletedDiscussions: $('#searchbox-deleted-discussions').val() };
+    }
+
+    $('#searchbox-deleted-discussions').keyup(function () {
+        $('#grid-deleted-discussions').data('kendoGrid').dataSource.read();
+    });
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+
+    var detailsTemplate = kendo.template($("#channels-template").html());
+    var dataItem;
+
+    function showDetailsDeletedDiscussions(e) {
+        e.preventDefault();
+
+        dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var wnd = $("#restore-discussion-box").data("kendoWindow");
+
+        wnd.content(detailsTemplate(dataItem));
+        wnd.center().open();
+    }
+
+    $(document).on('click', '#restore-discussion-button', function () {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ConfirmRestoreDiscussion", "DeletedItems")',
+            data: { discussionId: dataItem.Id.toString() },
+            datatype: "JSON",
+            success: function () {
+                var grid = $("#grid-deleted-discussions").data("kendoGrid");
+                grid.dataSource.fetch();
+                var wnd = $("#restore-discussion-box").data("kendoWindow");
+                wnd.close();
+            }
+        });
+    });
+</script>

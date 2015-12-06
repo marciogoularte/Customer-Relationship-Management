@@ -1,0 +1,247 @@
+﻿@using CRM.Common.Extensions
+@using CRM.Services.Data.ViewModels.Users.Contracts
+@using CRM.Services.Data.ViewModels.Users.Providers
+@model ClientContractViewModel
+
+@Html.ActionLink("Generate PDF", "GenerateContractTemplate", "Contracts", new { providerId= Model.ProviderId, contractId = Model.Id},new{@class="btn btn-default"})
+
+<br/>
+<br/>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        Type of Contract
+                    </strong>
+                </td>
+                <td>
+                    @Model.TypeOfContract
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Start Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.StartDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        End Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.EndDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Notice Period
+                    </strong>
+                </td>
+                <td>
+                    @Model.NoticePeriod
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+
+                        Billing Start Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.BillingStartDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Billing End Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.BillingEndDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Number Of Days For Payment Due Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.NumberOfDaysForPaymentDueDate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Number Of Days To Be Considered
+                    </strong>
+                </td>
+                <td>
+                    @Model.NumberOfDaysToBeConsidered
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Accepting Reports
+                    </strong>
+                </td>
+                <td>
+                    @Model.AcceptingReports
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Governing Law
+                    </strong>
+                </td>
+                <td>
+                    @Model.GoverningLaw
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Tier
+                    </strong>
+                </td>
+                <td>
+                    @Model.Tier.GetDescription()
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Comments
+                    </strong>
+                </td>
+                <td>
+                    @Model.Comments
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Frequency
+                    </strong>
+                </td>
+                <td>
+                    @Model.Frequency
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Monthly Fee
+                    </strong>
+                </td>
+                <td>
+                    @Model.MonthlyFee
+                </td>
+            </tr>
+            @*<tr>
+                <td>
+                    <strong>
+                        Client name
+                    </strong>
+                </td>
+                @if (Model.ClientId != null)
+                {
+                    <td>
+                        @Model.Client.Name
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Provider name
+                    </strong>
+                </td>
+                @if (Model.Provider != null && Model.Provider.Name != null)
+                {
+                    <td>
+                        @Model.Provider.Name
+                    </td>
+                }
+            </tr>*@
+        </tbody>
+    </table>
+</div>
+<hr />
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<div class="panel panel-default">
+    <div class="panel-heading">Channels</div>
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Channel name
+                </th>
+                <th>
+                    Website
+                </th>
+                <th>
+                    Presentation
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Channels != null)
+            {
+                var channels = (List<ChannelViewModel>)ViewBag.Channels;
+                foreach (var channel in channels)
+                {
+                    <tr>
+                        @if (channel.Name != null)
+                        {
+                            <td>@channel.Name</td>
+                        }
+                        else
+                        {
+                            <td>-</td>
+                        }
+                        @if (channel.Website != null)
+                        {
+                            <td><a href="@channel.Website">Link</a></td>
+                        }
+                        else
+                        {
+                            <td>-</td>
+                        }
+                        @if (channel.Presentation != null)
+                        {
+                            <td><a href="@channel.Presentation">Link</a></td>
+                        }
+                        else
+                        {
+                            <td>-</td>
+                        }
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

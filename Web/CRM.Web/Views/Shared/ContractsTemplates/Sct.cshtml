@@ -1,0 +1,1015 @@
+﻿@using CRM.Common.Extensions
+@using CRM.Services.Data.ViewModels.Users.Trds
+@using CRM.Services.Data.ViewModels.Users.Invoices
+@using CRM.Services.Data.ViewModels.Users.Providers
+@using CRM.Services.Data.ViewModels.Users.Clients
+@using CRM.Services.Data.ViewModels.Users.Contracts
+@using CRM.Services.Data.ViewModels.Users.TypeOfCompanies
+@using System.Globalization
+@model ClientContractViewModel
+@{
+    Layout = null;
+
+    var client = (ClientViewModel)ViewBag.Client;
+    var invoices = (List<InvoiceViewModel>)ViewBag.Invoices;
+    var trds = (List<TrdViewModel>)ViewBag.Trds;
+    var channels = (List<ChannelViewModel>)ViewBag.Channels;
+    var type = (TypeOfCompanyViewModel)ViewBag.ClientContractType;
+
+    var format = "dd.MM.yyyy";
+}
+
+<html>
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <link rel="stylesheet" href="/Content/contracts/sct.css" type="text/css" />
+</head>
+
+<body class="c41">
+    <p class="c8 c11 c21 title">
+        <span class="c6 c4 c10">
+            &nbsp;CABLE DISTRIBUTION AGREEMENT
+        </span>
+        <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 9.33px; height: 9.33px;">
+        </span>
+    </p>
+    <p class="c9 c8 c27">
+        <span class="c0">
+            This Agreement was signed by and between:
+        </span>
+        <span class="c24 c6">
+            Digital World Television
+        </span>
+        <span class="c0">
+            SRL, &nbsp;registered in Italy and
+        </span>
+        <span class="c24 c6">
+            having its registered offices in Via Del Parco Margherita 23,80121 Napoli, Italy
+        </span>
+        <span class="c0">
+            ,
+        </span>
+        <span class="c24 c6">
+            VAT reg.nu.: 05832191000,
+        </span>
+        <span class="c0">
+            &nbsp;represented by
+        </span>
+        <span class="c24 c6">
+            Mr. Gianluca Calabrese
+        </span>
+        <span class="c0">
+            &nbsp;&ndash; General Director, hereinafter referred as the Licensor on one part;
+        </span>
+    </p>
+    <p class="c15 c8">
+        <span class="c6 c4">
+            And
+        </span>
+    </p>
+    <p class="c8 c15">
+        <span class="c29 c10">
+            @client.NameBulgarian
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c29 c10">
+            @type.TypeInBulgarian
+        </span>
+        <span class="c6 c4">
+            , a company registered under the legislation of the Republic of Bulgaria, having its seat and address of management at
+        </span>
+        <span class="c10 c29">
+            @client.ResidenceAndAddress
+        </span>
+        <span class="c4 c6">
+            , &nbsp;filed with the Commercial Register of the Registry Agency with Unified Identification Code
+        </span>
+        <span class="c29 c10">
+            @client.Uic
+        </span>
+        <span class="c6 c4">
+            &nbsp; and VAT Act Identification No
+        </span>
+        <span class="c10">
+            @client.Vat
+        </span>
+        <span class="c47">
+            ,
+        </span>
+        <span class="c6 c4">
+            &nbsp; represented by
+        </span>
+        <span class="c29 c10 c43">
+            @client.Management
+        </span>
+        <span class="c6 c4">
+            .
+        </span>
+    </p>
+    <p class="c8 c14 c34">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c2 c48">
+        <span class="c0">
+            WHEREAS:
+        </span>
+    </p>
+    <p class="c2">
+        <span class="c0 c18">
+            Licensor owns and broadcasts 24/7 adult channels on Hotbird available for cable distribution:
+        </span>
+        <span class="c6 c18 c4 c10">
+            &nbsp;
+        </span>
+        <span class="c6 c18 c4 c10">
+            @if (channels != null && channels.Any())
+            {
+                var lastItem = channels[channels.Count - 1];
+                foreach (var channel in channels)
+                {
+                    if (channel != lastItem)
+                    {
+                        <b>@channel.Name, </b>
+                    }
+                    else
+                    {
+                        <b>@channel.Name</b>
+                    }
+                }
+            }
+        </span>
+    </p>
+    <p class="c2">
+        <span class="c0 c18">
+            Customer is a cable company in
+        </span>
+        <span class="c6 c4 c10">
+            Bulgaria
+        </span>
+        <span class="c0 c18">
+            and offers digital cable TV channels intended for
+        </span>
+        <span class="c0">
+            subscribers
+        </span>
+        <span class="c0 c28">
+            &nbsp;
+        </span>
+        <span class="c0 c18">
+            through its cable network.
+        </span>
+    </p>
+    <p class="c2">
+        <a name="h.gjdgxs">
+        </a>
+        <span class="c0 c18">
+            Customer has expressed interest in distributing Licensor&rsquo;s content through its network and Licensor is willing to license its content,
+        </span>
+    </p>
+    <p class="c2 c22">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c2">
+        <span class="c0">
+            In consideration of the mutual promises contained herein and intending to be legally bound hereby, Licensor agrees to supply to Operator, and Operator agrees to distribute for Licensor, the services hereinafter described upon the following terms and conditions:
+        </span>
+    </p>
+    <p class="c9 c8 c22">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            1.
+        </span>
+        <span class="c3">
+            TERM
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            This Agreement shall commence on the date hereof and is valid for
+        </span>
+        <span class="c4 c10">
+            END DATE - START DATE
+        </span>
+        <span class="c6 c4">
+            &nbsp;(three years) and shall continue automatically for successive 3 year term, unless either party gives written notice of non-renewal no later than 30 days prior to the expiration of the initial term or any renewal term. &nbsp;This Agreement may also be earlier terminated pursuant to Paragraph 9.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            2.
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c3">
+            APPOINTMENT OF OPERATOR
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            Licensor hereby grants to Operator the right for the installation and distribution of the channels comprising the SCT bouquet offer available at the date of signing on Hotbird, comprising the channels
+        </span>
+        <span class="c6 c18 c4 c10">
+            &nbsp;
+        </span>
+        <span class="c4 c10">
+            @if (channels != null && channels.Any())
+            {
+                var lastItem = channels[channels.Count - 1];
+                foreach (var channel in channels)
+                {
+                    if (channel != lastItem)
+                    {
+                        <b>@channel.Name, </b>
+                    }
+                    else
+                    {
+                        <b>@channel.Name</b>
+                    }
+                }
+            }
+        </span>
+        <span class="c6 c4">
+            , (hereinafter called &ldquo;Channels&rdquo;) in Operator&rsquo;s cable service in
+        </span>
+        <span class="c6 c4 c10">
+            Bulgaria,
+        </span>
+        <span class="c6 c4">
+            (hereinafter called &ldquo;the Territory&rdquo;) pursuant to the Licensor&rsquo;s terms and conditions stated herein, and at the exclusion of all other services, unless specifically stated. The Channels may only be distributed to private subscribers (private individuals, or households) and not to hotels companies, etc. unless such distribution is authorized by a prior written agreement of Licensor.
+        </span>
+    </p>
+    <p class="c9 c8 c11">
+        <span class="c6 c4 c10">
+            3.
+        </span>
+        <span class="c3">
+            OBLIGATIONS OF LICENSOR
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            3.1. Licensor shall in good faith and on a commercially reasonable basis use its best efforts to ensure constant feed to Operator&rsquo;s head end subject to availability, and subject to the terms of this agreement and at the agreed list price. &nbsp;Licensor may delay or cancel access to the signal source by Operator if Operator is in breach of its obligations to Licensor.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            3.2. Due to the permanent encryption of its channels, Licensor shall provide Operator with the proper access cards in a timely manner in order for Operator to properly access and decrypt the channels to be used in its network.
+        </span>
+    </p>
+    <p class="c9 c8 c11">
+        <span class="c6 c4 c10">
+            4.
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c3">
+            PRICES AND PAYMENT
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            4.1. For providing the Channels as part of its Extra Basic Digital Service as set forth above, Operator shall pay to Licensor &nbsp;monthly fees &nbsp;for each respective month. The Monthly Fees shall be calculated as the greater of &nbsp;
+        </span>
+    </p>
+    <p class="c8 c21">
+        <span class="c6 c4">
+            the Minimum guaranteed monthly payment as set out in 4.2, or
+        </span>
+    </p>
+    <p class="c8 c21">
+        <span class="c6 c4">
+            the sum of the unit prices per Subscriber as set out in 4.2 multiplied by the Average Number of Subscribers.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            &nbsp;
+        </span>
+        <span class="c6 c4">
+            4.2. The unit prices for the Channels and the Minimum guaranteed monthly payments shall be as follows:
+        </span>
+    </p>
+    <a href="#" name="efc2bd755e5cc0c0d1441e17a01e8dd57088ea74">
+    </a>
+    <a href="#" name="0">
+    </a>
+    <table cellpadding="0" cellspacing="0" class="c37">
+        <tbody>
+            <tr class="c35">
+                <td class="c16" colspan="1" rowspan="1">
+                    <p class="c8 c26 c36 c21">
+                        <span class="c6 c12">
+                            Period
+                        </span>
+                    </p>
+                </td>
+                <td class="c46" colspan="1" rowspan="1">
+                    <p class="c8 c26 c36 c21">
+                        <span class="c6 c12">
+                            Unit price for
+                        </span>
+                    </p>
+                    <p class="c8 c26 c36 c21">
+                        <span class="c4 c10">
+                            @if (channels != null && channels.Any())
+                            {
+                                var lastItem = channels[channels.Count - 1];
+                                foreach (var channel in channels)
+                                {
+                                    if (channel != lastItem)
+                                    {
+                                        <span>@channel.Name, </span>
+                                    }
+                                    else
+                                    {
+                                        <span>@channel.Name</span>
+                                    }
+                                }
+                            }
+                        </span>
+                        <span class="c6 c12">
+                            &nbsp;(per Subscriber)
+                        </span>
+                    </p>
+                </td>
+                <td class="c32" colspan="1" rowspan="1">
+                    <p class="c8 c26 c36 c21">
+                        <span class="c6 c12">
+                            Minimum guaranteed monthly payment for
+                        </span>
+                        <span class="c4 c10">
+                            @if (channels != null && channels.Any())
+                            {
+                                var lastItem = channels[channels.Count - 1];
+                                foreach (var channel in channels)
+                                {
+                                    if (channel != lastItem)
+                                    {
+                                        <span>@channel.Name, </span>
+                                    }
+                                    else
+                                    {
+                                        <span>@channel.Name</span>
+                                    }
+                                }
+                            }
+                        </span>
+                    </p>
+                </td>
+            </tr>
+            @if (invoices != null && invoices.Any())
+            {
+                var lastInvoice = invoices[invoices.Count - 1];
+                foreach (var invoice in invoices)
+                {
+                    <tr class="c45">
+                        <td class="c16" colspan="1" rowspan="1">
+                            <p class="c8 c26 c36 c21">
+                                <span class="c12">
+                                    @invoice.From.ToString(format, new CultureInfo("de-DE"))
+                                </span>
+                                <span class="c6 c12">
+                                    &nbsp;&ndash; @invoice.To.ToString(format, new CultureInfo("de-DE"))
+                                </span>
+                            </p>
+                        </td>
+                        <td class="c46" colspan="1" rowspan="1">
+                            <p class="c8 c26 c36 c21">
+                                <span class="c12">
+                                    @invoice.Cps
+                                </span>
+                            </p>
+                        </td>
+                        <td class="c32" colspan="1" rowspan="1">
+                            <p class="c8 c26 c36 c21">
+                                <span class="c12">
+                                    @{
+                                        var multiplied = invoice.Cps * invoice.MgSubs;
+                                    }
+                                    @multiplied
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+
+                                            }
+                                        }
+        </tbody>
+    </table>
+    <p class="c8 c14">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c8 c14">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c8 c14">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            For the avoidance of doubt, Subscribers shall mean all and any cable subscribers listed as recipients of the Channels in Operator&rsquo;s service at the beginning of each month when a fee is due under this contract, and &ldquo;Average Number of Subscribers&rdquo; shall mean the arithmetical average between the number of Subscribers at the beginning of a given month and the number of Subscribers at the end of such month. &nbsp;A precise monthly statement indicating the number of viewers and Subscribers will be sent to Licensor by Operator.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            &nbsp;4.3. Unless otherwise agreed in writing by the Licensor, all prices shall be stated and payments made in Euros (&euro;). &nbsp;Payment shall be due at the beginning of each month of service of activity upon receipt of invoice. The invoice will be issued quarterly payable at receipt of the invoice.
+        </span>
+    </p>
+    <p class="c9 c8 c11">
+        <span class="c6 c4 c10">
+            5.
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c3">
+            OBLIGATIONS OF OPERATOR
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.1. Use the satellite signal feeds in real time streams through its network, notwithstanding the necessary delay due to the normal technical intervention to make the streams suitable for cable distribution. &nbsp;In particular, any form of local storage for delayed distribution (e.g. PPV) is excluded.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.2. Diligently promote the Channels, and use its best efforts to expand the expansion of Channels in its cable service within the Territory.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.3. Be solely responsible for its selection of customers and business model to its customers and be solely responsible for payment of Channels in accordance with the Licensor&rsquo;s credit terms then in effect, regardless of whether or not the customer pays the Operator, unless otherwise agreed to in advance in writing by Licensor.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.4. Promptly inform Licensor of the activities of potential competitors in the Territory and of any laws and/or regulations in the Territory which may affect the sale of the Channels or which may be related to safety, labeling or other requirements with respect to the Channels.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.5. Diligently abide by any applicable laws and regulation in the Territory regarding TV signals in general and adult content in particular. &nbsp;In effect, it is the policy of Licensor to demand that content is scrambled (encrypted) at all times and therefore not accessible without the proper authorization, in an effort to protect minors from viewing the content. Operator agrees to deploy conditional access technology that is at least the more secure of (i) set-top boxes, or (ii) such more secure conditional access technology as Licensor applies as a minimum standard (for example, a decoder based system). Operator agrees to strictly enforce such policy on its network and shall ensure that no part of the Channels is received unencrypted or at any location where an admission fee, cover charge, minimum or like sum is charged, which is public or common area. Licensor may suspend or terminate this Agreement if Operator fails to maintain appropriate signal security levels.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.6. Not use any advertising, promotional or selling materials in relation to the Channels except with Licensor&rsquo;s prior written approval (such approval not to be unreasonably withheld); provided, however, that if Licensor has not responded to Operator&rsquo;s request for approval within five (5) business days of Licensor&rsquo;s receipt of such request, such approval will be deemed given.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.7. Not make any promise or representation or give any warranty or other benefit in favor of any customer or to the detriment of Licensor, or assume any liability or obligation on behalf of Licensor, whether in relation to the Channels or otherwise, without Licensor&rsquo;s express prior written consent.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            5.8. Indemnify, defend and hold harmless Licensor from any claims, demands, liabilities, actions, suits or proceedings including expenses and attorneys&rsquo; fees, asserted, claimed or made by Operator, its agents, servants, employees, customers or users, which arise from Operator&rsquo;s negligence or Operator&rsquo;s breach of its obligations hereunder. &nbsp;This shall survive termination or non-renewal.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            6. INTELLECTUAL PROPERTY
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            6.1. Operator acknowledges the exclusive right, title and interest of Licensor in any present or future trade mark or trade name associated with the Channels of the Licensor
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            6.2. The Licensor authorizes the Operator to use the Trade Marks in the Territory on or in relation to the Channels on a basis consistent with this Agreement and for the purposes only of exercising the Operators rights in performing its obligations under this agreement.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            6.3. During the term of this agreement, Operator as a user of the object of protection shall make all necessary payments, declarations and other obligations under applicable law and/or agreements (concluded with collective organizations pursuant to applicable law) to the collective management of copyrights organizations that have the authority, pursuant to applicable law, to collect royalties on the distribution of radio and television programming. Operator shall ensure that the agreements with such organizations include all artistic performance and works and shall have sole responsibility for clearance and payment of such obligation without any right to reclaim it from Licensor.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            7.
+        </span>
+        <span class="c3">
+            WARRANTIES
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            7.1. Licensor warrants it is a fully licensed broadcasting company from Italy and that it holds the necessary rights for cable distribution of its streams in the Territory.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            8.
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c3">
+            TRADE SECRETS
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            8.1. Each party shall take all reasonable care to protect any trade secrets and confidential information which may be acquired from the other party whether or not in writing or otherwise through the course of dealings (hereinafter referred to as &ldquo;Confidential Information&rdquo;).
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            8.2. Operator agrees that disclosure by Licensor of any of the Confidential Information, whether written, oral, machine-readable form or otherwise, is made in strictest confidence. Also, Licensor agrees that disclosure by Operator of any of the Confidential Information, whether written, oral, machine-readable form or otherwise, is made in strictest confidence.
+        </span>
+    </p>
+    <p class="c9 c8 c11">
+        <span class="c6 c4 c10">
+            9.
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c3">
+            SUSPENSION AND TERMINATION
+        </span>
+    </p>
+    <p class="c9 c8 c11">
+        <span class="c6 c17 c4">
+            9.1. Licensor shall be entitled to suspend the provision of the Channels to Operator at any moment in case of:
+        </span>
+    </p>
+    <p class="c8 c21 c42">
+        <span class="c6 c17 c4">
+            a breach of the signal security or regulatory provisions referred to in Article 5.5. herein above and/or
+        </span>
+    </p>
+    <p class="c8 c19">
+        <span class="c6 c17 c4">
+            &nbsp;a delay in payment of the monthly fees due by Operator of more than 30 days.
+        </span>
+    </p>
+    <p class="c8 c21 c39">
+        <span class="c6 c17 c4">
+            After such breach is cured, Operator shall have the right to request the restoring of the signal.
+        </span>
+    </p>
+    <p class="c9 c8 c11">
+        <span class="c6 c4">
+            9.2. This Agreement may be terminated with cause upon notice by certified or return receipt requested mail, which shall become effective ninety (90) days after receipt, which shall be deemed to have occurred (5) days after mailing. &nbsp;To the extent that the form of notice or the time period of notice permitted herein shall conflict with applicable law, then such alternate form of notice or notice period of such applicable law shall be deemed to be incorporated into this Agreement.
+        </span>
+    </p>
+    <p class="c9 c8 c27">
+        <span class="c0">
+            9.3. To the extent that the Licensor shall elect to terminate this Agreement for good cause, good cause shall be any of the following:
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            9.3.1. Failure by the Operator to make timely payment of any obligation owing to the Licensor, exceeding 15 days from the payment due date.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            9.3.2. A misrepresentation to the Licensor by the Operator or by any principal owner or principal manager in applying for the appointment as the Operator under this Agreement or, after appointment, as to the records of the Operator, the status of current accounts or orders for Channels or concerning the beneficial ownership or management of the Operator;
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            9.3.3. Willful failure of the Operator to comply with the provisions of any law or regulation relating to the operation of its business as a Operator or to the sales or servicing of the Channels;
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            9.3.4. Failure by the Operator to perform any of the other obligations or responsibilities under this Agreement which continues for a period of ninety days after notice thereof from the Licensor.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            9.4. In the event either party shall be declared a bankrupt or insolvent, or have a receiver appointed over its property or shall petition for reorganization or other remedy under the bankruptcy laws as now or hereafter existing, or make any assignment for the benefit of creditors or pursue any other remedy under any other insolvency laws, to the extent permitted by law, this Agreement may be terminated by either party, effective immediately upon the mailing of a notice of such termination by certified or return receipt requested mail. &nbsp;
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            In the event of termination of this Agreement under this chapter, all amounts owed to the Licensor shall be immediately due and payable in accordance with the normal terms and conditions of sale in this Agreement.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            10.
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c3">
+            ASSIGNMENT
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            Operator shall not assign or otherwise transfer all or any its rights and obligations hereunder except with Licensor&rsquo;s prior written approval such approval should be done or denied in 15 days from the moment the Operator notify the Licensor. &nbsp;Licensor reserves the right, however, to assign and/or transfer all or any of its rights and obligations hereunder without the prior consent of Operator to Licensor&rsquo;s parent company or to any subsidiary or affiliated company of Licensor&rsquo;s or to any third party in connection with the sale or transfer of all or a substantial portion of the business of the Licensor.
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4 c10">
+            11.
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+        <span class="c3">
+            MISCELLANEOUS
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c6 c4">
+            11.1. This Agreement will be construed and enforceable in accordance with the laws of
+        </span>
+        <span class="c6 c4 c10">
+            Italy.
+        </span>
+    </p>
+    <p class="c8 c9">
+        <span class="c6 c4">
+            11.2. Agreement contains the entire agreement of the parties and may only be modified in writing, signed by the authorized representative of the party against whom it is sought to be enforced.
+        </span>
+    </p>
+    <p class="c9 c8 c11 c27">
+        <span class="c0">
+            IN WITNESS WHEREOF, the parties hereto have executed this Agreement the day and year first above written.
+        </span>
+    </p>
+    <p class="c8 c11 c21 c25">
+        <span class="c6 c4 c10">
+            FOR LICENSOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOR OPERATOR
+            <br>
+            <br>
+        </span>
+        <span class="c6 c4">
+            By: &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By:
+        </span>
+        <span class="c4">
+            @client.Management
+        </span>
+        <span class="c4">
+            &nbsp;
+        </span>
+    </p>
+    <p class="c8 c21 c26">
+        <span class="c0">
+            Title: CEO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Title:
+        </span>
+        <span class="c4">
+            &nbsp;
+        </span>
+    </p>
+    <p class="c8 c26 c21">
+        <span class="c0">
+            Date: &nbsp;________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Date: ________________________
+        </span>
+    </p>
+    <p class="c15 c8 c11 c22">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c8 c25 c11 c21">
+        <span class="c6 c4">
+            Signature: ______________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Signature: ____________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </p>
+    <p class="c8 c14 c25 c11 c30">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c15 c8 c11 c33">
+        <span class="c6 c4">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </p>
+    <hr style="page-break-before:always;display:none;">
+    <h1 class="c8 c11 c21 c44">
+        <span class="c3">
+            ANNEX A
+        </span>
+        <span class="c6 c4">
+            : System Information
+        </span>
+    </h1>
+    <p class="c8 c22">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            System Name:
+        </span>
+        <span class="c6 c4">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c29 c10">
+            @client.NameBulgarian
+        </span>
+        <span class="c4">
+            &nbsp;
+        </span>
+        <span class="c29 c10">
+            @type.TypeInBulgarian
+        </span>
+        <span class="c6 c4">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c4 c10">
+            @client.Correspondence
+        </span>
+        <span class="c6 c4 c10">
+            &nbsp; &nbsp; &nbsp;
+        </span>
+    </p>
+    <p class="c8 c26 c31">
+        <span class="c6 c4 c10">
+            Contact Person:
+        </span>
+        <span class="c0">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="c4 c10">
+            @client.Management
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Telephone: &nbsp;
+        </span>
+        <span class="c6 c4">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c4 c10">
+            @client.ManagementPhone
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Fax: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Mobile: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c4">
+            @client.ManagementPhone
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            E-Mail: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c1">
+            @client.ManagementEmail
+        </span>
+        <span class="c6 c4 c10">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c6 c4 c10">
+            &nbsp; &nbsp; &nbsp;
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Web: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="c6 c4 c10">
+            &nbsp;
+        </span>
+        <span class="c29 c10">
+            @client.NetworkPage
+        </span>
+    </p>
+    <p class="c8 c26 c31">
+        <span class="c6 c4 c10">
+            Major Community Served:
+        </span>
+        <span class="c0">
+            &nbsp;
+        </span>
+        <span class="c29 c10">
+            @client.Coverage
+        </span>
+    </p>
+    <p class="c8 c26 c31">
+        <span class="c6 c4 c10">
+            Number of head ends: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c0">
+            1 &nbsp;
+        </span>
+    </p>
+    <p class="c8 c26 c31">
+        <span class="c6 c4 c10">
+            Launch Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="c4">
+            @Model.StartDate.ToString(format, new CultureInfo("de-DE"))
+        </span>
+    </p>
+    <p class="c8 c22">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Channel Assigned: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c4 c10">
+            @if (channels != null && channels.Any())
+            {
+                var lastItem = channels[channels.Count - 1];
+                foreach (var channel in channels)
+                {
+                    if (channel != lastItem)
+                    {
+                        <span>@channel.Name, </span>
+                    }
+                    else
+                    {
+                        <span>@channel.Name</span>
+                    }
+                }
+            }
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Smart cards allocated:
+        </span>
+        <span class="c4 c10">
+            &nbsp;
+        </span>
+        <span class="c4 c10">
+            @if (trds != null && trds.Any())
+            {
+                var lastTrdItem = trds[trds.Count - 1];
+                foreach (var trd in trds)
+                {
+                    if (trd != lastTrdItem)
+                    {
+                        @trd.Sim;@:,
+                         }
+                    else
+                    {
+                        @trd.Sim;
+                    }
+                }
+            }
+        </span>
+        <span class="c6 c4">
+            &nbsp;
+        </span>
+    </p>
+    <p class="c8">
+        <span class="c6 c4 c10">
+            Service:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="c4">
+            @Model.Tier.GetDescription()
+        </span>
+    </p>
+    <p class="c8 c14">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c2 c22">
+        <span class="c0 c18">
+        </span>
+    </p>
+    <p class="c8 c26 c11 c21 c38">
+        <span class="c3 c18">
+            ANNEX B:
+        </span>
+        <span class="c0 c18">
+            &nbsp;Technical Specifications
+        </span>
+    </p>
+    <p class="c7 c13">
+        <span class="c6 c4">
+            The
+        </span>
+        <span class="c6 c4 c10">
+            Channels
+        </span>
+        <span class="c6 c4">
+            &nbsp;presently entitled
+        </span>
+        <span class="c6 c4 c10">
+            &nbsp;
+        </span>
+        <span class="c4 c10">
+            @if (channels != null && channels.Any())
+            {
+                var lastItem = channels[channels.Count - 1];
+                foreach (var channel in channels)
+                {
+                    if (channel != lastItem)
+                    {
+                        <span>@channel.Name, </span>
+                    }
+                    else
+                    {
+                        <span>@channel.Name</span>
+                    }
+                }
+            }
+        </span>
+        <span class="c6 c18 c4 c10">
+            &nbsp;
+        </span>
+        <span class="c6 c4">
+            comprising in the Satisfaction bouquet is a daily 24-hour 7/7, adult entertainment satellite program. The
+        </span>
+        <span class="c6 c4 c10">
+            Program Provider
+        </span>
+        <span class="c6 c4">
+            &nbsp;broadcasts the
+        </span>
+        <span class="c6 c4 c10">
+            Channels
+        </span>
+        <span class="c6 c4">
+            &nbsp;via the satellite Eutelsat
+        </span>
+        <span class="c6 c4 c10">
+            Hot Bird 8
+        </span>
+        <span class="c6 c4">
+            &nbsp;at 13.0
+        </span>
+        <span class="c4 c20">
+            o
+        </span>
+        <span class="c6 c4">
+            &nbsp;East.
+        </span>
+    </p>
+    <p class="c13 c7 c22">
+        <span class="c0">
+        </span>
+    </p>
+    <p class="c9 c8">
+        <span class="c4 c10">
+            @if (channels != null && channels.Any())
+            {
+                var lastItem = channels[channels.Count - 1];
+                foreach (var channel in channels)
+                {
+                    if (channel != lastItem)
+                    {
+                        <span>@channel.Name, </span>
+                    }
+                    else
+                    {
+                        <span>@channel.Name</span>
+                    }
+                }
+            }
+        </span>
+    </p>
+    <p class="c7">
+        <span class="c6 c4">
+            Satellite data: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="c23 c10">
+            @if (channels != null && channels.Any())
+            {
+                var firstOrDefaultChannel = channels.FirstOrDefault();
+                if (firstOrDefaultChannel != null)
+                {
+                    @firstOrDefaultChannel.SatelliteData
+                }
+            }
+        </span>
+    </p>
+    <p class="c8 c22">
+        <span class="c0">
+        </span>
+    </p>
+</body>
+</html>

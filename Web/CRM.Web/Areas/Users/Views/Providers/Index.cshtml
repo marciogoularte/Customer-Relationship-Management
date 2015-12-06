@@ -1,0 +1,138 @@
+﻿@using CRM.Services.Data.ViewModels.Users.Providers
+@model IEnumerable<string>
+@{
+    ViewBag.Title = "Providers";
+    const string controllerName = "Providers";
+}
+
+<h2>Providers</h2>
+
+@(Html.Kendo()
+    .Grid<ProviderViewModel>()
+    .Name("grid-providers")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Name).Width(205);
+        columns.Bound(model => model.TypeId).Hidden(true).Width(100);
+        columns.Bound(model => model.Uic).Width(32).Hidden(true);
+        columns.Bound(model => model.Vat).Width(32).Hidden(true);
+        columns.Bound(model => model.BankAccount).Width(32).Hidden(true);
+        columns.Bound(model => model.Email).Width(215);
+        columns.Bound(model => model.ResidenceAndAddress).Width(32).Hidden(true);
+        columns.Bound(model => model.NetworkPage).Width(32).Hidden(true);
+        columns.Bound(model => model.ContactPerson).Width(32).Hidden(true);
+        columns.Bound(model => model.PhoneNumber).Width(32).Hidden(true);
+        columns.Bound(model => model.Email).Width(32).Hidden(true);
+        columns.Bound(model => model.Address).Width(32).Hidden(true);
+        columns.Bound(model => model.Term).Width(32).Hidden(true);
+        columns.Bound(model => model.Cps).Width(32).Hidden(true);
+        columns.Bound(model => model.Commission).Width(32).Hidden(true);
+        columns.Bound(model => model.LogoLink).ClientTemplate("<a target='_blank' href='#=LogoLink#'>link</a>").Width(32).Width(32).Hidden(true);
+        columns.Bound(model => model.ContractTemplate).Width(32);
+        columns.Bound(model => model.Comments).Width(265);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsProviders");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+            @(Html.Kendo().AutoComplete()
+                .Name("searchbox-providers")
+                .Placeholder("Provider name... ")
+                .BindTo(Model)
+            )
+            <a class="k-button k-button-icontext k-grid-add" href="/Users/Providers/ReadProviders?grid-providers-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+            <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+            <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                    .Groupable()
+                    .ColumnMenu()
+                    .Filterable()
+                    .Navigatable()
+                    .Resizable(r => r.Columns(true))
+                    .Reorderable(r => r.Columns(true))
+                    .Events(ev => ev.Change("selectRow"))
+                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                    .Excel(excel => excel
+                        .FileName("Providers Database.xlsx")
+                        .Filterable(true)
+                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
+                     )
+                    .Pdf(pdf => pdf
+                        .AllPages()
+                        .FileName("Providers Database.pdf")
+                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
+                    )
+                    .Pageable(pageable => pageable
+                        .Refresh(true)
+                        .PageSizes(true)
+                        .ButtonCount(5))
+                    .Sortable(sort =>
+                    {
+                        sort.AllowUnsort(false);
+                        sort.SortMode(GridSortMode.SingleColumn);
+                    })
+                    .DataSource(data =>
+                    {
+                        data.Ajax()
+                            .Model(model => model.Id(c => c.Id))
+                            .PageSize(10)
+                            .ServerOperation(true)
+                            .Events(ev => ev.Error("errorAlert"))
+                            .Read(read => read.Action("ReadProviders", controllerName).Data("addSearchProviders"))
+                            .Create(create => create.Action("CreateProvider", controllerName))
+                            .Update(update => update.Action("UpdateProvider", controllerName))
+                            .Destroy(destroy => destroy.Action("DestroyProvider", controllerName));
+                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataProviders() {
+        return {
+            text: $("#searchbox-providers").val()
+        };
+    }
+
+    function addSearchProviders() {
+        return { searchboxProviders: $('#searchbox-providers').val() };
+    }
+
+    $('#searchbox-providers').keyup(function () {
+        $('#grid-providers').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsProviders(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Users/Providers/ProviderDetails?providerId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
