@@ -1,4 +1,6 @@
-﻿namespace CRM.Web.Controllers
+﻿using CRM.Services.Data.ViewModels.Administration.Account;
+
+namespace CRM.Web.Controllers
 {
     using System.Linq;
     using System.Web;
@@ -8,8 +10,6 @@
     using Microsoft.Owin.Security;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
-
-    using CRM.Services.Data.ViewModels.Account;
 
     [Authorize]
     public class ManageController : Controller

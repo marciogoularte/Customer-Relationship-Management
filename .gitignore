@@ -17,3 +17,6 @@
 /Services/CRM.Services.Logic/obj
 /Services/CRM.Services.Data/obj
 /packages
+/Web/CRM.Web/Libraries/Kendo.Mvc.dll
+/Web/CRM.Web/Scripts/kendo/kendo.all.min.js
+/Web/CRM.Web/Scripts/kendo/kendo.aspnetmvc.min.js

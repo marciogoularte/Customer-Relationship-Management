@@ -1,0 +1,199 @@
+﻿@model CRM.Services.Data.ViewModels.Contracts.Providers.ProviderViewModel
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Name
+                    </strong>
+                </td>
+                <td>
+                    @Model.Name
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Type
+                    </strong>
+                </td>
+                <td>
+                    @if (ViewBag.TypeOfCompany != null)
+                    {
+                        @ViewBag.TypeOfCompany.ToString()
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Uic
+                    </strong>
+                </td>
+                <td>
+                    @Model.Uic
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Vat
+                    </strong>
+                </td>
+                <td>
+                    @Model.Vat
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Bank Account
+                    </strong>
+                </td>
+                <td>
+                    @Model.BankAccount
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Residence and address
+                    </strong>
+                </td>
+                <td>
+                    @Model.ResidenceAndAddress
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Network page
+                    </strong>
+                </td>
+                <td>
+                    @Model.NetworkPage
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Contact prson
+                    </strong>
+                </td>
+                <td>
+                    @Model.ContactPerson
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Phone number
+                    </strong>
+                </td>
+                <td>
+                    @Model.PhoneNumber
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Email
+                    </strong>
+                </td>
+                <td>
+                    @Model.Email
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Address
+                    </strong>
+                </td>
+                <td>
+                    @Model.Address
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Term
+                    </strong>
+                </td>
+                <td>
+                    @Model.Term
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        CPS
+                    </strong>
+                </td>
+                <td>
+                    @Model.Cps
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Commission
+                    </strong>
+                </td>
+                <td>
+                    @Model.Commission
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Comments
+                    </strong>
+                </td>
+                <td>
+                    @Model.Comments
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        LogoLink
+                    </strong>
+                </td>
+                <td>
+                    <a href="@Model.LogoLink">Link</a><br />
+                    @Model.LogoLink
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Contract Template
+                    </strong>
+                </td>
+                <td>
+                    @Model.ContractTemplate
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,15 +1,16 @@
-﻿namespace CRM.Services.Logic.Services.Administration
+﻿using CRM.Services.Data.ViewModels.Contracts.Clients;
+using CRM.Services.Data.ViewModels.Contracts.Contracts;
+using CRM.Services.Data.ViewModels.Contracts.Discussions;
+using CRM.Services.Data.ViewModels.Contracts.Invoices;
+using CRM.Services.Data.ViewModels.Contracts.Providers;
+
+namespace CRM.Services.Logic.Services.Administration
 {
     using System.Linq;
     using System.Collections.Generic;
 
     using CRM.Data;
     using Contracts.Administration;
-    using Data.ViewModels.Users.Clients;
-    using Data.ViewModels.Users.Invoices;
-    using Data.ViewModels.Users.Contracts;
-    using Data.ViewModels.Users.Providers;
-    using Data.ViewModels.Users.Discussions;
 
     public class DeletedItemsServices : IDeletedItemsServices
     {
@@ -86,12 +87,12 @@
             return discussionsSubjects;
         }
 
-        public List<double> DeletedInvoices()
+        public List<string> DeletedInvoices()
         {
             var mgSubs = this.Data.Invoices
                 .AllWithDeleted()
-                .Where(i => i.IsDeleted == true)
-                .Select(i => i.MgSubs)
+                .Where(i => i.IsDeleted)
+                .Select(i => i.MgSubs.ToString())
                 .ToList();
 
             return mgSubs;

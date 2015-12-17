@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Administration
+﻿using CRM.Services.Data.ViewModels.Contracts.Activities;
+
+namespace CRM.Services.Logic.Services.Administration
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -6,7 +8,6 @@
     using CRM.Data;
     using CRM.Data.Models;
     using Contracts.Administration;
-    using Data.ViewModels.Users.Activities;
 
     public class ActivitiesServices : IActivitiesServices
     {

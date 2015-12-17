@@ -1,13 +1,14 @@
-﻿namespace CRM.Services.Logic.Contracts.Administration
+﻿using CRM.Services.Data.ViewModels.Contracts.Clients;
+using CRM.Services.Data.ViewModels.Contracts.Contracts;
+using CRM.Services.Data.ViewModels.Contracts.Discussions;
+using CRM.Services.Data.ViewModels.Contracts.Invoices;
+using CRM.Services.Data.ViewModels.Contracts.Providers;
+
+namespace CRM.Services.Logic.Contracts.Administration
 {
     using System.Collections.Generic;
 
     using Base;
-    using Data.ViewModels.Users.Clients;
-    using Data.ViewModels.Users.Contracts;
-    using Data.ViewModels.Users.Discussions;
-    using Data.ViewModels.Users.Invoices;
-    using Data.ViewModels.Users.Providers;
 
     public interface IDeletedItemsServices : IService
     {
@@ -33,7 +34,7 @@
 
         List<string> DeletedDiscussions();
 
-        List<double> DeletedInvoices();
+        List<string> DeletedInvoices();
 
         List<string> DeletedProviderContracts();
 

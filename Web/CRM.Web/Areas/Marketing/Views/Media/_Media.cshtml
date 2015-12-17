@@ -1,0 +1,127 @@
+﻿@using CRM.Services.Data.ViewModels.Marketing.Partners
+@{
+    ViewBag.Title = "Media";
+    var controllerName = "Media";
+}
+
+<h2>Media</h2>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<MediaViewModel>()
+    .Name("grid-media")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Name);
+        columns.Bound(model => model.Address);
+        columns.Bound(model => model.PhoneNumber);
+        columns.Bound(model => model.Email);
+        columns.Bound(model => model.AllMedia);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsMedia");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+        @(Html.Kendo().AutoComplete()
+            .Name("searchbox-media")
+            .Placeholder("Name... ")
+            .DataSource(datasource => datasource
+                .Read(read => read.Action("MediaNames", controllerName, null).Data("onAdditionalDataMedia")))
+            .Filter("contains")
+        )
+        <a class="k-button k-button-icontext k-grid-add" href="/Marketing/Media/ReadMedia?grid-media-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+        <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                    .Excel(excel => excel
+                                        .FileName("Media Database.xlsx")
+                                        .Filterable(true)
+                                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                        .FileName("Media Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("ReadMedia", controllerName, new { clientId = Model }).Data("addSearchMedia"))
+                                            .Create(create => create.Action("CreateMedia", controllerName, new { currentClientId = Model }))
+                                            .Update(update => update.Action("UpdateMedia", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyMedia", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataMedia() {
+        return {
+            text: $("#searchbox-media").val()
+        };
+    }
+
+    function addSearchMedia() {
+        return { searchTerm: $('#searchbox-media').val() };
+    }
+
+    $('#searchbox-media').keyup(function () {
+        $('#grid-media').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsMedia(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Marketing/Media/MediaInformation?mediaId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

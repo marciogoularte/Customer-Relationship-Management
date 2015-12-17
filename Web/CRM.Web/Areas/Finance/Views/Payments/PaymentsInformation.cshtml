@@ -1,0 +1,66 @@
+﻿@using CRM.Services.Data.ViewModels.Finance.Payments
+@model PaymentViewModel
+@{
+    ViewBag.Title = "Payment";
+}
+
+<h2>Payment Information</h2>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.Date
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Expense
+                    </strong>
+                </td>
+                <td>
+                    @Model.Expense
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Payer
+                    </strong>
+                </td>
+                <td>
+                    @Model.Payer
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Invoice
+                    </strong>
+                </td>
+                <td>
+                    @Model.Invoice
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Amount
+                    </strong>
+                </td>
+                <td>
+                    @Model.Amount
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

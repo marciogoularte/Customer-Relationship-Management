@@ -1,0 +1,126 @@
+﻿@using CRM.Services.Data.ViewModels.Finance.Frz
+@{
+    ViewBag.Title = "Frzs";
+    var controllerName = "Frzs";
+}
+
+<h2>Frzs</h2>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<FrzViewModel>()
+    .Name("grid-Frzs")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.EmployeeName);
+        columns.Bound(model => model.NumberOfContract);
+        columns.Bound(model => model.DateOfContract);
+        columns.Bound(model => model.Salary);
+        columns.Bound(model => model.BankAccount);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsFrzs");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+        @(Html.Kendo().AutoComplete()
+            .Name("searchbox-Frz")
+            .Placeholder("Employee name... ")
+            .DataSource(datasource => datasource
+                .Read(read => read.Action("FrzsNames", controllerName, null).Data("onAdditionalDataFrzs")))
+            .Filter("contains")
+        )
+        <a class="k-button k-button-icontext k-grid-add" href="/Finance/Frzs/ReadFrzs?grid-Frzs-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+        <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                    .Excel(excel => excel
+                                        .FileName("Frzs Database.xlsx")
+                                        .Filterable(true)
+                                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                        .FileName("Frzs Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("ReadFrzs", controllerName, null).Data("addSearchFrzs"))
+                                            .Create(create => create.Action("CreateFrz", controllerName, null))
+                                            .Update(update => update.Action("UpdateFrz", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyFrz", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataFrzs() {
+        return {
+            text: $("#searchbox-Frz").val()
+        };
+    }
+
+    function addSearchFrzs() {
+        return { searchTerm: $('#searchbox-Frz').val() };
+    }
+
+    $('#searchbox-Frz').keyup(function () {
+        $('#grid-Frzs').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsFrzs(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Finance/Frzs/FrzsInformation?FrzId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

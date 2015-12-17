@@ -1,9 +1,10 @@
-﻿namespace CRM.Services.Logic.Contracts.Administration
+﻿using CRM.Services.Data.ViewModels.Contracts.Activities;
+
+namespace CRM.Services.Logic.Contracts.Administration
 {
     using System.Collections.Generic;
     
     using Base;
-    using Data.ViewModels.Users.Activities;
 
     public interface IActivitiesServices : IService
     {

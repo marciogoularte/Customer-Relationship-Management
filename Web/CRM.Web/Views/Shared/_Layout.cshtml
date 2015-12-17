@@ -337,7 +337,7 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("UpcomingDiscussions", "Discussions", new {area = "Users"})">
+                                    <a class="submenu" href="@Url.Action("UpcomingDiscussions", "Discussions", new {area = "Contractors"})">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Upcoming activities</span>
                                     </a>
                                 </li>
@@ -359,12 +359,12 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Index", "Providers", new { area = "Users" })">
+                                    <a class="submenu" href="@Url.Action("Index", "Providers", new { area = "Contractors" })">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Providers</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Index", "Clients", new {area = "Users"})">
+                                    <a class="submenu" href="@Url.Action("Index", "Clients", new {area = "Contractors"})">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Clients</span>
                                     </a>
                                 </li>
@@ -376,7 +376,7 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Index", "TypeOfCompanies", new {area = "Users"})">
+                                    <a class="submenu" href="@Url.Action("Index", "TypeOfCompanies", new {area = "Contractors"})">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Type of Company</span>
                                     </a>
                                 </li>
@@ -389,17 +389,17 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Index", "Campaigns", new { area = "Users" })">
+                                    <a class="submenu" href="@Url.Action("Index", "Campaigns", new { area = "Marketing" })">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Campaigns</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Partners", "Marketing", new { area = "Users" })">
+                                    <a class="submenu" href="@Url.Action("Index", "Partners", new { area = "Marketing" })">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Partners</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Social", "Marketing", new { area = "Users" })">
+                                    <a class="submenu" href="@Url.Action("Index", "SocialPartners", new { area = "Marketing" })">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Social</span>
                                     </a>
                                 </li>
@@ -411,29 +411,29 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Invoicing", "Finance", new { area = "Users" })">
-                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Invoicing</span>
+                                    <a class="submenu" href="@Url.Action("AllFinanceInvoices", "FinanceInvoices", new { area = "Finance" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Invoices</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Payments", "Finance", new { area = "Users" })">
+                                    <a class="submenu" href="@Url.Action("AllPayments", "Payments", new { area = "Finance" })">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Payments</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Reports", "Finance", new { area = "Users" })">
+                                    <a class="submenu" href="@Url.Action("Index", "Reports", new { area = "Finance" })">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Reports</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Frz", "Finance", new { area = "Users" })">
-                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Frz</span>
+                                    <a class="submenu" href="@Url.Action("AllFrzs", "Frzs", new { area = "Finance" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Frzs</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index", "Products", new { area = "Users" })">
+                            <a href="@Url.Action("Index", "Products", new { area = "Products" })">
                                 <i class="icon-eye-open"></i><span class="hidden-tablet"> Products</span>
                             </a>
                         </li>

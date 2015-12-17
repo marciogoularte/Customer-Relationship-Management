@@ -1,0 +1,130 @@
+﻿@using CRM.Services.Data.ViewModels.Finance.Reports
+@model SendReportViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.EnumDropDownListFor(m => m.Report, new { id = "choose-report-type" })
+<div id="additional-dropdown"></div>
+
+<script>
+    $(document).ready(function() {
+        $('#choose-report-type').change(function () {
+            var container = $('#additional-dropdown');
+            var reportIndex = parseInt($('#choose-report-type').val());
+            var list = $('<select />');
+            var result;
+
+            switch (reportIndex) {
+                case 0:
+                    $.ajax({
+                        type:'GET',
+                        url: '@Url.Action("GetClients", "Reports", new { area = "Finance" })',
+                        contentType: 'application/json;',
+                        success: function(data) {
+                            result =data;
+                            console.log(data);
+                            console.log(result);
+                        }
+                    });
+                    break;
+                case 1:
+                    result = getDealers();
+                    break;
+                case 2:
+                    result = getUnpaidInvoices();
+                    break;
+                case 3:
+                    result = getPaidInvoices();
+                    break;
+                case 4:
+                    result = getTvChannels();
+                    break;
+                case 5:
+                    result = getProviders();
+                    break;
+                case 6:
+                    result = getMonths();
+                    break;
+                case 7:
+                    result = getYears();
+                    break;
+                case 8:
+                    result = getQ();
+                    break;
+                case 9:
+                    result = getEpg();
+                    break;
+                case 10:
+                    result = getNewsletters();
+                    break;
+            }
+            for (var i = 0; i < result.length(); i++) {
+                $('<option />', { value: result[i].value, text: result[r] }).appendTo(list);
+            }
+
+            list.appendTo(container);
+        });
+
+        function getDealers() {
+
+        }
+
+        function getUnpaidInvoices() {
+
+        }
+
+        function getPaidInvoices() {
+
+        }
+
+        function getTvChannels() {
+
+        }
+
+        function getProviders() {
+            $.ajax({
+                type:'GET',
+                url: @Url.Action("GetProviders", "Reports", new { area = "Finance" }),
+                success: function(data) {
+                    return data;
+                }
+            });
+        }
+
+        function getMonths() {
+            $.ajax({
+                type:'GET',
+                url: @Url.Action("GetMonths", "Reports", new { area = "Finance" }),
+                success: function(data) {
+                    return data;
+                }
+            });
+        }
+
+        function getYears() {
+            $.ajax({
+                type:'GET',
+                url: @Url.Action("GetYears", "Reports", new { area = "Finance" }),
+                success: function(data) {
+                    return data;
+                }
+            });
+        }
+
+        function getQ() {
+
+        }
+
+        function getEpg() {
+
+        }
+
+        function getNewsletters() {
+
+        }
+    });
+</script>

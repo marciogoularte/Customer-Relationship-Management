@@ -1,0 +1,66 @@
+﻿@using CRM.Services.Data.ViewModels.Finance.Frz
+@model FrzViewModel
+@{
+    ViewBag.Title = "Frz";
+}
+
+<h2>Frz Information</h2>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        Employee Name
+                    </strong>
+                </td>
+                <td>
+                    @Model.EmployeeName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Number of Contract
+                    </strong>
+                </td>
+                <td>
+                    @Model.NumberOfContract
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Date of Contract
+                    </strong>
+                </td>
+                <td>
+                    @Model.DateOfContract
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Salary
+                    </strong>
+                </td>
+                <td>
+                    @Model.Salary
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Bank Account
+                    </strong>
+                </td>
+                <td>
+                    @Model.BankAccount
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

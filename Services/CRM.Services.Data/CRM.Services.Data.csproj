@@ -72,26 +72,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Account\AccountViewModels.cs" />
-    <Compile Include="ViewModels\Account\ManageViewModels.cs" />
+    <Compile Include="ViewModels\Administration\Account\AccountViewModels.cs" />
+    <Compile Include="ViewModels\Administration\Account\ManageViewModels.cs" />
     <Compile Include="ViewModels\Administration\Admin\EditUserViewModel.cs" />
     <Compile Include="ViewModels\Administration\Admin\UserViewModel.cs" />
-    <Compile Include="ViewModels\Users\Activities\LastActivityViewModel.cs" />
-    <Compile Include="ViewModels\Users\Campaigns\CampaignViewModel.cs" />
-    <Compile Include="ViewModels\Users\Clients\ClientViewModel.cs" />
-    <Compile Include="ViewModels\Users\Contracts\ClientContractChannelViewModel.cs" />
-    <Compile Include="ViewModels\Users\Contracts\ClientContractViewModel.cs" />
-    <Compile Include="ViewModels\Users\Contracts\ContractResponseModel.cs" />
-    <Compile Include="ViewModels\Users\Contracts\DatabaseDataDropdownViewModel.cs" />
-    <Compile Include="ViewModels\Users\Contracts\ProviderContractViewModel.cs" />
-    <Compile Include="ViewModels\Users\Discussions\DiscussionViewModel.cs" />
+    <Compile Include="ViewModels\Finance\FinanceInvoice\FinanceInvoiceViewModel.cs" />
+    <Compile Include="ViewModels\Finance\Frz\FrzViewModel.cs" />
+    <Compile Include="ViewModels\Finance\Payments\PaymentViewModel.cs" />
+    <Compile Include="ViewModels\Finance\Reports\ChooseReportDropdown.cs" />
+    <Compile Include="ViewModels\Finance\Reports\ClientViewModel.cs" />
+    <Compile Include="ViewModels\Finance\Reports\SendReportViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Campaigns\CampaignPartnersViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Social\SocialPartnerViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Activities\LastActivityViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Campaigns\CampaignViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Clients\ClientViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Contracts\ClientContractChannelViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Contracts\ClientContractViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Contracts\ContractResponseModel.cs" />
+    <Compile Include="ViewModels\Contracts\Contracts\DatabaseDataDropdownViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Contracts\ProviderContractViewModel.cs" />
+    <Compile Include="ViewModels\Users\CurrentTasks\TodayPayment.cs" />
+    <Compile Include="ViewModels\Contracts\Discussions\DiscussionViewModel.cs" />
     <Compile Include="ViewModels\Users\Feedbacks\FeedbackViewModel.cs" />
-    <Compile Include="ViewModels\Users\Invoices\InvoiceViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Invoices\InvoiceViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Partners\MarketingPartnerViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Partners\MediaViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Partners\OperatorViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Partners\PrViewModel.cs" />
     <Compile Include="ViewModels\Users\Profile\SchedulerTaskViewModel.cs" />
-    <Compile Include="ViewModels\Users\Providers\ChannelViewModel.cs" />
-    <Compile Include="ViewModels\Users\Providers\ProviderViewModel.cs" />
-    <Compile Include="ViewModels\Users\Trds\TrdViewModel.cs" />
-    <Compile Include="ViewModels\Users\TypeOfCompanies\TypeOfCompanyViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Providers\ChannelViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Providers\ProviderViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\Trds\TrdViewModel.cs" />
+    <Compile Include="ViewModels\Contracts\TypeOfCompanies\TypeOfCompanyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -107,6 +120,7 @@
       <Name>CRM.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

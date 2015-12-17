@@ -1,0 +1,126 @@
+﻿@using CRM.Services.Data.ViewModels.Marketing.Partners
+@{
+    ViewBag.Title = "Operators";
+    var controllerName = "Operators";
+}
+
+<h2>Operators</h2>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<OperatorViewModel>()
+    .Name("grid-operators")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Name);
+        columns.Bound(model => model.Address);
+        columns.Bound(model => model.PhoneNumber);
+        columns.Bound(model => model.Email);
+        columns.Bound(model => model.Media);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsOperators");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+        @(Html.Kendo().AutoComplete()
+            .Name("searchbox-operator")
+            .Placeholder("Name... ")
+            .DataSource(datasource => datasource
+                .Read(read => read.Action("OperatorsNames", controllerName, null).Data("onAdditionalDataOperators")))
+            .Filter("contains")
+        )
+        <a class="k-button k-button-icontext k-grid-add" href="/Marketing/Operators/ReadOperators?grid-operators-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+        <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                    .Excel(excel => excel
+                                        .FileName("Operators Database.xlsx")
+                                        .Filterable(true)
+                                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                        .FileName("Operators Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("ReadOperators", controllerName, null).Data("addSearchOperators"))
+                                            .Create(create => create.Action("CreateOperator", controllerName, null))
+                                            .Update(update => update.Action("UpdateOperator", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyOperator", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataOperators() {
+        return {
+            text: $("#searchbox-operator").val()
+        };
+    }
+
+    function addSearchOperators() {
+        return { searchTerm: $('#searchbox-operator').val() };
+    }
+
+    $('#searchbox-operator').keyup(function () {
+        $('#grid-operators').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsOperators(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Marketing/Operators/OperatorsInformation?operatorId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

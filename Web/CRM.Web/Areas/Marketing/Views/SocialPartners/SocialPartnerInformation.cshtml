@@ -1,0 +1,55 @@
+﻿@using CRM.Services.Data.ViewModels.Marketing.Social
+@model SocialPartnerViewModel
+@{
+    ViewBag.Title = "Social Partner";
+}
+
+<h2>Social Partner Information</h2>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        Name
+                    </strong>
+                </td>
+                <td>
+                    @Model.Name
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Website
+                    </strong>
+                </td>
+                <td>
+                    @Model.Website
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Email
+                    </strong>
+                </td>
+                <td>
+                    @Model.Email
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        PhoneNumber
+                    </strong>
+                </td>
+                <td>
+                    @Model.PhoneNumber
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

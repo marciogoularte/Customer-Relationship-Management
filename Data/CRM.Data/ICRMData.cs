@@ -1,7 +1,9 @@
 ﻿namespace CRM.Data
 {
-    using Models;
     using Contracts;
+    using Models;
+    using Models.Finance;
+    using Models.Marketing;
 
     public interface ICRMData
     {
@@ -30,6 +32,22 @@
         IDeletableEntityRepository<TypeOfCompany> TypeOfCompanies { get; }
 
         IDeletableEntityRepository<Campaign> Campaigns { get; }
+
+        IDeletableEntityRepository<Media> Media { get; }
+
+        IDeletableEntityRepository<Operator> Operators { get; }
+
+        IDeletableEntityRepository<Pr> Prs { get; }
+
+        IDeletableEntityRepository<MarketingPartner> MarketingPartners { get; }
+
+        IDeletableEntityRepository<SocialPartner> SocialPartners { get; }
+
+        IDeletableEntityRepository<FinanceInvoice> FinanceInvoices { get; }
+
+        IDeletableEntityRepository<Frz> Frzs { get; }
+
+        IDeletableEntityRepository<Payment> Payments { get; }
 
         //IDeletableEntityRepository<ContractTemplate> ContractTemplates { get; }
 

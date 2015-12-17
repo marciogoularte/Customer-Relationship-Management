@@ -10,12 +10,14 @@
         private ICollection<Channel> channels;
         private ICollection<ProviderContract> contracts;
         private ICollection<Discussion> discussions;
+        private ICollection<Campaign> campaigns;
 
         public Provider()
         {
             this.channels = new HashSet<Channel>();
             this.contracts = new HashSet<ProviderContract>();
             this.discussions = new HashSet<Discussion>();
+            this.campaigns = new HashSet<Campaign>();
         }
 
         public int Id { get; set; }
@@ -74,6 +76,12 @@
         {
             get { return this.discussions; }
             set { this.discussions = value; }
+        }
+
+        public virtual ICollection<Campaign> Campaigns
+        {
+            get { return this.campaigns; }
+            set { this.campaigns = value; }
         }
     }
 }

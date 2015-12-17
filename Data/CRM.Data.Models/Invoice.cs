@@ -18,6 +18,12 @@
 
         public string Comments { get; set; }
 
+        public DateTime CorrespondencePayment { get; set; }
+
+        public string AdditionalInformation { get; set; }
+
+        public double FixedMonthlyFee { get; set; }
+
         public int? ClientContractId { get; set; }
         
         public virtual ClientContract ClientContract { get; set; }

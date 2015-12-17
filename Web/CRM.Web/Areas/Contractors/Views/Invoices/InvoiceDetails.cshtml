@@ -1,0 +1,102 @@
+﻿@model CRM.Services.Data.ViewModels.Contracts.Invoices.InvoiceViewModel
+@{
+    ViewBag.Title = "InvoiceDetails";
+}
+
+<h2>Invoice details</h2>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        From
+                    </strong>
+                </td>
+                <td>
+                    @Model.From
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        To
+                    </strong>
+                </td>
+                <td>
+                    @Model.To
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Mg Subs
+                    </strong>
+                </td>
+                <td>
+                    @Model.MgSubs
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Cps
+                    </strong>
+                </td>
+                <td>
+                    @Model.Cps
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Correspondence Payment
+                    </strong>
+                </td>
+                <td>
+                    @Model.CorrespondencePayment
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Additional Information
+                    </strong>
+                </td>
+                <td>
+                    @Model.AdditionalInformation
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Fixed Monthly Fee
+                    </strong>
+                </td>
+                <td>
+                    @Model.FixedMonthlyFee
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Comments
+                    </strong>
+                </td>
+                <td>
+                    @Model.Comments
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

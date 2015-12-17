@@ -1,6 +1,5 @@
 ﻿@using CRM.Data.Models
-@using CRM.Services.Data.ViewModels.Users.Activities
-@model List<ActivityViewModel>
+@model List<CRM.Services.Data.ViewModels.Contracts.Activities.ActivityViewModel>
 
 @if (Model != null && Model.Any())
 {
@@ -46,10 +45,10 @@
                             @Html.ActionLink("Details", "Index", "Profile", new { area = "Users", userId = activity.TargetId }, new { @class = "btn btn-mini btn-inverse" })
                                         break;
                                     case ActivityTargetType.Client:
-                            @Html.ActionLink("Details", "ClientDetails", "Clients", new { area = "Users", clientId = int.Parse(activity.TargetId) }, new { @class = "btn btn-mini btn-inverse" })
+                            @Html.ActionLink("Details", "ClientDetails", "Clients", new { area = "Contractors", clientId = int.Parse(activity.TargetId) }, new { @class = "btn btn-mini btn-inverse" })
                                         break;
                                     case ActivityTargetType.Provider:
-                            @Html.ActionLink("Details", "ProviderDetails", "Providers", new { area = "Users", providerId = int.Parse(activity.TargetId) }, new { @class = "btn btn-mini btn-inverse" })
+                            @Html.ActionLink("Details", "ProviderDetails", "Providers", new { area = "Contractors", providerId = int.Parse(activity.TargetId) }, new { @class = "btn btn-mini btn-inverse" })
                                         break;
                                 }
                             }

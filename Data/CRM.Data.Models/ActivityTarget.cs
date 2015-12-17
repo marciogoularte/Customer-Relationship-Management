@@ -11,6 +11,14 @@
         Discussion,
         Trd,
         TypeOfCompany,
-        Campaign
+        Campaign,
+        MarketingPartner,
+        Media,
+        Operator,
+        Pr,
+        SocialPartner,
+        Frz,
+        Payment,
+        FinanceInvoice
     }
 }

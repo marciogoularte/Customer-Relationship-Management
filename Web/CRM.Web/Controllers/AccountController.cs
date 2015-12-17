@@ -1,4 +1,6 @@
-﻿namespace CRM.Web.Controllers
+﻿using CRM.Services.Data.ViewModels.Administration.Account.CRM.Web.ViewModels;
+
+namespace CRM.Web.Controllers
 {
     using System.Linq;
     using System.Web;
@@ -10,7 +12,6 @@
     using Microsoft.AspNet.Identity.Owin;
 
     using Data.Models;
-    using Services.Data.ViewModels.Account.CRM.Web.ViewModels;
 
     [Authorize]
     public class AccountController : Controller
@@ -59,7 +60,7 @@
         {
             if (this.User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("UpcomingDiscussions", "Discussions", new { area = "Users" });
+                return RedirectToAction("UpcomingDiscussions", "Discussions", new { area = "Contractors" });
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();

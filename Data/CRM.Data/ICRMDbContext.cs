@@ -4,6 +4,8 @@
     using System.Data.Entity.Infrastructure;
 
     using Models;
+    using Models.Finance;
+    using Models.Marketing;
 
     public interface ICRMDbContext
     {
@@ -31,7 +33,21 @@
 
         IDbSet<Campaign> Campaigns { get; set; }
 
-        //IDbSet<ContractTemplate> ContractTemplates { get; set; }
+        IDbSet<Media> Media { get; set; }
+
+        IDbSet<Operator> Operators { get; set; }
+
+        IDbSet<Pr> Prs { get; set; }
+
+        IDbSet<MarketingPartner> MarketingPartners { get; set; }
+
+        IDbSet<SocialPartner> SocialPartners { get; set; }
+
+        IDbSet<FinanceInvoice> FinanceInvoices { get; set; }
+
+        IDbSet<Frz> Frzs { get; set; }
+
+        IDbSet<Payment> Payments { get; set; }
 
         DbContext DbContext { get; }
 

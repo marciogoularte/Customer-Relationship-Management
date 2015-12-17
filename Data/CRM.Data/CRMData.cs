@@ -4,6 +4,8 @@
     using System.Collections.Generic;
 
     using Models;
+    using Models.Finance;
+    using Models.Marketing;
     using Contracts;
     using Repositories.Base;
 
@@ -154,6 +156,46 @@
         public IDeletableEntityRepository<Campaign> Campaigns
         {
             get { return this.GetDeletableEntityRepository<Campaign>(); }
+        }
+
+        public IDeletableEntityRepository<Media> Media
+        {
+            get { return this.GetDeletableEntityRepository<Media>(); }
+        }
+
+        public IDeletableEntityRepository<Operator> Operators
+        {
+            get { return this.GetDeletableEntityRepository<Operator>(); }
+        }
+
+        public IDeletableEntityRepository<Pr> Prs
+        {
+            get { return this.GetDeletableEntityRepository<Pr>(); }
+        }
+
+        public IDeletableEntityRepository<MarketingPartner> MarketingPartners
+        {
+            get { return this.GetDeletableEntityRepository<MarketingPartner>(); }
+        }
+
+        public IDeletableEntityRepository<SocialPartner> SocialPartners
+        {
+            get { return this.GetDeletableEntityRepository<SocialPartner>(); }
+        }
+
+        public IDeletableEntityRepository<FinanceInvoice> FinanceInvoices
+        {
+            get { return this.GetDeletableEntityRepository<FinanceInvoice>(); }
+        }
+
+        public IDeletableEntityRepository<Frz> Frzs
+        {
+            get { return this.GetDeletableEntityRepository<Frz>(); }
+        }
+
+        public IDeletableEntityRepository<Payment> Payments
+        {
+            get { return this.GetDeletableEntityRepository<Payment>(); }
         }
     }
 }

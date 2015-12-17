@@ -1,0 +1,128 @@
+﻿@using CRM.Services.Data.ViewModels.Contracts.Discussions
+@model int
+@{
+    ViewBag.Title = "Activities";
+    const string controllerName = "Discussions";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<DiscussionViewModel>()
+    .Name("grid-client-discussions")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Date).Width(150);
+        columns.Bound(model => model.SubjectOfDiscussion).Width(100);
+        columns.Bound(model => model.Summary).Width(32).Hidden(true);
+        columns.Bound(model => model.Type).Width(50);
+        columns.Bound(model => model.Comments).Width(215);
+        columns.Bound(model => model.NextDiscussionDate).Width(32).Hidden(true);
+        columns.Bound(model => model.NextDiscussionNote).Width(32).Hidden(true);
+        columns.Bound(model => model.NextDiscussionType).Width(32).Hidden(true);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsClientDiscussion");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+            @(Html.Kendo().AutoComplete()
+            .Name("searchbox-client-discussion")
+            .Placeholder("Subject... ")
+            .DataSource(datasource => datasource
+                .Read(read => read.Action("ClientsDiscussionsNames", controllerName, null).Data("onAdditionalDataClientDiscussion")))
+            .Filter("contains")
+            )
+            <a class="k-button k-button-icontext k-grid-add" href="/Users/Discussions/ReadClientsDiscussions?grid-client-discussions-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+            <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+            <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                    .Excel(excel => excel
+                                        .FileName("Client Discussions Database.xlsx")
+                                        .Filterable(true)
+                                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                        .FileName("Client Discussions Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("ReadClientsDiscussions", controllerName, new { clientId = Model }).Data("addSearchClientDiscussion"))
+                                            .Create(create => create.Action("CreateDiscussion", controllerName, new { currentClientId = Model }))
+                                            .Update(update => update.Action("UpdateDiscussion", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyDiscussion", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataClientDiscussion() {
+        return {
+            text: $("#searchbox-client-discussion").val()
+        };
+    }
+
+    function addSearchClientDiscussion() {
+        return { searchTerm: $('#searchbox-client-discussion').val() };
+    }
+
+    $('#searchbox-client-discussion').keyup(function () {
+        $('#grid-client-discussions').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsClientDiscussion(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Users/Discussions/DiscussionInformation?discussionId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

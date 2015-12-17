@@ -1,0 +1,124 @@
+﻿@using CRM.Services.Data.ViewModels.Marketing.Social
+@{
+    ViewBag.Title = "LinkedIn Social Partners";
+    var controllerName = "SocialPartners";
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<SocialPartnerViewModel>()
+    .Name("grid-LinkedIn-social-partners")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Name);
+        columns.Bound(model => model.Name);
+        columns.Bound(model => model.Email);
+        columns.Bound(model => model.PhoneNumber);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsLinkedInSocialPartners");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+        @(Html.Kendo().AutoComplete()
+            .Name("searchbox-LinkedIn-social-partners")
+            .Placeholder("Name... ")
+            .DataSource(datasource => datasource
+                .Read(read => read.Action("LinkedInSocialPartnersNames", controllerName, null).Data("onAdditionalDataLinkedInSocialPartners")))
+            .Filter("contains")
+        )
+        <a class="k-button k-button-icontext k-grid-add" href="/Marketing/SocialPartners/ReadLinkedInSocialPartners?grid-LinkedIn-social-partners-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+        <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                    .Excel(excel => excel
+                                        .FileName("LinkedIn social partners Database.xlsx")
+                                        .Filterable(true)
+                                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                        .FileName("LinkedIn social partners Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("LinkedInReadSocialPartners", controllerName, null).Data("addSearchLinkedInSocialPartners"))
+                                            .Create(create => create.Action("CreateLinkedInSocialPartner", controllerName, null))
+                                            .Update(update => update.Action("UpdateLinkedInSocialPartner", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyLinkedInSocialPartner", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataLinkedInSocialPartners() {
+        return {
+            text: $("#searchbox-LinkedIn-social-partners").val()
+        };
+    }
+
+    function addSearchLinkedInSocialPartners() {
+        return { searchTerm: $('#searchbox-LinkedIn-social-partners').val() };
+    }
+
+    $('#searchbox-LinkedIn-social-partners').keyup(function () {
+        $('#grid-LinkedIn-social-partners').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsLinkedInSocialPartners(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Marketing/SocialPartners/LinkedInSocialPartnersInformation?socialPartnerId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

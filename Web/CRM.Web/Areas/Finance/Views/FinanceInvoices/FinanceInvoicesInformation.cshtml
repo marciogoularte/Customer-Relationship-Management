@@ -1,0 +1,66 @@
+﻿@using CRM.Services.Data.ViewModels.Finance.FinanceInvoice
+@model FinanceInvoiceViewModel
+@{
+    ViewBag.Title = "FinanceInvoice";
+}
+
+<h2>FinanceInvoice Information</h2>
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        Number of Invoice
+                    </strong>
+                </td>
+                <td>
+                    @Model.NumberOfInvoice
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Date
+                    </strong>
+                </td>
+                <td>
+                    @Model.Date
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Receiver
+                    </strong>
+                </td>
+                <td>
+                    @Model.Receiver
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Sum Without DDS
+                    </strong>
+                </td>
+                <td>
+                    @Model.SumWithoutDdS
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Sum With DDS
+                    </strong>
+                </td>
+                <td>
+                    @Model.SumWithDds
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

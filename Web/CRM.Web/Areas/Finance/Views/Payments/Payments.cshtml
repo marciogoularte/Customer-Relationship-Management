@@ -1,0 +1,126 @@
+﻿@using CRM.Services.Data.ViewModels.Finance.Payments
+@{
+    ViewBag.Title = "Payments";
+    var controllerName = "Payments";
+}
+
+<h2>Payments</h2>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/kendo")
+
+@(Html.Kendo()
+    .Grid<PaymentViewModel>()
+    .Name("grid-Payments")
+    .Columns(columns =>
+    {
+        columns.Bound(model => model.Date);
+        columns.Bound(model => model.Expense);
+        columns.Bound(model => model.Payer);
+        columns.Bound(model => model.Invoice);
+        columns.Bound(model => model.Amount);
+        columns.Command(command =>
+        {
+            command.Custom("Details").Click("viewDetailsPayments");
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .ToolBar(toolBar =>
+    {
+        toolBar.Template(@<text>
+        @(Html.Kendo().AutoComplete()
+            .Name("searchbox-Payment")
+            .Placeholder("Payer... ")
+            .DataSource(datasource => datasource
+                .Read(read => read.Action("PaymentsNames", controllerName, null).Data("onAdditionalDataPayments")))
+            .Filter("contains")
+        )
+        <a class="k-button k-button-icontext k-grid-add" href="/Finance/Payments/ReadPayments?grid-Payments-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+        <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
+        </text>);
+    })
+                                    .Groupable()
+                                    .ColumnMenu()
+                                    .Filterable()
+                                    .Navigatable()
+                                    .Resizable(r => r.Columns(true))
+                                    .Reorderable(r => r.Columns(true))
+                                    .Events(ev => ev.Change("selectRow"))
+                                    .HtmlAttributes(new { @style = "word-break:break-all;" })
+                                    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                                    .Selectable(select => select.Mode(GridSelectionMode.Multiple).Type(GridSelectionType.Cell))
+                                    .Excel(excel => excel
+                                        .FileName("Payments Database.xlsx")
+                                        .Filterable(true)
+                                                        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
+                                        )
+                                    .Pdf(pdf => pdf
+                                        .AllPages()
+                                        .FileName("Payments Database.pdf")
+                                        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
+                                    )
+                                    .Pageable(pageable => pageable
+                                        .Refresh(true)
+                                        .PageSizes(true)
+                                        .ButtonCount(5))
+                                    .Sortable(sort =>
+                                    {
+                                        sort.AllowUnsort(false);
+                                        sort.SortMode(GridSortMode.SingleColumn);
+                                    })
+                                    .DataSource(data =>
+                                    {
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("ReadPayments", controllerName, null).Data("addSearchPayments"))
+                                            .Create(create => create.Action("CreatePayment", controllerName, null))
+                                            .Update(update => update.Action("UpdatePayment", controllerName))
+                                            .Destroy(destroy => destroy.Action("DestroyPayment", controllerName));
+                                    }))
+<div id="selected">
+</div>
+
+<script>
+    function onAdditionalDataPayments() {
+        return {
+            text: $("#searchbox-Payment").val()
+        };
+    }
+
+    function addSearchPayments() {
+        return { searchTerm: $('#searchbox-Payment').val() };
+    }
+
+    $('#searchbox-Payment').keyup(function () {
+        $('#grid-Payments').data('kendoGrid').dataSource.read();
+    });
+
+    function viewDetailsPayments(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Finance/Payments/PaymentsInformation?PaymentId=' + dataItem.Id;
+    }
+
+    function selectRow() {
+        var selected = $.map(this.select(), function (item) {
+            return $(item).text();
+        });
+
+        $('#selected').text(selected);
+    }
+
+    function errorAlert() {
+        console.log("An error ocurred");
+    }
+
+    function makeActiveOnClick(tab) {
+        $(".tabs").removeClass('active');
+        $(tab).addClass('active');
+    }
+</script>

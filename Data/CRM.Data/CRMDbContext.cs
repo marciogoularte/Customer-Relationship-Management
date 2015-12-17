@@ -7,6 +7,8 @@
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using Models;
+    using Models.Finance;
+    using Models.Marketing;
     using Contracts;
     using Contracts.CodeFirstConventions;
 
@@ -46,7 +48,21 @@
 
         public virtual IDbSet<Campaign> Campaigns { get; set; }
 
-        //public virtual IDbSet<ContractTemplate> ContractTemplates { get; set; }
+        public virtual IDbSet<Media> Media { get; set; }
+
+        public virtual IDbSet<Operator> Operators { get; set; }
+
+        public virtual IDbSet<Pr> Prs { get; set; }
+
+        public virtual IDbSet<MarketingPartner> MarketingPartners { get; set; }
+
+        public virtual IDbSet<SocialPartner> SocialPartners { get; set; }
+
+        public virtual IDbSet<FinanceInvoice> FinanceInvoices { get; set; }
+
+        public virtual IDbSet<Frz> Frzs { get; set; }
+
+        public virtual IDbSet<Payment> Payments { get; set; }
 
         public DbContext DbContext
         {

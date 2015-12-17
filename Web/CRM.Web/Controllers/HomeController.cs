@@ -7,7 +7,7 @@
     {
         public ActionResult Index()
         {
-            return RedirectToAction("UpcomingDiscussions", "Discussions", new { area = "Users" });
+            return RedirectToAction("UpcomingDiscussions", "Discussions", new { area = "Contractors" });
         }
 
         public ActionResult About()
