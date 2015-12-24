@@ -1,39 +1,43 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using CRM.Data.Models;
+﻿using AutoMapper;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 {
-    public class ClientContractViewModel
+    using System;
+    using System.Linq.Expressions;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    using CRM.Data.Models;
+    using Web.Common.Mappings;
+
+    public class ClientContractViewModel : IMapFrom<ClientContract>, IHaveCustomMappings
     {
-        public static Expression<Func<ClientContract, ClientContractViewModel>> FromClientContract
-        {
-            get
-            {
-                return c => new ClientContractViewModel()
-                {
-                    Id = c.Id,
-                    StartDate = c.StartDate,
-                    TypeOfContract = c.TypeOfContract,
-                    EndDate = c.EndDate,
-                    NoticePeriod = c.NoticePeriod,
-                    BillingStartDate = c.BillingStartDate,
-                    BillingEndDate = c.BillingEndDate,
-                    NumberOfDaysForPaymentDueDate = c.NumberOfDaysForPaymentDueDate,
-                    NumberOfDaysToBeConsidered = c.NumberOfDaysToBeConsidered,
-                    AcceptingReports = c.AcceptingReports,
-                    GoverningLaw = c.GoverningLaw,
-                    Comments = c.Comments,
-                    ClientId = c.ClientId,
-                    ProviderId = c.ProviderId.ToString(),
-                    Tier = c.Tier,
-                    Frequency = c.Frequency,
-                     MonthlyFee = c.MonthlyFee
-            };
-            }
-        }
+        //public static Expression<Func<ClientContract, ClientContractViewModel>> FromClientContract
+        //{
+        //    get
+        //    {
+        //        return c => new ClientContractViewModel()
+        //        {
+        //            Id = c.Id,
+        //            StartDate = c.StartDate,
+        //            TypeOfContract = c.TypeOfContract,
+        //            EndDate = c.EndDate,
+        //            NoticePeriod = c.NoticePeriod,
+        //            BillingStartDate = c.BillingStartDate,
+        //            BillingEndDate = c.BillingEndDate,
+        //            NumberOfDaysForPaymentDueDate = c.NumberOfDaysForPaymentDueDate,
+        //            NumberOfDaysToBeConsidered = c.NumberOfDaysToBeConsidered,
+        //            AcceptingReports = c.AcceptingReports,
+        //            GoverningLaw = c.GoverningLaw,
+        //            Comments = c.Comments,
+        //            ClientId = c.ClientId,
+        //            ProviderId = c.ProviderId.ToString(),
+        //            Tier = c.Tier,
+        //            Frequency = c.Frequency,
+        //             MonthlyFee = c.MonthlyFee
+        //    };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }
@@ -69,10 +73,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 
         [DisplayName("Payment due date(number of days)")]
         public int NumberOfDaysForPaymentDueDate { get; set; }
-
-        [DisplayName("To be considered(number of days)")]
-        public int NumberOfDaysToBeConsidered { get; set; }
-
+        
         [DisplayName("Accepting reports")]
         public bool AcceptingReports { get; set; }
 
@@ -83,6 +84,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Contracts
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
 
+        [UIHint("FrequencyEditor")]
         public Frequency Frequency { get; set; }
 
         [ScaffoldColumn(false)]
@@ -95,5 +97,11 @@ namespace CRM.Services.Data.ViewModels.Contracts.Contracts
         [Required]
         [DisplayName("Monthly fee")]
         public double MonthlyFee { get; set; }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            configuration.CreateMap<ClientContract, ClientContractViewModel>()
+                .ForMember(c => c.ProviderId, opts => opts.MapFrom(c => c.ProviderId.ToString()));
+        }
     }
 }

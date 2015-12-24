@@ -30,62 +30,62 @@
         {
             switch (p)
             {
-                case 0: return "нула";
-                    break;
-                case 1: return "едно";
-                    break;
-                case 2: return "две";
-                    break;
-                case 3: return "три";
-                    break;
-                case 4: return "четири";
-                    break;
-                case 5: return "пет";
-                    break;
-                case 6: return "шест";
-                    break;
-                case 7: return "седем";
-                    break;
-                case 8: return "осем";
-                    break;
-                case 9: return "девет";
-                    break;
-                case 10: return "десет";
-                    break;
-                case 11: return "единайсет";
-                    break;
-                case 12: return "дванайсет";
-                    break;
-                case 13: return "тринайсет";
-                    break;
-                case 14: return "четиринайсет";
-                    break;
-                case 15: return "петнайсет";
-                    break;
-                case 16: return "шестнайсет";
-                    break;
-                case 17: return "седемнайсет";
-                    break;
-                case 18: return "осемнайсет";
-                    break;
-                case 19: return "деветнайсет";
-                    break;
-                case 20: return "двайсет";
-                    break;
-                case 30: return "трийсет";
-                    break;
-                case 40: return "четирийсет";
-                    break;
-                case 50: return "петдесет";
-                    break;
-                case 60: return "шейсет";
-                    break;
-                case 70: return "седемдесет";
-                    break;
-                case 80: return "осемдесет";
-                    break;
-                case 90: return "деветдесет";
-                    break;
+                case 0:
+                    return "нула";
+                case 1:
+                    return "едно";
+                case 2:
+                    return "две";
+                case 3:
+                    return "три";
+                case 4:
+                    return "четири";
+                case 5:
+                    return "пет";
+                case 6:
+                    return "шест";
+                case 7:
+                    return "седем";
+                case 8:
+                    return "осем";
+                case 9:
+                    return "девет";
+                case 10:
+                    return "десет";
+                case 11:
+                    return "единайсет";
+                case 12:
+                    return "дванайсет";
+                case 13:
+                    return "тринайсет";
+                case 14:
+                    return "четиринайсет";
+                case 15:
+                    return "петнайсет";
+                case 16:
+                    return "шестнайсет";
+                case 17:
+                    return "седемнайсет";
+                case 18:
+                    return "осемнайсет";
+                case 19:
+                    return "деветнайсет";
+                case 20:
+                    return "двайсет";
+                case 30:
+                    return "трийсет";
+                case 40:
+                    return "четирийсет";
+                case 50:
+                    return "петдесет";
+                case 60:
+                    return "шейсет";
+                case 70:
+                    return "седемдесет";
+                case 80:
+                    return "осемдесет";
+                case 90:
+                    return "деветдесет";
             }
 
             return "";

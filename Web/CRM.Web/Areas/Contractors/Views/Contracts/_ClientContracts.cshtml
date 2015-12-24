@@ -1,4 +1,5 @@
 ﻿@using CRM.Services.Data.ViewModels.Contracts.Contracts
+@using CRM.Common.Extensions
 @model int
 @{
     ViewBag.Title = "Contracts";
@@ -18,14 +19,13 @@
         columns.Bound(model => model.StartDate).Width(185);
         columns.Bound(model => model.EndDate).Width(32);
         columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
+        columns.Bound(model => model.Tier).Width(32).Hidden(true);
         columns.Bound(model => model.BillingStartDate).Width(32).Hidden(true);
         columns.Bound(model => model.BillingEndDate).Width(32).Hidden(true);
         columns.Bound(model => model.NumberOfDaysForPaymentDueDate).Width(32).Hidden(true);
-        columns.Bound(model => model.NumberOfDaysToBeConsidered).Width(32).Hidden(true);
         columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
         columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
         columns.Bound(model => model.Frequency).Width(32).Hidden(true);
-        columns.Bound(model => model.Tier).Width(32).Hidden(true);
         columns.Bound(model => model.ProviderId).Width(32).Hidden(true);
         columns.Bound(model => model.MonthlyFee).Hidden(true);
         columns.Bound(model => model.Comments).Width(200);
@@ -114,7 +114,7 @@
     function viewDetailsClientContracts(e) {
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location = '/Users/Contracts/ClientContractDetails?contractId=' + dataItem.Id;
+        window.location = '/Contractors/Contracts/ClientContractDetails?contractId=' + dataItem.Id;
     }
 
     function selectRow() {

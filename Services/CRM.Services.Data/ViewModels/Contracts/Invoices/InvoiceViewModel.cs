@@ -3,30 +3,31 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using CRM.Data.Models;
+using CRM.Web.Common.Mappings;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Invoices
 {
-    public class InvoiceViewModel
+    public class InvoiceViewModel : IMapFrom<Invoice>
     {
-        public static Expression<Func<Invoice, InvoiceViewModel>> FromInvoice
-        {
-            get
-            {
-                return i => new InvoiceViewModel()
-                {
-                    Id = i.Id,
-                    From = i.From,
-                    To = i.To,
-                    MgSubs = i.MgSubs,
-                    Cps = i.Cps,
-                    Comments = i.Comments,
-                    CorrespondencePayment = i.CorrespondencePayment,
-                    AdditionalInformation = i.AdditionalInformation,
-                    FixedMonthlyFee = i.FixedMonthlyFee,
-                    ClientContractId = i.ClientContractId
-                };
-            }
-        }
+        //public static Expression<Func<Invoice, InvoiceViewModel>> FromInvoice
+        //{
+        //    get
+        //    {
+        //        return i => new InvoiceViewModel()
+        //        {
+        //            Id = i.Id,
+        //            From = i.From,
+        //            To = i.To,
+        //            MgSubs = i.MgSubs,
+        //            Cps = i.Cps,
+        //            Comments = i.Comments,
+        //            CorrespondencePayment = i.CorrespondencePayment,
+        //            AdditionalInformation = i.AdditionalInformation,
+        //            FixedMonthlyFee = i.FixedMonthlyFee,
+        //            ClientContractId = i.ClientContractId
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }

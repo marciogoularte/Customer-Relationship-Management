@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Marketing
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Marketing
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -31,7 +33,7 @@
         {
             var prInfo = this.Data.Prs
                 .All()
-                .Select(PrViewModel.FromPr)
+                .ProjectTo<PrViewModel>()
                 .FirstOrDefault(p => p.Id == prId);
 
             return prInfo;
@@ -41,7 +43,7 @@
         {
             var prDetails = this.Data.Prs
                 .All()
-                .Select(PrViewModel.FromPr)
+                .ProjectTo<PrViewModel>()
                 .FirstOrDefault(t => t.Id == prId);
 
             return prDetails;
@@ -55,14 +57,14 @@
             {
                 readPrs = this.Data.Prs
                 .All()
-                .Select(PrViewModel.FromPr)
+                .ProjectTo<PrViewModel>()
                 .ToList();
             }
             else
             {
                 readPrs = this.Data.Prs
                 .All()
-                .Select(PrViewModel.FromPr)
+                .ProjectTo<PrViewModel>()
                 .Where(p => p.Name.Contains(searchboxPr))
                 .ToList();
             }

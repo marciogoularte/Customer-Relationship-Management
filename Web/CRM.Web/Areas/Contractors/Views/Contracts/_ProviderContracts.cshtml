@@ -109,7 +109,7 @@
     function viewDetails(e) {
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location = '/Users/Contracts/ProviderContractDetails?contractId=' + dataItem.Id;
+        window.location = '/Contractors/Contracts/ProviderContractDetails?contractId=' + dataItem.Id;
     }
 
     function selectRow() {

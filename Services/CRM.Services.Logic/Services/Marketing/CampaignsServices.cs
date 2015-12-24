@@ -1,4 +1,5 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Clients;
+﻿using AutoMapper.QueryableExtensions;
+using CRM.Services.Data.ViewModels.Contracts.Clients;
 using CRM.Services.Data.ViewModels.Contracts.Providers;
 
 namespace CRM.Services.Logic.Services.Marketing
@@ -44,7 +45,7 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 var selectedProvider = this.Data.Providers
                     .All()
-                    .Select(ProviderViewModel.FromProvider)
+                    .ProjectTo<ProviderViewModel>()
                     .FirstOrDefault(p => p.Id == provider.Id);
 
                 result.CampaignProviders.Add(selectedProvider);
@@ -54,7 +55,7 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 var selectedClient = this.Data.Clients
                     .All()
-                    .Select(ClientViewModel.FromClient)
+                    .ProjectTo<ClientViewModel>()
                     .FirstOrDefault(p => p.Id == client.Id);
 
                 result.CampaignClients.Add(selectedClient);
@@ -62,7 +63,7 @@ namespace CRM.Services.Logic.Services.Marketing
 
             var providers = this.Data.Providers
                 .All()
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .ToList();
 
             foreach (var provider in providers)
@@ -75,7 +76,7 @@ namespace CRM.Services.Logic.Services.Marketing
 
             var clients = this.Data.Clients
                 .All()
-                .Select(ClientViewModel.FromClient)
+                .ProjectTo<ClientViewModel>()
                 .ToList();
 
             foreach (var client in clients)
@@ -97,14 +98,14 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 campaigns = this.Data.Campaigns
                     .All()
-                    .Select(CampaignViewModel.FromCampaign)
+                    .ProjectTo<CampaignViewModel>()
                     .ToList();
             }
             else
             {
                 campaigns = this.Data.Campaigns
                     .All()
-                    .Select(CampaignViewModel.FromCampaign)
+                    .ProjectTo<CampaignViewModel>()
                    .Where(c => c.Type.Contains(searchbox))
                    .ToList();
             }
@@ -135,7 +136,7 @@ namespace CRM.Services.Logic.Services.Marketing
         {
             var campaign = this.Data.Campaigns
                 .All()
-                .Select(CampaignViewModel.FromCampaign)
+                .ProjectTo<CampaignViewModel>()
                 .FirstOrDefault(t => t.Id == campaignId);
 
             return campaign;

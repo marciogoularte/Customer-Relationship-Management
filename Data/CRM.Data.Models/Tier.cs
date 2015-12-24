@@ -1,28 +1,28 @@
 ﻿namespace CRM.Data.Models
 {
-    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public enum Tier
     {
-        [Description("Basic Analogue")]
+        [Display(Name = "Basic Analogue")]
         BasicAnalogue,
 
-        [Description("Economy(Lifeline) Analogue")]
+        [Display(Name = "Economy(Lifeline) Analogue")]
         EconomyAnalogue,
 
-        [Description("Extended Basix")]
+        [Display(Name = "Extended Basix")]
         ExtendedBasix,
 
-        [Description("Basic Digital")]
+        [Display(Name = "Basic Digital")]
         BasicDigital,
 
-        [Description("Extra Basic")]
+        [Display(Name = "Extra Basic")]
         ExtraBasic,
 
-        [Description("Premium")]
+        [Display(Name = "Premium")]
         Premium,
 
-        [Description("Tematic")]
+        [Display(Name = "Tematic")]
         Tematic
     }
 }

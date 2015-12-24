@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.Invoices;
@@ -35,7 +36,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 invoices = this.Data.Invoices
                     .All()
-                    .Select(InvoiceViewModel.FromInvoice)
+                    .ProjectTo<InvoiceViewModel>()
                     .Where(i => i.ClientContractId == contractId)
                     .ToList();
             }
@@ -43,7 +44,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 invoices = this.Data.Invoices
                    .All()
-                   .Select(InvoiceViewModel.FromInvoice)
+                   .ProjectTo<InvoiceViewModel>()
                    .Where(i => i.ClientContractId == contractId && i.MgSubs.ToString().Contains(searchbox))
                    .ToList();
             }
@@ -65,7 +66,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 AdditionalInformation = invoice.AdditionalInformation,
                 FixedMonthlyFee = invoice.FixedMonthlyFee,
                 ClientContractId = contractId,
-                Comments = invoice.Comments + "\n"
+                Comments = invoice.Comments
             };
 
             this.Data.Invoices.Add(newInvoice);
@@ -79,7 +80,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var invoice = this.Data.Invoices
                 .All()
-                .Select(InvoiceViewModel.FromInvoice)
+                .ProjectTo<InvoiceViewModel>()
                 .FirstOrDefault(c => c.Id == invoiceId);
 
             return invoice;

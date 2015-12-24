@@ -107,7 +107,7 @@
     function viewInvoiceDetails(e) {
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location = '/Users/Invoices/InvoiceDetails?invoiceId=' + dataItem.Id;
+        window.location = '/Contractors/Invoices/InvoiceDetails?invoiceId=' + dataItem.Id;
     }
 
     function selectRow() {

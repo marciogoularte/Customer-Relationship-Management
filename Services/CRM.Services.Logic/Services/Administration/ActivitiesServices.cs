@@ -1,4 +1,5 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Activities;
+﻿using AutoMapper.QueryableExtensions;
+using CRM.Services.Data.ViewModels.Contracts.Activities;
 
 namespace CRM.Services.Logic.Services.Administration
 {
@@ -22,7 +23,7 @@ namespace CRM.Services.Logic.Services.Administration
         {
             var lastActivities = this.Data.Activities
                 .All()
-                .Select(ActivityViewModel.FromActivity)
+                .ProjectTo<ActivityViewModel>()
                 .OrderByDescending(a => a.CreatedOn)
                 .ToList();
 
@@ -33,7 +34,7 @@ namespace CRM.Services.Logic.Services.Administration
         {
             var lastActivities = this.Data.Activities
                     .All()
-                    .Select(ActivityViewModel.FromActivity)
+                    .ProjectTo<ActivityViewModel>()
                     .Where(a => a.TargetType != ActivityTargetType.User && a.Type != ActivityType.Restore)
                     .OrderByDescending(a => a.CreatedOn)
                     .ToList();

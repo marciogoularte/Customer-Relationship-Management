@@ -1,4 +1,7 @@
-﻿using CRM.Services.Data.ViewModels.Finance.Reports;
+﻿using System;
+using System.Linq;
+using CRM.Common.Extensions;
+using CRM.Services.Data.ViewModels.Finance.Reports;
 
 namespace CRM.Web.Areas.Finance.Controllers
 {
@@ -18,6 +21,15 @@ namespace CRM.Web.Areas.Finance.Controllers
         public ActionResult Index()
         {
             var model = new SendReportViewModel();
+
+            var enumData = from ChooseReportDropdown e in Enum.GetValues(typeof(ChooseReportDropdown))
+                                  select new
+                                  {
+                                      Id = (int)e,
+                                      Name = EnumExtensions.GetDescriptionOfEnum((ChooseReportDropdown)e)
+                                  };
+
+            ViewBag.EnumData = new SelectList(enumData, "Id", "Name");
 
             return View(model);
         }

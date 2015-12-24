@@ -45,6 +45,8 @@ namespace CRM.Web.Areas.Contractors.Controllers
         public ActionResult ClientContractInformation(int contractId)
         {
             var contract = this.contracts.ClientContractInformation(contractId);
+            var channels = this.contracts.GetChannels(contractId);
+            ViewBag.Channels = channels;
 
             return PartialView("_ClientContractInformation", contract);
         }

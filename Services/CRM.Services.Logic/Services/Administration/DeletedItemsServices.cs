@@ -1,4 +1,5 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Clients;
+﻿using AutoMapper.QueryableExtensions;
+using CRM.Services.Data.ViewModels.Contracts.Clients;
 using CRM.Services.Data.ViewModels.Contracts.Contracts;
 using CRM.Services.Data.ViewModels.Contracts.Discussions;
 using CRM.Services.Data.ViewModels.Contracts.Invoices;
@@ -107,7 +108,7 @@ namespace CRM.Services.Logic.Services.Administration
                 clients = this.Data.Clients
                  .AllWithDeleted()
                  .Where(c => c.IsDeleted == true)
-                 .Select(ClientViewModel.FromClient)
+                 .ProjectTo<ClientViewModel>()
                  .ToList();
             }
             else
@@ -115,7 +116,7 @@ namespace CRM.Services.Logic.Services.Administration
                 clients = this.Data.Clients
                  .AllWithDeleted()
                  .Where(c => c.Name.Contains(searchboxDeletedClients) && c.IsDeleted == true)
-                 .Select(ClientViewModel.FromClient)
+                 .ProjectTo<ClientViewModel>()
                  .ToList();
             }
 
@@ -131,7 +132,7 @@ namespace CRM.Services.Logic.Services.Administration
                 providers = this.Data.Providers
                 .AllWithDeleted()
                 .Where(p => p.IsDeleted == true)
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .ToList();
             }
             else
@@ -139,7 +140,7 @@ namespace CRM.Services.Logic.Services.Administration
                 providers = this.Data.Providers
                 .AllWithDeleted()
                 .Where(p => p.Name.Contains(searchboxDeletedProviders) && p.IsDeleted == true)
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .ToList();
             }
 
@@ -155,7 +156,7 @@ namespace CRM.Services.Logic.Services.Administration
                 channels = this.Data.Channels
                     .AllWithDeleted()
                     .Where(c => c.IsDeleted == true)
-                    .Select(ChannelViewModel.FromChannel)
+                    .ProjectTo<ChannelViewModel>()
                     .ToList();
             }
             else
@@ -163,7 +164,7 @@ namespace CRM.Services.Logic.Services.Administration
                 channels = this.Data.Channels
                    .AllWithDeleted()
                    .Where(c => c.Name.Contains(searchboxDeletedChannels) && c.IsDeleted == true)
-                   .Select(ChannelViewModel.FromChannel)
+                   .ProjectTo<ChannelViewModel>()
                    .ToList();
             }
 
@@ -179,7 +180,7 @@ namespace CRM.Services.Logic.Services.Administration
                 contracts = this.Data.ClientContracts
                    .AllWithDeleted()
                    .Where(c => c.IsDeleted == true)
-                   .Select(ClientContractViewModel.FromClientContract)
+                   .ProjectTo<ClientContractViewModel>()
                    .ToList();
             }
             else
@@ -187,7 +188,7 @@ namespace CRM.Services.Logic.Services.Administration
                 contracts = this.Data.ClientContracts
                 .AllWithDeleted()
                 .Where(c => c.TypeOfContract.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
-                .Select(ClientContractViewModel.FromClientContract)
+                .ProjectTo<ClientContractViewModel>()
                 .ToList();
             }
 
@@ -203,7 +204,7 @@ namespace CRM.Services.Logic.Services.Administration
                 contracts = this.Data.ProviderContracts
                 .AllWithDeleted()
                 .Where(c => c.IsDeleted == true)
-                .Select(ProviderContractViewModel.FromProviderContract)
+                .ProjectTo<ProviderContractViewModel>()
                 .ToList();
             }
             else
@@ -211,7 +212,7 @@ namespace CRM.Services.Logic.Services.Administration
                 contracts = this.Data.ProviderContracts
                 .AllWithDeleted()
                 .Where(c => c.TypeOfContract.ToString().Contains(searchboxDeletedContracts) && c.IsDeleted == true)
-                .Select(ProviderContractViewModel.FromProviderContract)
+                .ProjectTo<ProviderContractViewModel>()
                 .ToList();
             }
 
@@ -227,7 +228,7 @@ namespace CRM.Services.Logic.Services.Administration
                 discussions = this.Data.Discussions
                 .AllWithDeleted()
                 .Where(d => d.IsDeleted == true)
-                .Select(DiscussionViewModel.FromDiscussion)
+                .ProjectTo<DiscussionViewModel>()
                 .ToList();
             }
             else
@@ -235,7 +236,7 @@ namespace CRM.Services.Logic.Services.Administration
                 discussions = this.Data.Discussions
                 .AllWithDeleted()
                 .Where(d => d.SubjectOfDiscussion.ToString().Contains(searchboxDeletedDiscussions) && d.IsDeleted == true)
-                .Select(DiscussionViewModel.FromDiscussion)
+                .ProjectTo<DiscussionViewModel>()
                 .ToList();
             }
 
@@ -251,7 +252,7 @@ namespace CRM.Services.Logic.Services.Administration
                 invoices = this.Data.Invoices
                 .AllWithDeleted()
                 .Where(i => i.IsDeleted == true)
-                .Select(InvoiceViewModel.FromInvoice)
+                .ProjectTo<InvoiceViewModel>()
                 .ToList();
             }
             else
@@ -259,7 +260,7 @@ namespace CRM.Services.Logic.Services.Administration
                 invoices = this.Data.Invoices
                 .AllWithDeleted()
                 .Where(i => i.MgSubs.ToString().Contains(searchboxDeletedInvoices) && i.IsDeleted == true)
-                .Select(InvoiceViewModel.FromInvoice)
+                .ProjectTo<InvoiceViewModel>()
                 .ToList();
             }
 

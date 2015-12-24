@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Data.ViewModels.Marketing.Campaigns
+﻿using CRM.Web.Common.Mappings;
+
+namespace CRM.Services.Data.ViewModels.Marketing.Campaigns
 {
     using System;
     using System.Linq.Expressions;
@@ -6,24 +8,24 @@
 
     using CRM.Data.Models;
 
-    public class CampaignViewModel
+    public class CampaignViewModel : IMapFrom<Campaign>
     {
-        public static Expression<Func<Campaign, CampaignViewModel>> FromCampaign
-        {
-            get
-            {
-                return c => new CampaignViewModel
-                {
-                    Id = c.Id,
-                    Type = c.Type,
-                    Start = c.Start,
-                    End = c.End,
-                    Activities = c.Activities,
-                    Budget = c.Budget,
-                    Results = c.Results
-                };
-            }
-        }
+        //public static Expression<Func<Campaign, CampaignViewModel>> FromCampaign
+        //{
+        //    get
+        //    {
+        //        return c => new CampaignViewModel
+        //        {
+        //            Id = c.Id,
+        //            Type = c.Type,
+        //            Start = c.Start,
+        //            End = c.End,
+        //            Activities = c.Activities,
+        //            Budget = c.Budget,
+        //            Results = c.Results
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }

@@ -3,32 +3,33 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using CRM.Data.Models;
+using CRM.Web.Common.Mappings;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 {
-    public class ProviderContractViewModel
+    public class ProviderContractViewModel : IMapFrom<ProviderContract>
     {
-        public static Expression<Func<ProviderContract, ProviderContractViewModel>> FromProviderContract
-        {
-            get
-            {
-                return c => new ProviderContractViewModel()
-                {
-                    Id = c.Id,
-                    StartDate = c.StartDate,
-                    TypeOfContract = c.TypeOfContract,
-                    EndDate = c.EndDate,
-                    NoticePeriod = c.NoticePeriod,
-                    BillingStartDate = c.BillingStartDate,
-                    BillingEndDate = c.BillingEndDate,
-                    NumberOfDaysForPaymentDueDate = c.NumberOfDaysForPaymentDueDate,
-                    AcceptingReports = c.AcceptingReports,
-                    GoverningLaw = c.GoverningLaw,
-                    Comments = c.Comments,
-                    ProviderId = c.ProviderId
-                };
-            }
-        }
+        //public static Expression<Func<ProviderContract, ProviderContractViewModel>> FromProviderContract
+        //{
+        //    get
+        //    {
+        //        return c => new ProviderContractViewModel()
+        //        {
+        //            Id = c.Id,
+        //            StartDate = c.StartDate,
+        //            TypeOfContract = c.TypeOfContract,
+        //            EndDate = c.EndDate,
+        //            NoticePeriod = c.NoticePeriod,
+        //            BillingStartDate = c.BillingStartDate,
+        //            BillingEndDate = c.BillingEndDate,
+        //            NumberOfDaysForPaymentDueDate = c.NumberOfDaysForPaymentDueDate,
+        //            AcceptingReports = c.AcceptingReports,
+        //            GoverningLaw = c.GoverningLaw,
+        //            Comments = c.Comments,
+        //            ProviderId = c.ProviderId
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }

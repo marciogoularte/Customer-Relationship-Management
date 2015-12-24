@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.Contracts;
@@ -32,7 +33,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var typeOfCompanies = this.Data.TypeOfCompanies
                 .All()
-                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .ProjectTo<TypeOfCompanyViewModel>()
                 .ToList();
 
             var vm = typeOfCompanies
@@ -50,7 +51,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var provider = this.Data.Providers
                 .All()
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .FirstOrDefault(p => p.Id == providerId);
 
             if (provider == null)
@@ -86,14 +87,14 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 providers = this.Data.Providers
                 .All()
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .ToList();
             }
             else
             {
                 providers = this.Data.Providers
                 .All()
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .Where(p => p.Name.Contains(searchboxProviders))
                 .ToList();
             }
@@ -119,7 +120,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 Term = provider.Term,
                 Cps = provider.Cps,
                 Commission = provider.Commission,
-                Comments = provider.Comments + "\n",
+                Comments = provider.Comments,
                 ContractTemplate = provider.ContractTemplate,
                 Channels = new List<Channel>(),
                 Contracts = new List<ProviderContract>(),
@@ -163,7 +164,7 @@ namespace CRM.Services.Logic.Services.Contractors
             providerFromDb.Cps = provider.Cps;
             providerFromDb.Commission = provider.Commission;
             providerFromDb.LogoLink = provider.LogoLink;
-            providerFromDb.Comments = provider.Comments + "\n";
+            providerFromDb.Comments = provider.Comments;
             providerFromDb.ContractTemplate = provider.ContractTemplate;
 
             if (string.IsNullOrEmpty(provider.LogoLink) || provider.LogoLink == "")
@@ -193,7 +194,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var providerName = this.Data.Providers
                 .All()
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .FirstOrDefault(p => p.Id == providerId)
                 .Name;
 

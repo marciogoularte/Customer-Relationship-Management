@@ -4,25 +4,26 @@
     using System.Linq.Expressions;
 
     using CRM.Data.Models;
+    using Web.Common.Mappings;
 
-    public class ActivityViewModel
+    public class ActivityViewModel : IMapFrom<Activity>
     {
-        public static Expression<Func<Activity, ActivityViewModel>> FromActivity
-        {
-            get
-            {
-                return a => new ActivityViewModel()
-                {
-                    Id = a.Id,
-                    User = a.User,
-                    Type = a.Type,
-                    TargetId = a.TargetId,
-                    TargetType = a.TargetType,
-                    CreatedOn = a.CreatedOn,
-                    IsDeleted = a.IsDeleted
-                };
-            }
-        }
+        //public static Expression<Func<Activity, ActivityViewModel>> FromActivity
+        //{
+        //    get
+        //    {
+        //        return a => new ActivityViewModel()
+        //        {
+        //            Id = a.Id,
+        //            User = a.User,
+        //            Type = a.Type,
+        //            TargetId = a.TargetId,
+        //            TargetType = a.TargetType,
+        //            CreatedOn = a.CreatedOn,
+        //            IsDeleted = a.IsDeleted
+        //        };
+        //    }
+        //}
 
         public int Id { get; set; }
 

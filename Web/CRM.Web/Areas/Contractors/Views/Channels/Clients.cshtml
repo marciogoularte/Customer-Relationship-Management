@@ -4,16 +4,19 @@
     ViewBag.Title = "Clients";
 }
 
-<h2>Clients</h2>
 
 @if (this.Model != null && this.Model.Any())
 {
+    <h2>Opertors</h2>
+    <br />
+
+    <div>Operator names:</div>
     foreach (var client in this.Model)
     {
-        @:Client name: @client.Name
+        <div>@client.Name</div>
     }
 }
 else
 {
-    @: There are no clients having contract for that channel
+    <h2>There are no oprerators having contract for that channel</h2>
 }

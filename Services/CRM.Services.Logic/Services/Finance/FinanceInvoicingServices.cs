@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Finance
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Finance
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -31,7 +33,7 @@
         {
             var financeInvoiceInfo = this.Data.FinanceInvoices
                 .All()
-                .Select(FinanceInvoiceViewModel.FromFinanceInvoice)
+                .ProjectTo<FinanceInvoiceViewModel>()
                 .FirstOrDefault(p => p.Id == invoiceId);
 
             return financeInvoiceInfo;
@@ -41,7 +43,7 @@
         {
             var financeInvoiceIDetails = this.Data.FinanceInvoices
                 .All()
-                .Select(FinanceInvoiceViewModel.FromFinanceInvoice)
+                .ProjectTo<FinanceInvoiceViewModel>()
                 .FirstOrDefault(t => t.Id == invoiceId);
 
             return financeInvoiceIDetails;
@@ -55,14 +57,14 @@
             {
                 readFinanceInvoices = this.Data.FinanceInvoices
                 .All()
-                .Select(FinanceInvoiceViewModel.FromFinanceInvoice)
+                .ProjectTo<FinanceInvoiceViewModel>()
                 .ToList();
             }
             else
             {
                 readFinanceInvoices = this.Data.FinanceInvoices
                 .All()
-                .Select(FinanceInvoiceViewModel.FromFinanceInvoice)
+                .ProjectTo<FinanceInvoiceViewModel>()
                 .Where(p => p.Receiver.Contains(searchboxinvoice))
                 .ToList();
             }

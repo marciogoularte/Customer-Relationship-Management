@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Administration
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Administration
 {
     using System;
     using System.Linq;
@@ -40,7 +42,7 @@
             {
                 users = this.Data.Users
                  .All()
-                 .Select(UserViewModel.FromUser)
+                 .ProjectTo<UserViewModel>()
                  .Where(u => u.Id != loggedUserId)
                  .ToList();
             }
@@ -48,7 +50,7 @@
             {
                 users = this.Data.Users
                  .All()
-                 .Select(UserViewModel.FromUser)
+                 .ProjectTo<UserViewModel>()
                  .Where(u => u.UserName.Contains(searchboxUsers) && u.Id != loggedUserId)
                  .ToList();
             }

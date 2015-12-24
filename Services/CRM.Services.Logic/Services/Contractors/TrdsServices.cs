@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.Trds;
@@ -34,7 +35,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 trds = this.Data.Trds
                     .All()
-                    .Select(TrdViewModel.FromTrd)
+                    .ProjectTo<TrdViewModel>()
                     .Where(i => i.ClientId == clientId)
                     .ToList();
             }
@@ -42,7 +43,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 trds = this.Data.Trds
                    .All()
-                    .Select(TrdViewModel.FromTrd)
+                    .ProjectTo<TrdViewModel>()
                    .Where(i => i.ClientId == clientId && i.Decoder.Contains(searchbox))
                    .ToList();
             }
@@ -79,7 +80,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var trd = this.Data.Trds
                 .All()
-                .Select(TrdViewModel.FromTrd)
+                .ProjectTo<TrdViewModel>()
                 .FirstOrDefault(t => t.Id == trdId);
 
             return trd;

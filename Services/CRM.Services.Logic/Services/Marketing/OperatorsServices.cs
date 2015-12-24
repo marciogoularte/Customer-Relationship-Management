@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Marketing
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Marketing
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -31,7 +33,7 @@
         {
             var operatorInfo = this.Data.Operators
                 .All()
-                .Select(OperatorViewModel.FromOperator)
+                .ProjectTo<OperatorViewModel>()
                 .FirstOrDefault(p => p.Id == operatorId);
 
             return operatorInfo;
@@ -41,7 +43,7 @@
         {
             var operatorDetails = this.Data.Operators
                 .All()
-                .Select(OperatorViewModel.FromOperator)
+                .ProjectTo<OperatorViewModel>()
                 .FirstOrDefault(t => t.Id == operatorId);
 
             return operatorDetails;
@@ -55,14 +57,14 @@
             {
                 readOperators = this.Data.Operators
                 .All()
-                .Select(OperatorViewModel.FromOperator)
+                .ProjectTo<OperatorViewModel>()
                 .ToList();
             }
             else
             {
                 readOperators = this.Data.Operators
                 .All()
-                .Select(OperatorViewModel.FromOperator)
+                .ProjectTo<OperatorViewModel>()
                 .Where(p => p.Name.Contains(searchboxOperator))
                 .ToList();
             }

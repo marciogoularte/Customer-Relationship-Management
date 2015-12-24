@@ -6,55 +6,58 @@ using CRM.Data.Models;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Clients
 {
-    public class ClientViewModel
+    using Web.Common.Mappings;
+
+    public class ClientViewModel : IMapFrom<Client>
     {
-        public static Expression<Func<Client, ClientViewModel>> FromClient
-        {
-            get
-            {
-                return c => new ClientViewModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    NameBulgarian = c.NameBulgarian,
-                    TypeId = c.Type,
-                    Uic = c.Uic,
-                    Vat = c.Vat,
-                    ResidenceAndAddress = c.ResidenceAndAddress,
-                    ResidenceAndAddressInBulgarian = c.ResidenceAndAddressInBulgarian,
-                    NetworkPage = c.NetworkPage,
-                    ContactPerson = c.ContactPerson,
-                    PhoneNumber = c.PhoneNumber,
-                    Email = c.Email,
-                    Correspondence = c.Correspondence,
-                    FixedPhoneService = c.FixedPhoneService,
-                    MobileVoiceServicesProvidedThroughNetwork = c.MobileVoiceServicesProvidedThroughNetwork,
-                    InternetSubs = c.InternetSubs,
-                    ServicesMobileAccessToInternet = c.ServicesMobileAccessToInternet,
-                    TvSubs = c.TvSubs,
-                    Coverage = c.Coverage,
-                    PostCode = c.PostCode,
-                    Management = c.Management,
-                    ManagementInBulgarian = c.ManagementInBulgarian,
-                    ManagementPhone = c.ManagementPhone,
-                    ManagementEmail = c.ManagementEmail,
-                    Finance = c.Finance,
-                    FinancePhone = c.FinancePhone,
-                    FinanceEmail = c.FinanceEmail,
-                    TechnicalName = c.TechnicalName,
-                    TechnicalPhone = c.TechnicalPhone,
-                    TechnicalEmail = c.TechnicalEmail,
-                    Marketing = c.Marketing,
-                    MarketingPhone = c.MarketingPhone,
-                    MarketingEmail = c.MarketingEmail,
-                    DealerName = c.DealerName,
-                    DealerEmail = c.DealerEmail,
-                    DealerPhone = c.DealerPhone,
-                    WantToReceiveEpg = c.WantToReceiveEpg,
-                    WantToReceiveNews = c.WantToReceiveNews
-                };
-            }
-        }
+        //public static Expression<Func<Client, ClientViewModel>> FromClient
+        //{
+        //    get
+        //    {
+        //        return c => new ClientViewModel()
+        //        {
+        //            Id = c.Id,
+        //            Name = c.Name,
+        //            NameBulgarian = c.NameBulgarian,
+        //            TypeId = c.Type,
+        //            Uic = c.Uic,
+        //            Vat = c.Vat,
+        //            ResidenceAndAddress = c.ResidenceAndAddress,
+        //            ResidenceAndAddressInBulgarian = c.ResidenceAndAddressInBulgarian,
+        //            NetworkPage = c.NetworkPage,
+        //            ContactPerson = c.ContactPerson,
+        //            PhoneNumber = c.PhoneNumber,
+        //            Email = c.Email,
+        //            Correspondence = c.Correspondence,
+        //            FixedPhoneService = c.FixedPhoneService,
+        //            MobileVoiceServicesProvidedThroughNetwork = c.MobileVoiceServicesProvidedThroughNetwork,
+        //            InternetSubs = c.InternetSubs,
+        //            ServicesMobileAccessToInternet = c.ServicesMobileAccessToInternet,
+        //            TvSubs = c.TvSubs,
+        //            Coverage = c.Coverage,
+        //            PostCode = c.PostCode,
+        //            Management = c.Management,
+        //            ManagementInBulgarian = c.ManagementInBulgarian,
+        //            ManagementPhone = c.ManagementPhone,
+        //            ManagementEmail = c.ManagementEmail,
+        //            Finance = c.Finance,
+        //            FinancePhone = c.FinancePhone,
+        //            FinanceEmail = c.FinanceEmail,
+        //            TechnicalName = c.TechnicalName,
+        //            TechnicalPhone = c.TechnicalPhone,
+        //            TechnicalEmail = c.TechnicalEmail,
+        //            Marketing = c.Marketing,
+        //            MarketingPhone = c.MarketingPhone,
+        //            MarketingEmail = c.MarketingEmail,
+        //            DealerName = c.DealerName,
+        //            DealerEmail = c.DealerEmail,
+        //            DealerPhone = c.DealerPhone,
+        //            WantToReceiveEpg = c.WantToReceiveEpg,
+        //            WantToReceiveNews = c.WantToReceiveNews,
+        //            Comments = c.Comments
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }
@@ -169,9 +172,6 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
 
-        [UIHint("TextAreaEditor")]
-        public string Comments { get; set; }
-
         [Required]
         [DisplayName("Dealer name")]
         public string DealerName { get; set; }
@@ -183,6 +183,9 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         [Required]
         [DisplayName("Dealer email")]
         public string DealerEmail { get; set; }
+
+        [UIHint("TextAreaEditor")]
+        public string Comments { get; set; }
 
         [Required]
         [DisplayName("Want to receive EPG")]

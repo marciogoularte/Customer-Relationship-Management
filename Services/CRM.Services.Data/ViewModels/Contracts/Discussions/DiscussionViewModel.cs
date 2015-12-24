@@ -3,32 +3,33 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using CRM.Data.Models;
+using CRM.Web.Common.Mappings;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Discussions
 {
-    public class DiscussionViewModel
+    public class DiscussionViewModel : IMapFrom<Discussion>
     {
-        public static Expression<Func<Discussion, DiscussionViewModel>> FromDiscussion
-        {
-            get
-            {
-                return d => new DiscussionViewModel()
-                {
-                    Id = d.Id,
-                    Date = d.Date,
-                    SubjectOfDiscussion = d.SubjectOfDiscussion,
-                    Summary = d.Summary,
-                    Type = d.Type,
-                    NextDiscussionDate = d.NextDiscussionDate,
-                    NextDiscussionNote = d.NextDiscussionNote,
-                    NextDiscussionType = d.NextDiscussionType,
-                    Comments = d.Comments,
-                    UserId = d.UserId,
-                    ClientId = d.ClientId,
-                    ProviderId = d.ProviderId
-                };
-            }
-        }
+        //public static Expression<Func<Discussion, DiscussionViewModel>> FromDiscussion
+        //{
+        //    get
+        //    {
+        //        return d => new DiscussionViewModel()
+        //        {
+        //            Id = d.Id,
+        //            Date = d.Date,
+        //            SubjectOfDiscussion = d.SubjectOfDiscussion,
+        //            Summary = d.Summary,
+        //            Type = d.Type,
+        //            NextDiscussionDate = d.NextDiscussionDate,
+        //            NextDiscussionNote = d.NextDiscussionNote,
+        //            NextDiscussionType = d.NextDiscussionType,
+        //            Comments = d.Comments,
+        //            UserId = d.UserId,
+        //            ClientId = d.ClientId,
+        //            ProviderId = d.ProviderId
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }

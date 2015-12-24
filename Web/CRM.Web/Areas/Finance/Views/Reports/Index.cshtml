@@ -2,13 +2,21 @@
 @model SendReportViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reports";
 }
 
-<h2>Index</h2>
+<h2>Reports</h2>
+@Html.DropDownList("choose-report-type", ViewBag.EnumData as SelectList)
+<button class="btn btn-success" id="generate-report-btn">Generate report</button>
 
-@Html.EnumDropDownListFor(m => m.Report, new { id = "choose-report-type" })
-<div id="additional-dropdown"></div>
+<script>
+    $(document).ready(function() {
+        $('#generate-report-btn').click(function() {
+            alert('No information for reports!');
+        });
+    });
+</script>
+@*<div id="additional-dropdown"></div>
 
 <script>
     $(document).ready(function() {
@@ -25,11 +33,14 @@
                         url: '@Url.Action("GetClients", "Reports", new { area = "Finance" })',
                         contentType: 'application/json;',
                         success: function(data) {
-                            result =data;
-                            console.log(data);
-                            console.log(result);
+                            result = $.map(data, function (el) { return el });
+
+                            for (var i in result) {
+                                $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
+                            }
                         }
                     });
+
                     break;
                 case 1:
                     result = getDealers();
@@ -44,13 +55,50 @@
                     result = getTvChannels();
                     break;
                 case 5:
-                    result = getProviders();
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("GetProviders", "Reports", new { area = "Finance" })',
+                        success: function(data) {
+                            result = $.map(data, function(el) { return el });
+
+                            for (var i in result) {
+                                $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
+                            }
+                        }
+                    });
+
                     break;
                 case 6:
-                    result = getMonths();
+
+                    $.ajax({
+                        type:'GET',
+                        url: '@Url.Action("GetMonths", "Reports", new { area = "Finance" })',
+                        success: function(data) {
+                            result = $.map(data, function(el) { return el });
+
+                            for (var i in result) {
+                                $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
+                            }
+                        }
+                    });
+
                     break;
                 case 7:
-                    result = getYears();
+
+                    $.ajax({
+                        type:'GET',
+                        url: '@Url.Action("GetYears", "Reports", new { area = "Finance" })',
+                        success: function(data) {
+                            result = $.map(data, function(el) { return el });
+
+
+                            for (var i in result) {
+                                $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
+                            }
+                        }
+                    });
+
                     break;
                 case 8:
                     result = getQ();
@@ -62,10 +110,8 @@
                     result = getNewsletters();
                     break;
             }
-            for (var i = 0; i < result.length(); i++) {
-                $('<option />', { value: result[i].value, text: result[r] }).appendTo(list);
-            }
 
+            container.html('');
             list.appendTo(container);
         });
 
@@ -85,36 +131,6 @@
 
         }
 
-        function getProviders() {
-            $.ajax({
-                type:'GET',
-                url: @Url.Action("GetProviders", "Reports", new { area = "Finance" }),
-                success: function(data) {
-                    return data;
-                }
-            });
-        }
-
-        function getMonths() {
-            $.ajax({
-                type:'GET',
-                url: @Url.Action("GetMonths", "Reports", new { area = "Finance" }),
-                success: function(data) {
-                    return data;
-                }
-            });
-        }
-
-        function getYears() {
-            $.ajax({
-                type:'GET',
-                url: @Url.Action("GetYears", "Reports", new { area = "Finance" }),
-                success: function(data) {
-                    return data;
-                }
-            });
-        }
-
         function getQ() {
 
         }
@@ -127,4 +143,4 @@
 
         }
     });
-</script>
+</script>*@

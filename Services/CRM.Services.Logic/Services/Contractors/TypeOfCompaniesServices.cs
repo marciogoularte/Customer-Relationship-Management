@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.TypeOfCompanies;
@@ -30,7 +31,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var typeOfCompany = this.Data.TypeOfCompanies
                 .All()
-                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .ProjectTo<TypeOfCompanyViewModel>()
                 .FirstOrDefault(p => p.Id == typeOfCompanyId);
 
             return typeOfCompany;
@@ -40,7 +41,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var typeOfCompany = this.Data.TypeOfCompanies
                 .All()
-                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .ProjectTo<TypeOfCompanyViewModel>()
                 .FirstOrDefault(t => t.Id == typeOfCompanyId);
 
             return typeOfCompany;
@@ -54,14 +55,14 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 TypeOfCompanies = this.Data.TypeOfCompanies
                 .All()
-                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .ProjectTo<TypeOfCompanyViewModel>()
                 .ToList();
             }
             else
             {
                 TypeOfCompanies = this.Data.TypeOfCompanies
                 .All()
-                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .ProjectTo<TypeOfCompanyViewModel>()
                 .Where(p => p.Type.Contains(searchboxTypeOfCompany))
                 .ToList();
             }
@@ -110,7 +111,7 @@ namespace CRM.Services.Logic.Services.Contractors
 
         public TypeOfCompanyViewModel DestroyTypeOfCompany(TypeOfCompanyViewModel typeOfCompany)
         {
-            this.Data.Providers.Delete(typeOfCompany.Id);
+            this.Data.TypeOfCompanies.Delete(typeOfCompany.Id);
             this.Data.SaveChanges();
 
             return typeOfCompany;

@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Marketing
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Marketing
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -31,7 +33,7 @@
         {
             var marketingPartner = this.Data.MarketingPartners
                 .All()
-                .Select(MarketingPartnerViewModel.FromMarketingPartner)
+                .ProjectTo<MarketingPartnerViewModel>()
                 .FirstOrDefault(p => p.Id == marketingPartnerId);
 
             return marketingPartner;
@@ -41,7 +43,7 @@
         {
             var marketingPartner = this.Data.MarketingPartners
                 .All()
-                .Select(MarketingPartnerViewModel.FromMarketingPartner)
+                .ProjectTo<MarketingPartnerViewModel>()
                 .FirstOrDefault(t => t.Id == marketingPartnerId);
 
             return marketingPartner;
@@ -55,14 +57,14 @@
             {
                 marketingPartners = this.Data.MarketingPartners
                 .All()
-                .Select(MarketingPartnerViewModel.FromMarketingPartner)
+                .ProjectTo<MarketingPartnerViewModel>()
                 .ToList();
             }
             else
             {
                 marketingPartners = this.Data.MarketingPartners
                 .All()
-                .Select(MarketingPartnerViewModel.FromMarketingPartner)
+                .ProjectTo<MarketingPartnerViewModel>()
                 .Where(p => p.Name.Contains(searchboxMarketingPartner))
                 .ToList();
             }

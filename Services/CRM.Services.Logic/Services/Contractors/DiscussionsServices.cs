@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.Discussions;
@@ -21,7 +22,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var discussion = this.Data.Discussions
                 .All()
-                .Select(DiscussionViewModel.FromDiscussion)
+                .ProjectTo<DiscussionViewModel>()
                 .FirstOrDefault(d => d.Id == discussionId);
 
             return discussion;
@@ -57,7 +58,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 discussions = this.Data.Discussions
                     .All()
-                    .Select(DiscussionViewModel.FromDiscussion)
+                    .ProjectTo<DiscussionViewModel>()
                     .Where(d =>
                         d.ClientId != null &&
                         d.ClientId == clientId)
@@ -67,7 +68,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 discussions = this.Data.Discussions
                     .All()
-                    .Select(DiscussionViewModel.FromDiscussion)
+                    .ProjectTo<DiscussionViewModel>()
                     .Where(d =>
                         d.ClientId != null &&
                         d.ClientId == clientId &&
@@ -86,7 +87,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 discussions = this.Data.Discussions
                     .All()
-                    .Select(DiscussionViewModel.FromDiscussion)
+                    .ProjectTo<DiscussionViewModel>()
                     .Where(d =>
                         d.ProviderId != null &&
                         d.ProviderId == providerId)
@@ -96,7 +97,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 discussions = this.Data.Discussions
                     .All()
-                    .Select(DiscussionViewModel.FromDiscussion)
+                    .ProjectTo<DiscussionViewModel>()
                     .Where(d =>
                         d.ProviderId != null &&
                         d.ProviderId == providerId &&
@@ -179,7 +180,7 @@ namespace CRM.Services.Logic.Services.Contractors
 
             var allDiscussions = this.Data.Discussions
                 .All()
-                .Select(DiscussionViewModel.FromDiscussion)
+                .ProjectTo<DiscussionViewModel>()
                 .ToList();
 
             var discussions =

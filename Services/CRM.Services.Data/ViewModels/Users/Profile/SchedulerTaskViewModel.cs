@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Data.ViewModels.Users.Profile
+﻿using CRM.Web.Common.Mappings;
+
+namespace CRM.Services.Data.ViewModels.Users.Profile
 {
     using System;
     using System.Linq.Expressions;
@@ -7,30 +9,30 @@
 
     using CRM.Data.Models;
 
-    public class SchedulerTaskViewModel : ISchedulerEvent
+    public class SchedulerTaskViewModel : IMapFrom<SchedulerTask>, ISchedulerEvent
     {
-        public static Expression<Func<SchedulerTask, SchedulerTaskViewModel>> FromSchedulerTask
-        {
-            get
-            {
-                return s => new SchedulerTaskViewModel()
-                {
-                    Id = s.Id,
-                    Title = s.Title,
-                    Start = s.Start,
-                    End = s.End,
-                    StartTimezone = s.StartTimezone,
-                    EndTimezone = s.EndTimezone,
-                    Description = s.Description,
-                    IsAllDay = s.IsAllDay,
-                    RecurrenceRule = s.RecurrenceRule,
-                    RecurrenceException = s.RecurrenceException,
-                    RecurrenceId = s.RecurrenceId,
-                    UserId = s.UserId,
-                    IsFinished = s.IsFinished
-                };
-            }
-        }
+        //public static Expression<Func<SchedulerTask, SchedulerTaskViewModel>> FromSchedulerTask
+        //{
+        //    get
+        //    {
+        //        return s => new SchedulerTaskViewModel()
+        //        {
+        //            Id = s.Id,
+        //            Title = s.Title,
+        //            Start = s.Start,
+        //            End = s.End,
+        //            StartTimezone = s.StartTimezone,
+        //            EndTimezone = s.EndTimezone,
+        //            Description = s.Description,
+        //            IsAllDay = s.IsAllDay,
+        //            RecurrenceRule = s.RecurrenceRule,
+        //            RecurrenceException = s.RecurrenceException,
+        //            RecurrenceId = s.RecurrenceId,
+        //            UserId = s.UserId,
+        //            IsFinished = s.IsFinished
+        //        };
+        //    }
+        //}
 
         public int Id { get; set; }
 

@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Finance
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Finance
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -31,7 +33,7 @@
         {
             var frzInfo = this.Data.Frzs
                 .All()
-                .Select(FrzViewModel.FromFrz)
+                .ProjectTo<FrzViewModel>()
                 .FirstOrDefault(p => p.Id == frzId);
 
             return frzInfo;
@@ -41,7 +43,7 @@
         {
             var frzDetails = this.Data.Frzs
                 .All()
-                .Select(FrzViewModel.FromFrz)
+                .ProjectTo<FrzViewModel>()
                 .FirstOrDefault(t => t.Id == frzId);
 
             return frzDetails;
@@ -55,14 +57,14 @@
             {
                 readFrzs = this.Data.Frzs
                 .All()
-                .Select(FrzViewModel.FromFrz)
+                .ProjectTo<FrzViewModel>()
                 .ToList();
             }
             else
             {
                 readFrzs = this.Data.Frzs
                 .All()
-                .Select(FrzViewModel.FromFrz)
+                .ProjectTo<FrzViewModel>()
                 .Where(p => p.EmployeeName.Contains(searchboxFrz))
                 .ToList();
             }

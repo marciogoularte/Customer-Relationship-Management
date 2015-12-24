@@ -36,8 +36,6 @@
 
         public int NumberOfDaysForPaymentDueDate { get; set; }
 
-        public int NumberOfDaysToBeConsidered { get; set; }
-
         public bool AcceptingReports { get; set; }
 
         public string GoverningLaw { get; set; }
@@ -51,7 +49,7 @@
         public int? ProviderId { get; set; }
         
         public virtual Provider Provider { get; set; }
-
+        
         public Frequency Frequency { get; set; }
 
         public double MonthlyFee { get; set; }

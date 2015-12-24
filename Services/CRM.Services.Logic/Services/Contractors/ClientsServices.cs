@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.Clients;
@@ -32,7 +33,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var types = this.Data.TypeOfCompanies
                 .All()
-                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .ProjectTo<TypeOfCompanyViewModel>()
                 .ToList();
 
             var vm = types
@@ -50,7 +51,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var client = this.Data.Clients
                 .All()
-                .Select(ClientViewModel.FromClient)
+                .ProjectTo<ClientViewModel>()
                 .FirstOrDefault(p => p.Id == clientId);
 
             return client;
@@ -75,14 +76,14 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 clients = this.Data.Clients
                     .All()
-                    .Select(ClientViewModel.FromClient)
+                    .ProjectTo<ClientViewModel>()
                     .ToList();
             }
             else
             {
                 clients = this.Data.Clients
                     .All()
-                    .Select(ClientViewModel.FromClient)
+                    .ProjectTo<ClientViewModel>()
                     .Where(c => c.Name.Contains(searchboxClients))
                     .ToList();
             }

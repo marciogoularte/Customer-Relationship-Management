@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Data.ViewModels.Marketing.Partners
+﻿using CRM.Web.Common.Mappings;
+
+namespace CRM.Services.Data.ViewModels.Marketing.Partners
 {
     using System;
     using System.Linq.Expressions;
@@ -7,23 +9,23 @@
 
     using CRM.Data.Models.Marketing;
 
-    public class MediaViewModel
+    public class MediaViewModel : IMapFrom<Media>
     {
-        public static Expression<Func<Media, MediaViewModel>> FromMedia
-        {
-            get
-            {
-                return p => new MediaViewModel()
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Address = p.Address,
-                    PhoneNumber = p.PhoneNumber,
-                    Email = p.Email,
-                    AllMedia = p.AllMedia
-                };
-            }
-        }
+        //public static Expression<Func<Media, MediaViewModel>> FromMedia
+        //{
+        //    get
+        //    {
+        //        return p => new MediaViewModel()
+        //        {
+        //            Id = p.Id,
+        //            Name = p.Name,
+        //            Address = p.Address,
+        //            PhoneNumber = p.PhoneNumber,
+        //            Email = p.Email,
+        //            AllMedia = p.AllMedia
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }

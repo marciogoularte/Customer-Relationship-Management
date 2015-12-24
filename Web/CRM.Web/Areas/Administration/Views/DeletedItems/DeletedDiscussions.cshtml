@@ -1,7 +1,7 @@
 ﻿@using CRM.Services.Data.ViewModels.Contracts.Discussions
 @model IEnumerable<string>
 @{
-    ViewBag.Title = "Deleted Discussions";
+    ViewBag.Title = "Deleted Activities";
     const string controllerName = "DeletedItems";
 }
 
@@ -9,7 +9,7 @@
 @Scripts.Render("~/bundles/kendo")
 @Scripts.Render("~/bundles/jqueryval")
 
-<h2>Deleted Discussions</h2>
+<h2>Deleted Activities</h2>
 
 @(Html.Kendo()
             .Grid<DiscussionViewModel>()

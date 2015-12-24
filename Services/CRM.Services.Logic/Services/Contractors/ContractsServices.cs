@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.Clients;
@@ -26,7 +27,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var providers = this.Data.Providers
                 .All()
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .ToList();
 
             var vm = providers
@@ -44,7 +45,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var contract = this.Data.ClientContracts
                 .All()
-                .Select(ClientContractViewModel.FromClientContract)
+                .ProjectTo<ClientContractViewModel>()
                 .FirstOrDefault(p => p.Id == contractId);
 
             if (contract == null || contract.ProviderId == null)
@@ -60,7 +61,7 @@ namespace CRM.Services.Logic.Services.Contractors
             var channels = this.Data.Channels
                 .All()
                 .Where(c => c.ClientContractId == contractId)
-                .Select(ChannelViewModel.FromChannel)
+                .ProjectTo<ChannelViewModel>()
                 .ToList();
 
             return channels;
@@ -70,7 +71,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var contract = this.Data.ProviderContracts
                 .All()
-                .Select(ProviderContractViewModel.FromProviderContract)
+                .ProjectTo<ProviderContractViewModel>()
                 .FirstOrDefault(c => c.Id == contractId);
 
             return contract;
@@ -104,16 +105,16 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 contracts = this.Data.ClientContracts
                 .All()
-                .Select(ClientContractViewModel.FromClientContract)
                 .Where(c => c.ClientId == clientId)
+                .ProjectTo<ClientContractViewModel>()
                 .ToList();
             }
             else
             {
                 contracts = this.Data.ClientContracts
                 .All()
-                .Select(ClientContractViewModel.FromClientContract)
                 .Where(c => c.TypeOfContract.Contains(searchTerm) && c.ClientId == clientId)
+                .ProjectTo<ClientContractViewModel>()
                 .ToList();
             }
 
@@ -128,7 +129,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 contracts = this.Data.ProviderContracts
                    .All()
-                   .Select(ProviderContractViewModel.FromProviderContract)
+                   .ProjectTo<ProviderContractViewModel>()
                    .Where(c => c.ProviderId == providerId)
                    .ToList();
             }
@@ -136,7 +137,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 contracts = this.Data.ProviderContracts
                    .All()
-                   .Select(ProviderContractViewModel.FromProviderContract)
+                   .ProjectTo<ProviderContractViewModel>()
                    .Where(c => c.TypeOfContract.Contains(searchbox) && c.ProviderId == providerId)
                    .ToList();
             }
@@ -155,13 +156,12 @@ namespace CRM.Services.Logic.Services.Contractors
                 BillingStartDate = contract.BillingStartDate,
                 BillingEndDate = contract.BillingEndDate,
                 NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate,
-                NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered,
                 AcceptingReports = contract.AcceptingReports,
                 GoverningLaw = contract.GoverningLaw,
                 Tier = contract.Tier,
                 ClientId = currentClientId,
                 CreatedOn = DateTime.Now,
-                Comments = contract.Comments + "\n",
+                Comments = contract.Comments,
                 Channels = new List<Channel>(),
                 Frequency = contract.Frequency,
                 MonthlyFee = contract.MonthlyFee
@@ -195,7 +195,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 GoverningLaw = contract.GoverningLaw,
                 ProviderId = currentProviderId,
                 CreatedOn = DateTime.Now,
-                Comments = contract.Comments + "\n"
+                Comments = contract.Comments
             };
 
             this.Data.ProviderContracts.Add(newContract);
@@ -219,12 +219,11 @@ namespace CRM.Services.Logic.Services.Contractors
             contractFromDb.BillingStartDate = contract.BillingStartDate;
             contractFromDb.BillingEndDate = contract.BillingEndDate;
             contractFromDb.NumberOfDaysForPaymentDueDate = contract.NumberOfDaysForPaymentDueDate;
-            contractFromDb.NumberOfDaysToBeConsidered = contract.NumberOfDaysToBeConsidered;
             contractFromDb.AcceptingReports = contract.AcceptingReports;
             contractFromDb.GoverningLaw = contract.GoverningLaw;
             contractFromDb.Tier = contract.Tier;
             contractFromDb.CreatedOn = DateTime.Now;
-            contractFromDb.Comments = contract.Comments + "\n";
+            contractFromDb.Comments = contract.Comments;
             contractFromDb.ProviderId = int.Parse(contract.ProviderId);
             contractFromDb.Frequency = contract.Frequency;
             contractFromDb.MonthlyFee = contract.MonthlyFee;
@@ -250,7 +249,7 @@ namespace CRM.Services.Logic.Services.Contractors
             contractFromDb.AcceptingReports = contract.AcceptingReports;
             contractFromDb.GoverningLaw = contract.GoverningLaw;
             contractFromDb.CreatedOn = DateTime.Now;
-            contractFromDb.Comments = contract.Comments + "\n";
+            contractFromDb.Comments = contract.Comments;
 
             this.Data.SaveChanges();
 
@@ -333,7 +332,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var contract = this.Data.ClientContracts
                 .All()
-                .Select(ClientContractViewModel.FromClientContract)
+                .ProjectTo<ClientContractViewModel>()
                 .FirstOrDefault(c => c.Id == contractId);
 
             var contractTemplate = this.Data.Providers
@@ -341,29 +340,29 @@ namespace CRM.Services.Logic.Services.Contractors
 
             var client = this.Data.Clients
                 .All()
-                .Select(ClientViewModel.FromClient)
+                .ProjectTo<ClientViewModel>()
                 .FirstOrDefault(c => c.Id == contract.ClientId);
 
             var provider = this.Data.Providers
                 .All()
-                .Select(ProviderViewModel.FromProvider)
+                .ProjectTo<ProviderViewModel>()
                 .FirstOrDefault(p => p.Id == providerId);
 
             var invoices = this.Data.Invoices
                 .All()
-                .Select(InvoiceViewModel.FromInvoice)
+                .ProjectTo<InvoiceViewModel>()
                 .Where(i => i.ClientContractId == contract.Id)
                 .ToList();
 
             var channels = this.Data.Channels
                 .All()
-                .Select(ChannelViewModel.FromChannel)
+                .ProjectTo<ChannelViewModel>()
                 .Where(c => c.ClientContractId == contract.Id)
                 .ToList();
 
             var trds = this.Data.Trds
                 .All()
-                .Select(TrdViewModel.FromTrd)
+                .ProjectTo<TrdViewModel>()
                 .Where(t => t.ClientId == contract.ClientId)
                 .ToList();
 
@@ -371,7 +370,7 @@ namespace CRM.Services.Logic.Services.Contractors
 
             var typeOfClientContract = this.Data.TypeOfCompanies
                 .All()
-                .Select(TypeOfCompanyViewModel.FromTypeOfCompany)
+                .ProjectTo<TypeOfCompanyViewModel>()
                 .FirstOrDefault(t => t.Id == clientTypeIf);
 
             var totalMgSubs = 0.0;
@@ -424,13 +423,13 @@ namespace CRM.Services.Logic.Services.Contractors
 
             var providerChannels = this.Data.Channels
                 .All()
-                .Select(ChannelViewModel.FromChannel)
+                .ProjectTo<ChannelViewModel>()
                 .Where(c => c.ProviderId == clientContractProviderId)
                 .ToList();
 
             var clientContractChannels = this.Data.Channels
                 .All()
-                .Select(ChannelViewModel.FromChannel)
+                .ProjectTo<ChannelViewModel>()
                 .Where(c => c.ClientContractId == clientContractId)
                 .ToList();
 

@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Marketing
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Marketing
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -33,7 +35,7 @@
             var partner = this.Data.SocialPartners
                         .All()
                         .Where(p => p.SocialSystem == type)
-                        .Select(SocialPartnerViewModel.FromSocialPartner)
+                        .ProjectTo<SocialPartnerViewModel>()
                 .FirstOrDefault(p => p.Id == socialPartnerId);
 
             return partner;
@@ -44,7 +46,7 @@
             var partners = this.Data.SocialPartners
                 .All()
                 .Where(p => p.SocialSystem == type)
-                .Select(SocialPartnerViewModel.FromSocialPartner)
+                .ProjectTo<SocialPartnerViewModel>()
                 .ToList();
 
             List<SocialPartnerViewModel> readSocialPartners;

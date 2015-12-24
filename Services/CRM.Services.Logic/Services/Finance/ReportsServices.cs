@@ -72,7 +72,7 @@
             var years = new List<SearchedItemDropDown>();
             var counter = 0;
                 
-            for (int i = 1950; i < currentYear; i++)
+            for (var i = 1950; i <= currentYear; i++)
             {
                 var searchedItem = new SearchedItemDropDown(counter, i.ToString());
                 years.Add(searchedItem);

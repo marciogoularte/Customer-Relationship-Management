@@ -3,33 +3,34 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using CRM.Data.Models;
+using CRM.Web.Common.Mappings;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Providers
 {
-    public class ChannelViewModel
+    public class ChannelViewModel : IMapFrom<Channel>
     {
-        public static Expression<Func<Channel, ChannelViewModel>> FromChannel
-        {
-            get
-            {
-                return c => new ChannelViewModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    ReveivingOptions = c.ReveivingOptions,
-                    SatelliteData = c.SatelliteData,
-                    EpgSource = c.EpgSource,
-                    Website = c.Website,
-                    Presentation = c.Presentation,
-                    ContractTemplate = c.ContractTemplate,
-                    LogoLink = c.LogoLink,
-                    Comments = c.Comments,
-                    ProviderId = c.ProviderId,
-                    ClientId = c.ClientId,
-                    ClientContractId = c.ClientContractId
-                };
-            }
-        }
+        //public static Expression<Func<Channel, ChannelViewModel>> FromChannel
+        //{
+        //    get
+        //    {
+        //        return c => new ChannelViewModel()
+        //        {
+        //            Id = c.Id,
+        //            Name = c.Name,
+        //            ReveivingOptions = c.ReveivingOptions,
+        //            SatelliteData = c.SatelliteData,
+        //            EpgSource = c.EpgSource,
+        //            Website = c.Website,
+        //            Presentation = c.Presentation,
+        //            ContractTemplate = c.ContractTemplate,
+        //            LogoLink = c.LogoLink,
+        //            Comments = c.Comments,
+        //            ProviderId = c.ProviderId,
+        //            ClientId = c.ClientId,
+        //            ClientContractId = c.ClientContractId
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }

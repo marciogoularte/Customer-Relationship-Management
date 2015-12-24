@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
 using CRM.Data;
 using CRM.Data.Models;
 using CRM.Services.Data.ViewModels.Contracts.Clients;
@@ -37,7 +38,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 channels = this.Data.Channels
                     .All()
-                    .Select(ChannelViewModel.FromChannel)
+                    .ProjectTo<ChannelViewModel>()
                     .Where(c => c.ProviderId == providerId)
                     .ToList();
             }
@@ -45,7 +46,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 channels = this.Data.Channels
                     .All()
-                    .Select(ChannelViewModel.FromChannel)
+                    .ProjectTo<ChannelViewModel>()
                     .Where(c => c.Name.Contains(searchbox) && c.ProviderId == providerId)
                     .ToList();
             }
@@ -67,12 +68,12 @@ namespace CRM.Services.Logic.Services.Contractors
                 LogoLink = channel.LogoLink,
                 CreatedOn = DateTime.Now,
                 ProviderId = currentProviderId,
-                Comments = channel.Comments + "\n"
+                Comments = channel.Comments
             };
 
             if (string.IsNullOrEmpty(newChannel.EpgSource) || newChannel.EpgSource == "")
             {
-                newChannel.Website = "#";
+                newChannel.EpgSource = "#";
             }
             if (string.IsNullOrEmpty(newChannel.Website) || newChannel.Website == "")
             {
@@ -84,11 +85,11 @@ namespace CRM.Services.Logic.Services.Contractors
             }
             if (string.IsNullOrEmpty(newChannel.ContractTemplate) || newChannel.ContractTemplate == "")
             {
-                newChannel.Presentation = "#";
+                newChannel.ContractTemplate = "#";
             }
             if (string.IsNullOrEmpty(newChannel.LogoLink) || newChannel.LogoLink == "")
             {
-                newChannel.Presentation = "#";
+                newChannel.LogoLink = "#";
             }
 
             this.Data.Channels.Add(newChannel);
@@ -103,7 +104,7 @@ namespace CRM.Services.Logic.Services.Contractors
         {
             var channel = this.Data.Channels
                 .All()
-                .Select(ChannelViewModel.FromChannel)
+                .ProjectTo<ChannelViewModel>()
                 .FirstOrDefault(c => c.Id == channelId);
 
             return channel;
@@ -121,7 +122,7 @@ namespace CRM.Services.Logic.Services.Contractors
             foreach (var contractClients in contracts.Select(contract => this.Data.Clients
                 .All()
                 .Where(c => c.Contracts.Select(co => co.Id).Contains(contract.Id))
-                .Select(ClientViewModel.FromClient)
+                .ProjectTo<ClientViewModel>()
                 .ToList()))
             {
                 clients.AddRange(contractClients);
@@ -139,7 +140,7 @@ namespace CRM.Services.Logic.Services.Contractors
             channelFromDb.Name = channel.Name;
             channelFromDb.ReveivingOptions = channel.ReveivingOptions;
             channelFromDb.SatelliteData = channel.SatelliteData;
-            channelFromDb.Comments = channel.Comments + "\n";
+            channelFromDb.Comments = channel.Comments;
 
             if (string.IsNullOrEmpty(channel.EpgSource) || channel.EpgSource == "")
             {

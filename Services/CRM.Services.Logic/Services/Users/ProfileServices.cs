@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Users
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Users
 {
     using System.Linq;
 
@@ -25,7 +27,7 @@
             {
                 user = this.Data.Users
                   .All()
-                  .Select(UserViewModel.FromUser)
+                  .ProjectTo<UserViewModel>()
                   .FirstOrDefault(u => u.Id == loggedUserId);
 
                 return user;
@@ -36,7 +38,7 @@
             {
                 user = this.Data.Users
                   .All()
-                  .Select(UserViewModel.FromUser)
+                  .ProjectTo<UserViewModel>()
                   .FirstOrDefault(u => u.Id == userId);
 
                 return user;
@@ -56,7 +58,7 @@
 
             user = this.Data.Users
                 .All()
-                .Select(UserViewModel.FromUser)
+                .ProjectTo<UserViewModel>()
                 .FirstOrDefault(u => u.Id == userId);
 
             return user;
@@ -66,7 +68,7 @@
         {
             var schedulerTasks = this.Data.SchedulerTasks
                 .All()
-                .Select(SchedulerTaskViewModel.FromSchedulerTask)
+                .ProjectTo<SchedulerTaskViewModel>()
                 .Where(s => s.UserId == userId);
 
             return schedulerTasks;

@@ -1,30 +1,40 @@
 ﻿namespace CRM.Services.Data.ViewModels.Finance.Reports
 {
-    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public enum ChooseReportDropdown
     {
-        [Description("By client")]
+        [Display(Description = "By client")]
         ByClient = 0,
-        [Description("By dealer")]
+
+        [Display(Description = "By dealer")]
         ByDealer = 1,
-        [Description("Total unpaid invoices")]
+
+        [Display(Description = "Total unpaid invoices")]
         TotalUnpaidInvoices = 2,
-        [Description("Total paid invoices")]
+
+        [Display(Description = "Total paid invoices")]
         TotalPaidInvoices = 3,
-        [Description("By TV channels")]
+
+        [Display(Description = "By TV channels")]
         ByTvChannel = 4,
-        [Description("By provider")]
+
+        [Display(Description = "By provider")]
         ByProvider = 5,
-        [Description("By month")]
+
+        [Display(Description = "By month")]
         ByMonth = 6,
-        [Description("By year")]
+
+        [Display(Description = "By year")]
         ByYears = 7,
-        [Description("By Q")]
+
+        [Display(Description = "By Q")]
         ByQ = 8,
-        [Description("By EPG")]
+
+        [Display(Description = "By EPG")]
         ByEpg = 9,
-        [Description("By Newsletter")]
+
+        [Display(Description = "By Newsletter")]
         ByNewsLetter = 10
     }
 }

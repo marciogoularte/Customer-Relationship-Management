@@ -1,39 +1,43 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using CRM.Data.Models;
+﻿using CRM.Web.Common.Mappings;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Providers
 {
-    public class ProviderViewModel
+    using System;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq.Expressions;
+
+    using CRM.Data.Models;
+
+    public class ProviderViewModel : IMapFrom<Provider>
     {
-        public static Expression<Func<Provider, ProviderViewModel>> FromProvider
-        {
-            get
-            {
-                return p => new ProviderViewModel()
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    TypeId = p.TypeId,
-                    Uic = p.Uic,
-                    Vat = p.Vat,
-                    BankAccount = p.BankAccount,
-                    ResidenceAndAddress = p.ResidenceAndAddress,
-                    ContractTemplate = p.ContractTemplate,
-                    NetworkPage = p.NetworkPage,
-                    ContactPerson = p.ContactPerson,
-                    PhoneNumber = p.PhoneNumber,
-                    Email = p.Email,
-                    Address = p.Address,
-                    Term = p.Term,
-                    Cps = p.Cps,
-                    LogoLink = p.LogoLink,
-                    Commission = p.Commission
-                };
-            }
-        }
+        //public static Expression<Func<Provider, ProviderViewModel>> FromProvider
+        //{
+        //    get
+        //    {
+        //        return p => new ProviderViewModel()
+        //        {
+        //            Id = p.Id,
+        //            Name = p.Name,
+        //            TypeId = p.TypeId,
+        //            Uic = p.Uic,
+        //            Vat = p.Vat,
+        //            BankAccount = p.BankAccount,
+        //            ResidenceAndAddress = p.ResidenceAndAddress,
+        //            ContractTemplate = p.ContractTemplate,
+        //            NetworkPage = p.NetworkPage,
+        //            ContactPerson = p.ContactPerson,
+        //            PhoneNumber = p.PhoneNumber,
+        //            Email = p.Email,
+        //            Address = p.Address,
+        //            Term = p.Term,
+        //            Cps = p.Cps,
+        //            LogoLink = p.LogoLink,
+        //            Commission = p.Commission,
+        //            Comments = p.Comments
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public int Id { get; set; }
@@ -44,6 +48,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Providers
         
         [UIHint("TypeOfCompanyEditor")]
         [Required(ErrorMessage = "Type is required")]
+        [DisplayName("Type")]
         public string TypeId { get; set; }
 
         [Required]

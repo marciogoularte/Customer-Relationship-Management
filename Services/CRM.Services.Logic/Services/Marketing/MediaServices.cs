@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Marketing
+﻿using AutoMapper.QueryableExtensions;
+
+namespace CRM.Services.Logic.Services.Marketing
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -31,7 +33,7 @@
         {
             var media = this.Data.Media
                 .All()
-                .Select(MediaViewModel.FromMedia)
+                .ProjectTo<MediaViewModel>()
                 .FirstOrDefault(p => p.Id == mediaId);
 
             return media;
@@ -41,7 +43,7 @@
         {
             var Media = this.Data.Media
                 .All()
-                .Select(MediaViewModel.FromMedia)
+                .ProjectTo<MediaViewModel>()
                 .FirstOrDefault(t => t.Id == mediaId);
 
             return Media;
@@ -55,14 +57,14 @@
             {
                 media = this.Data.Media
                 .All()
-                .Select(MediaViewModel.FromMedia)
+                .ProjectTo<MediaViewModel>()
                 .ToList();
             }
             else
             {
                 media = this.Data.Media
                 .All()
-                .Select(MediaViewModel.FromMedia)
+                .ProjectTo<MediaViewModel>()
                 .Where(p => p.Name.Contains(searchboxMedia))
                 .ToList();
             }

@@ -109,13 +109,13 @@
     function viewDetails(e) {
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location = '/Users/Channels/ChannelDetails?channelId=' + dataItem.Id;
+        window.location = '/Contractors/Channels/ChannelDetails?channelId=' + dataItem.Id;
     }
 
     function viewOperators(e) {
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-        window.location = '/Users/Channels/ViewOperators?channelId=' + dataItem.Id;
+        window.location = '/Contractors/Channels/ViewOperators?channelId=' + dataItem.Id;
     }
 
     function selectRow() {

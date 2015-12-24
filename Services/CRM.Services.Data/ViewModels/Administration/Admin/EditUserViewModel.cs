@@ -4,34 +4,35 @@
     using System.Linq.Expressions;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-
+    
     using CRM.Data.Models;
-
-    public class EditUserViewModel
+    using Web.Common.Mappings;
+    
+    public class EditUserViewModel : IMapFrom<User>
     {
-        public static Expression<Func<User, EditUserViewModel>> FromUser
-        {
-            get
-            {
-                return u => new EditUserViewModel()
-                {
-                    Id = u.Id,
-                    UserName = u.UserName,
-                    PasswordHash = u.PasswordHash,
-                    Email = u.Email,
-                    FirstName = u.FirstName,
-                    SecondName = u.SecondName,
-                    LastName = u.LastName,
-                    Gender = u.Gender,
-                    Age = u.Age,
-                    Town = u.Town,
-                    Country = u.Country,
-                    EnterprisePosition = u.EnterprisePosition,
-                    PhoneNumber = u.PhoneNumber,
-                    Website = u.Website
-                };
-            }
-        }
+        //public static Expression<Func<User, EditUserViewModel>> FromUser
+        //{
+        //    get
+        //    {
+        //        return u => new EditUserViewModel()
+        //        {
+        //            Id = u.Id,
+        //            UserName = u.UserName,
+        //            PasswordHash = u.PasswordHash,
+        //            Email = u.Email,
+        //            FirstName = u.FirstName,
+        //            SecondName = u.SecondName,
+        //            LastName = u.LastName,
+        //            Gender = u.Gender,
+        //            Age = u.Age,
+        //            Town = u.Town,
+        //            Country = u.Country,
+        //            EnterprisePosition = u.EnterprisePosition,
+        //            PhoneNumber = u.PhoneNumber,
+        //            Website = u.Website
+        //        };
+        //    }
+        //}
 
         [ScaffoldColumn(false)]
         public string Id { get; set; }
