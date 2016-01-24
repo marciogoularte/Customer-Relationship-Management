@@ -11,6 +11,7 @@
     using Services.Logic.Contracts.Marketing;
     using Services.Data.ViewModels.Marketing.Partners;
 
+    [Authorize]
     public class PrsController : Controller
     {
         private readonly IPrsServices prs;

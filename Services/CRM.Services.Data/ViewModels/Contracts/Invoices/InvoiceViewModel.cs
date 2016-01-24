@@ -44,9 +44,6 @@ namespace CRM.Services.Data.ViewModels.Contracts.Invoices
         [Required]
         public double Cps { get; set; }
 
-        [UIHint("TextAreaEditor")]
-        public string Comments { get; set; }
-
         [DisplayName("Payment")]
         [DataType(DataType.Date)]
         public DateTime CorrespondencePayment { get; set; }
@@ -56,6 +53,13 @@ namespace CRM.Services.Data.ViewModels.Contracts.Invoices
 
         [DisplayName("Fixed monthly fee")]
         public double FixedMonthlyFee { get; set; }
+
+        [Required]
+        [DisplayName("VAT")]
+        public bool Vat { get; set; }
+
+        [UIHint("TextAreaEditor")]
+        public string Comments { get; set; }
 
         [ScaffoldColumn(false)]
         public int? ClientContractId { get; set; }

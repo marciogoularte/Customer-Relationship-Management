@@ -1,4 +1,6 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Providers;
+﻿using System.Collections.Generic;
+using System.Web;
+using CRM.Services.Data.ViewModels.Contracts.Providers;
 using CRM.Services.Logic.Contracts.Contractors;
 
 namespace CRM.Web.Areas.Contractors.Controllers
@@ -45,12 +47,12 @@ namespace CRM.Web.Areas.Contractors.Controllers
                 return PartialView("_ProviderInformation", null);
             }
 
-            if (string.IsNullOrEmpty(provider.TypeId))
+            if (string.IsNullOrEmpty(provider.TypeOfCompany))
             {
                 return PartialView("_ProviderInformation", provider);
             }
 
-            var parsedTypeOfCompany = int.Parse(provider.TypeId);
+            var parsedTypeOfCompany = int.Parse(provider.TypeOfCompany);
             var typeOfCompany = this.providers.GetTypeOfCompany(parsedTypeOfCompany);
             ViewBag.TypeOfCompany = typeOfCompany;
 

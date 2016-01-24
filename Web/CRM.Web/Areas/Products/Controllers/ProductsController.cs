@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
 
+    [Authorize]
     public class ProductsController : Controller
     {
         public ActionResult Index()

@@ -26,7 +26,8 @@
 
         public string NameBulgarian { get; set; }
 
-        public string Type { get; set; }
+        [Required]
+        public string TypeOfCompany { get; set; }
 
         public string Uic { get; set; }
 
@@ -98,8 +99,10 @@
         [Required]
         public string DealerEmail { get; set; }
 
+        [Required]
         public bool WantToReceiveEpg { get; set; }
 
+        [Required]
         public bool WantToReceiveNews { get; set; }
 
         public virtual ICollection<Trd> Trds

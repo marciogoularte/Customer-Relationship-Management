@@ -1,0 +1,14 @@
+﻿@model int
+@{
+    ViewBag.Title = "FinishActivityProccess";
+}
+
+<h2>FinishActivityProccess</h2>
+
+@using (Html.BeginForm("FinishActivity", "UserActivities", new {activityId = Model}, FormMethod.Post, null))
+{
+    <input type="text" name="comments"/>
+    <input type="date" name="date"/>
+
+    <input type="submit" value="Finish"/>
+}

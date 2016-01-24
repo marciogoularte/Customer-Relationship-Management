@@ -147,10 +147,18 @@ namespace CRM.Services.Logic.Services.Contractors
 
         public ClientContractViewModel CreateClientContract(ClientContractViewModel contract, int currentClientId)
         {
+            var clientType = int.Parse(this.Data.Clients
+                .GetById(currentClientId)
+                .TypeOfCompany);
+
+            var type = this.Data.TypeOfCompanies
+                .GetById(clientType)
+                .Type;
+
             var newContract = new ClientContract
             {
                 StartDate = contract.StartDate,
-                TypeOfContract = contract.TypeOfContract,
+                TypeOfContract = type,
                 EndDate = contract.EndDate,
                 NoticePeriod = contract.NoticePeriod,
                 BillingStartDate = contract.BillingStartDate,
@@ -182,10 +190,18 @@ namespace CRM.Services.Logic.Services.Contractors
 
         public ProviderContractViewModel CreateProviderContract(ProviderContractViewModel contract, int currentProviderId)
         {
+            var providerType = int.Parse(this.Data.Providers
+                .GetById(currentProviderId)
+                .TypeOfCompany);
+
+            var type = this.Data.TypeOfCompanies
+                .GetById(providerType)
+                .Type;
+
             var newContract = new ProviderContract
             {
                 StartDate = contract.StartDate,
-                TypeOfContract = contract.TypeOfContract,
+                TypeOfContract = type,
                 EndDate = contract.EndDate,
                 NoticePeriod = contract.NoticePeriod,
                 BillingStartDate = contract.BillingStartDate,
@@ -366,7 +382,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 .Where(t => t.ClientId == contract.ClientId)
                 .ToList();
 
-            var clientTypeIf = int.Parse(client.TypeId);
+            var clientTypeIf = int.Parse(client.TypeOfCompany);
 
             var typeOfClientContract = this.Data.TypeOfCompanies
                 .All()

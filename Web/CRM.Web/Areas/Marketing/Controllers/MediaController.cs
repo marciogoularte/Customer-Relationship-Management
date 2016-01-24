@@ -11,6 +11,7 @@
     using Services.Logic.Contracts.Marketing;
     using Services.Data.ViewModels.Marketing.Partners;
 
+    [Authorize]
     public class MediaController : Controller
     {
         private readonly IMediaServices medias;

@@ -15,7 +15,6 @@
     .Name("grid-client-contracts")
     .Columns(columns =>
     {
-        columns.Bound(model => model.TypeOfContract).Width(150);
         columns.Bound(model => model.StartDate).Width(185);
         columns.Bound(model => model.EndDate).Width(32);
         columns.Bound(model => model.NoticePeriod).Width(32).Hidden(true);
@@ -40,13 +39,13 @@
     {
     toolBar.Template(@<text>
 
-        @(Html.Kendo().AutoComplete()
+        @*@(Html.Kendo().AutoComplete()
                 .Name("searchbox-clients-contracts")
                  .Placeholder("Type of contract... ")
                 .DataSource(datasource => datasource
                             .Read(read => read.Action("ClientsContractsNames", controllerName, null).Data("onAdditionalDataClientContracts")))
                 .Filter("contains")
-        )
+        )*@
         <a class="k-button k-button-icontext k-grid-add" href="/Users/Contracts/ReadClientsContracts?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
         <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
         <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>

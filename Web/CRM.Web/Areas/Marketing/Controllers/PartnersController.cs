@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
 
+    [Authorize]
     public class PartnersController : Controller
     {
         public ActionResult Index()

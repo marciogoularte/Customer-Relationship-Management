@@ -6,11 +6,11 @@
     using Services.Logic.Contracts.Administration;
 
     [Authorize(Roles = "Admin")]
-    public class ActivitiesController : BaseController
+    public class UserActivitiesController : BaseController
     {
         private readonly IActivitiesServices activities;
 
-        public ActivitiesController(IActivitiesServices activities)
+        public UserActivitiesController(IActivitiesServices activities)
         {
             this.activities = activities;
         }

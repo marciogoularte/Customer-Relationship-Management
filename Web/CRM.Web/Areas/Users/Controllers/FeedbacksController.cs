@@ -6,6 +6,7 @@
     using Services.Logic.Contracts.Users;
     using Services.Data.ViewModels.Users.Feedbacks;
 
+    [Authorize]
     public class FeedbacksController : Controller
     {
         private readonly IFeedbacksServices feedbacks;

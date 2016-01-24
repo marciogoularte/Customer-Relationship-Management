@@ -1,6 +1,7 @@
 ﻿@using CRM.Common.Extensions
 @using CRM.Services.Data.ViewModels.Contracts.Providers
-@model CRM.Services.Data.ViewModels.Contracts.Contracts.ClientContractViewModel
+@using CRM.Services.Data.ViewModels.Contracts.Contracts
+@model ClientContractViewModel
 
 @Html.ActionLink("Generate PDF", "GenerateContractTemplate", "Contracts", new { providerId= Model.ProviderId, contractId = Model.Id},new{@class="btn btn-default"})
 
@@ -108,7 +109,7 @@
                     </strong>
                 </td>
                 <td>
-                    @Model.Tier.GetDescription()
+                    @EnumExtensions.GetDescriptionOfEnum(Model.Tier)
                 </td>
             </tr>
             <tr>

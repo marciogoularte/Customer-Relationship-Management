@@ -13,7 +13,7 @@ namespace CRM.Services.Logic.Contracts.Contractors
 
         ClientViewModel ClientInformation(int clientId);
 
-        string GetTypeOfCompany(int typeId);
+        string GetTypeOfCompany(int TypeOfCompany);
 
         List<ClientViewModel> ReadClients(string searchboxClients);
 

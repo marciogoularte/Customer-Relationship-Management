@@ -9,6 +9,7 @@ namespace CRM.Web.Areas.Finance.Controllers
 
     using Services.Logic.Contracts.Finance;
 
+    [Authorize]
     public class ReportsController : Controller
     {
         private readonly IReportsServices reports;

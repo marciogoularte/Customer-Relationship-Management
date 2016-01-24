@@ -3,7 +3,6 @@
 namespace CRM.Services.Data.ViewModels.Users.Profile
 {
     using System;
-    using System.Linq.Expressions;
 
     using Kendo.Mvc.UI;
 

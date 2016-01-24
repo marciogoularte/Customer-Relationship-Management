@@ -25,9 +25,9 @@
         [Required(ErrorMessage = "Provider name is required")]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 40 chars")]
         public string Name { get; set; }
-
+        
         [Required(ErrorMessage = "Type is required")]
-        public string TypeId { get; set; }
+        public string TypeOfCompany { get; set; }
 
         public string Uic { get; set; }
 

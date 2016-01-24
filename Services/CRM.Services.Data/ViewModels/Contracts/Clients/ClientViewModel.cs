@@ -19,7 +19,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         //            Id = c.Id,
         //            Name = c.Name,
         //            NameBulgarian = c.NameBulgarian,
-        //            TypeId = c.Type,
+        //            TypeOfCompany = c.Type,
         //            Uic = c.Uic,
         //            Vat = c.Vat,
         //            ResidenceAndAddress = c.ResidenceAndAddress,
@@ -75,8 +75,8 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         [Required]
         [DisplayName("Type")]
         [UIHint("TypeOfCompanyEditor")]
-        public string TypeId { get; set; }
-        
+        public string TypeOfCompany { get; set; }
+
         [DisplayName("UIC")]
         [Required(ErrorMessage = "UIC is required")]
         public string Uic { get; set; }
@@ -191,6 +191,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         [DisplayName("Want to receive EPG")]
         public bool WantToReceiveEpg { get; set; }
 
+        [Required]
         [DisplayName("Want to receive Highlights / News")]
         public bool WantToReceiveNews { get; set; }
     }

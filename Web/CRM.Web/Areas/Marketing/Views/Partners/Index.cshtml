@@ -25,16 +25,16 @@
               {
                   tabstrip.Add().Text("Media")
                       .Selected(true)
-                      .LoadContentFrom(Url.Action("AllMedia", "Media", null));
+                      .LoadContentFrom("AllMedia", "Media", null);
 
                   tabstrip.Add().Text("Opertors")
-                      .LoadContentFrom(Url.Action("AllOperators", "Operators", null));
+                      .LoadContentFrom("AllOperators", "Operators", null);
 
                   tabstrip.Add().Text("PRs")
-                      .LoadContentFrom(Url.Action("AllPrs", "Prs", null));
+                      .LoadContentFrom("AllPrs", "Prs", null);
 
                   tabstrip.Add().Text("Others")
-                      .LoadContentFrom(Url.Action("AllMarketingPartners", "MarketingPartners", null));
+                      .LoadContentFrom("AllMarketingPartners", "MarketingPartners", null);
               })
         )
     </div>

@@ -16,13 +16,15 @@
 
         public double Cps { get; set; }
 
-        public string Comments { get; set; }
-
         public DateTime CorrespondencePayment { get; set; }
 
         public string AdditionalInformation { get; set; }
 
         public double FixedMonthlyFee { get; set; }
+
+        public bool Vat { get; set; }
+
+        public string Comments { get; set; }
 
         public int? ClientContractId { get; set; }
         

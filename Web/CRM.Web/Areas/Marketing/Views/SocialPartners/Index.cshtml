@@ -27,16 +27,16 @@
               {
                   tabstrip.Add().Text("Facebook")
                       .Selected(true)
-                      .LoadContentFrom(Url.Action("AllFacebookSocialPartners", controllerName, null));
+                      .LoadContentFrom("AllFacebookSocialPartners", controllerName, null);
 
                   tabstrip.Add().Text("Twitter")
-                      .LoadContentFrom(Url.Action("AllTwitterSocialPartners", controllerName, null));
+                      .LoadContentFrom("AllTwitterSocialPartners", controllerName, null);
 
                   tabstrip.Add().Text("Google+")
-                      .LoadContentFrom(Url.Action("AllGooglePlusSocialPartners", controllerName, null));
+                      .LoadContentFrom("AllGooglePlusSocialPartners", controllerName, null);
 
                   tabstrip.Add().Text("LinkedIn")
-                      .LoadContentFrom(Url.Action("AllLinkedInSocialPartners", controllerName, null));
+                      .LoadContentFrom("AllLinkedInSocialPartners", controllerName, null);
               })
         )
     </div>

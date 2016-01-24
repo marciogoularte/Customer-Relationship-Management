@@ -12,6 +12,7 @@
     using Services.Logic.Contracts.Marketing;
     using Services.Data.ViewModels.Marketing.Social;
 
+    [Authorize]
     public class SocialPartnersController : Controller
     {
         private readonly ISocialPartnersServices socialPartners;

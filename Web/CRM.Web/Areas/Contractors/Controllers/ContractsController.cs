@@ -17,6 +17,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
     using Web.Common.Base;
     using Services.Logic.Contracts.Users;
 
+    [Authorize]
     public class ContractsController : BaseController
     {
         private readonly IContractsServices contracts;

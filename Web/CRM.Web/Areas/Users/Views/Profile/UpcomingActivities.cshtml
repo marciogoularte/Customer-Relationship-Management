@@ -1,0 +1,27 @@
+﻿@*@using CRM.Services.Data.ViewModels.Users.Profile
+@model List<SchedulerTaskViewModel>
+
+@{
+    ViewBag.Title = "Upcoming Activities";
+}
+
+<h2>Upcoming Activities</h2>
+
+@if (Model != null)
+{
+    foreach (var activity in Model)
+    {
+        <div>Title: @activity.Title</div>
+        <div>Start: @activity.Start</div>
+        <div>End: @activity.End</div>
+        <div>Description: @activity.Description</div>
+        <div>IsAllDay: @activity.IsAllDay</div>
+        <br/>
+        <hr/>
+        <hr/>
+    }
+}
+else
+{
+    <h2>There are no upcoming activites!</h2>
+}*@

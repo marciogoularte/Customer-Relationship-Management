@@ -1,4 +1,5 @@
-﻿using CRM.Web.Common.Mappings;
+﻿using System.Web;
+using CRM.Web.Common.Mappings;
 
 namespace CRM.Services.Data.ViewModels.Contracts.Providers
 {
@@ -19,7 +20,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Providers
         //        {
         //            Id = p.Id,
         //            Name = p.Name,
-        //            TypeId = p.TypeId,
+        //            TypeOfCompany = p.TypeOfCompany,
         //            Uic = p.Uic,
         //            Vat = p.Vat,
         //            BankAccount = p.BankAccount,
@@ -49,7 +50,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Providers
         [UIHint("TypeOfCompanyEditor")]
         [Required(ErrorMessage = "Type is required")]
         [DisplayName("Type")]
-        public string TypeId { get; set; }
+        public string TypeOfCompany { get; set; }
 
         [Required]
         [DisplayName("UIC")]
@@ -100,6 +101,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Providers
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
 
+        [Required]
         [DisplayName("Contract Template")]
         [UIHint("ContractTemplateEditor")]
         public ContractTemplate ContractTemplate { get; set; }

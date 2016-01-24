@@ -337,12 +337,12 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("UpcomingDiscussions", "Discussions", new {area = "Contractors"})">
+                                    <a class="submenu" href="@Url.Action("UpcomingActivities", "UserActivities", new {area = "Users"})">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Upcoming activities</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Index", "Activities", new {area = "Administration"})">
+                                    <a class="submenu" href="@Url.Action("PreviousActivities", "UserActivities", new {area = "Users"})">
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Previous activities</span>
                                     </a>
                                 </li>
@@ -447,6 +447,11 @@
                                     <li>
                                         <a class="submenu" href="@Url.Action("Index", "Admin", new { area = "Administration" })">
                                             <i class="icon-align-justify"></i><span class="hidden-tablet"> Employees</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="submenu" href="@Url.Action("Index", "Activities", new {area = "Administration"})">
+                                            <i class="icon-align-justify"></i><span class="hidden-tablet"> Previous employees activities</span>
                                         </a>
                                     </li>
                                     <li>

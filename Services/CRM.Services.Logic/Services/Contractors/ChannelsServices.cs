@@ -71,23 +71,23 @@ namespace CRM.Services.Logic.Services.Contractors
                 Comments = channel.Comments
             };
 
-            if (string.IsNullOrEmpty(newChannel.EpgSource) || newChannel.EpgSource == "")
+            if (string.IsNullOrEmpty(newChannel.EpgSource) && string.IsNullOrEmpty(channel.EpgSource))
             {
                 newChannel.EpgSource = "#";
             }
-            if (string.IsNullOrEmpty(newChannel.Website) || newChannel.Website == "")
+            if (string.IsNullOrEmpty(newChannel.Website) && string.IsNullOrEmpty(channel.Website))
             {
                 newChannel.Website = "#";
             }
-            if (string.IsNullOrEmpty(newChannel.Presentation) || newChannel.Presentation == "")
+            if (string.IsNullOrEmpty(newChannel.Presentation) && string.IsNullOrEmpty(channel.Presentation))
             {
                 newChannel.Presentation = "#";
             }
-            if (string.IsNullOrEmpty(newChannel.ContractTemplate) || newChannel.ContractTemplate == "")
+            if (string.IsNullOrEmpty(newChannel.ContractTemplate) && string.IsNullOrEmpty(channel.ContractTemplate))
             {
                 newChannel.ContractTemplate = "#";
             }
-            if (string.IsNullOrEmpty(newChannel.LogoLink) || newChannel.LogoLink == "")
+            if (string.IsNullOrEmpty(newChannel.LogoLink) && string.IsNullOrEmpty(channel.LogoLink))
             {
                 newChannel.LogoLink = "#";
             }
@@ -142,7 +142,7 @@ namespace CRM.Services.Logic.Services.Contractors
             channelFromDb.SatelliteData = channel.SatelliteData;
             channelFromDb.Comments = channel.Comments;
 
-            if (string.IsNullOrEmpty(channel.EpgSource) || channel.EpgSource == "")
+            if (string.IsNullOrEmpty(channel.EpgSource) && string.IsNullOrEmpty(channelFromDb.EpgSource))
             {
                 channelFromDb.EpgSource = "#";
             }
@@ -151,7 +151,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 channelFromDb.EpgSource = channel.EpgSource;
             }
 
-            if (string.IsNullOrEmpty(channel.Website) || channel.Website == "")
+            if (string.IsNullOrEmpty(channel.Website) && string.IsNullOrEmpty(channelFromDb.Website))
             {
                 channelFromDb.Website = "#";
             }
@@ -160,7 +160,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 channelFromDb.Website = channel.Website;
             }
 
-            if (string.IsNullOrEmpty(channel.Presentation) || channel.Presentation == "")
+            if (string.IsNullOrEmpty(channel.Presentation) && string.IsNullOrEmpty(channelFromDb.Presentation))
             {
                 channelFromDb.Presentation = "#";
             }
@@ -169,7 +169,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 channelFromDb.Presentation = channel.Presentation;
             }
 
-            if (string.IsNullOrEmpty(channel.ContractTemplate) || channel.ContractTemplate == "")
+            if (string.IsNullOrEmpty(channel.ContractTemplate) && string.IsNullOrEmpty(channelFromDb.ContractTemplate))
             {
                 channelFromDb.ContractTemplate = "#";
             }
@@ -178,7 +178,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 channelFromDb.ContractTemplate = channel.ContractTemplate;
             }
 
-            if (string.IsNullOrEmpty(channel.LogoLink) || channel.LogoLink == "")
+            if (string.IsNullOrEmpty(channel.LogoLink) && string.IsNullOrEmpty(channel.LogoLink))
             {
                 channelFromDb.LogoLink = "#";
             }

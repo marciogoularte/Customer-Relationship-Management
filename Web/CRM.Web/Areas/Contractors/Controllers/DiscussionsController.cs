@@ -15,6 +15,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
     using Web.Controllers;
     using Services.Logic.Contracts.Users;
 
+    [Authorize]
     public class DiscussionsController : BaseController
     {
         private readonly IDiscussionsServices discussions;

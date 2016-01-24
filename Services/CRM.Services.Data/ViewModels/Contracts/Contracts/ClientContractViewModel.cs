@@ -46,8 +46,8 @@ namespace CRM.Services.Data.ViewModels.Contracts.Contracts
         [DataType(DataType.Date)]
         [DisplayName("Start date")]
         public DateTime StartDate { get; set; }
-
-        [Required]
+        
+        [ScaffoldColumn(false)]
         [DisplayName("Type of contract")]
         public string TypeOfContract { get; set; }
 
@@ -90,6 +90,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Contracts
         [ScaffoldColumn(false)]
         public int? ClientId { get; set; }
 
+        [Required]
         [DisplayName("Provider")]
         [UIHint("ContractProviderEditor")]
         public string ProviderId { get; set; }

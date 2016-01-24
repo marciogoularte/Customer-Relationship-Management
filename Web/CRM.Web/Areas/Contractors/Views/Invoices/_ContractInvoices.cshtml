@@ -18,9 +18,10 @@
         columns.Bound(model => model.To).Width(120);
         columns.Bound(model => model.MgSubs).Width(32);
         columns.Bound(model => model.Cps).Width(32);
-        columns.Bound(model => model.CorrespondencePayment).Width(32);
-        columns.Bound(model => model.AdditionalInformation).Width(32);
+        columns.Bound(model => model.CorrespondencePayment).Width(32).Hidden(true);
+        columns.Bound(model => model.AdditionalInformation).Width(32).Hidden(true);
         columns.Bound(model => model.FixedMonthlyFee).Width(32);
+        columns.Bound(model => model.Vat).Width(32).Hidden(true);
         columns.Bound(model => model.Comments).Width(275);
         columns.Command(command =>
         {

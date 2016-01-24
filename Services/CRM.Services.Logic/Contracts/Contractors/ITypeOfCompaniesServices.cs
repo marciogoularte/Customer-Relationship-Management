@@ -8,9 +8,9 @@ namespace CRM.Services.Logic.Contracts.Contractors
     {
         List<string> Index();
 
-        TypeOfCompanyViewModel TypeOfCompanyInformation(int typeOfCompanyId);
+        TypeOfCompanyViewModel TypeOfCompanyInformation(int TypeOfCompany);
 
-        TypeOfCompanyViewModel TypeOfCompanyDetails(int typeOfCompanyId);
+        TypeOfCompanyViewModel TypeOfCompanyDetails(int TypeOfCompany);
 
         List<TypeOfCompanyViewModel> ReadTypeOfCompanies(string searchboxTypeOfCompany);
 
@@ -20,6 +20,6 @@ namespace CRM.Services.Logic.Contracts.Contractors
 
         TypeOfCompanyViewModel DestroyTypeOfCompany(TypeOfCompanyViewModel typeOfCompany);
 
-        string GetTypeOfCompanyById(int typeOfCompanyId);
+        string GetTypeOfCompanyById(int TypeOfCompany);
     }
 }

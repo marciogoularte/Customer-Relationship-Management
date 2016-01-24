@@ -64,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -109,6 +110,7 @@
     <Compile Include="ViewModels\Contracts\Providers\ProviderViewModel.cs" />
     <Compile Include="ViewModels\Contracts\Trds\TrdViewModel.cs" />
     <Compile Include="ViewModels\Contracts\TypeOfCompanies\TypeOfCompanyViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserActivities\UserActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

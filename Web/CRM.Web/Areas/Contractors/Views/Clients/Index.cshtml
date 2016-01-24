@@ -14,7 +14,7 @@
     {
         columns.Bound(model => model.Name).ClientTemplate(Html.ActionLink("#=Name#", "ClientDetails", new { clientId = "#=id#" }).ToHtmlString()).Width(200);
         columns.Bound(model => model.NameBulgarian).ClientTemplate(Html.ActionLink("#=NameBulgarian#", "ClientDetails", new { clientId = "#=id#" }).ToHtmlString()).Width(200);
-        columns.Bound(model => model.TypeId).Hidden(true).Width(80);
+        columns.Bound(model => model.TypeOfCompany).Hidden(true).Width(80);
         columns.Bound(model => model.Uic).Hidden(true);
         columns.Bound(model => model.Vat).Hidden(true);
         columns.Bound(model => model.ResidenceAndAddress).Hidden(true);

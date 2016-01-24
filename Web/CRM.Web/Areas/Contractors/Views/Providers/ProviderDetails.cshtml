@@ -46,16 +46,16 @@
               {
                   tabstrip.Add().Text("Information")
                       .Selected(true)
-                      .LoadContentFrom(Url.Action("ProviderInformation", "Providers", new { providerId = Model }));
+                      .LoadContentFrom("ProviderInformation", "Providers", new { providerId = Model });
 
                   tabstrip.Add().Text("Channels")
-                      .LoadContentFrom(Url.Action("AllChannelsData", "Channels", new { providerId = Model }));
+                      .LoadContentFrom("AllChannelsData", "Channels", new { providerId = Model });
 
                   tabstrip.Add().Text("Contracts")
-                      .LoadContentFrom(Url.Action("AllProvidersContracts", "Contracts", new { providerId = Model }));
+                      .LoadContentFrom("AllProvidersContracts", "Contracts", new { providerId = Model });
 
                   tabstrip.Add().Text("Activities")
-                      .LoadContentFrom(Url.Action("AllProvidersDiscussions", "Discussions", new { providerId = Model }));
+                      .LoadContentFrom("AllProvidersDiscussions", "Discussions", new { providerId = Model });
               })
         )
     </div>

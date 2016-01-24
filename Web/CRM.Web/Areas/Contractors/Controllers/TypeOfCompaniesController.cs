@@ -32,17 +32,17 @@ namespace CRM.Web.Areas.Contractors.Controllers
         }
 
         [HttpGet]
-        public ActionResult TypeOfCompanyInformation(int typeOfCompanyId)
+        public ActionResult TypeOfCompanyInformation(int TypeOfCompany)
         {
-            var typeOfCompany = this.typeOfCompanies.TypeOfCompanyInformation(typeOfCompanyId);
+            var typeOfCompany = this.typeOfCompanies.TypeOfCompanyInformation(TypeOfCompany);
 
             return PartialView("_TypeOfCompanyInformation", typeOfCompany);
         }
 
         [HttpGet]
-        public ActionResult TypeOfCompanyDetails(int typeOfCompanyId)
+        public ActionResult TypeOfCompanyDetails(int TypeOfCompany)
         {
-            var typeOfCompany = this.typeOfCompanies.TypeOfCompanyDetails(typeOfCompanyId);
+            var typeOfCompany = this.typeOfCompanies.TypeOfCompanyDetails(TypeOfCompany);
 
             return View(typeOfCompany);
         }
@@ -97,9 +97,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { typeOfCompany }, JsonRequestBehavior.AllowGet);
         }
 
-        public string GetTypeOfCompanyById(int typeOfCompanyId)
+        public string GetTypeOfCompanyById(int TypeOfCompany)
         {
-            var typeOfCompany = this.typeOfCompanies.GetTypeOfCompanyById(typeOfCompanyId);
+            var typeOfCompany = this.typeOfCompanies.GetTypeOfCompanyById(TypeOfCompany);
 
             return typeOfCompany;
         }

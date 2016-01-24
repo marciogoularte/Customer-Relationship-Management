@@ -11,6 +11,7 @@
     using Services.Logic.Contracts.Finance;
     using Services.Data.ViewModels.Finance.Frz;
 
+    [Authorize]
     public class FrzsController : Controller
     {
         private readonly IFrzsServices frzs;

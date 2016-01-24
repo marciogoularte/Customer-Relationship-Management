@@ -1,6 +1,7 @@
 namespace CRM.Services.Logic.Contracts.Users
 {
     using System.Linq;
+    using System.Collections.Generic;
 
     using Base;
     using Data.ViewModels.Users.Profile;
@@ -17,5 +18,7 @@ namespace CRM.Services.Logic.Contracts.Users
         SchedulerTaskViewModel Create(SchedulerTaskViewModel task);
 
         SchedulerTaskViewModel Update(SchedulerTaskViewModel task);
+
+        //List<SchedulerTaskViewModel> UpcomingActivities(string userId);
     }
 }

@@ -54,29 +54,18 @@ namespace CRM.Services.Logic.Services.Contractors
                 .ProjectTo<ProviderViewModel>()
                 .FirstOrDefault(p => p.Id == providerId);
 
-            if (provider == null)
-            {
-                return null;
-            }
-
-            if (string.IsNullOrEmpty(provider.TypeId))
-            {
-                return provider;
-            }
-
             return provider;
         }
 
-        public string GetTypeOfCompany(int typeOfCompanyId)
+        public string GetTypeOfCompany(int typeId)
         {
             var typeOfCompany = this.Data.TypeOfCompanies
                 .All()
-                .Where(t => t.Id == typeOfCompanyId)
+                .Where(t => t.Id == typeId)
                 .Select(t => t.Type.ToString())
                 .FirstOrDefault();
 
             return typeOfCompany;
-
         }
 
         public List<ProviderViewModel> ReadProviders(string searchboxProviders)
@@ -107,7 +96,7 @@ namespace CRM.Services.Logic.Services.Contractors
             var newProvider = new Provider()
             {
                 Name = provider.Name,
-                TypeId = provider.TypeId,
+                TypeOfCompany = provider.TypeOfCompany,
                 Uic = provider.Uic,
                 Vat = provider.Vat,
                 BankAccount = provider.BankAccount,
@@ -127,7 +116,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 Discussions = new List<Discussion>()
             };
 
-            if (string.IsNullOrEmpty(provider.LogoLink) || provider.LogoLink == "")
+            if (string.IsNullOrEmpty(provider.LogoLink) && string.IsNullOrEmpty(newProvider.LogoLink))
             {
                 newProvider.LogoLink = "#";
             }
@@ -150,7 +139,7 @@ namespace CRM.Services.Logic.Services.Contractors
                    .FirstOrDefault(p => p.Id == provider.Id);
 
             providerFromDb.Name = provider.Name;
-            providerFromDb.TypeId = provider.TypeId;
+            providerFromDb.TypeOfCompany = provider.TypeOfCompany;
             providerFromDb.Uic = provider.Uic;
             providerFromDb.Vat = provider.Vat;
             providerFromDb.BankAccount = provider.BankAccount;
@@ -167,7 +156,7 @@ namespace CRM.Services.Logic.Services.Contractors
             providerFromDb.Comments = provider.Comments;
             providerFromDb.ContractTemplate = provider.ContractTemplate;
 
-            if (string.IsNullOrEmpty(provider.LogoLink) || provider.LogoLink == "")
+            if (string.IsNullOrEmpty(provider.LogoLink) && string.IsNullOrEmpty(provider.LogoLink))
             {
                 providerFromDb.LogoLink = "#";
             }

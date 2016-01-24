@@ -14,6 +14,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
     using Web.Controllers;
     using Services.Logic.Contracts.Users;
 
+    [Authorize]
     public class TrdsController : BaseController
     {
         private readonly ITrdsServices trds;

@@ -41,6 +41,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Discussions
         [DisplayName("Subject of activity")]
         public string SubjectOfDiscussion { get; set; }
 
+        [Required]
         [UIHint("TextAreaEditor")]
         public string Summary { get; set; }
 
@@ -58,6 +59,7 @@ namespace CRM.Services.Data.ViewModels.Contracts.Discussions
         [DisplayName("Next activity (type)")]
         public DiscussionType NextDiscussionType { get; set; }
 
+        [Required]
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
 

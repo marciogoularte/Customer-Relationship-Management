@@ -97,7 +97,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 Name = client.Name,
                 NameBulgarian = client.NameBulgarian,
-                Type = client.TypeId,
+                TypeOfCompany = client.TypeOfCompany,
                 Uic = client.Uic,
                 Vat = client.Vat,
                 ResidenceAndAddress = client.ResidenceAndAddress,
@@ -151,7 +151,7 @@ namespace CRM.Services.Logic.Services.Contractors
 
             clientFromDb.Name = client.Name;
             clientFromDb.NameBulgarian = client.NameBulgarian;
-            clientFromDb.Type = client.TypeId;
+            clientFromDb.TypeOfCompany = client.TypeOfCompany;
             clientFromDb.Uic = client.Uic;
             clientFromDb.Vat = client.Vat;
             clientFromDb.ResidenceAndAddress = client.ResidenceAndAddress;

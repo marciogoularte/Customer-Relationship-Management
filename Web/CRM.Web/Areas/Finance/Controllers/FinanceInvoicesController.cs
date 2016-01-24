@@ -11,6 +11,7 @@
     using Services.Logic.Contracts.Finance;
     using Services.Data.ViewModels.Finance.FinanceInvoice;
 
+    [Authorize]
     public class FinanceInvoicesController : Controller
     {
         private readonly IFinanceInvoicingServices financeInvoices;

@@ -78,5 +78,13 @@
 
             return Json(new[] { task }.ToDataSourceResult(request, ModelState));
         }
+
+        //public ActionResult UpcomingActivities()
+        //{
+        //    var loggedUserId = this.User.Identity.GetUserId();
+        //    var upcomingActivities = this.profile.UpcomingActivities(loggedUserId);
+
+        //    return View(upcomingActivities);
+        //}
     }
 }

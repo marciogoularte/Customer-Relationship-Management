@@ -28,10 +28,10 @@
               {
                   tabstrip.Add().Text("Information")
                       .Selected(true)
-                      .LoadContentFrom(Url.Action("CampaignInformation", "Campaigns", new { campaignId = Model }));
+                      .LoadContentFrom("CampaignInformation", "Campaigns", new { campaignId = Model });
 
                   tabstrip.Add().Text("Partners")
-                      .LoadContentFrom(Url.Action("CampaignPartners", "Campaigns", new { campaignId = Model }));
+                      .LoadContentFrom("CampaignPartners", "Campaigns", new { campaignId = Model });
               })
         )
     </div>

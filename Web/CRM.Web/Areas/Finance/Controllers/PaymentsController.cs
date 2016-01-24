@@ -11,6 +11,7 @@
     using Services.Logic.Contracts.Finance;
     using Services.Data.ViewModels.Finance.Payments;
 
+    [Authorize]
     public class PaymentsController : Controller
     {
         private readonly IPaymentsServices payments;

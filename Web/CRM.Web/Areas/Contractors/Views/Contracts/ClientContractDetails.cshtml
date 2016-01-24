@@ -48,13 +48,13 @@
               {
                   tabstrip.Add().Text("Information")
                       .Selected(true)
-                      .LoadContentFrom(Url.Action("ClientContractInformation", "Contracts", new { contractId = Model }));
+                      .LoadContentFrom("ClientContractInformation", "Contracts", new { contractId = Model });
 
                   tabstrip.Add().Text("Channels")
-                      .LoadContentFrom(Url.Action("AllClientContractChannels", "Contracts", new { clientContractId = Model }));
+                      .LoadContentFrom("AllClientContractChannels", "Contracts", new { clientContractId = Model });
 
                   tabstrip.Add().Text("Invoicing")
-                      .LoadContentFrom(Url.Action("AllContractInvoices", "Invoices", new { contractId = Model }));
+                      .LoadContentFrom("AllContractInvoices", "Invoices", new { contractId = Model });
               })
         )
     </div>

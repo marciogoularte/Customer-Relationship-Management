@@ -11,6 +11,7 @@
     using Services.Logic.Contracts.Marketing;
     using Services.Data.ViewModels.Marketing.Partners;
 
+    [Authorize]
     public class OperatorsController : Controller
     {
         private readonly IOperatorsServices operators;

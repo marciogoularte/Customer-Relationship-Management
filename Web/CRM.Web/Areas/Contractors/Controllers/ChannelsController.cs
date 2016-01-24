@@ -15,6 +15,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
     using Web.Controllers;
     using Services.Logic.Contracts.Users;
 
+    [Authorize]
     public class ChannelsController : BaseController
     {
         private readonly IChannelsServices channels;

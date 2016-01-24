@@ -65,6 +65,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 CorrespondencePayment = invoice.CorrespondencePayment,
                 AdditionalInformation = invoice.AdditionalInformation,
                 FixedMonthlyFee = invoice.FixedMonthlyFee,
+                Vat = invoice.Vat,
                 ClientContractId = contractId,
                 Comments = invoice.Comments
             };
@@ -96,10 +97,11 @@ namespace CRM.Services.Logic.Services.Contractors
             invoiceFromDb.To = invoice.To;
             invoiceFromDb.MgSubs = invoice.MgSubs;
             invoiceFromDb.Cps = invoice.Cps;
-            invoiceFromDb.Comments = invoice.Comments + '\n';
+            invoiceFromDb.Comments = invoice.Comments;
             invoiceFromDb.CorrespondencePayment = invoice.CorrespondencePayment;
             invoiceFromDb.AdditionalInformation = invoice.AdditionalInformation;
             invoiceFromDb.FixedMonthlyFee = invoice.FixedMonthlyFee;
+            invoiceFromDb.Vat = invoice.Vat;
 
             this.Data.SaveChanges();
             

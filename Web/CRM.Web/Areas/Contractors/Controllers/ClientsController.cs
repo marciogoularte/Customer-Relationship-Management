@@ -45,12 +45,12 @@ namespace CRM.Web.Areas.Contractors.Controllers
                 return PartialView("_ClientInformation", null);
             }
 
-            if (string.IsNullOrEmpty(client.TypeId))
+            if (string.IsNullOrEmpty(client.TypeOfCompany))
             {
                 return PartialView("_ClientInformation", client);
             }
 
-            var parsedTypeOfCompany = int.Parse(client.TypeId);
+            var parsedTypeOfCompany = int.Parse(client.TypeOfCompany);
             var typeOfCompany = clients.GetTypeOfCompany(parsedTypeOfCompany);
             ViewBag.TypeOfCompany = typeOfCompany;
 

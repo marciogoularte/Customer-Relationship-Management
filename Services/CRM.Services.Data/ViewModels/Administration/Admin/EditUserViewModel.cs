@@ -42,6 +42,7 @@
         [StringLength(35, MinimumLength = 2, ErrorMessage = "Username length should be between 2 and 35 chars")]
         public string UserName { get; set; }
 
+        [Required]
         public string PasswordHash { get; set; }
 
         [DisplayName("Email")]

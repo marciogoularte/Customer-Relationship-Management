@@ -27,22 +27,22 @@ namespace CRM.Services.Logic.Services.Contractors
             return types;
         }
 
-        public TypeOfCompanyViewModel TypeOfCompanyInformation(int typeOfCompanyId)
+        public TypeOfCompanyViewModel TypeOfCompanyInformation(int TypeOfCompany)
         {
             var typeOfCompany = this.Data.TypeOfCompanies
                 .All()
                 .ProjectTo<TypeOfCompanyViewModel>()
-                .FirstOrDefault(p => p.Id == typeOfCompanyId);
+                .FirstOrDefault(p => p.Id == TypeOfCompany);
 
             return typeOfCompany;
         }
 
-        public TypeOfCompanyViewModel TypeOfCompanyDetails(int typeOfCompanyId)
+        public TypeOfCompanyViewModel TypeOfCompanyDetails(int TypeOfCompany)
         {
             var typeOfCompany = this.Data.TypeOfCompanies
                 .All()
                 .ProjectTo<TypeOfCompanyViewModel>()
-                .FirstOrDefault(t => t.Id == typeOfCompanyId);
+                .FirstOrDefault(t => t.Id == TypeOfCompany);
 
             return typeOfCompany;
         }
@@ -117,11 +117,11 @@ namespace CRM.Services.Logic.Services.Contractors
             return typeOfCompany;
         }
 
-        public string GetTypeOfCompanyById(int typeOfCompanyId)
+        public string GetTypeOfCompanyById(int TypeOfCompany)
         {
             var typeOfCompany = this.Data.TypeOfCompanies
                 .All()
-                .Where(t => t.Id == typeOfCompanyId)
+                .Where(t => t.Id == TypeOfCompany)
                 .Select(t => t.Type.ToString())
                 .FirstOrDefault();
 

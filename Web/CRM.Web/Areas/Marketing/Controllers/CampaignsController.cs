@@ -11,6 +11,7 @@
     using Services.Logic.Contracts.Marketing;
     using Services.Data.ViewModels.Marketing.Campaigns;
 
+    [Authorize]
     public class CampaignsController : Controller
     {
         private readonly ICampaignsServices campaigns;

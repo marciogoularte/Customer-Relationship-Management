@@ -120,7 +120,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 NextDiscussionNote = discussion.NextDiscussionNote,
                 NextDiscussionType = discussion.NextDiscussionType,
                 UserId = loggedUserId,
-                Comments = discussion.Comments
+                Comments = discussion.Comments,
+                IsFinished = false
             };
 
             if (currentClientId != null)

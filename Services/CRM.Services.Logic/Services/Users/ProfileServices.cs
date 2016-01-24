@@ -1,8 +1,9 @@
-﻿using AutoMapper.QueryableExtensions;
-
-namespace CRM.Services.Logic.Services.Users
+﻿namespace CRM.Services.Logic.Services.Users
 {
     using System.Linq;
+    using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
 
     using CRM.Data;
     using CRM.Data.Models;
@@ -128,5 +129,18 @@ namespace CRM.Services.Logic.Services.Users
 
             return task;
         }
+
+        //public List<SchedulerTaskViewModel> UpcomingActivities(string userId)
+        //{
+        //    var activities = this.Data.SchedulerTasks
+        //        .All()
+        //        .Where(t => 
+        //        (t.UserId == userId)
+        //        && (t.IsFinished == false))
+        //        .ProjectTo<SchedulerTaskViewModel>()
+        //        .ToList();
+
+        //    return activities;
+        //}
     }
 }

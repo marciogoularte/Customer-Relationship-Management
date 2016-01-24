@@ -1,0 +1,48 @@
+﻿@using CRM.Services.Data.ViewModels.Users.UserActivities
+@model List<UserActivity>
+
+@{
+
+    if (Model != null && Model.FirstOrDefault() != null && !Model.FirstOrDefault().IsFinished)
+    {
+        ViewBag.Title = "Upcoming Activities";
+    }
+    else
+    {
+        ViewBag.Title = "Previous Activities";
+    }
+}
+
+@if (Model != null && Model.Any())
+{
+    if (Model.FirstOrDefault() != null && Model.FirstOrDefault().IsFinished)
+    {
+        <h2>Previous Activities</h2>
+    }
+    else
+    {
+        <h2>Upcoming Activities</h2>
+    }
+
+    <ul>
+        @foreach (var activity in Model)
+        {
+            <li>
+                <span>Date: </span> @activity.Date
+                <span>Subject: </span> @activity.SubjectOfDiscussion
+                <span>Summary: </span> @activity.Summary
+                <span>Type: </span> @activity.Type
+
+                @if (!activity.IsFinished)
+                {
+                    @Html.ActionLink("Finish", "FinishActivityProccess", "UserActivities", new { activityId = activity.Id }, new { @class = "btn btn-primary" })
+                }
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <h2>There aren't any activities yet!</h2>
+}
+

@@ -82,6 +82,7 @@
     <Compile Include="Contracts\Contractors\IProvidersServices.cs" />
     <Compile Include="Contracts\Contractors\ITrdsServices.cs" />
     <Compile Include="Contracts\Contractors\ITypeOfCompaniesServices.cs" />
+    <Compile Include="Contracts\Users\IUserActivitiesServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Administration\ActivitiesServices.cs" />
     <Compile Include="Services\Administration\AdminServices.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Services\Contractors\ProvidersServices.cs" />
     <Compile Include="Services\Contractors\TrdsServices.cs" />
     <Compile Include="Services\Contractors\TypeOfCompaniesServices.cs" />
+    <Compile Include="Services\Users\UserActivitiesServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\CRM.Data.Contracts\CRM.Data.Contracts.csproj">
