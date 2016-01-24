@@ -113,6 +113,20 @@ namespace CRM.Services.Logic.Services.Marketing
             operatorFromDb.Email = givenOperator.Email;
             operatorFromDb.Media = givenOperator.Media;
 
+            var client = this.Data.Clients
+                .All()
+                .FirstOrDefault(c =>
+                    (c.Marketing == givenOperator.Name) &&
+                    (c.MarketingEmail == givenOperator.Email) &&
+                    (c.MarketingPhone == givenOperator.PhoneNumber));
+
+            if (client != null)
+            {
+                client.Marketing = givenOperator.Name;
+                client.MarketingEmail = givenOperator.Email;
+                client.MarketingPhone = givenOperator.PhoneNumber;
+            }
+
             this.Data.SaveChanges();
 
             return givenOperator;

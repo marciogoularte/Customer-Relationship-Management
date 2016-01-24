@@ -1,15 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper.QueryableExtensions;
-using CRM.Data;
-using CRM.Data.Models;
-using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Contracts;
-using CRM.Services.Data.ViewModels.Contracts.TypeOfCompanies;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Services.Logic.Services.Contractors
+﻿namespace CRM.Services.Logic.Services.Contractors
 {
+    using System.Linq;
+    using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
+
+    using CRM.Data;
+    using CRM.Data.Models;
+    using Contracts.Contractors;
+    using CRM.Data.Models.Marketing;
+    using Data.ViewModels.Contracts.Clients;
+    using Data.ViewModels.Contracts.Contracts;
+    using Data.ViewModels.Contracts.TypeOfCompanies;
+    
     public class ClientsServices : IClientsServices
     {
         private ICRMData Data { get; set; }
@@ -136,8 +139,17 @@ namespace CRM.Services.Logic.Services.Contractors
                 WantToReceiveNews = client.WantToReceiveNews
             };
 
+            var marketingOperator = new Operator()
+            {
+                Name = client.Marketing,
+                PhoneNumber = client.MarketingPhone,
+                Email = client.MarketingEmail
+            };
+
+            this.Data.Operators.Add(marketingOperator);
             this.Data.Clients.Add(newClient);
-            this.Data.Clients.SaveChanges();
+
+            this.Data.SaveChanges();
 
             client.Id = newClient.Id;
 
