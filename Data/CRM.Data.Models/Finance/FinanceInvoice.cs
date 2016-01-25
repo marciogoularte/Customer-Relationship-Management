@@ -14,6 +14,8 @@
 
         public string Receiver { get; set; }
 
+        public string Preview { get; set; }
+
         public long SumWithoutDdS { get; set; }
 
         public long SumWithDds { get; set; }

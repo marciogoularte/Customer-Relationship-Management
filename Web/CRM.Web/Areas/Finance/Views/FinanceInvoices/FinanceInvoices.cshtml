@@ -18,6 +18,7 @@
         columns.Bound(model => model.NumberOfInvoice);
         columns.Bound(model => model.Date);
         columns.Bound(model => model.Receiver);
+        columns.Bound(model => model.Preview).Hidden(true);
         columns.Bound(model => model.SumWithoutDdS);
         columns.Bound(model => model.SumWithDds);
         columns.Command(command =>

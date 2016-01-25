@@ -22,6 +22,9 @@ namespace CRM.Services.Data.ViewModels.Finance.FinanceInvoice
 
         public string Receiver { get; set; }
 
+        [Url]
+        public string Preview { get; set; }
+
         [DisplayName("Sum without DDS")]
         public long SumWithoutDdS { get; set; }
 

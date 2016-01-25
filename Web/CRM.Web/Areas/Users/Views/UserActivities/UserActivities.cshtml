@@ -33,9 +33,14 @@
                 <span>Summary: </span> @activity.Summary
                 <span>Type: </span> @activity.Type
 
-                @if (!activity.IsFinished)
+                @if (!activity.IsFinished && !activity.IsTask)
                 {
                     @Html.ActionLink("Finish", "FinishActivityProccess", "UserActivities", new { activityId = activity.Id }, new { @class = "btn btn-primary" })
+                }
+                else if (!activity.IsFinished && activity.IsTask)
+                {
+                    <span>(this is personal scheduler task)</span>
+                     @Html.ActionLink("Finish", "FinishTask", "UserActivities", new { taskId = activity.Id }, new { @class = "btn btn-primary" })
                 }
             </li>
         }

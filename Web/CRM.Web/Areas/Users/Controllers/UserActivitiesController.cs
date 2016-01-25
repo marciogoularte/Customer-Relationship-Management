@@ -45,9 +45,18 @@
             return View(activityId);
         }
 
-        public ActionResult FinishActivity(int activityId, string comments, string date)
+        public ActionResult FinishActivity(string activityId, string comments, string date)
         {
-            this.userActivities.FinishActivity(activityId, comments, date);
+            var activityIdAsInt = int.Parse(activityId);
+            this.userActivities.FinishActivity(activityIdAsInt, comments, date);
+
+            return RedirectToAction("PreviousActivities");
+        }
+
+        public ActionResult FinishTask(string taskId)
+        {
+            var taskIdAsInt = int.Parse(taskId);
+            this.userActivities.FinishTask(taskIdAsInt);
 
             return RedirectToAction("PreviousActivities");
         }

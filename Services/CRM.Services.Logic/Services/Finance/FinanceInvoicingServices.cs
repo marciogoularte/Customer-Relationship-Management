@@ -84,6 +84,7 @@ namespace CRM.Services.Logic.Services.Finance
                 NumberOfInvoice = givenFinanceInvoice.NumberOfInvoice,
                 Date = givenFinanceInvoice.Date,
                 Receiver = givenFinanceInvoice.Receiver,
+                Preview = givenFinanceInvoice.Preview,
                 SumWithoutDdS = givenFinanceInvoice.SumWithoutDdS,
                 SumWithDds = givenFinanceInvoice.SumWithDds
             };
@@ -110,6 +111,7 @@ namespace CRM.Services.Logic.Services.Finance
             invoiceFromDb.NumberOfInvoice = givenFinanceInvoice.NumberOfInvoice;
             invoiceFromDb.Date = givenFinanceInvoice.Date;
             invoiceFromDb.Receiver = givenFinanceInvoice.Receiver;
+            invoiceFromDb.Preview = givenFinanceInvoice.Preview;
             invoiceFromDb.SumWithoutDdS = givenFinanceInvoice.SumWithoutDdS;
             invoiceFromDb.SumWithDds = givenFinanceInvoice.SumWithDds;
 

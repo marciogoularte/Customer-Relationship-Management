@@ -105,6 +105,7 @@
                 Vat = client.Vat,
                 ResidenceAndAddress = client.ResidenceAndAddress,
                 ResidenceAndAddressInBulgarian = client.ResidenceAndAddressInBulgarian,
+                Region = client.Region,
                 NetworkPage = client.NetworkPage,
                 ContactPerson = client.ContactPerson,
                 PhoneNumber = client.PhoneNumber,
@@ -168,6 +169,7 @@
             clientFromDb.Vat = client.Vat;
             clientFromDb.ResidenceAndAddress = client.ResidenceAndAddress;
             clientFromDb.ResidenceAndAddressInBulgarian = client.ResidenceAndAddressInBulgarian;
+            clientFromDb.Region = client.Region;
             clientFromDb.NetworkPage = client.NetworkPage;
             clientFromDb.ContactPerson = client.ContactPerson;
             clientFromDb.PhoneNumber = client.PhoneNumber;

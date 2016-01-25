@@ -30,5 +30,7 @@
         public virtual Provider Provider { get; set; }
 
         public bool IsFinished { get; set; }
+
+        public bool IsTask { get; set; }
     }
 }

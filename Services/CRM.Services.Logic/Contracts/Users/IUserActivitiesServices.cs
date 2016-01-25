@@ -12,5 +12,7 @@
         List<UserActivity> GetUpcomingActivities(string userId);
 
         void FinishActivity(int activityId, string comments, string date);
+
+        void FinishTask(int taskId);
     }
 }

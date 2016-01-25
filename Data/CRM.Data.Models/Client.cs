@@ -37,6 +37,8 @@
 
         public string ResidenceAndAddressInBulgarian { get; set; }
 
+        public string Region { get; set; }
+
         public string NetworkPage { get; set; }
 
         public string ContactPerson { get; set; }

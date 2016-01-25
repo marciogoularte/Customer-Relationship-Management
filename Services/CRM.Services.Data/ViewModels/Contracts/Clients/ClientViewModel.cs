@@ -94,6 +94,9 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         public string ResidenceAndAddressInBulgarian { get; set; }
 
         [Required]
+        public string Region { get; set; }
+
+        [Required]
         [DisplayName("Network page")]
         public string NetworkPage { get; set; }
 

@@ -138,6 +138,28 @@ namespace CRM.Services.Logic.Services.Contractors
             }
 
             this.Data.Discussions.Add(newDiscussion);
+
+            var user = this.Data.Users
+                .GetById(loggedUserId);
+
+            var schedulerTask = new SchedulerTask()
+            {
+                Title = discussion.SubjectOfDiscussion,
+                Start = discussion.Date,
+                End = discussion.Date,
+                Description = discussion.Summary,
+                IsAllDay = true,
+                StartTimezone = null,
+                EndTimezone = null,
+                RecurrenceRule = null,
+                RecurrenceException = null,
+                RecurrenceId = null,
+                UserId = loggedUserId,
+                IsFinished = false
+            };
+
+            user.SchedulerTasks.Add(schedulerTask);
+
             this.Data.SaveChanges();
 
             discussion.Id = newDiscussion.Id;

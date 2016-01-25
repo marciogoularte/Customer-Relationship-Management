@@ -1,7 +1,6 @@
 ﻿namespace CRM.Services.Logic.Services.Users
 {
     using System.Linq;
-    using System.Collections.Generic;
 
     using AutoMapper.QueryableExtensions;
 
