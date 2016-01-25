@@ -44,6 +44,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(readTrds.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateTrd([DataSourceRequest]  DataSourceRequest request, TrdViewModel trd, string clientIdString)
         {
             if (trd == null || !ModelState.IsValid)
@@ -69,6 +70,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return View(trd);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateTrd([DataSourceRequest] DataSourceRequest request, TrdViewModel trd)
         {
             if (trd == null || !ModelState.IsValid)
@@ -84,6 +86,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { trd }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyTrd([DataSourceRequest] DataSourceRequest request, TrdViewModel trd)
         {
             var deletedTrd = this.trds.DestroyTrd(trd);

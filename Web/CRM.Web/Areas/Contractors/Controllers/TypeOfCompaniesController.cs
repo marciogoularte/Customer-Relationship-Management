@@ -54,6 +54,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(readTypeOfCompanies.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateTypeOfCompany([DataSourceRequest]  DataSourceRequest request, TypeOfCompanyViewModel typeOfCompany)
         {
             if (typeOfCompany == null || !ModelState.IsValid)
@@ -72,6 +73,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { typeOfCompany }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateTypeOfCompany([DataSourceRequest] DataSourceRequest request, TypeOfCompanyViewModel typeOfCompany)
         {
             if (typeOfCompany == null || !ModelState.IsValid)
@@ -87,6 +89,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { typeOfCompany }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyTypeOfCompany([DataSourceRequest] DataSourceRequest request, TypeOfCompanyViewModel typeOfCompany)
         {
             var deletedTypeOfCompany = this.typeOfCompanies.DestroyTypeOfCompany(typeOfCompany);

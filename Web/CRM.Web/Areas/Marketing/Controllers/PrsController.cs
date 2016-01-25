@@ -49,6 +49,7 @@
             return Json(readPrs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreatePr([DataSourceRequest]  DataSourceRequest request, PrViewModel prModel)
         {
             if (prModel == null || !ModelState.IsValid)
@@ -66,6 +67,7 @@
             return Json(new[] { prModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdatePr([DataSourceRequest] DataSourceRequest request, PrViewModel prModel)
         {
             if (prModel == null || !ModelState.IsValid)
@@ -81,6 +83,7 @@
             return Json((new[] { prModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyPr([DataSourceRequest] DataSourceRequest request, PrViewModel prModel)
         {
             var deletedPr = prs.DestroyPr(prModel);

@@ -28,8 +28,11 @@
                 .Name("searchbox-type-of-companies")
                 .Placeholder("Type of company... ")
                 .BindTo(Model)
-            )
-            <a class="k-button k-button-icontext k-grid-add" href="/Users/TypeOfCompanies/ReadTypeOfCompanies?grid-type-of-companies-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+                  )
+@if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+{
+    <a class="k-button k-button-icontext k-grid-add" href="/Users/TypeOfCompanies/ReadTypeOfCompanies?grid-type-of-companies-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+}
             <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
             <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
@@ -65,15 +68,16 @@
                                                     })
                                                     .DataSource(data =>
                                                     {
-                                                        data.Ajax()
-                                                            .Model(model => model.Id(c => c.Id))
-                                                            .PageSize(10)
-                                                            .ServerOperation(true)
-                                                            .Events(ev => ev.Error("errorAlert"))
-                                                            .Read(read => read.Action("ReadTypeOfCompanies", controllerName).Data("addSearchTypeOfCompanies"))
-                                                            .Create(create => create.Action("CreateTypeOfCompany", controllerName))
-                                                            .Update(update => update.Action("UpdateTypeOfCompany", controllerName))
-                                                            .Destroy(destroy => destroy.Action("DestroyTypeOfCompany", controllerName));
+                                                            data.Ajax()
+                                                                    .Model(model => model.Id(c => c.Id))
+                                                                    .PageSize(10)
+                                                                    .ServerOperation(true)
+                                                                    .Events(ev => ev.Error("errorAlert"))
+                                                                    .Read(read => read.Action("ReadTypeOfCompanies", controllerName).Data("addSearchTypeOfCompanies"))
+                                                                    .Create(create => create.Action("CreateTypeOfCompany", controllerName))
+                                                                    .Update(update => update.Action("UpdateTypeOfCompany", controllerName))
+                                                                    .Destroy(destroy => destroy.Action("DestroyTypeOfCompany", controllerName));
+                                                 
                                                     }))
 <div id="selected">
 </div>

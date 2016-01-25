@@ -139,6 +139,7 @@
             return Json(readSocialPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateFacebookSocialPartner([DataSourceRequest]  DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -157,6 +158,7 @@
             return Json(new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateTwitterSocialPartner([DataSourceRequest]  DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -175,6 +177,7 @@
             return Json(new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateGooglePlusSocialPartner([DataSourceRequest]  DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -193,6 +196,7 @@
             return Json(new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateLinkedInSocialPartner([DataSourceRequest]  DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -211,6 +215,7 @@
             return Json(new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateFacebookSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -227,6 +232,7 @@
             return Json((new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateTwitterSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -243,6 +249,7 @@
             return Json((new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateGooglePlusSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -259,6 +266,7 @@
             return Json((new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateLinkedInSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             if (socialPartnerModel == null || !ModelState.IsValid)
@@ -275,6 +283,7 @@
             return Json((new[] { socialPartnerModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyFacebookSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             socialPartnerModel.SocialSystem = SocialSystemType.Facebook;
@@ -286,6 +295,7 @@
             return Json(new[] { socialPartnerModel }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyTwitterSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             socialPartnerModel.SocialSystem = SocialSystemType.Twitter;
@@ -297,6 +307,7 @@
             return Json(new[] { socialPartnerModel }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyGooglePlusSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             socialPartnerModel.SocialSystem = SocialSystemType.GooglePlus;
@@ -308,6 +319,7 @@
             return Json(new[] { socialPartnerModel }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyLinkedInSocialPartner([DataSourceRequest] DataSourceRequest request, SocialPartnerViewModel socialPartnerModel)
         {
             socialPartnerModel.SocialSystem = SocialSystemType.LinkedIn;

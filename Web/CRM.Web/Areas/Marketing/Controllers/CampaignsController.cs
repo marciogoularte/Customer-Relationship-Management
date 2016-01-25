@@ -53,6 +53,7 @@
             return Json(readCampaigns.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateCampaign([DataSourceRequest]  DataSourceRequest request, CampaignViewModel campaign)
         {
             if (!ModelState.IsValid)
@@ -76,6 +77,7 @@
             return PartialView(campaign);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateCampaign([DataSourceRequest] DataSourceRequest request, CampaignViewModel campaign)
         {
             var updatedCompaign = this.campaigns.UpdateCampaign(campaign);
@@ -86,6 +88,7 @@
             return Json((new[] { campaign }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyCampaign([DataSourceRequest] DataSourceRequest request, CampaignViewModel campaign)
         {
             var deletedCampaign = this.campaigns.DestroyCampaign(campaign);
@@ -96,11 +99,13 @@
             return Json(new[] { campaign }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public void AddOrRemoveProviderFromCampaign(int campaignId, int providerId)
         {
             this.campaigns.AddOrRemoveProviderFromCampaign(campaignId, providerId);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public void AddOrRemoveClientFromCampaign(int campaignId, int clientId)
         {
             this.campaigns.AddOrRemoveClientFromCampaign(campaignId, clientId);

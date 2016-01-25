@@ -94,6 +94,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(providerContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateClientContract([DataSourceRequest]  DataSourceRequest request, ClientContractViewModel contract, int currentClientId)
         {
             if (contract == null || !ModelState.IsValid)
@@ -111,6 +112,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { newContract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateProviderContract([DataSourceRequest]  DataSourceRequest request, ProviderContractViewModel contract, int currentProviderId)
         {
             if (contract == null || !ModelState.IsValid)
@@ -128,6 +130,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { newContract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateClientContract([DataSourceRequest] DataSourceRequest request, ClientContractViewModel contract)
         {
             foreach (var propertyName in ModelState.Select(modelError => modelError.Key))
@@ -155,6 +158,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { updatedContract }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateProviderContract([DataSourceRequest] DataSourceRequest request, ProviderContractViewModel contract)
         {
             foreach (var propertyName in ModelState.Select(modelError => modelError.Key))
@@ -178,6 +182,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { updatedContract }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyClientContract([DataSourceRequest] DataSourceRequest request, ClientContractViewModel contract)
         {
             var deletedContract = this.contracts.DestroyClientContract(contract);
@@ -188,6 +193,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { deletedContract }, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyProviderContract([DataSourceRequest] DataSourceRequest request, ProviderContractViewModel contract)
         {
             var deletedContract = this.contracts.DestroyProviderContract(contract);
@@ -205,6 +211,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return PartialView("_ClientContractChannels", result);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public void AddOrRemoveChannelFromClientContract(int clientContractId, int channelId)
         {
             this.contracts.AddOrRemoveChannelFromClientContract(clientContractId, channelId);

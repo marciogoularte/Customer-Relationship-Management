@@ -49,6 +49,7 @@
             return Json(readPayments.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult CreatePayment([DataSourceRequest]  DataSourceRequest request, PaymentViewModel paymentModel)
         {
             if (paymentModel == null || !ModelState.IsValid)
@@ -66,6 +67,7 @@
             return Json(new[] { paymentModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult UpdatePayment([DataSourceRequest] DataSourceRequest request, PaymentViewModel paymentModel)
         {
             if (paymentModel == null || !ModelState.IsValid)
@@ -81,6 +83,7 @@
             return Json((new[] { paymentModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult DestroyPayment([DataSourceRequest] DataSourceRequest request, PaymentViewModel paymentModel)
         {
             var deletedPayment = this.payments.DestroyPayment(paymentModel);

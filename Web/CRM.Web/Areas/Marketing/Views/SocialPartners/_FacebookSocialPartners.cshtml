@@ -35,8 +35,11 @@
                 .Read(read => read.Action("FacebookSocialPartnersNames", controllerName, null).Data("onAdditionalDataFacebookSocialPartners")))
             .Filter("contains")
         )
+        @if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+{
+    
         <a class="k-button k-button-icontext k-grid-add" href="/Marketing/SocialPartners/ReadFacebookSocialPartners?grid-facebook-social-partners-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
-        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+      }  <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
         <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
     })
@@ -71,6 +74,7 @@
                                     })
                                     .DataSource(data =>
                                     {
+ 
                                         data.Ajax()
                                             .Model(model => model.Id(c => c.Id))
                                             .PageSize(10)
@@ -80,6 +84,7 @@
                                             .Create(create => create.Action("CreateFacebookSocialPartner", controllerName, null))
                                             .Update(update => update.Action("UpdateFacebookSocialPartner", controllerName))
                                             .Destroy(destroy => destroy.Action("DestroyFacebookSocialPartner", controllerName));
+  
                                     }))
 <div id="selected">
 </div>

@@ -49,6 +49,7 @@
             return Json(readFinanceInvoices.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult CreateFinanceInvoice([DataSourceRequest]  DataSourceRequest request, FinanceInvoiceViewModel financeInvoiceModel)
         {
             if (financeInvoiceModel == null || !ModelState.IsValid)
@@ -66,6 +67,7 @@
             return Json(new[] { financeInvoiceModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult UpdateFinanceInvoice([DataSourceRequest] DataSourceRequest request, FinanceInvoiceViewModel financeInvoiceModel)
         {
             if (financeInvoiceModel == null || !ModelState.IsValid)
@@ -81,6 +83,7 @@
             return Json((new[] { financeInvoiceModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult DestroyFinanceInvoice([DataSourceRequest] DataSourceRequest request, FinanceInvoiceViewModel financeInvoiceModel)
         {
             var deletedFinanceInvoice = this.financeInvoices.DestroyFinanceInvoice(financeInvoiceModel);

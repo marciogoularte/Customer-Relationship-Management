@@ -38,8 +38,10 @@
                 .Read(read => read.Action("FinanceInvoicesNames", controllerName, null).Data("onAdditionalDataFinanceInvoices")))
             .Filter("contains")
         )
+@if (this.User.IsInRole("Admin") || this.User.IsInRole("Financial"))
+{
         <a class="k-button k-button-icontext k-grid-add" href="/Finance/FinanceInvoices/ReadFinanceInvoices?grid-FinanceInvoices-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
-        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+        }<button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
         <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
     })
@@ -74,6 +76,7 @@
                                     })
                                     .DataSource(data =>
                                     {
+
                                         data.Ajax()
                                             .Model(model => model.Id(c => c.Id))
                                             .PageSize(10)
@@ -83,6 +86,7 @@
                                             .Create(create => create.Action("CreateFinanceInvoice", controllerName, null))
                                             .Update(update => update.Action("UpdateFinanceInvoice", controllerName))
                                             .Destroy(destroy => destroy.Action("DestroyFinanceInvoice", controllerName));
+    
                                     }))
 <div id="selected">
 </div>

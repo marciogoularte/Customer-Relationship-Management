@@ -72,6 +72,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(readProviders.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateProvider([DataSourceRequest]  DataSourceRequest request, ProviderViewModel provider)
         {
             if (provider == null || !ModelState.IsValid)
@@ -89,6 +90,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { provider }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateProvider([DataSourceRequest] DataSourceRequest request, ProviderViewModel provider)
         {
             if (provider == null || !ModelState.IsValid)
@@ -104,6 +106,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { provider }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyProvider([DataSourceRequest] DataSourceRequest request, ProviderViewModel provider)
         {
             var deletedProvider = this.providers.DestroyProvider(provider);

@@ -70,6 +70,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(readClients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateClient([DataSourceRequest]  DataSourceRequest request, ClientViewModel client)
         {
             if (client == null || !ModelState.IsValid)
@@ -85,6 +86,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { createdClient }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateClient([DataSourceRequest] DataSourceRequest request, ClientViewModel client)
         {
             if (client == null || !ModelState.IsValid)
@@ -100,6 +102,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { updatedClient }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyClient([DataSourceRequest] DataSourceRequest request, ClientViewModel client)
         {
             var deletedClient = clients.DestroyClient(client);

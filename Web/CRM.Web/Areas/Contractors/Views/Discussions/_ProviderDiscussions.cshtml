@@ -38,8 +38,11 @@
             .DataSource(datasource => datasource
                 .Read(read => read.Action("ProvidersDiscussionsNames", controllerName, null).Data("onAdditionalDataProviderDiscussion")))
             .Filter("contains")
-            )
-            <a class="k-button k-button-icontext k-grid-add" href="/Users/Discussions/ReadProvidersDiscussions?grid-provider-discussions-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+                  )
+                                        @if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+                                        {
+                                            <a class="k-button k-button-icontext k-grid-add" href="/Users/Discussions/ReadProvidersDiscussions?grid-provider-discussions-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+                                        }
             <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
             <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
@@ -75,15 +78,16 @@
                                                     })
                                                     .DataSource(data =>
                                                     {
-                                                        data.Ajax()
-                                                            .Model(model => model.Id(c => c.Id))
-                                                            .PageSize(10)
-                                                            .ServerOperation(true)
-                                                            .Events(ev => ev.Error("errorAlert"))
-                                                            .Read(read => read.Action("ReadProvidersDiscussions", controllerName, new { providerId = Model }).Data("addSearchProviderDiscussion"))
-                                                            .Create(create => create.Action("CreateDiscussion", controllerName, new { currentProviderId = Model }))
-                                                            .Update(update => update.Action("UpdateDiscussion", controllerName))
-                                                            .Destroy(destroy => destroy.Action("DestroyDiscussion", controllerName));
+                                                            data.Ajax()
+                                                                .Model(model => model.Id(c => c.Id))
+                                                                .PageSize(10)
+                                                                .ServerOperation(true)
+                                                                .Events(ev => ev.Error("errorAlert"))
+                                                                .Read(read => read.Action("ReadProvidersDiscussions", controllerName, new { providerId = Model }).Data("addSearchProviderDiscussion"))
+                                                                .Create(create => create.Action("CreateDiscussion", controllerName, new { currentProviderId = Model }))
+                                                                .Update(update => update.Action("UpdateDiscussion", controllerName))
+                                                                .Destroy(destroy => destroy.Action("DestroyDiscussion", controllerName));
+                
                                                     }))
 <div id="selected">
 </div>

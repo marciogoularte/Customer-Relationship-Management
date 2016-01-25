@@ -73,6 +73,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(readDiscussions.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateDiscussion([DataSourceRequest]  DataSourceRequest request, DiscussionViewModel discussion, int? currentClientId, int? currentProviderId)
         {
             if (discussion == null || !ModelState.IsValid)
@@ -90,6 +91,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(new[] { discussion }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateDiscussion([DataSourceRequest] DataSourceRequest request, DiscussionViewModel discussion)
         {
             foreach (var propertyName in ModelState.Select(modelError => modelError.Key))
@@ -117,6 +119,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { discussion }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyDiscussion([DataSourceRequest] DataSourceRequest request, DiscussionViewModel discussion)
         {
             var deletedDiscussion = this.discussions.DestroyDiscussion(discussion);

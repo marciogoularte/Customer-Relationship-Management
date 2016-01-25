@@ -41,8 +41,11 @@
                 .DataSource(datasource => datasource
                     .Read(read => read.Action("GetChannelsNames", controllerName, null).Data("onAdditionalData")))
                 .Filter("contains")
-            )
-            <a class="k-button k-button-icontext k-grid-add" href="/Users/Channels/ReadChannels?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+                  )
+@if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+{
+    <a class="k-button k-button-icontext k-grid-add" href="/Users/Channels/ReadChannels?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+}
             <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
             <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
@@ -78,15 +81,17 @@
                                     })
                                     .DataSource(data =>
                                     {
-                                        data.Ajax()
-                                            .Model(model => model.Id(c => c.Id))
-                                            .PageSize(10)
-                                            .ServerOperation(true)
-                                            .Events(ev => ev.Error("errorAlert"))
-                                            .Read(read => read.Action("ReadChannels", controllerName, new { providerId = Model }).Data("addSearch"))
-                                            .Create(create => create.Action("CreateChannel", controllerName, new { currentProviderId = Model }))
-                                            .Update(update => update.Action("UpdateChannel", controllerName))
-                                            .Destroy(destroy => destroy.Action("DestroyChannel", controllerName));
+
+                                            data.Ajax()
+                                                .Model(model => model.Id(c => c.Id))
+                                                .PageSize(10)
+                                                .ServerOperation(true)
+                                                .Events(ev => ev.Error("errorAlert"))
+                                                .Read(read => read.Action("ReadChannels", controllerName, new { providerId = Model }).Data("addSearch"))
+                                                .Create(create => create.Action("CreateChannel", controllerName, new { currentProviderId = Model }))
+                                                .Update(update => update.Action("UpdateChannel", controllerName))
+                                                .Destroy(destroy => destroy.Action("DestroyChannel", controllerName));
+                                    
                                     }))
 <div id="selected">
 </div>

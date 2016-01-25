@@ -34,8 +34,11 @@
                 .DataSource(datasource => datasource
                                     .Read(read => read.Action("GetTrdsData", controllerName, null).Data("onAdditionalDataClientTrd")))
                 .Filter("contains")
-            )
-            <a class="k-button k-button-icontext k-grid-add" href="/Users/Trds/ReadTrds?grid-client-trds-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+                  )
+@if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+{
+    <a class="k-button k-button-icontext k-grid-add" href="/Users/Trds/ReadTrds?grid-client-trds-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+}
             <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
             <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
@@ -71,15 +74,16 @@
                                                                                     })
                                                                                     .DataSource(data =>
                                                                                     {
-                                                                                        data.Ajax()
-                                                                                            .Model(model => model.Id(c => c.Id))
-                                                                                            .PageSize(10)
-                                                                                            .ServerOperation(true)
-                                                                                            .Events(ev => ev.Error("errorAlert"))
-                                                                                            .Read(read => read.Action("ReadTrds", controllerName, new { clientId = Model }).Data("addSearchClientTrds"))
-                                                                                            .Create(create => create.Action("CreateTrd", controllerName, new { clientIdString = Model }))
-                                                                                            .Update(update => update.Action("UpdateTrd", controllerName))
-                                                                                            .Destroy(destroy => destroy.Action("DestroyTrd", controllerName));
+                                                                                            data.Ajax()
+                                                                                                .Model(model => model.Id(c => c.Id))
+                                                                                                .PageSize(10)
+                                                                                                .ServerOperation(true)
+                                                                                                .Events(ev => ev.Error("errorAlert"))
+                                                                                                .Read(read => read.Action("ReadTrds", controllerName, new { clientId = Model }).Data("addSearchClientTrds"))
+                                                                                                .Create(create => create.Action("CreateTrd", controllerName, new { clientIdString = Model }))
+                                                                                                .Update(update => update.Action("UpdateTrd", controllerName))
+                                                                                                .Destroy(destroy => destroy.Action("DestroyTrd", controllerName));
+                                                                                    
                                                                                     }))
 <div id="selected">
 </div>

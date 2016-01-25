@@ -49,6 +49,7 @@
             return Json(readOperators.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateOperator([DataSourceRequest]  DataSourceRequest request, OperatorViewModel operatorModel)
         {
             if (operatorModel == null || !ModelState.IsValid)
@@ -66,6 +67,7 @@
             return Json(new[] { operatorModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateOperator([DataSourceRequest] DataSourceRequest request, OperatorViewModel operatorModel)
         {
             if (operatorModel == null || !ModelState.IsValid)
@@ -81,6 +83,7 @@
             return Json((new[] { operatorModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyOperator([DataSourceRequest] DataSourceRequest request, OperatorViewModel operatorModel)
         {
             var deletedOperator = operators.DestroyOperator(operatorModel);

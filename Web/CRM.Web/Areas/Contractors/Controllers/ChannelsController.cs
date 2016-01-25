@@ -45,6 +45,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(readChannels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateChannel([DataSourceRequest]  DataSourceRequest request, ChannelViewModel channel, int currentProviderId)
         {
             if (channel == null || !ModelState.IsValid)
@@ -76,6 +77,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return View("Clients", clients);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateChannel([DataSourceRequest] DataSourceRequest request, ChannelViewModel channel)
         {
             foreach (var propertyName in ModelState.Select(modelError => modelError.Key))
@@ -103,6 +105,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { channel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyChannel([DataSourceRequest] DataSourceRequest request, ChannelViewModel channel)
         {
             var deletedChannel = this.channels.DestroyChannel(channel);

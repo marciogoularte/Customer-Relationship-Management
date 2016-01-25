@@ -49,6 +49,7 @@
             return Json(readMarketingPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateMarketingPartner([DataSourceRequest]  DataSourceRequest request, MarketingPartnerViewModel marketingPartner)
         {
             if (marketingPartner == null || !ModelState.IsValid)
@@ -66,6 +67,7 @@
             return Json(new[] { marketingPartner }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateMarketingPartner([DataSourceRequest] DataSourceRequest request, MarketingPartnerViewModel marketingPartner)
         {
             if (marketingPartner == null || !ModelState.IsValid)
@@ -81,6 +83,7 @@
             return Json((new[] { marketingPartner }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyMarketingPartner([DataSourceRequest] DataSourceRequest request, MarketingPartnerViewModel marketingPartner)
         {
             var deletedMarketingPartner = marketingPartners.DestroyMarketingPartner(marketingPartner);

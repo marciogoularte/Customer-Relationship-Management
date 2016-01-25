@@ -49,6 +49,7 @@
             return Json(readFrzs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult CreateFrz([DataSourceRequest]  DataSourceRequest request, FrzViewModel frzModel)
         {
             if (frzModel == null || !ModelState.IsValid)
@@ -66,6 +67,7 @@
             return Json(new[] { frzModel }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult UpdateFrz([DataSourceRequest] DataSourceRequest request, FrzViewModel frzModel)
         {
             if (frzModel == null || !ModelState.IsValid)
@@ -81,6 +83,7 @@
             return Json((new[] { frzModel }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Financial")]
         public JsonResult DestroyFrz([DataSourceRequest] DataSourceRequest request, FrzViewModel frzModel)
         {
             var deletedFrz = this.frzs.DestroyFrz(frzModel);

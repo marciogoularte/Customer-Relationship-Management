@@ -38,7 +38,10 @@
                 .Read(read => read.Action("MediaNames", controllerName, null).Data("onAdditionalDataMedia")))
             .Filter("contains")
         )
+        @if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+{
         <a class="k-button k-button-icontext k-grid-add" href="/Marketing/Media/ReadMedia?grid-media-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
+    }
         <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
         <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
@@ -74,6 +77,7 @@
                                     })
                                     .DataSource(data =>
                                     {
+ 
                                         data.Ajax()
                                             .Model(model => model.Id(c => c.Id))
                                             .PageSize(10)
@@ -83,6 +87,7 @@
                                             .Create(create => create.Action("CreateMedia", controllerName, new { currentClientId = Model }))
                                             .Update(update => update.Action("UpdateMedia", controllerName))
                                             .Destroy(destroy => destroy.Action("DestroyMedia", controllerName));
+
                                     }))
 <div id="selected">
 </div>

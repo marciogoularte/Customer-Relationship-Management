@@ -44,6 +44,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(readInvoices.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateContractInvoice([DataSourceRequest]  DataSourceRequest request, InvoiceViewModel invoice, int contractId)
         {
             if (invoice == null || !ModelState.IsValid)
@@ -69,6 +70,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return View(invoice);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateContractInvoice([DataSourceRequest] DataSourceRequest request, InvoiceViewModel invoice)
         {
             if (invoice == null || !ModelState.IsValid)
@@ -86,6 +88,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json((new[] { invoice }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyClientInvoice([DataSourceRequest] DataSourceRequest request, InvoiceViewModel invoice)
         {
             var deletedInvoice = this.invoices.DestroyClientInvoice(invoice);

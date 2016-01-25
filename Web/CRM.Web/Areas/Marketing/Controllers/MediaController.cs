@@ -49,6 +49,7 @@
             return Json(readMedia.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateMedia([DataSourceRequest]  DataSourceRequest request, MediaViewModel media)
         {
             if (media == null || !ModelState.IsValid)
@@ -66,6 +67,7 @@
             return Json(new[] { media }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult UpdateMedia([DataSourceRequest] DataSourceRequest request, MediaViewModel media)
         {
             if (media == null || !ModelState.IsValid)
@@ -81,6 +83,7 @@
             return Json((new[] { media }.ToDataSourceResult(request, ModelState)), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = "Admin, Dealer")]
         public JsonResult DestroyMedia([DataSourceRequest] DataSourceRequest request, MediaViewModel media)
         {
             var deletedMedia = medias.DestroyMedia(media);

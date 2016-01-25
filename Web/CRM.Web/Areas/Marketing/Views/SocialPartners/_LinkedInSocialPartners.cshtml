@@ -35,8 +35,10 @@
                 .Read(read => read.Action("LinkedInSocialPartnersNames", controllerName, null).Data("onAdditionalDataLinkedInSocialPartners")))
             .Filter("contains")
         )
+        @if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+{
         <a class="k-button k-button-icontext k-grid-add" href="/Marketing/SocialPartners/ReadLinkedInSocialPartners?grid-LinkedIn-social-partners-mode=insert"><span class="k-icon k-add"></span>Add new record</a>
-        <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+ }       <button class="k-button k-button-icontext k-grid-excel"><span class="k-icon k-i-excel"></span>Export to Excel</button>
         <button class="k-button k-button-icontext k-grid-pdf"><span class="k-icon k-i-pdf"></span>Export to PDF</button>
         </text>);
     })
@@ -71,6 +73,8 @@
                                     })
                                     .DataSource(data =>
                                     {
+                                        if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+{
                                         data.Ajax()
                                             .Model(model => model.Id(c => c.Id))
                                             .PageSize(10)
@@ -80,6 +84,15 @@
                                             .Create(create => create.Action("CreateLinkedInSocialPartner", controllerName, null))
                                             .Update(update => update.Action("UpdateLinkedInSocialPartner", controllerName))
                                             .Destroy(destroy => destroy.Action("DestroyLinkedInSocialPartner", controllerName));
+    }
+    else{
+                                        data.Ajax()
+                                            .Model(model => model.Id(c => c.Id))
+                                            .PageSize(10)
+                                            .ServerOperation(true)
+                                            .Events(ev => ev.Error("errorAlert"))
+                                            .Read(read => read.Action("LinkedInReadSocialPartners", controllerName, null).Data("addSearchLinkedInSocialPartners"));
+    }
                                     }))
 <div id="selected">
 </div>
