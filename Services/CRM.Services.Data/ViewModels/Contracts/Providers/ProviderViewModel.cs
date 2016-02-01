@@ -105,5 +105,8 @@ namespace CRM.Services.Data.ViewModels.Contracts.Providers
         [DisplayName("Contract Template")]
         [UIHint("ContractTemplateEditor")]
         public ContractTemplate ContractTemplate { get; set; }
+
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
     }
 }

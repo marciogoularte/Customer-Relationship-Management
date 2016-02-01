@@ -53,6 +53,8 @@
         public Frequency Frequency { get; set; }
 
         public double MonthlyFee { get; set; }
+        
+        public bool IsVisible { get; set; }
 
         public virtual ICollection<Invoice> Invoices
         {

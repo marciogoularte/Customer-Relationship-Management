@@ -12,6 +12,8 @@
 
         public string Email { get; set; }
 
+        public bool IsVisible { get; set; }
+
         public string PhoneNumber { get; set; }
 
         public SocialSystemType SocialSystem { get; set; }

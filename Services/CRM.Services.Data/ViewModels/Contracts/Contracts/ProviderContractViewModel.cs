@@ -73,5 +73,8 @@ namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 
         [ScaffoldColumn(false)]
         public int? ProviderId { get; set; }
+
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
     }
 }

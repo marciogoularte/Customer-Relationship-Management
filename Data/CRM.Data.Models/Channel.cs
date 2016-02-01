@@ -38,6 +38,8 @@
 
         public virtual ClientContract ClientContract { get; set; }
 
-        public string Comments { get; set; } 
+        public string Comments { get; set; }
+        
+        public bool IsVisible { get; set; }
     }
 }

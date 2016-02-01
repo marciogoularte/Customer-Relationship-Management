@@ -18,6 +18,7 @@
         columns.Bound(model => model.Sim).Width(120);
         columns.Bound(model => model.Cas).Width(120);
         columns.Bound(model => model.Cam).Width(120);
+        columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewTrdDetails");

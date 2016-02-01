@@ -29,5 +29,7 @@
         public int? ClientContractId { get; set; }
         
         public virtual ClientContract ClientContract { get; set; }
+        
+        public bool IsVisible { get; set; }
     }
 }

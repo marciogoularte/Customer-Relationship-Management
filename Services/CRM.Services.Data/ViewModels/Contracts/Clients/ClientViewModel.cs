@@ -197,5 +197,8 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         [Required]
         [DisplayName("Want to receive Highlights / News")]
         public bool WantToReceiveNews { get; set; }
+
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
     }
 }

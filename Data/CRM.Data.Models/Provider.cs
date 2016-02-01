@@ -59,6 +59,8 @@
         public string Comments { get; set; }
 
         public ContractTemplate ContractTemplate { get; set; }
+        
+        public bool IsVisible { get; set; }
 
         public virtual ICollection<Channel> Channels
         {

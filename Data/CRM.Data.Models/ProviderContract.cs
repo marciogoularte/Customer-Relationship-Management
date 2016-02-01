@@ -41,6 +41,8 @@
         public int? ProviderId { get; set; }
 
         public virtual Provider Provider { get; set; }
+        
+        public bool IsVisible { get; set; }
 
         public virtual ICollection<Invoice> Invoices
         {

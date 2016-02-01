@@ -30,5 +30,8 @@ namespace CRM.Services.Data.ViewModels.Finance.FinanceInvoice
 
         [DisplayName("Sum with DDS")]
         public long SumWithDds { get; set; }
+
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
     }
 }

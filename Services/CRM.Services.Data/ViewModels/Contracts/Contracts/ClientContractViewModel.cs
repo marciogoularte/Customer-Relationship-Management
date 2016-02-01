@@ -99,6 +99,9 @@ namespace CRM.Services.Data.ViewModels.Contracts.Contracts
         [DisplayName("Monthly fee")]
         public double MonthlyFee { get; set; }
 
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<ClientContract, ClientContractViewModel>()

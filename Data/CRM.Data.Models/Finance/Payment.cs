@@ -17,5 +17,7 @@
         public string Invoice { get; set; }
 
         public string Amount { get; set; }
+        
+        public bool IsVisible { get; set; }
     }
 }

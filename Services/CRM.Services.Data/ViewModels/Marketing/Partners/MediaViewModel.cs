@@ -39,6 +39,8 @@ namespace CRM.Services.Data.ViewModels.Marketing.Partners
 
         public string Email { get; set; }
 
+        public bool IsVisible { get; set; }
+
         [DisplayName("Media")]
         public string AllMedia { get; set; }
     }

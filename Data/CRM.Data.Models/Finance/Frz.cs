@@ -17,5 +17,7 @@
         public long Salary { get; set; }
 
         public string BankAccount { get; set; }
+        
+        public bool IsVisible { get; set; }
     }
 }

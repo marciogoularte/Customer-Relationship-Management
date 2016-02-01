@@ -28,6 +28,7 @@
         columns.Bound(model => model.ProviderId).Width(32).Hidden(true);
         columns.Bound(model => model.MonthlyFee).Hidden(true);
         columns.Bound(model => model.Comments).Width(200);
+        columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsClientContracts");

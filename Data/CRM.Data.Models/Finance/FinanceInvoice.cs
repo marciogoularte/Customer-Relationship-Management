@@ -19,5 +19,7 @@
         public long SumWithoutDdS { get; set; }
 
         public long SumWithDds { get; set; }
+        
+        public bool IsVisible { get; set; }
     }
 }

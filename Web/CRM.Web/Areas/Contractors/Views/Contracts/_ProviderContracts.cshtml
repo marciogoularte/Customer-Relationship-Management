@@ -23,6 +23,7 @@
             columns.Bound(model => model.AcceptingReports).Width(32).Hidden(true);
             columns.Bound(model => model.GoverningLaw).Width(32).Hidden(true);
             columns.Bound(model => model.Comments).Width(275);
+            columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetails");

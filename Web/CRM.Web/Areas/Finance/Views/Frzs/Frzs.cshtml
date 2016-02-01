@@ -20,6 +20,7 @@
         columns.Bound(model => model.DateOfContract);
         columns.Bound(model => model.Salary);
         columns.Bound(model => model.BankAccount);
+        columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsFrzs");

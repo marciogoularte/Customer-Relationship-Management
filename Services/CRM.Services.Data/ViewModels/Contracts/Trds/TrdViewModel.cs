@@ -41,5 +41,8 @@ namespace CRM.Services.Data.ViewModels.Contracts.Trds
 
         [ScaffoldColumn(false)]
         public int? ClientId { get; set; }
+
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
     }
 }

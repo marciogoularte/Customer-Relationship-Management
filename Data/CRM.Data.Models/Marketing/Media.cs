@@ -14,6 +14,8 @@
 
         public string Email { get; set; }
 
+        public bool IsVisible { get; set; }
+
         public string AllMedia { get; set; }
     }
 }

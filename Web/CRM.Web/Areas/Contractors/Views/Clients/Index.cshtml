@@ -51,6 +51,7 @@
         columns.Bound(model => model.Comments).Hidden(true);
         columns.Bound(model => model.WantToReceiveEpg).Hidden(true);
         columns.Bound(model => model.WantToReceiveNews).Hidden(true);
+        columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsClients");

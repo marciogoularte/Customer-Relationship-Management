@@ -28,5 +28,8 @@ namespace CRM.Services.Data.ViewModels.Finance.Frz
 
         [DisplayName("Bank account")]
         public string BankAccount { get; set; }
+
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
     }
 }

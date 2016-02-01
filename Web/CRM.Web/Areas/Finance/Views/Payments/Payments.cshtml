@@ -20,6 +20,7 @@
         columns.Bound(model => model.Payer);
         columns.Bound(model => model.Invoice);
         columns.Bound(model => model.Amount);
+        columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsPayments");

@@ -43,5 +43,7 @@ namespace CRM.Services.Data.ViewModels.Marketing.Campaigns
         public double Budget { get; set; }
 
         public string Results { get; set; }
+
+        public bool IsVisible { get; set; }
     }
 }

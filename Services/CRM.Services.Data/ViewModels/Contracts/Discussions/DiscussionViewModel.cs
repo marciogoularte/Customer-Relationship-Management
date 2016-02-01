@@ -72,6 +72,9 @@ namespace CRM.Services.Data.ViewModels.Contracts.Discussions
         [ScaffoldColumn(false)]
         public int? ProviderId { get; set; }
 
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
+
         public bool IsEmpty()
         {
             return this.Summary == null && string.IsNullOrEmpty(this.Summary) &&

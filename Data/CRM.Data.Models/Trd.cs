@@ -17,5 +17,7 @@
         public int? ClientId { get; set; }
 
         public virtual Client Client { get; set; }
+        
+        public bool IsVisible { get; set; }
     }
 }

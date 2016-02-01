@@ -20,6 +20,7 @@
         columns.Bound(model => model.Activities).Width(120);
         columns.Bound(model => model.Budget).Width(120);
         columns.Bound(model => model.Results).Width(120);
+        columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewCampaignInformation");

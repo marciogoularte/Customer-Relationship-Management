@@ -1,13 +1,12 @@
-﻿using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Finance.Payments
+﻿namespace CRM.Services.Data.ViewModels.Finance.Payments
 {
     using System;
-    using System.Linq.Expressions;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
+    using Web.Common.Mappings;
     using CRM.Data.Models.Finance;
-
+    
     public class PaymentViewModel : IMapFrom<Payment>
     {
         //public static Expression<Func<Payment, PaymentViewModel>> FromPayment
@@ -39,5 +38,8 @@ namespace CRM.Services.Data.ViewModels.Finance.Payments
         public string Invoice { get; set; }
 
         public string Amount { get; set; }
+
+        [DisplayName("Is visible")]
+        public bool IsVisible { get; set; }
     }
 }

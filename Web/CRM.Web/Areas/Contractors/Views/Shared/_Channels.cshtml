@@ -23,6 +23,7 @@
         columns.Bound(model => model.ContractTemplate).ClientTemplate("<a target='_blank' href='#=ContractTemplate#'>link</a>").Width(32).Hidden(true);
         columns.Bound(model => model.LogoLink).ClientTemplate("<a target='_blank' href='#=LogoLink#'>link</a>").Width(32).Hidden(true);
         columns.Bound(model => model.Comments).Width(275);
+        columns.Bound(model => model.IsVisible).Hidden(true);
         columns.Command(command =>
         {
             command.Custom("View operators").Click("viewOperators");

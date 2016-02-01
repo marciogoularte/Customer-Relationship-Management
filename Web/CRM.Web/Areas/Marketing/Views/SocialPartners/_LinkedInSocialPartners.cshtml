@@ -18,6 +18,7 @@
         columns.Bound(model => model.Name);
         columns.Bound(model => model.Email);
         columns.Bound(model => model.PhoneNumber);
+        columns.Bound(model => model.IsVisible);
         columns.Command(command =>
         {
             command.Custom("Details").Click("viewDetailsLinkedInSocialPartners");
