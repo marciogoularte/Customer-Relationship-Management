@@ -79,6 +79,7 @@
             {
                 clients = this.Data.Clients
                     .All()
+                    .Where(c => c.IsVisible)
                     .ProjectTo<ClientViewModel>()
                     .ToList();
             }
@@ -137,7 +138,8 @@
                 DealerEmail = client.DealerEmail,
                 DealerName = client.DealerName,
                 WantToReceiveEpg = client.WantToReceiveEpg,
-                WantToReceiveNews = client.WantToReceiveNews
+                WantToReceiveNews = client.WantToReceiveNews,
+                IsVisible = client.IsVisible
             };
 
             var marketingOperator = new Operator()
@@ -200,6 +202,7 @@
             clientFromDb.DealerPhone = client.DealerPhone;
             clientFromDb.WantToReceiveNews = client.WantToReceiveNews;
             clientFromDb.WantToReceiveEpg = client.WantToReceiveEpg;
+            clientFromDb.IsVisible = client.IsVisible;
 
             this.Data.Clients.SaveChanges();
 

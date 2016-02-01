@@ -39,7 +39,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 channels = this.Data.Channels
                     .All()
                     .ProjectTo<ChannelViewModel>()
-                    .Where(c => c.ProviderId == providerId)
+                    .Where(c => c.ProviderId == providerId && c.IsVisible)
                     .ToList();
             }
             else
@@ -68,7 +68,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 LogoLink = channel.LogoLink,
                 CreatedOn = DateTime.Now,
                 ProviderId = currentProviderId,
-                Comments = channel.Comments
+                Comments = channel.Comments,
+                IsVisible = channel.IsVisible
             };
 
             if (string.IsNullOrEmpty(newChannel.EpgSource) && string.IsNullOrEmpty(channel.EpgSource))
@@ -141,6 +142,7 @@ namespace CRM.Services.Logic.Services.Contractors
             channelFromDb.ReveivingOptions = channel.ReveivingOptions;
             channelFromDb.SatelliteData = channel.SatelliteData;
             channelFromDb.Comments = channel.Comments;
+            channelFromDb.IsVisible = channel.IsVisible;
 
             if (string.IsNullOrEmpty(channel.EpgSource) && string.IsNullOrEmpty(channelFromDb.EpgSource))
             {

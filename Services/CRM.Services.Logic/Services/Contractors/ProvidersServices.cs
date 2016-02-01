@@ -76,6 +76,7 @@ namespace CRM.Services.Logic.Services.Contractors
             {
                 providers = this.Data.Providers
                 .All()
+                .Where(p => p.IsVisible)
                 .ProjectTo<ProviderViewModel>()
                 .ToList();
             }
@@ -113,7 +114,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 ContractTemplate = provider.ContractTemplate,
                 Channels = new List<Channel>(),
                 Contracts = new List<ProviderContract>(),
-                Discussions = new List<Discussion>()
+                Discussions = new List<Discussion>(),
+                IsVisible = provider.IsVisible
             };
 
             if (string.IsNullOrEmpty(provider.LogoLink) && string.IsNullOrEmpty(newProvider.LogoLink))
@@ -155,6 +157,7 @@ namespace CRM.Services.Logic.Services.Contractors
             providerFromDb.LogoLink = provider.LogoLink;
             providerFromDb.Comments = provider.Comments;
             providerFromDb.ContractTemplate = provider.ContractTemplate;
+            providerFromDb.IsVisible = provider.IsVisible;
 
             if (string.IsNullOrEmpty(provider.LogoLink) && string.IsNullOrEmpty(provider.LogoLink))
             {

@@ -43,23 +43,23 @@ namespace CRM.Services.Logic.Services.Marketing
 
         public List<SocialPartnerViewModel> ReadSocialPartners(string searchboxSocialPartner, SocialSystemType type)
         {
-            var partners = this.Data.SocialPartners
-                .All()
-                .Where(p => p.SocialSystem == type)
-                .ProjectTo<SocialPartnerViewModel>()
-                .ToList();
-
             List<SocialPartnerViewModel> readSocialPartners;
 
             if (string.IsNullOrEmpty(searchboxSocialPartner) || searchboxSocialPartner == "")
             {
-                readSocialPartners = partners;
+                readSocialPartners = this.Data.SocialPartners
+                .All()
+                .Where(p => p.SocialSystem == type && p.IsVisible)
+                .ProjectTo<SocialPartnerViewModel>()
+                .ToList();
             }
             else
             {
-                readSocialPartners = partners
-                .Where(p => p.Name.Contains(searchboxSocialPartner))
-                    .ToList();
+                readSocialPartners = this.Data.SocialPartners
+                .All()
+                .Where(p => p.SocialSystem == type && !p.IsVisible && p.IsVisible && p.Name.Contains(searchboxSocialPartner))
+                .ProjectTo<SocialPartnerViewModel>()
+                .ToList();
             }
 
             return readSocialPartners;
@@ -78,7 +78,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Website = givenSocialPartner.Website,
                 PhoneNumber = givenSocialPartner.PhoneNumber,
                 Email = givenSocialPartner.Email,
-                SocialSystem = givenSocialPartner.SocialSystem
+                SocialSystem = givenSocialPartner.SocialSystem,
+                IsVisible = givenSocialPartner.IsVisible
             };
 
             this.Data.SocialPartners.Add(newSocialPartner);
@@ -106,6 +107,7 @@ namespace CRM.Services.Logic.Services.Marketing
             socialPartnerFromDb.Website = givenSocialPartner.Website;
             socialPartnerFromDb.Email = givenSocialPartner.Email;
             socialPartnerFromDb.PhoneNumber = givenSocialPartner.PhoneNumber;
+            socialPartnerFromDb.IsVisible = givenSocialPartner.IsVisible;
 
             this.Data.SaveChanges();
 

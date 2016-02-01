@@ -57,6 +57,7 @@ namespace CRM.Services.Logic.Services.Finance
             {
                 readFrzs = this.Data.Frzs
                 .All()
+                .Where(frz => frz.IsVisible)
                 .ProjectTo<FrzViewModel>()
                 .ToList();
             }
@@ -85,7 +86,8 @@ namespace CRM.Services.Logic.Services.Finance
                 NumberOfContract = givenFrz.NumberOfContract,
                 DateOfContract = givenFrz.DateOfContract,
                 Salary = givenFrz.Salary,
-                BankAccount = givenFrz.BankAccount
+                BankAccount = givenFrz.BankAccount,
+                IsVisible = givenFrz.IsVisible
             };
 
             this.Data.Frzs.Add(newFrz);
@@ -112,6 +114,7 @@ namespace CRM.Services.Logic.Services.Finance
             frzFromDb.DateOfContract = givenFrz.DateOfContract;
             frzFromDb.Salary = givenFrz.Salary;
             frzFromDb.BankAccount = givenFrz.BankAccount;
+            frzFromDb.IsVisible = givenFrz.IsVisible;
 
             this.Data.SaveChanges();
 

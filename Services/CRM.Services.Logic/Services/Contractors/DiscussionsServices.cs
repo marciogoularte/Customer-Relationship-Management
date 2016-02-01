@@ -61,7 +61,8 @@ namespace CRM.Services.Logic.Services.Contractors
                     .ProjectTo<DiscussionViewModel>()
                     .Where(d =>
                         d.ClientId != null &&
-                        d.ClientId == clientId)
+                        d.ClientId == clientId &&
+                        d.IsVisible)
                     .ToList();
             }
             else
@@ -90,7 +91,8 @@ namespace CRM.Services.Logic.Services.Contractors
                     .ProjectTo<DiscussionViewModel>()
                     .Where(d =>
                         d.ProviderId != null &&
-                        d.ProviderId == providerId)
+                        d.ProviderId == providerId &&
+                        d.IsVisible)
                     .ToList();
             }
             else
@@ -121,7 +123,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 NextDiscussionType = discussion.NextDiscussionType,
                 UserId = loggedUserId,
                 Comments = discussion.Comments,
-                IsFinished = false
+                IsFinished = false,
+                IsVisible = discussion.IsVisible
             };
 
             if (currentClientId != null)
@@ -181,6 +184,7 @@ namespace CRM.Services.Logic.Services.Contractors
             discussionFromDb.NextDiscussionNote = discussion.NextDiscussionNote;
             discussionFromDb.NextDiscussionType = discussion.NextDiscussionType;
             discussionFromDb.Comments = discussion.Comments;
+            discussionFromDb.IsVisible = discussion.IsVisible;
 
             this.Data.SaveChanges();
 

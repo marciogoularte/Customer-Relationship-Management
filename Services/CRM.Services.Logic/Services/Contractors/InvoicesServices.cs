@@ -37,7 +37,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 invoices = this.Data.Invoices
                     .All()
                     .ProjectTo<InvoiceViewModel>()
-                    .Where(i => i.ClientContractId == contractId)
+                    .Where(i => i.ClientContractId == contractId && i.IsVisible)
                     .ToList();
             }
             else
@@ -67,7 +67,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 FixedMonthlyFee = invoice.FixedMonthlyFee,
                 Vat = invoice.Vat,
                 ClientContractId = contractId,
-                Comments = invoice.Comments
+                Comments = invoice.Comments,
+                IsVisible = invoice.IsVisible
             };
 
             this.Data.Invoices.Add(newInvoice);
@@ -102,6 +103,7 @@ namespace CRM.Services.Logic.Services.Contractors
             invoiceFromDb.AdditionalInformation = invoice.AdditionalInformation;
             invoiceFromDb.FixedMonthlyFee = invoice.FixedMonthlyFee;
             invoiceFromDb.Vat = invoice.Vat;
+            invoiceFromDb.IsVisible = invoice.IsVisible;
 
             this.Data.SaveChanges();
             

@@ -36,7 +36,7 @@ namespace CRM.Services.Logic.Services.Contractors
                 trds = this.Data.Trds
                     .All()
                     .ProjectTo<TrdViewModel>()
-                    .Where(i => i.ClientId == clientId)
+                    .Where(i => i.ClientId == clientId && i.IsVisible)
                     .ToList();
             }
             else
@@ -65,7 +65,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 Sim = trd.Sim,
                 Cas = trd.Cas,
                 Cam = trd.Cam,
-                ClientId = clientId
+                ClientId = clientId,
+                IsVisible = trd.IsVisible
             };
 
             this.Data.Trds.Add(newTrd);
@@ -96,6 +97,7 @@ namespace CRM.Services.Logic.Services.Contractors
             trdFromDb.Sim = trd.Sim;
             trdFromDb.Cas = trd.Cas;
             trdFromDb.Cam = trd.Cam;
+            trdFromDb.IsVisible = trd.IsVisible;
 
             this.Data.SaveChanges();
 

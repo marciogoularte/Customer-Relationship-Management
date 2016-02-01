@@ -57,6 +57,7 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 readPrs = this.Data.Prs
                 .All()
+                .Where(pr => pr.IsVisible)
                 .ProjectTo<PrViewModel>()
                 .ToList();
             }
@@ -85,7 +86,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Address = givenPr.Address,
                 PhoneNumber = givenPr.PhoneNumber,
                 Email = givenPr.Email,
-                Media = givenPr.Media
+                Media = givenPr.Media,
+                IsVisible = givenPr.IsVisible
             };
 
             this.Data.Prs.Add(newPr);
@@ -112,6 +114,7 @@ namespace CRM.Services.Logic.Services.Marketing
             prFromDb.PhoneNumber = givenPr.PhoneNumber;
             prFromDb.Email = givenPr.Email;
             prFromDb.Media = givenPr.Media;
+            prFromDb.IsVisible = givenPr.IsVisible;
 
             this.Data.SaveChanges();
 

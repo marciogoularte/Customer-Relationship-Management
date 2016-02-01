@@ -57,6 +57,7 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 media = this.Data.Media
                 .All()
+                .Where(m => m.IsVisible)
                 .ProjectTo<MediaViewModel>()
                 .ToList();
             }
@@ -85,7 +86,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Address = media.Address,
                 PhoneNumber = media.PhoneNumber,
                 Email = media.Email,
-                AllMedia = media.AllMedia
+                AllMedia = media.AllMedia,
+                IsVisible = media.IsVisible
             };
 
             this.Data.Media.Add(newMedia);
@@ -111,6 +113,7 @@ namespace CRM.Services.Logic.Services.Marketing
             mediaFromDb.PhoneNumber = media.PhoneNumber;
             mediaFromDb.Email = media.Email;
             mediaFromDb.AllMedia = media.AllMedia;
+            mediaFromDb.IsVisible = media.IsVisible;
 
             this.Data.SaveChanges();
 

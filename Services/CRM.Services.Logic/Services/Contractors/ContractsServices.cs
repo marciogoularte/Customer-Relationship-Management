@@ -107,7 +107,7 @@
             {
                 contracts = this.Data.ClientContracts
                 .All()
-                .Where(c => c.ClientId == clientId)
+                .Where(c => c.ClientId == clientId && c.IsVisible)
                 .ProjectTo<ClientContractViewModel>()
                 .ToList();
             }
@@ -132,7 +132,7 @@
                 contracts = this.Data.ProviderContracts
                    .All()
                    .ProjectTo<ProviderContractViewModel>()
-                   .Where(c => c.ProviderId == providerId)
+                   .Where(c => c.ProviderId == providerId && c.IsVisible)
                    .ToList();
             }
             else
@@ -174,7 +174,8 @@
                 Comments = contract.Comments,
                 Channels = new List<Channel>(),
                 Frequency = contract.Frequency,
-                MonthlyFee = contract.MonthlyFee
+                MonthlyFee = contract.MonthlyFee,
+                IsVisible = contract.IsVisible
             };
 
             if (contract.ProviderId != null)
@@ -213,7 +214,8 @@
                 GoverningLaw = contract.GoverningLaw,
                 ProviderId = currentProviderId,
                 CreatedOn = DateTime.Now,
-                Comments = contract.Comments
+                Comments = contract.Comments,
+                IsVisible = contract.IsVisible
             };
 
             this.Data.ProviderContracts.Add(newContract);
@@ -245,6 +247,7 @@
             contractFromDb.ProviderId = int.Parse(contract.ProviderId);
             contractFromDb.Frequency = contract.Frequency;
             contractFromDb.MonthlyFee = contract.MonthlyFee;
+            contractFromDb.IsVisible = contract.IsVisible;
 
             this.Data.SaveChanges();
 
@@ -268,6 +271,7 @@
             contractFromDb.GoverningLaw = contract.GoverningLaw;
             contractFromDb.CreatedOn = DateTime.Now;
             contractFromDb.Comments = contract.Comments;
+            contractFromDb.IsVisible = contract.IsVisible;
 
             this.Data.SaveChanges();
 

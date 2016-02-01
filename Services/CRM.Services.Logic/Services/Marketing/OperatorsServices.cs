@@ -57,6 +57,7 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 readOperators = this.Data.Operators
                 .All()
+                .Where(o => o.IsVisible)
                 .ProjectTo<OperatorViewModel>()
                 .ToList();
             }
@@ -85,7 +86,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Address = givenOperator.Address,
                 PhoneNumber = givenOperator.PhoneNumber,
                 Email = givenOperator.Email,
-                Media = givenOperator.Media
+                Media = givenOperator.Media,
+                IsVisible = givenOperator.IsVisible
             };
 
             this.Data.Operators.Add(newoperator);
@@ -112,6 +114,7 @@ namespace CRM.Services.Logic.Services.Marketing
             operatorFromDb.PhoneNumber = givenOperator.PhoneNumber;
             operatorFromDb.Email = givenOperator.Email;
             operatorFromDb.Media = givenOperator.Media;
+            operatorFromDb.IsVisible = givenOperator.IsVisible;
 
             var client = this.Data.Clients
                 .All()

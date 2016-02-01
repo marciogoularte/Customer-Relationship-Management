@@ -57,6 +57,7 @@ namespace CRM.Services.Logic.Services.Finance
             {
                 readPayments = this.Data.Payments
                 .All()
+                .Where(p => p.IsVisible)
                 .ProjectTo<PaymentViewModel>()
                 .ToList();
             }
@@ -85,7 +86,8 @@ namespace CRM.Services.Logic.Services.Finance
                 Expense = givenPayment.Expense,
                 Payer = givenPayment.Payer,
                 Invoice = givenPayment.Invoice,
-                Amount = givenPayment.Amount
+                Amount = givenPayment.Amount,
+                IsVisible = givenPayment.IsVisible
             };
 
             this.Data.Payments.Add(newPayment);
@@ -112,6 +114,7 @@ namespace CRM.Services.Logic.Services.Finance
             paymentFromDb.Payer = givenPayment.Payer;
             paymentFromDb.Invoice = givenPayment.Invoice;
             paymentFromDb.Amount = givenPayment.Amount;
+            paymentFromDb.IsVisible = givenPayment.IsVisible;
 
             this.Data.SaveChanges();
 

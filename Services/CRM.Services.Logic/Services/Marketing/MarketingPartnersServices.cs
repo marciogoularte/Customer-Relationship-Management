@@ -57,6 +57,7 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 marketingPartners = this.Data.MarketingPartners
                 .All()
+                .Where(mp => mp.IsVisible)
                 .ProjectTo<MarketingPartnerViewModel>()
                 .ToList();
             }
@@ -86,7 +87,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Address = marketingPartner.Address,
                 PhoneNumber = marketingPartner.PhoneNumber,
                 Email = marketingPartner.Email,
-                Media = marketingPartner.Media
+                Media = marketingPartner.Media,
+                IsVisible = marketingPartner.IsVisible
             };
 
             this.Data.MarketingPartners.Add(newMarketingPartner);
@@ -113,6 +115,7 @@ namespace CRM.Services.Logic.Services.Marketing
             marketingPartnerFromDb.PhoneNumber = marketingPartner.PhoneNumber;
             marketingPartnerFromDb.Email = marketingPartner.Email;
             marketingPartnerFromDb.Media = marketingPartner.Media;
+            marketingPartnerFromDb.IsVisible = marketingPartner.IsVisible;
 
             this.Data.SaveChanges();
 

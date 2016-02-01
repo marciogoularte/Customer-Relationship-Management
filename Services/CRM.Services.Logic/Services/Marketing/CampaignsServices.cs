@@ -98,6 +98,7 @@ namespace CRM.Services.Logic.Services.Marketing
             {
                 campaigns = this.Data.Campaigns
                     .All()
+                    .Where(c => c.IsVisible)
                     .ProjectTo<CampaignViewModel>()
                     .ToList();
             }
@@ -122,6 +123,7 @@ namespace CRM.Services.Logic.Services.Marketing
                 Budget = campaign.Budget,
                 Start = campaign.Start,
                 End = campaign.End,
+                IsVisible = campaign.IsVisible,
                 Results = campaign.Results
             };
 
@@ -154,6 +156,7 @@ namespace CRM.Services.Logic.Services.Marketing
             campaignFromDb.Start = campaign.Start;
             campaignFromDb.End = campaign.End;
             campaignFromDb.Results = campaign.Results;
+            campaignFromDb.IsVisible = campaign.IsVisible;
 
             this.Data.Campaigns.SaveChanges();
 
