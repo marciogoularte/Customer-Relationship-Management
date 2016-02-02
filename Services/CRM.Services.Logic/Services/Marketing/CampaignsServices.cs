@@ -90,17 +90,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return result;
         }
 
-        public List<CampaignViewModel> ReadCampaigns(string searchbox)
+        public List<CampaignViewModel> ReadCampaigns(string searchbox, bool showAll)
         {
             List<CampaignViewModel> campaigns;
 
             if (string.IsNullOrEmpty(searchbox) || searchbox == "")
             {
-                campaigns = this.Data.Campaigns
-                    .All()
-                    .Where(c => c.IsVisible)
-                    .ProjectTo<CampaignViewModel>()
-                    .ToList();
+                if (showAll)
+                {
+                    campaigns = this.Data.Campaigns
+                        .All()
+                        .ProjectTo<CampaignViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    campaigns = this.Data.Campaigns
+                        .All()
+                        .Where(c => c.IsVisible)
+                        .ProjectTo<CampaignViewModel>()
+                        .ToList();
+                }
             }
             else
             {

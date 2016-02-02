@@ -13,7 +13,7 @@
 
         MarketingPartnerViewModel MarketingPartnerDetails(int marketingPartnerId);
 
-        List<MarketingPartnerViewModel> ReadMarketingPartners(string searchboxMarketingPartner);
+        List<MarketingPartnerViewModel> ReadMarketingPartners(string searchboxMarketingPartner, bool showAll);
 
         MarketingPartnerViewModel CreateMarketingPartner(MarketingPartnerViewModel marketingPartner);
 

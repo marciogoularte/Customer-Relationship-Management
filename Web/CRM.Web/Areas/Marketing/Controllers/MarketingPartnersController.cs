@@ -42,9 +42,9 @@
             return Json(marketingPartnersNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadMarketingPartners([DataSourceRequest] DataSourceRequest request, string searchTerm)
+        public JsonResult ReadMarketingPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
         {
-            var readMarketingPartners = marketingPartners.ReadMarketingPartners(searchTerm);
+            var readMarketingPartners = marketingPartners.ReadMarketingPartners(searchTerm, showAll);
 
             return Json(readMarketingPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

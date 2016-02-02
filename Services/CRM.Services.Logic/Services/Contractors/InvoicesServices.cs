@@ -28,25 +28,36 @@ namespace CRM.Services.Logic.Services.Contractors
             return invoicesData;
         }
 
-        public List<InvoiceViewModel> ReadContractInvoices(string searchbox, int contractId)
+        public List<InvoiceViewModel> ReadContractInvoices(string searchbox, int contractId, bool showAll)
         {
             List<InvoiceViewModel> invoices;
 
-            if (string.IsNullOrEmpty(searchbox) || searchbox == "")
-            {
-                invoices = this.Data.Invoices
-                    .All()
-                    .ProjectTo<InvoiceViewModel>()
-                    .Where(i => i.ClientContractId == contractId && i.IsVisible)
-                    .ToList();
-            }
-            else
+            if (!string.IsNullOrEmpty(searchbox) || searchbox != "")
             {
                 invoices = this.Data.Invoices
                    .All()
                    .ProjectTo<InvoiceViewModel>()
                    .Where(i => i.ClientContractId == contractId && i.MgSubs.ToString().Contains(searchbox))
                    .ToList();
+            }
+            else
+            {
+                if (showAll == false)
+                {
+                    invoices = this.Data.Invoices
+                        .All()
+                        .ProjectTo<InvoiceViewModel>()
+                        .Where(i => i.ClientContractId == contractId && i.IsVisible)
+                        .ToList();
+                }
+                else
+                {
+                    invoices = this.Data.Invoices
+                        .All()
+                        .ProjectTo<InvoiceViewModel>()
+                        .Where(i => i.ClientContractId == contractId)
+                        .ToList();
+                }
             }
 
             return invoices;

@@ -49,17 +49,27 @@ namespace CRM.Services.Logic.Services.Finance
             return financeInvoiceIDetails;
         }
 
-        public List<FinanceInvoiceViewModel> ReadFinanceInvoices(string searchboxinvoice)
+        public List<FinanceInvoiceViewModel> ReadFinanceInvoices(string searchboxinvoice, bool showAll)
         {
             List<FinanceInvoiceViewModel> readFinanceInvoices;
 
             if (string.IsNullOrEmpty(searchboxinvoice) || searchboxinvoice == "")
             {
-                readFinanceInvoices = this.Data.FinanceInvoices
-                .All()
-                .Where(fi => fi.IsVisible)
-                .ProjectTo<FinanceInvoiceViewModel>()
-                .ToList();
+                if (showAll == false)
+                {
+                    readFinanceInvoices = this.Data.FinanceInvoices
+                        .All()
+                        .Where(fi => fi.IsVisible)
+                        .ProjectTo<FinanceInvoiceViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    readFinanceInvoices = this.Data.FinanceInvoices
+                    .All()
+                    .ProjectTo<FinanceInvoiceViewModel>()
+                    .ToList();
+                }
             }
             else
             {

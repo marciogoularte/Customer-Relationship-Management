@@ -13,7 +13,7 @@
 
         PaymentViewModel PaymentDetails(int paymentId);
 
-        List<PaymentViewModel> ReadPayments(string searchboxPayment);
+        List<PaymentViewModel> ReadPayments(string searchboxPayment, bool showAll);
 
         PaymentViewModel CreatePayment(PaymentViewModel givenPayment);
 

@@ -99,49 +99,71 @@
             return contractsNames;
         }
 
-        public List<ClientContractViewModel> ReadClientsContracts(string searchTerm, int clientId)
+        public List<ClientContractViewModel> ReadClientsContracts(string searchTerm, int clientId, bool showAll)
         {
             List<ClientContractViewModel> contracts;
 
-            if (string.IsNullOrEmpty(searchTerm) || searchTerm == "")
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                contracts = this.Data.ClientContracts
-                .All()
-                .Where(c => c.ClientId == clientId && c.IsVisible)
-                .ProjectTo<ClientContractViewModel>()
-                .ToList();
+                    contracts = this.Data.ClientContracts
+                    .All()
+                    .Where(c => c.TypeOfContract.Contains(searchTerm) && c.ClientId == clientId)
+                    .ProjectTo<ClientContractViewModel>()
+                    .ToList();
             }
             else
             {
-                contracts = this.Data.ClientContracts
-                .All()
-                .Where(c => c.TypeOfContract.Contains(searchTerm) && c.ClientId == clientId)
-                .ProjectTo<ClientContractViewModel>()
-                .ToList();
+                if (showAll == false)
+                {
+                    contracts = this.Data.ClientContracts
+                    .All()
+                    .Where(c => c.ClientId == clientId && c.IsVisible)
+                    .ProjectTo<ClientContractViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    contracts = this.Data.ClientContracts
+                    .All()
+                    .Where(c => c.ClientId == clientId)
+                    .ProjectTo<ClientContractViewModel>()
+                    .ToList();
+                }
             }
-
+            
             return contracts;
         }
 
-        public List<ProviderContractViewModel> ReadProvidersContracts(string searchbox, int providerId)
+        public List<ProviderContractViewModel> ReadProvidersContracts(string searchbox, int providerId, bool showAll)
         {
             List<ProviderContractViewModel> contracts;
 
-            if (string.IsNullOrEmpty(searchbox) || searchbox == "")
+            if (!string.IsNullOrEmpty(searchbox))
             {
                 contracts = this.Data.ProviderContracts
-                   .All()
-                   .ProjectTo<ProviderContractViewModel>()
-                   .Where(c => c.ProviderId == providerId && c.IsVisible)
-                   .ToList();
+                .All()
+                .Where(c => c.TypeOfContract.Contains(searchbox) && c.ProviderId == providerId)
+                .ProjectTo<ProviderContractViewModel>()
+                .ToList();
             }
             else
             {
-                contracts = this.Data.ProviderContracts
-                   .All()
-                   .ProjectTo<ProviderContractViewModel>()
-                   .Where(c => c.TypeOfContract.Contains(searchbox) && c.ProviderId == providerId)
-                   .ToList();
+                if (showAll == false)
+                {
+                    contracts = this.Data.ProviderContracts
+                    .All()
+                    .Where(c => c.ProviderId == providerId && c.IsVisible)
+                    .ProjectTo<ProviderContractViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    contracts = this.Data.ProviderContracts
+                    .All()
+                    .Where(c => c.ProviderId == providerId)
+                    .ProjectTo<ProviderContractViewModel>()
+                    .ToList();
+                }
             }
 
             return contracts;

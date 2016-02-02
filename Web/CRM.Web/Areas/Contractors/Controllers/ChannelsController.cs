@@ -38,9 +38,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(channelsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadChannels([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
+        public JsonResult ReadChannels([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool showAll)
         {
-            var readChannels = this.channels.ReadChannels(searchbox, providerId);
+            var readChannels = this.channels.ReadChannels(searchbox, providerId, showAll);
 
             return Json(readChannels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

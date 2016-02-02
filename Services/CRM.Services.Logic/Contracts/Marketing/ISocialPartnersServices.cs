@@ -12,7 +12,7 @@
 
         SocialPartnerViewModel SocialPartnerInformation(int socialPartnerId, SocialSystemType type);
 
-        List<SocialPartnerViewModel> ReadSocialPartners(string searchboxSocialPartner, SocialSystemType type);
+        List<SocialPartnerViewModel> ReadSocialPartners(string searchboxSocialPartner, SocialSystemType type, bool showAll);
 
         SocialPartnerViewModel CreateSocialPartner(SocialPartnerViewModel givenSocialPartner);
 

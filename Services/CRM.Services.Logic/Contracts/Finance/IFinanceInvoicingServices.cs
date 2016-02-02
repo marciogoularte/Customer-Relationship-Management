@@ -13,7 +13,7 @@
 
         FinanceInvoiceViewModel FinanceInvoiceDetails(int invoiceId);
 
-        List<FinanceInvoiceViewModel> ReadFinanceInvoices(string searchboxinvoice);
+        List<FinanceInvoiceViewModel> ReadFinanceInvoices(string searchboxinvoice, bool showAll);
 
         FinanceInvoiceViewModel CreateFinanceInvoice(FinanceInvoiceViewModel givenFinanceInvoice);
 

@@ -42,9 +42,9 @@
             return Json(financeInvoicesNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadFinanceInvoices([DataSourceRequest] DataSourceRequest request, string searchTerm)
+        public JsonResult ReadFinanceInvoices([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
         {
-            var readFinanceInvoices = this.financeInvoices.ReadFinanceInvoices(searchTerm);
+            var readFinanceInvoices = this.financeInvoices.ReadFinanceInvoices(searchTerm, showAll);
 
             return Json(readFinanceInvoices.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

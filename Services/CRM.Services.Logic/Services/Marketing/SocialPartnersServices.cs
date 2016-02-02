@@ -41,17 +41,28 @@ namespace CRM.Services.Logic.Services.Marketing
             return partner;
         }
 
-        public List<SocialPartnerViewModel> ReadSocialPartners(string searchboxSocialPartner, SocialSystemType type)
+        public List<SocialPartnerViewModel> ReadSocialPartners(string searchboxSocialPartner, SocialSystemType type, bool showAll)
         {
             List<SocialPartnerViewModel> readSocialPartners;
 
             if (string.IsNullOrEmpty(searchboxSocialPartner) || searchboxSocialPartner == "")
             {
-                readSocialPartners = this.Data.SocialPartners
-                .All()
-                .Where(p => p.SocialSystem == type && p.IsVisible)
-                .ProjectTo<SocialPartnerViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    readSocialPartners = this.Data.SocialPartners
+                    .All()
+                    .Where(p => p.SocialSystem == type)
+                    .ProjectTo<SocialPartnerViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    readSocialPartners = this.Data.SocialPartners
+                    .All()
+                    .Where(p => p.SocialSystem == type && p.IsVisible)
+                    .ProjectTo<SocialPartnerViewModel>()
+                    .ToList();
+                }
             }
             else
             {

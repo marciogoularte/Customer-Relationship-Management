@@ -46,9 +46,9 @@
             return Json(campaignsData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ReadCampaigns([DataSourceRequest] DataSourceRequest request, string searchbox)
+        public ActionResult ReadCampaigns([DataSourceRequest] DataSourceRequest request, string searchbox, bool showAll)
         {
-            var readCampaigns = this.campaigns.ReadCampaigns(searchbox);
+            var readCampaigns = this.campaigns.ReadCampaigns(searchbox, showAll);
 
             return Json(readCampaigns.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

@@ -50,22 +50,11 @@ namespace CRM.Services.Logic.Services.Contractors
             return discussionsSubjects;
         }
 
-        public List<DiscussionViewModel> ReadClientsDiscussions(string searchTerm, int clientId)
+        public List<DiscussionViewModel> ReadClientsDiscussions(string searchTerm, int clientId, bool showAll)
         {
             List<DiscussionViewModel> discussions;
 
-            if (string.IsNullOrEmpty(searchTerm) || searchTerm == "")
-            {
-                discussions = this.Data.Discussions
-                    .All()
-                    .ProjectTo<DiscussionViewModel>()
-                    .Where(d =>
-                        d.ClientId != null &&
-                        d.ClientId == clientId &&
-                        d.IsVisible)
-                    .ToList();
-            }
-            else
+            if (!string.IsNullOrEmpty(searchTerm) || searchTerm != "")
             {
                 discussions = this.Data.Discussions
                     .All()
@@ -76,24 +65,61 @@ namespace CRM.Services.Logic.Services.Contractors
                         d.SubjectOfDiscussion.Contains(searchTerm))
                     .ToList();
             }
-
+            else
+            {
+                if (showAll == false)
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ClientId != null &&
+                            d.ClientId == clientId &&
+                            d.IsVisible)
+                        .ToList();
+                }
+                else
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ClientId != null &&
+                            d.ClientId == clientId)
+                        .ToList();
+                }
+            }
+            
             return discussions;
         }
 
-        public List<DiscussionViewModel> ReadProvidersDiscussions(string searchTerm, int providerId)
+        public List<DiscussionViewModel> ReadProvidersDiscussions(string searchTerm, int providerId, bool showAll)
         {
             List<DiscussionViewModel> discussions;
 
             if (string.IsNullOrEmpty(searchTerm) || searchTerm == "")
             {
-                discussions = this.Data.Discussions
-                    .All()
-                    .ProjectTo<DiscussionViewModel>()
-                    .Where(d =>
-                        d.ProviderId != null &&
-                        d.ProviderId == providerId &&
-                        d.IsVisible)
-                    .ToList();
+                if (showAll)
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ProviderId != null &&
+                            d.ProviderId == providerId)
+                        .ToList();
+                }
+                else
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ProviderId != null &&
+                            d.ProviderId == providerId &&
+                            d.IsVisible)
+                        .ToList();
+                }
             }
             else
             {

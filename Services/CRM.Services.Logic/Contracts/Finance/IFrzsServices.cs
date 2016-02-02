@@ -13,7 +13,7 @@
 
         FrzViewModel FrzDetails(int frzId);
 
-        List<FrzViewModel> ReadFrzs(string searchboxFrz);
+        List<FrzViewModel> ReadFrzs(string searchboxFrz, bool showAll);
 
         FrzViewModel CreateFrz(FrzViewModel givenFrz);
 

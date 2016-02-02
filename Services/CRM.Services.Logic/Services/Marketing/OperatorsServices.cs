@@ -49,17 +49,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return operatorDetails;
         }
 
-        public List<OperatorViewModel> ReadOperators(string searchboxOperator)
+        public List<OperatorViewModel> ReadOperators(string searchboxOperator, bool showAll)
         {
             List<OperatorViewModel > readOperators;
 
             if (string.IsNullOrEmpty(searchboxOperator) || searchboxOperator == "")
             {
-                readOperators = this.Data.Operators
-                .All()
-                .Where(o => o.IsVisible)
-                .ProjectTo<OperatorViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    readOperators = this.Data.Operators
+                    .All()
+                    .ProjectTo<OperatorViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    readOperators = this.Data.Operators
+                    .All()
+                    .Where(o => o.IsVisible)
+                    .ProjectTo<OperatorViewModel>()
+                    .ToList();
+                }
             }
             else
             {

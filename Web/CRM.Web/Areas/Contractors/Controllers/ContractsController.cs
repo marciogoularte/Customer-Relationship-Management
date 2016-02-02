@@ -85,16 +85,16 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(contractsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId)
+        public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool showAll)
         {
-            var clientContracts = this.contracts.ReadClientsContracts(searchTerm, clientId);
+            var clientContracts = this.contracts.ReadClientsContracts(searchTerm, clientId, showAll);
 
             return Json(clientContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId)
+        public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool showAll)
         {
-            var providerContracts = this.contracts.ReadProvidersContracts(searchbox, providerId);
+            var providerContracts = this.contracts.ReadProvidersContracts(searchbox, providerId, showAll);
 
             return Json(providerContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

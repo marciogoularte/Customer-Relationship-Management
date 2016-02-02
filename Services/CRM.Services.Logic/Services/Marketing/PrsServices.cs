@@ -49,17 +49,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return prDetails;
         }
 
-        public List<PrViewModel> ReadPrs(string searchboxPr)
+        public List<PrViewModel> ReadPrs(string searchboxPr, bool showAll)
         {
             List<PrViewModel> readPrs;
 
             if (string.IsNullOrEmpty(searchboxPr) || searchboxPr == "")
             {
-                readPrs = this.Data.Prs
-                .All()
-                .Where(pr => pr.IsVisible)
-                .ProjectTo<PrViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    readPrs = this.Data.Prs
+                    .All()
+                    .ProjectTo<PrViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    readPrs = this.Data.Prs
+                    .All()
+                    .Where(pr => pr.IsVisible)
+                    .ProjectTo<PrViewModel>()
+                    .ToList();
+                }
             }
             else
             {

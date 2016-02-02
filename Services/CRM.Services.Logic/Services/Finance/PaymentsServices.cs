@@ -49,17 +49,27 @@ namespace CRM.Services.Logic.Services.Finance
             return paymentDetails;
         }
 
-        public List<PaymentViewModel> ReadPayments(string searchboxPayment)
+        public List<PaymentViewModel> ReadPayments(string searchboxPayment, bool showAll)
         {
             List<PaymentViewModel> readPayments;
 
             if (string.IsNullOrEmpty(searchboxPayment) || searchboxPayment == "")
             {
-                readPayments = this.Data.Payments
-                .All()
-                .Where(p => p.IsVisible)
-                .ProjectTo<PaymentViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    readPayments = this.Data.Payments
+                        .All()
+                        .ProjectTo<PaymentViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    readPayments = this.Data.Payments
+                    .All()
+                    .Where(p => p.IsVisible)
+                    .ProjectTo<PaymentViewModel>()
+                    .ToList();
+                }
             }
             else
             {

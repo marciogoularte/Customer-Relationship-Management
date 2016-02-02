@@ -9,6 +9,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all", "Show all")
+@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+
 @(Html.Kendo()
     .Grid<ProviderContractViewModel>()
     .Name("grid-provider-contracts")
@@ -95,6 +98,12 @@
 </div>
 
 <script>
+    $('#show-all').click(function () {
+        var grid = $("#grid-provider-contracts").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalData() {
         return {
             text: $("#searchbox-providers-contracts").val()
@@ -102,7 +111,12 @@
     }
 
     function addSearchProviderContracts() {
-        return { searchbox: $('#searchbox-providers-contracts').val() };
+        var isChecked = $('#show-all').is(':checked');
+
+        return {
+            searchbox: $('#searchbox-providers-contracts').val(),
+            showAll: isChecked
+        };
     }
 
     $('#searchbox-providers-contracts').keyup(function () {

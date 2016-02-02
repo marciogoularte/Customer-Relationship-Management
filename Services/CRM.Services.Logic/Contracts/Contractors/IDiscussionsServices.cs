@@ -12,9 +12,9 @@ namespace CRM.Services.Logic.Contracts.Contractors
 
         List<string> ProvidersDiscussionsNames();
 
-        List<DiscussionViewModel> ReadClientsDiscussions(string searchTerm, int clientId);
+        List<DiscussionViewModel> ReadClientsDiscussions(string searchTerm, int clientId, bool showAll);
 
-        List<DiscussionViewModel> ReadProvidersDiscussions(string searchTerm, int providerId);
+        List<DiscussionViewModel> ReadProvidersDiscussions(string searchTerm, int providerId, bool showAll);
 
         DiscussionViewModel CreateDiscussion(DiscussionViewModel discussion, int? currentClientId, int? currentProviderId, string loggedUserId);
 

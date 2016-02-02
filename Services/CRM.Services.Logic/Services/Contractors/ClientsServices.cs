@@ -12,7 +12,7 @@
     using Data.ViewModels.Contracts.Clients;
     using Data.ViewModels.Contracts.Contracts;
     using Data.ViewModels.Contracts.TypeOfCompanies;
-    
+
     public class ClientsServices : IClientsServices
     {
         private ICRMData Data { get; set; }
@@ -71,17 +71,27 @@
             return typeOfCompany;
         }
 
-        public List<ClientViewModel> ReadClients(string searchboxClients)
+        public List<ClientViewModel> ReadClients(string searchboxClients, bool showAll)
         {
             List<ClientViewModel> clients;
 
-            if (string.IsNullOrEmpty(searchboxClients) || searchboxClients == "")
+            if (string.IsNullOrEmpty(searchboxClients) && searchboxClients == "")
             {
-                clients = this.Data.Clients
-                    .All()
-                    .Where(c => c.IsVisible)
-                    .ProjectTo<ClientViewModel>()
-                    .ToList();
+                if (showAll == false)
+                {
+                    clients = this.Data.Clients
+                        .All()
+                        .Where(c => c.IsVisible)
+                        .ProjectTo<ClientViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    clients = this.Data.Clients
+                        .All()
+                        .ProjectTo<ClientViewModel>()
+                        .ToList();
+                }
             }
             else
             {
@@ -91,6 +101,7 @@
                     .Where(c => c.Name.Contains(searchboxClients))
                     .ToList();
             }
+
 
             return clients;
         }

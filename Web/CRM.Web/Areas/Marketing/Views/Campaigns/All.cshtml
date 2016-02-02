@@ -5,9 +5,13 @@
     const string controllerName = "Campaigns";
 }
 <h2>Campaigns</h2>
+
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
+
+@Html.Label("show-all", "Show all")
+@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<CampaignViewModel>()
@@ -91,6 +95,12 @@
 </div>
 
 <script>
+    $('#show-all').click(function () {
+        var grid = $("#grid-campaigns").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataCampaign() {
         return {
             text: $("#searchbox-campaigns").val()
@@ -98,7 +108,12 @@
     }
 
     function addSearchCampaigns() {
-        return { searchbox: $('#searchbox-campaigns').val() };
+        var isChecked = $('#show-all').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchbox: $('#searchbox-campaigns').val()
+        };
     }
 
     $('#searchbox-campaigns').keyup(function () {

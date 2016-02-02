@@ -49,17 +49,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return Media;
         }
 
-        public List<MediaViewModel> ReadMedia(string searchboxMedia)
+        public List<MediaViewModel> ReadMedia(string searchboxMedia, bool showAll)
         {
             List<MediaViewModel> media;
 
             if (string.IsNullOrEmpty(searchboxMedia) || searchboxMedia == "")
             {
-                media = this.Data.Media
-                .All()
-                .Where(m => m.IsVisible)
-                .ProjectTo<MediaViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    media = this.Data.Media
+                    .All()
+                    .ProjectTo<MediaViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    media = this.Data.Media
+                    .All()
+                    .Where(m => m.IsVisible)
+                    .ProjectTo<MediaViewModel>()
+                    .ToList();
+                }
             }
             else
             {

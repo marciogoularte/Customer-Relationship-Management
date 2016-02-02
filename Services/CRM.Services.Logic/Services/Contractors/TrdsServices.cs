@@ -27,17 +27,28 @@ namespace CRM.Services.Logic.Services.Contractors
             return trdsData;
         }
 
-        public List<TrdViewModel> ReadTrds(string searchbox, int clientId)
+        public List<TrdViewModel> ReadTrds(string searchbox, int clientId, bool showAll)
         {
             List<TrdViewModel> trds;
 
             if (string.IsNullOrEmpty(searchbox) || searchbox == "")
             {
-                trds = this.Data.Trds
-                    .All()
-                    .ProjectTo<TrdViewModel>()
-                    .Where(i => i.ClientId == clientId && i.IsVisible)
-                    .ToList();
+                if (showAll == false)
+                {
+                    trds = this.Data.Trds
+                        .All()
+                        .ProjectTo<TrdViewModel>()
+                        .Where(i => i.ClientId == clientId && i.IsVisible)
+                        .ToList();
+                }
+                else
+                {
+                    trds = this.Data.Trds
+                        .All()
+                        .ProjectTo<TrdViewModel>()
+                        .Where(i => i.ClientId == clientId)
+                        .ToList();
+                }
             }
             else
             {

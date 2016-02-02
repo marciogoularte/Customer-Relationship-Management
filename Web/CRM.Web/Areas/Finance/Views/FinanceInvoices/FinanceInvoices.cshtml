@@ -10,6 +10,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all", "Show all")
+@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+
 @(Html.Kendo()
     .Grid<FinanceInvoiceViewModel>()
     .Name("grid-FinanceInvoices")
@@ -93,6 +96,12 @@
 </div>
 
 <script>
+    $('#show-all').click(function () {
+        var grid = $("#grid-FinanceInvoices").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataFinanceInvoices() {
         return {
             text: $("#searchbox-FinanceInvoice").val()
@@ -100,7 +109,12 @@
     }
 
     function addSearchFinanceInvoices() {
-        return { searchTerm: $('#searchbox-FinanceInvoice').val() };
+        var isChecked = $('#show-all').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-FinanceInvoice').val()
+        };
     }
 
     $('#searchbox-FinanceInvoice').keyup(function () {

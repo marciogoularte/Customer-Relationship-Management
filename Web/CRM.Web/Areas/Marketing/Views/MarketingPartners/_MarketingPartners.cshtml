@@ -11,6 +11,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all", "Show all")
+@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+
 @(Html.Kendo()
     .Grid<MarketingPartnerViewModel>()
     .Name("grid-marketing-partners")
@@ -94,6 +97,12 @@
 </div>
 
 <script>
+    $('#show-all').click(function () {
+        var grid = $("#grid-marketing-partners").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataMarketingPartners() {
         return {
             text: $("#searchbox-marketing-partner").val()
@@ -101,7 +110,12 @@
     }
 
     function addSearchMarketingPartners() {
-        return { searchTerm: $('#searchbox-marketing-partner').val() };
+        var isChecked = $('#show-all').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-marketing-partner').val()
+        };
     }
 
     $('#searchbox-marketing-partner').keyup(function () {

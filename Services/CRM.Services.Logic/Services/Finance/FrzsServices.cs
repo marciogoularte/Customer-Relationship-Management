@@ -49,17 +49,27 @@ namespace CRM.Services.Logic.Services.Finance
             return frzDetails;
         }
 
-        public List<FrzViewModel> ReadFrzs(string searchboxFrz)
+        public List<FrzViewModel> ReadFrzs(string searchboxFrz, bool showAll)
         {
             List<FrzViewModel> readFrzs;
 
             if (string.IsNullOrEmpty(searchboxFrz) || searchboxFrz == "")
             {
-                readFrzs = this.Data.Frzs
-                .All()
-                .Where(frz => frz.IsVisible)
-                .ProjectTo<FrzViewModel>()
-                .ToList();
+                if (showAll == false)
+                {
+                    readFrzs = this.Data.Frzs
+                        .All()
+                        .Where(frz => frz.IsVisible)
+                        .ProjectTo<FrzViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    readFrzs = this.Data.Frzs
+                    .All()
+                    .ProjectTo<FrzViewModel>()
+                    .ToList();
+                }
             }
             else
             {

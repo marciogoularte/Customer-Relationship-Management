@@ -6,10 +6,12 @@
 
 <h2>Media</h2>
 
-
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
+
+@Html.Label("show-all", "Show all")
+@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<MediaViewModel>()
@@ -94,6 +96,12 @@
 </div>
 
 <script>
+    $('#show-all').click(function () {
+        var grid = $("#grid-media").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataMedia() {
         return {
             text: $("#searchbox-media").val()
@@ -101,7 +109,12 @@
     }
 
     function addSearchMedia() {
-        return { searchTerm: $('#searchbox-media').val() };
+        var isChecked = $('#show-all').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-media').val()
+        };
     }
 
     $('#searchbox-media').keyup(function () {

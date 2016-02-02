@@ -59,16 +59,16 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(discussionsSubjects, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadClientsDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId)
+        public JsonResult ReadClientsDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool showAll)
         {
-            var readDiscussions = this.discussions.ReadClientsDiscussions(searchTerm, clientId);
+            var readDiscussions = this.discussions.ReadClientsDiscussions(searchTerm, clientId, showAll);
 
             return Json(readDiscussions.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadProvidersDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int providerId)
+        public JsonResult ReadProvidersDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int providerId, bool showAll)
         {
-            var readDiscussions = this.discussions.ReadProvidersDiscussions(searchTerm, providerId);
+            var readDiscussions = this.discussions.ReadProvidersDiscussions(searchTerm, providerId, showAll);
 
             return Json(readDiscussions.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

@@ -7,6 +7,9 @@
 
 <h2>Providers</h2>
 
+@Html.Label("show-all", "Show all")
+@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+
 @(Html.Kendo()
     .Grid<ProviderViewModel>()
     .Name("grid-providers")
@@ -99,6 +102,12 @@
 </div>
 
 <script>
+    $('#show-all').click(function () {
+        var grid = $("#grid-providers").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataProviders() {
         return {
             text: $("#searchbox-providers").val()
@@ -106,7 +115,12 @@
     }
 
     function addSearchProviders() {
-        return { searchboxProviders: $('#searchbox-providers').val() };
+        var isChecked = $('#show-all').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchboxProviders: $('#searchbox-providers').val()
+        };
     }
 
     $('#searchbox-providers').keyup(function () {

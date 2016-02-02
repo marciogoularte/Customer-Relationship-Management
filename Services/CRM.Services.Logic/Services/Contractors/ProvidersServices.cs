@@ -68,25 +68,35 @@ namespace CRM.Services.Logic.Services.Contractors
             return typeOfCompany;
         }
 
-        public List<ProviderViewModel> ReadProviders(string searchboxProviders)
+        public List<ProviderViewModel> ReadProviders(string searchboxProviders, bool showAll)
         {
             List<ProviderViewModel> providers;
 
-            if (string.IsNullOrEmpty(searchboxProviders) || searchboxProviders == "")
-            {
-                providers = this.Data.Providers
-                .All()
-                .Where(p => p.IsVisible)
-                .ProjectTo<ProviderViewModel>()
-                .ToList();
-            }
-            else
+            if (!string.IsNullOrEmpty(searchboxProviders) || searchboxProviders != "")
             {
                 providers = this.Data.Providers
                 .All()
                 .ProjectTo<ProviderViewModel>()
                 .Where(p => p.Name.Contains(searchboxProviders))
                 .ToList();
+            }
+            else
+            {
+                if (showAll == false)
+                {
+                    providers = this.Data.Providers
+                    .All()
+                    .Where(p => p.IsVisible)
+                    .ProjectTo<ProviderViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    providers = this.Data.Providers
+                    .All()
+                    .ProjectTo<ProviderViewModel>()
+                    .ToList();
+                }
             }
 
             return providers;

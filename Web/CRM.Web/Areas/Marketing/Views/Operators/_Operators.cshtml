@@ -10,6 +10,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all", "Show all")
+@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+
 @(Html.Kendo()
     .Grid<OperatorViewModel>()
     .Name("grid-operators")
@@ -92,6 +95,12 @@
 </div>
 
 <script>
+    $('#show-all').click(function () {
+        var grid = $("#grid-operators").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataOperators() {
         return {
             text: $("#searchbox-operator").val()
@@ -99,7 +108,12 @@
     }
 
     function addSearchOperators() {
-        return { searchTerm: $('#searchbox-operator').val() };
+        var isChecked = $('#show-all').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-operator').val()
+        };
     }
 
     $('#searchbox-operator').keyup(function () {

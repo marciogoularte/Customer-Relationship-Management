@@ -13,7 +13,7 @@ namespace CRM.Services.Logic.Contracts.Marketing
 
         OperatorViewModel OperatorDetails(int operatorId);
 
-        List<OperatorViewModel> ReadOperators(string searchboxOperator);
+        List<OperatorViewModel> ReadOperators(string searchboxOperator, bool showAll);
 
         OperatorViewModel CreateOperator(OperatorViewModel givenOperator);
 

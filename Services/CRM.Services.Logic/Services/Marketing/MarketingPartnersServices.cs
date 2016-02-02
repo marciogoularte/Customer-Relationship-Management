@@ -49,17 +49,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return marketingPartner;
         }
 
-        public List<MarketingPartnerViewModel> ReadMarketingPartners(string searchboxMarketingPartner)
+        public List<MarketingPartnerViewModel> ReadMarketingPartners(string searchboxMarketingPartner, bool showAll)
         {
             List<MarketingPartnerViewModel> marketingPartners;
 
             if (string.IsNullOrEmpty(searchboxMarketingPartner) || searchboxMarketingPartner == "")
             {
-                marketingPartners = this.Data.MarketingPartners
-                .All()
-                .Where(mp => mp.IsVisible)
-                .ProjectTo<MarketingPartnerViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    marketingPartners = this.Data.MarketingPartners
+                    .All()
+                    .ProjectTo<MarketingPartnerViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    marketingPartners = this.Data.MarketingPartners
+                    .All()
+                    .Where(mp => mp.IsVisible)
+                    .ProjectTo<MarketingPartnerViewModel>()
+                    .ToList();
+                }
             }
             else
             {

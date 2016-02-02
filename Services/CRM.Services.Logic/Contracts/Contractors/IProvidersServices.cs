@@ -15,7 +15,7 @@ namespace CRM.Services.Logic.Contracts.Contractors
 
         string GetTypeOfCompany(int TypeOfCompany);
 
-        List<ProviderViewModel> ReadProviders(string searchboxProviders);
+        List<ProviderViewModel> ReadProviders(string searchboxProviders, bool showAll);
 
         ProviderViewModel CreateProvider(ProviderViewModel provider);
 
