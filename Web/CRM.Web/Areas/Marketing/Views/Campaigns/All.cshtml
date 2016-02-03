@@ -10,8 +10,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all", "Show all")
-@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-campaigns", "Show all")
+@Html.CheckBox("show-all-campaigns", false, new { id = "show-all-campaigns", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<CampaignViewModel>()
@@ -95,7 +95,7 @@
 </div>
 
 <script>
-    $('#show-all').click(function () {
+    $('#show-all-campaigns').click(function () {
         var grid = $("#grid-campaigns").data("kendoGrid");
 
         grid.dataSource.read();
@@ -108,7 +108,7 @@
     }
 
     function addSearchCampaigns() {
-        var isChecked = $('#show-all').is(':checked');
+        var isChecked = $('#show-all-campaigns').is(':checked');
 
         return {
             showAll: isChecked,

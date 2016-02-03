@@ -10,8 +10,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all", "Show all")
-@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-prs", "Show all")
+@Html.CheckBox("show-all-prs", false, new { id = "show-all-prs", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<PrViewModel>()
@@ -95,7 +95,7 @@
 </div>
 
 <script>
-    $('#show-all').click(function () {
+    $('#show-all-prs').click(function () {
         var grid = $("#grid-Prs").data("kendoGrid");
 
         grid.dataSource.read();
@@ -108,7 +108,7 @@
     }
 
     function addSearchPrs() {
-        var isChecked = $('#show-all').is(':checked');
+        var isChecked = $('#show-all-prs').is(':checked');
 
         return {
             showAll: isChecked,

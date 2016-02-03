@@ -10,8 +10,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all", "Show all")
-@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-payments", "Show all")
+@Html.CheckBox("show-all-payments", false, new { id = "show-all-payments", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<PaymentViewModel>()
@@ -95,7 +95,7 @@
 </div>
 
 <script>
-    $('#show-all').click(function () {
+    $('#show-all-payments').click(function () {
         var grid = $("#grid-Payments").data("kendoGrid");
 
         grid.dataSource.read();
@@ -108,7 +108,7 @@
     }
 
     function addSearchPayments() {
-        var isChecked = $('#show-all').is(':checked');
+        var isChecked = $('#show-all-payments').is(':checked');
 
         return {
             showAll: isChecked,

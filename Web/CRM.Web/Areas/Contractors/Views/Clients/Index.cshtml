@@ -7,8 +7,8 @@
 
 <h2>Clients</h2>
 
-@Html.Label("show-all", "Show all")
-@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-clients", "Show all")
+@Html.CheckBox("show-all-clients", false, new { id = "show-all-clients", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<ClientViewModel>()
@@ -126,7 +126,7 @@
 </div>
 
 <script>
-    $('#show-all').click(function () {
+    $('#show-all-clients-clients').click(function () {
         var grid = $("#grid-clients").data("kendoGrid");
 
         grid.dataSource.read();
@@ -139,7 +139,7 @@
     }
 
     function additionalReadParameters() {
-        var isChecked = $('#show-all').is(':checked');
+        var isChecked = $('#show-all-clients').is(':checked');
         var searchedBoxClientsValue = $('#searchbox-clients').val();
 
         return {

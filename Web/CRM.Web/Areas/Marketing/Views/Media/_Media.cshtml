@@ -10,8 +10,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all", "Show all")
-@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-media-media", "Show all")
+@Html.CheckBox("show-all-media", false, new { id = "show-all-media", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<MediaViewModel>()
@@ -96,7 +96,7 @@
 </div>
 
 <script>
-    $('#show-all').click(function () {
+    $('#show-all-media').click(function () {
         var grid = $("#grid-media").data("kendoGrid");
 
         grid.dataSource.read();
@@ -109,7 +109,7 @@
     }
 
     function addSearchMedia() {
-        var isChecked = $('#show-all').is(':checked');
+        var isChecked = $('#show-all-media').is(':checked');
 
         return {
             showAll: isChecked,

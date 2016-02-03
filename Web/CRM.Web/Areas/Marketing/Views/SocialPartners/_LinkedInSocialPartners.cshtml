@@ -9,8 +9,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all", "Show all")
-@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-linked-in", "Show all")
+@Html.CheckBox("show-all-linked-in", false, new { id = "show-all-linked-in", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<SocialPartnerViewModel>()
@@ -102,7 +102,7 @@
 </div>
 
 <script>
-    $('#show-all').click(function () {
+    $('#show-all-linked-in').click(function () {
         var grid = $("#grid-LinkedIn-social-partners").data("kendoGrid");
 
         grid.dataSource.read();
@@ -115,7 +115,7 @@
     }
 
     function addSearchLinkedInSocialPartners() {
-        var isChecked = $('#show-all').is(':checked');
+        var isChecked = $('#show-all-linked-in').is(':checked');
 
         return {
             showAll: isChecked,

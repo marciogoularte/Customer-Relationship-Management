@@ -9,8 +9,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all", "Show all")
-@Html.CheckBox("show-all", false, new { id = "show-all", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-provider-discussions", "Show all")
+@Html.CheckBox("show-all-provider-discussions", false, new { id = "show-all-provider-discussions", @class = "k-button k-button-icontext k-grid-add" })
 
 @(Html.Kendo()
     .Grid<DiscussionViewModel>()
@@ -97,7 +97,7 @@
 </div>
 
 <script>
-    $('#show-all').click(function () {
+    $('#show-all-provider-discussions').click(function () {
         var grid = $("#grid-provider-discussions").data("kendoGrid");
 
         grid.dataSource.read();
@@ -110,7 +110,7 @@
     }
 
     function addSearchProviderDiscussion() {
-        var isChecked = $('#show-all').is(':checked');
+        var isChecked = $('#show-all-provider-discussions').is(':checked');
 
         return {
             showAll: isChecked,
