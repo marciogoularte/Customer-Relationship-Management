@@ -25,8 +25,7 @@
         public string Name { get; set; }
 
         public string NameBulgarian { get; set; }
-
-        [Required]
+        
         public string TypeOfCompany { get; set; }
 
         public string Uic { get; set; }
@@ -50,15 +49,15 @@
 
         public string Correspondence { get; set; }
                
-        public double FixedPhoneService { get; set; }
+        public double? FixedPhoneService { get; set; }
            
-        public double MobileVoiceServicesProvidedThroughNetwork { get; set; }
+        public double? MobileVoiceServicesProvidedThroughNetwork { get; set; }
 
-        public double InternetSubs { get; set; }
+        public double? InternetSubs { get; set; }
                
-        public double ServicesMobileAccessToInternet { get; set; }
+        public double? ServicesMobileAccessToInternet { get; set; }
                
-        public double TvSubs { get; set; }
+        public double? TvSubs { get; set; }
 
         public string Coverage { get; set; }
 
@@ -76,6 +75,8 @@
 
         public string FinancePhone { get; set; }
 
+        public string FinanceAddress { get; set; }
+
         public string FinanceEmail { get; set; }
 
         public string TechnicalName { get; set; }
@@ -91,20 +92,15 @@
         public string MarketingEmail { get; set; }
 
         public string Comments { get; set; }
-
-        [Required]
+        
         public string DealerName { get; set; }
-
-        [Required]
+        
         public string DealerPhone { get; set; }
-
-        [Required]
+        
         public string DealerEmail { get; set; }
-
-        [Required]
+        
         public bool WantToReceiveEpg { get; set; }
 
-        [Required]
         public bool WantToReceiveNews { get; set; }
         
         public bool IsVisible { get; set; }

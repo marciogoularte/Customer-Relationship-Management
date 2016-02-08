@@ -136,6 +136,7 @@
                 ManagementEmail = client.ManagementEmail,
                 Finance = client.Finance,
                 FinancePhone = client.FinancePhone,
+                FinanceAddress = client.FinanceAddress,
                 FinanceEmail = client.FinanceEmail,
                 TechnicalName = client.TechnicalName,
                 TechnicalPhone = client.TechnicalPhone,
@@ -201,6 +202,7 @@
             clientFromDb.ManagementEmail = client.ManagementEmail;
             clientFromDb.Finance = client.Finance;
             clientFromDb.FinancePhone = client.FinancePhone;
+            clientFromDb.FinanceAddress = client.FinanceAddress;
             clientFromDb.FinanceEmail = client.FinanceEmail;
             clientFromDb.TechnicalName = client.TechnicalName;
             clientFromDb.TechnicalPhone = client.TechnicalPhone;

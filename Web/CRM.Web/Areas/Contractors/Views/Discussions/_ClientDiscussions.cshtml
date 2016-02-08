@@ -9,8 +9,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all-client-discussions", "Show all")
-@Html.CheckBox("show-all-client-discussions", false, new { id = "show-all-client-discussions", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-client-discussions", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-client-discussions", false, new { id = "show-all-client-discussions"})
 
 @(Html.Kendo()
     .Grid<DiscussionViewModel>()

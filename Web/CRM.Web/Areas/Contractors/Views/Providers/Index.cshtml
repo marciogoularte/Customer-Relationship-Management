@@ -7,8 +7,8 @@
 
 <h2>Providers</h2>
 
-@Html.Label("show-all-providers", "Show all")
-@Html.CheckBox("show-all-providers", false, new { id = "show-all-providers", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-providers", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-providers", false, new { id = "show-all-providers"})
 
 @(Html.Kendo()
     .Grid<ProviderViewModel>()

@@ -7,8 +7,8 @@
 
 <h2>Clients</h2>
 
-@Html.Label("show-all-clients", "Show all")
-@Html.CheckBox("show-all-clients", false, new { id = "show-all-clients", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-clients", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-clients", false, new { id = "show-all-clients"})
 
 @(Html.Kendo()
     .Grid<ClientViewModel>()
@@ -41,6 +41,7 @@
         columns.Bound(model => model.ManagementEmail).Hidden(true);
         columns.Bound(model => model.Finance).Hidden(true);
         columns.Bound(model => model.FinancePhone).Hidden(true);
+        columns.Bound(model => model.FinanceAddress).Hidden(true);
         columns.Bound(model => model.FinanceEmail).Hidden(true);
         columns.Bound(model => model.TechnicalName).Hidden(true);
         columns.Bound(model => model.TechnicalPhone).Hidden(true);

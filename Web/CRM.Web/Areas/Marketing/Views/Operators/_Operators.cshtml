@@ -10,8 +10,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all-operators", "Show all")
-@Html.CheckBox("show-all-operators", false, new { id = "show-all-operators", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-operators", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-operators", false, new { id = "show-all-operators"})
 
 @(Html.Kendo()
     .Grid<OperatorViewModel>()

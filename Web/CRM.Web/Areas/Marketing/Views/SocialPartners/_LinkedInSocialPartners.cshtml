@@ -9,8 +9,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all-linked-in", "Show all")
-@Html.CheckBox("show-all-linked-in", false, new { id = "show-all-linked-in", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-linked-in", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-linked-in", false, new { id = "show-all-linked-in"})
 
 @(Html.Kendo()
     .Grid<SocialPartnerViewModel>()

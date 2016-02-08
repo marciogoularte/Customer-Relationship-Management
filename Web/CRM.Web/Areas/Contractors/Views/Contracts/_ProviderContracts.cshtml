@@ -9,8 +9,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all-provider-contracts", "Show all")
-@Html.CheckBox("show-all-provider-contracts", false, new { id = "show-all-provider-contracts", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-provider-contracts", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-provider-contracts", false, new { id = "show-all-provider-contracts"})
 
 @(Html.Kendo()
     .Grid<ProviderContractViewModel>()

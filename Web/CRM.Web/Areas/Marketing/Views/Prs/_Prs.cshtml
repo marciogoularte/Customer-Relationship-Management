@@ -10,8 +10,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all-prs", "Show all")
-@Html.CheckBox("show-all-prs", false, new { id = "show-all-prs", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-prs", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-prs", false, new { id = "show-all-prs"})
 
 @(Html.Kendo()
     .Grid<PrViewModel>()

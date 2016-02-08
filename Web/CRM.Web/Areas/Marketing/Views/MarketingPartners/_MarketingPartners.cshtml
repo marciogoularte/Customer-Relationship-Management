@@ -11,8 +11,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all-marketing-partners", "Show all")
-@Html.CheckBox("show-all-marketing-partners", false, new { id = "show-all-marketing-partners", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-marketing-partners", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-marketing-partners", false, new { id = "show-all-marketing-partners"})
 
 @(Html.Kendo()
     .Grid<MarketingPartnerViewModel>()

@@ -10,8 +10,8 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
-@Html.Label("show-all-finance-invoices", "Show all")
-@Html.CheckBox("show-all-finance-invoices", false, new { id = "show-all-finance-invoices", @class = "k-button k-button-icontext k-grid-add" })
+@Html.Label("show-all-finance-invoices", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-finance-invoices", false, new { id = "show-all-finance-invoices"})
 
 @(Html.Kendo()
     .Grid<FinanceInvoiceViewModel>()
