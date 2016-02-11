@@ -4,10 +4,12 @@
     var controllerName = "SocialPartners";
 }
 
-
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
+
+@Html.Label("show-all-fb", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-fb", false, new { id = "show-all-fb"})
 
 @(Html.Kendo()
     .Grid<SocialPartnerViewModel>()
@@ -91,6 +93,12 @@
 </div>
 
 <script>
+    $('#show-all-fb').click(function () {
+        var grid = $("#grid-facebook-social-partners").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataFacebookSocialPartners() {
         return {
             text: $("#searchbox-facebook-social-partners").val()
@@ -98,7 +106,12 @@
     }
 
     function addSearchFacebookSocialPartners() {
-        return { searchTerm: $('#searchbox-facebook-social-partners').val() };
+        var isChecked = $('#show-all-fb').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-facebook-social-partners').val()
+        };
     }
 
     $('#searchbox-facebook-social-partners').keyup(function () {

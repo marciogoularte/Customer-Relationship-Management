@@ -7,6 +7,9 @@
 
 <h2>Clients</h2>
 
+@Html.Label("show-all-clients", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-clients", false, new { id = "show-all-clients"})
+
 @(Html.Kendo()
     .Grid<ClientViewModel>()
     .Name("grid-clients")
@@ -38,10 +41,11 @@
         columns.Bound(model => model.ManagementEmail).Hidden(true);
         columns.Bound(model => model.Finance).Hidden(true);
         columns.Bound(model => model.FinancePhone).Hidden(true);
+        columns.Bound(model => model.FinanceAddress).Hidden(true);
         columns.Bound(model => model.FinanceEmail).Hidden(true);
         columns.Bound(model => model.TechnicalName).Hidden(true);
         columns.Bound(model => model.TechnicalPhone).Hidden(true);
-        columns.Bound(model => model.TechnicalEmail ).Hidden(true);
+        columns.Bound(model => model.TechnicalEmail).Hidden(true);
         columns.Bound(model => model.Marketing).Hidden(true);
         columns.Bound(model => model.MarketingPhone).Hidden(true);
         columns.Bound(model => model.MarketingEmail).Hidden(true);
@@ -61,22 +65,22 @@
     })
     .ToolBar(toolBar =>
     {
-        toolBar.Template(@<text>
+    toolBar.Template(@<text>
 
-            @(Html.Kendo().AutoComplete()
+        @(Html.Kendo().AutoComplete()
                 .Name("searchbox-clients")
                 .Placeholder("Name... ")
                 .BindTo(Model)
                 .Filter("contains")
-                  )
-            @if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
-            {
-                <a class='k-button k-button-icontext k-grid-add' href='/Users/Clients/ReadClients?grid-clients-mode=insert'><span class='k-icon k-add'></span>Add new record</a>
-            }
-            <button class='k-button k-button-icontext k-grid-excel'><span class='k-icon k-i-excel'></span>Export to Excel</button>
-            <button class='k-button k-button-icontext k-grid-pdf'><span class='k-icon k-i-pdf'></span>Export to PDF</button>
-       
-         </text>);
+        )
+        @if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
+        {
+            <a class='k-button k-button-icontext k-grid-add' href='/Users/Clients/ReadClients?grid-clients-mode=insert'><span class='k-icon k-add'></span>Add new record</a>
+        }
+        <button class='k-button k-button-icontext k-grid-excel'><span class='k-icon k-i-excel'></span>Export to Excel</button>
+        <button class='k-button k-button-icontext k-grid-pdf'><span class='k-icon k-i-pdf'></span>Export to PDF</button>
+
+    </text>);
     })
     .Groupable()
     .ColumnMenu()
@@ -91,12 +95,12 @@
     .Excel(excel => excel
         .FileName("Clients Database.xlsx")
         .Filterable(true)
-        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new {area=""}))
+        .ProxyURL(Url.Action("Excel_Export_Save", "BaseController", new { area = "" }))
         )
     .Pdf(pdf => pdf
         .AllPages()
             .FileName("Clients Database.pdf")
-        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new {area=""}))
+        .ProxyURL(Url.Action("Pdf_Export_Save", "BaseController", new { area = "" }))
     )
     .Pageable(pageable => pageable
         .Refresh(true)
@@ -109,29 +113,40 @@
     })
     .DataSource(data =>
     {
-            data.Ajax()
-                .Model(model => model.Id(c => c.Id))
-                .PageSize(10)
-                .ServerOperation(true)
-                .Events(ev => ev.Error("errorAlert"))
-
-                .Read(read => read.Action("ReadClients", controllerName).Data("addSearchClients"))
-                .Create(create => create.Action("CreateClient", controllerName))
-                .Update(update => update.Action("UpdateClient", controllerName))
-                .Destroy(destroy => destroy.Action("DestroyClient", controllerName));
+        data.Ajax()
+            .Model(model => model.Id(c => c.Id))
+            .PageSize(10)
+            .ServerOperation(true)
+            .Events(ev => ev.Error("errorAlert"))
+            .Read(read => read.Action("ReadClients", controllerName).Data("additionalReadParameters"))
+            .Create(create => create.Action("CreateClient", controllerName))
+            .Update(update => update.Action("UpdateClient", controllerName))
+            .Destroy(destroy => destroy.Action("DestroyClient", controllerName));
     }))
 <div id="selected">
 </div>
 
 <script>
+    $('#show-all-clients').click(function () {
+        var grid = $("#grid-clients").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataClients() {
         return {
             text: $("#searchbox-clients").val()
         };
     }
 
-    function addSearchClients() {
-        return { searchboxClients: $('#searchbox-clients').val() };
+    function additionalReadParameters() {
+        var isChecked = $('#show-all-clients').is(':checked');
+        var searchedBoxClientsValue = $('#searchbox-clients').val();
+
+        return {
+            searchboxClients: searchedBoxClientsValue,
+            showAll: isChecked
+        };
     }
 
     $('#searchbox-clients').keyup(function () {

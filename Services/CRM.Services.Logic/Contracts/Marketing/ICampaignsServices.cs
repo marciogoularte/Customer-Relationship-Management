@@ -11,7 +11,7 @@
 
         CampaignPartnersViewModel CampaignPartners(int campaignId);
 
-        List<CampaignViewModel> ReadCampaigns(string searchbox);
+        List<CampaignViewModel> ReadCampaigns(string searchbox, bool showAll);
 
         CampaignViewModel CreateCampaign(CampaignViewModel campaign);
 

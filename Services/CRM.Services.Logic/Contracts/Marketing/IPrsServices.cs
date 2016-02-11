@@ -13,7 +13,7 @@ namespace CRM.Services.Logic.Contracts.Marketing
 
         PrViewModel PrDetails(int prId);
 
-        List<PrViewModel> ReadPrs(string searchboxPr);
+        List<PrViewModel> ReadPrs(string searchboxPr, bool showAll);
 
         PrViewModel CreatePr(PrViewModel givenPr);
 

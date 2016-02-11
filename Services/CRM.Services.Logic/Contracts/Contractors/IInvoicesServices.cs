@@ -8,7 +8,7 @@ namespace CRM.Services.Logic.Contracts.Contractors
     {
         List<string> GetContractInvoicesData();
 
-        List<InvoiceViewModel> ReadContractInvoices(string searchbox, int contractId);
+        List<InvoiceViewModel> ReadContractInvoices(string searchbox, int contractId, bool showAll);
 
         InvoiceViewModel CreateContractInvoice(InvoiceViewModel invoice, int contractId);
 

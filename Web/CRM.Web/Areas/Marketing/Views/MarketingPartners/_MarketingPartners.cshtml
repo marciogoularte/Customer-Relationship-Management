@@ -4,12 +4,15 @@
     var controllerName = "MarketingPartners";
 }
 
-<h2>Marketing Partners</h2>
+<h2>Others</h2>
 
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
+
+@Html.Label("show-all-marketing-partners", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-marketing-partners", false, new { id = "show-all-marketing-partners"})
 
 @(Html.Kendo()
     .Grid<MarketingPartnerViewModel>()
@@ -94,6 +97,12 @@
 </div>
 
 <script>
+    $('#show-all-marketing-partners').click(function () {
+        var grid = $("#grid-marketing-partners").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataMarketingPartners() {
         return {
             text: $("#searchbox-marketing-partner").val()
@@ -101,7 +110,12 @@
     }
 
     function addSearchMarketingPartners() {
-        return { searchTerm: $('#searchbox-marketing-partner').val() };
+        var isChecked = $('#show-all-marketing-partners').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-marketing-partner').val()
+        };
     }
 
     $('#searchbox-marketing-partner').keyup(function () {

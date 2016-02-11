@@ -42,9 +42,9 @@
             return Json(mediaNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadMedia([DataSourceRequest] DataSourceRequest request, string searchTerm)
+        public JsonResult ReadMedia([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
-            var readMedia = medias.ReadMedia(searchTerm);
+            var readMedia = (showAll != null) ? (this.medias.ReadMedia(searchTerm, (bool)showAll)) : (this.medias.ReadMedia(searchTerm, false));
 
             return Json(readMedia.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

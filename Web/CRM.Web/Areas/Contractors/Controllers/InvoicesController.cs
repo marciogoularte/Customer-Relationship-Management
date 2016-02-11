@@ -37,9 +37,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(invoicesData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ReadContractInvoices([DataSourceRequest] DataSourceRequest request, string searchbox, int contractId)
+        public ActionResult ReadContractInvoices([DataSourceRequest] DataSourceRequest request, string searchbox, int contractId, bool? showAll)
         {
-            var readInvoices = this.invoices.ReadContractInvoices(searchbox, contractId);
+            var readInvoices = (showAll != null) ? (this.invoices.ReadContractInvoices(searchbox, contractId, (bool)showAll)) : (this.invoices.ReadContractInvoices(searchbox, contractId, false));
 
             return Json(readInvoices.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

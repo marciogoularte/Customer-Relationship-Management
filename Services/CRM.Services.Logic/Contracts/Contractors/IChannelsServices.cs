@@ -9,7 +9,7 @@ namespace CRM.Services.Logic.Contracts.Contractors
     {
         List<string> GetChannelsNames();
 
-        List<ChannelViewModel> ReadChannels(string searchbox, int providerId);
+        List<ChannelViewModel> ReadChannels(string searchbox, int providerId, bool showAll);
 
         ChannelViewModel CreateChannel(ChannelViewModel channel, int currentProviderId);
 

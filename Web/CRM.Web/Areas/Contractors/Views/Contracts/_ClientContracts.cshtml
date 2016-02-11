@@ -10,6 +10,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all-client-contracts", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-client-contracts", false, new { id = "show-all-client-contracts"})
+
 @(Html.Kendo()
     .Grid<ClientContractViewModel>()
     .Name("grid-client-contracts")
@@ -100,6 +103,12 @@
 </div>
 
 <script>
+    $('#show-all-client-contracts').click(function () {
+        var grid = $("#grid-client-contracts").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataClientContracts() {
         return {
             text: $("#searchbox-clients-contracts").val()
@@ -107,7 +116,12 @@
     }
 
     function addSearchClientContracts() {
-        return { searchTerm: $('#searchbox-clients-contracts').val() };
+        var isChecked = $('#show-all-client-contracts').is(':checked');
+
+        return {
+            searchTerm: $('#searchbox-clients-contracts').val(),
+            showAll: isChecked
+        };
     }
 
     $('#searchbox-clients-contracts').keyup(function () {

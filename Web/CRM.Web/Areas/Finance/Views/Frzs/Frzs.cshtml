@@ -10,6 +10,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all-frzs", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-frzs", false, new { id = "show-all-frzs"})
+
 @(Html.Kendo()
     .Grid<FrzViewModel>()
     .Name("grid-Frzs")
@@ -92,6 +95,12 @@
 </div>
 
 <script>
+    $('#show-all-frzs').click(function () {
+        var grid = $("#grid-Frzs").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataFrzs() {
         return {
             text: $("#searchbox-Frz").val()
@@ -99,7 +108,12 @@
     }
 
     function addSearchFrzs() {
-        return { searchTerm: $('#searchbox-Frz').val() };
+        var isChecked = $('#show-all-frzs').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-Frz').val()
+        };
     }
 
     $('#searchbox-Frz').keyup(function () {

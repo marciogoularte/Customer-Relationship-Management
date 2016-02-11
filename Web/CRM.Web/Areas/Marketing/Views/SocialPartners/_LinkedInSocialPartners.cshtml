@@ -9,6 +9,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all-li", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-li", false, new { id = "show-all-li"})
+
 @(Html.Kendo()
     .Grid<SocialPartnerViewModel>()
     .Name("grid-LinkedIn-social-partners")
@@ -99,6 +102,12 @@
 </div>
 
 <script>
+    $('#show-all-li').click(function () {
+        var grid = $("#grid-LinkedIn-social-partners").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataLinkedInSocialPartners() {
         return {
             text: $("#searchbox-LinkedIn-social-partners").val()
@@ -106,7 +115,12 @@
     }
 
     function addSearchLinkedInSocialPartners() {
-        return { searchTerm: $('#searchbox-LinkedIn-social-partners').val() };
+        var isChecked = $('#show-all-li').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-LinkedIn-social-partners').val()
+        };
     }
 
     $('#searchbox-LinkedIn-social-partners').keyup(function () {

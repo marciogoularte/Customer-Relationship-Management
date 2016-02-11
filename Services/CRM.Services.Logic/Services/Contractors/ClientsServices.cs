@@ -12,7 +12,7 @@
     using Data.ViewModels.Contracts.Clients;
     using Data.ViewModels.Contracts.Contracts;
     using Data.ViewModels.Contracts.TypeOfCompanies;
-    
+
     public class ClientsServices : IClientsServices
     {
         private ICRMData Data { get; set; }
@@ -71,16 +71,27 @@
             return typeOfCompany;
         }
 
-        public List<ClientViewModel> ReadClients(string searchboxClients)
+        public List<ClientViewModel> ReadClients(string searchboxClients, bool showAll)
         {
             List<ClientViewModel> clients;
 
-            if (string.IsNullOrEmpty(searchboxClients) || searchboxClients == "")
+            if (string.IsNullOrEmpty(searchboxClients) && searchboxClients == "")
             {
-                clients = this.Data.Clients
-                    .All()
-                    .ProjectTo<ClientViewModel>()
-                    .ToList();
+                if (showAll == false)
+                {
+                    clients = this.Data.Clients
+                        .All()
+                        .Where(c => c.IsVisible)
+                        .ProjectTo<ClientViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    clients = this.Data.Clients
+                        .All()
+                        .ProjectTo<ClientViewModel>()
+                        .ToList();
+                }
             }
             else
             {
@@ -90,6 +101,7 @@
                     .Where(c => c.Name.Contains(searchboxClients))
                     .ToList();
             }
+
 
             return clients;
         }
@@ -124,6 +136,7 @@
                 ManagementEmail = client.ManagementEmail,
                 Finance = client.Finance,
                 FinancePhone = client.FinancePhone,
+                FinanceAddress = client.FinanceAddress,
                 FinanceEmail = client.FinanceEmail,
                 TechnicalName = client.TechnicalName,
                 TechnicalPhone = client.TechnicalPhone,
@@ -137,7 +150,8 @@
                 DealerEmail = client.DealerEmail,
                 DealerName = client.DealerName,
                 WantToReceiveEpg = client.WantToReceiveEpg,
-                WantToReceiveNews = client.WantToReceiveNews
+                WantToReceiveNews = client.WantToReceiveNews,
+                IsVisible = client.IsVisible
             };
 
             var marketingOperator = new Operator()
@@ -188,6 +202,7 @@
             clientFromDb.ManagementEmail = client.ManagementEmail;
             clientFromDb.Finance = client.Finance;
             clientFromDb.FinancePhone = client.FinancePhone;
+            clientFromDb.FinanceAddress = client.FinanceAddress;
             clientFromDb.FinanceEmail = client.FinanceEmail;
             clientFromDb.TechnicalName = client.TechnicalName;
             clientFromDb.TechnicalPhone = client.TechnicalPhone;
@@ -200,6 +215,7 @@
             clientFromDb.DealerPhone = client.DealerPhone;
             clientFromDb.WantToReceiveNews = client.WantToReceiveNews;
             clientFromDb.WantToReceiveEpg = client.WantToReceiveEpg;
+            clientFromDb.IsVisible = client.IsVisible;
 
             this.Data.Clients.SaveChanges();
 

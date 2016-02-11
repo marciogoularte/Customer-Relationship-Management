@@ -1,5 +1,8 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Clients;
+﻿using System;
+using System.Collections.Generic;
+using CRM.Services.Data.ViewModels.Contracts.Clients;
 using CRM.Services.Logic.Contracts.Contractors;
+using Kendo.Mvc;
 
 namespace CRM.Web.Areas.Contractors.Controllers
 {
@@ -38,7 +41,7 @@ namespace CRM.Web.Areas.Contractors.Controllers
         [HttpGet]
         public ActionResult ClientInformation(int clientId)
         {
-            var client =  clients.ClientInformation(clientId);
+            var client = clients.ClientInformation(clientId);
 
             if (client == null)
             {
@@ -50,8 +53,17 @@ namespace CRM.Web.Areas.Contractors.Controllers
                 return PartialView("_ClientInformation", client);
             }
 
-            var parsedTypeOfCompany = int.Parse(client.TypeOfCompany);
-            var typeOfCompany = clients.GetTypeOfCompany(parsedTypeOfCompany);
+            string typeOfCompany;
+            try
+            {
+                var parsedTypeOfCompany = int.Parse(client.TypeOfCompany);
+                typeOfCompany = clients.GetTypeOfCompany(parsedTypeOfCompany);
+            }
+            catch (Exception)
+            {
+                typeOfCompany = client.TypeOfCompany;
+            }
+
             ViewBag.TypeOfCompany = typeOfCompany;
 
             return PartialView("_ClientInformation", client);
@@ -63,9 +75,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return View(clientId);
         }
 
-        public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request, string searchboxClients)
+        public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request, string searchboxClients, bool? showAll)
         {
-            var readClients = clients.ReadClients(searchboxClients);
+            var readClients = (showAll != null) ? (this.clients.ReadClients(searchboxClients, (bool)showAll)) : (this.clients.ReadClients(searchboxClients, false));
 
             return Json(readClients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
@@ -112,5 +124,22 @@ namespace CRM.Web.Areas.Contractors.Controllers
 
             return Json(new[] { deletedClient }, JsonRequestBehavior.AllowGet);
         }
+
+        //public ActionResult ShowHideRecords(bool isChecked)
+        //{
+        //    TempData["ShowAll"] = isChecked;
+
+        //    this.ReadClients(new DataSourceRequest()
+        //    {
+        //        Aggregates = new List<AggregateDescriptor>(),
+        //        Filters = new List<IFilterDescriptor>(),
+        //        Groups = new List<GroupDescriptor>(),
+        //        Page = 1,
+        //        PageSize = 10,
+        //        Sorts = new List<SortDescriptor>()
+        //    }, null);
+
+        //    return new EmptyResult();
+        //}
     }
 }

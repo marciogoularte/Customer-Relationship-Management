@@ -28,25 +28,36 @@ namespace CRM.Services.Logic.Services.Contractors
             return invoicesData;
         }
 
-        public List<InvoiceViewModel> ReadContractInvoices(string searchbox, int contractId)
+        public List<InvoiceViewModel> ReadContractInvoices(string searchbox, int contractId, bool showAll)
         {
             List<InvoiceViewModel> invoices;
 
-            if (string.IsNullOrEmpty(searchbox) || searchbox == "")
-            {
-                invoices = this.Data.Invoices
-                    .All()
-                    .ProjectTo<InvoiceViewModel>()
-                    .Where(i => i.ClientContractId == contractId)
-                    .ToList();
-            }
-            else
+            if (!string.IsNullOrEmpty(searchbox) || searchbox != "")
             {
                 invoices = this.Data.Invoices
                    .All()
                    .ProjectTo<InvoiceViewModel>()
                    .Where(i => i.ClientContractId == contractId && i.MgSubs.ToString().Contains(searchbox))
                    .ToList();
+            }
+            else
+            {
+                if (showAll == false)
+                {
+                    invoices = this.Data.Invoices
+                        .All()
+                        .ProjectTo<InvoiceViewModel>()
+                        .Where(i => i.ClientContractId == contractId && i.IsVisible)
+                        .ToList();
+                }
+                else
+                {
+                    invoices = this.Data.Invoices
+                        .All()
+                        .ProjectTo<InvoiceViewModel>()
+                        .Where(i => i.ClientContractId == contractId)
+                        .ToList();
+                }
             }
 
             return invoices;
@@ -67,7 +78,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 FixedMonthlyFee = invoice.FixedMonthlyFee,
                 Vat = invoice.Vat,
                 ClientContractId = contractId,
-                Comments = invoice.Comments
+                Comments = invoice.Comments,
+                IsVisible = invoice.IsVisible
             };
 
             this.Data.Invoices.Add(newInvoice);
@@ -102,6 +114,7 @@ namespace CRM.Services.Logic.Services.Contractors
             invoiceFromDb.AdditionalInformation = invoice.AdditionalInformation;
             invoiceFromDb.FixedMonthlyFee = invoice.FixedMonthlyFee;
             invoiceFromDb.Vat = invoice.Vat;
+            invoiceFromDb.IsVisible = invoice.IsVisible;
 
             this.Data.SaveChanges();
             

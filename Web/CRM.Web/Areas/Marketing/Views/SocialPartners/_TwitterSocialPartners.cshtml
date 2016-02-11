@@ -9,6 +9,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all-twitter", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-twitter", false, new { id = "show-all-twitter"})
+
 @(Html.Kendo()
     .Grid<SocialPartnerViewModel>()
     .Name("grid-Twitter-social-partners")
@@ -90,6 +93,12 @@
 </div>
 
 <script>
+    $('#show-all-twitter').click(function () {
+        var grid = $("#grid-Twitter-social-partners").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataTwitterSocialPartners() {
         return {
             text: $("#searchbox-Twitter-social-partners").val()
@@ -97,7 +106,12 @@
     }
 
     function addSearchTwitterSocialPartners() {
-        return { searchTerm: $('#searchbox-Twitter-social-partners').val() };
+        var isChecked = $('#show-all-twitter').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-Twitter-social-partners').val()
+        };
     }
 
     $('#searchbox-Twitter-social-partners').keyup(function () {

@@ -49,16 +49,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return Media;
         }
 
-        public List<MediaViewModel> ReadMedia(string searchboxMedia)
+        public List<MediaViewModel> ReadMedia(string searchboxMedia, bool showAll)
         {
             List<MediaViewModel> media;
 
             if (string.IsNullOrEmpty(searchboxMedia) || searchboxMedia == "")
             {
-                media = this.Data.Media
-                .All()
-                .ProjectTo<MediaViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    media = this.Data.Media
+                    .All()
+                    .ProjectTo<MediaViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    media = this.Data.Media
+                    .All()
+                    .Where(m => m.IsVisible)
+                    .ProjectTo<MediaViewModel>()
+                    .ToList();
+                }
             }
             else
             {
@@ -85,7 +96,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Address = media.Address,
                 PhoneNumber = media.PhoneNumber,
                 Email = media.Email,
-                AllMedia = media.AllMedia
+                AllMedia = media.AllMedia,
+                IsVisible = media.IsVisible
             };
 
             this.Data.Media.Add(newMedia);
@@ -111,6 +123,7 @@ namespace CRM.Services.Logic.Services.Marketing
             mediaFromDb.PhoneNumber = media.PhoneNumber;
             mediaFromDb.Email = media.Email;
             mediaFromDb.AllMedia = media.AllMedia;
+            mediaFromDb.IsVisible = media.IsVisible;
 
             this.Data.SaveChanges();
 

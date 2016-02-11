@@ -49,16 +49,27 @@ namespace CRM.Services.Logic.Services.Finance
             return financeInvoiceIDetails;
         }
 
-        public List<FinanceInvoiceViewModel> ReadFinanceInvoices(string searchboxinvoice)
+        public List<FinanceInvoiceViewModel> ReadFinanceInvoices(string searchboxinvoice, bool showAll)
         {
             List<FinanceInvoiceViewModel> readFinanceInvoices;
 
             if (string.IsNullOrEmpty(searchboxinvoice) || searchboxinvoice == "")
             {
-                readFinanceInvoices = this.Data.FinanceInvoices
-                .All()
-                .ProjectTo<FinanceInvoiceViewModel>()
-                .ToList();
+                if (showAll == false)
+                {
+                    readFinanceInvoices = this.Data.FinanceInvoices
+                        .All()
+                        .Where(fi => fi.IsVisible)
+                        .ProjectTo<FinanceInvoiceViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    readFinanceInvoices = this.Data.FinanceInvoices
+                    .All()
+                    .ProjectTo<FinanceInvoiceViewModel>()
+                    .ToList();
+                }
             }
             else
             {
@@ -86,7 +97,8 @@ namespace CRM.Services.Logic.Services.Finance
                 Receiver = givenFinanceInvoice.Receiver,
                 Preview = givenFinanceInvoice.Preview,
                 SumWithoutDdS = givenFinanceInvoice.SumWithoutDdS,
-                SumWithDds = givenFinanceInvoice.SumWithDds
+                SumWithDds = givenFinanceInvoice.SumWithDds,
+                IsVisible = givenFinanceInvoice.IsVisible
             };
 
             this.Data.FinanceInvoices.Add(newFinanceInvoice);
@@ -114,6 +126,7 @@ namespace CRM.Services.Logic.Services.Finance
             invoiceFromDb.Preview = givenFinanceInvoice.Preview;
             invoiceFromDb.SumWithoutDdS = givenFinanceInvoice.SumWithoutDdS;
             invoiceFromDb.SumWithDds = givenFinanceInvoice.SumWithDds;
+            invoiceFromDb.IsVisible = givenFinanceInvoice.IsVisible;
 
             this.Data.SaveChanges();
 

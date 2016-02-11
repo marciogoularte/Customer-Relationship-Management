@@ -8,7 +8,7 @@ namespace CRM.Services.Logic.Contracts.Contractors
     {
         List<string> GetTrdsData();
 
-        List<TrdViewModel> ReadTrds(string searchbox, int clientId);
+        List<TrdViewModel> ReadTrds(string searchbox, int clientId, bool showAll);
 
         TrdViewModel CreateTrd(TrdViewModel trd, string clientIdString);
 

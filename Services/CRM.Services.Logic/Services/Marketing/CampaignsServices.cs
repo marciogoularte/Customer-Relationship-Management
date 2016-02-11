@@ -90,16 +90,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return result;
         }
 
-        public List<CampaignViewModel> ReadCampaigns(string searchbox)
+        public List<CampaignViewModel> ReadCampaigns(string searchbox, bool showAll)
         {
             List<CampaignViewModel> campaigns;
 
             if (string.IsNullOrEmpty(searchbox) || searchbox == "")
             {
-                campaigns = this.Data.Campaigns
-                    .All()
-                    .ProjectTo<CampaignViewModel>()
-                    .ToList();
+                if (showAll)
+                {
+                    campaigns = this.Data.Campaigns
+                        .All()
+                        .ProjectTo<CampaignViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    campaigns = this.Data.Campaigns
+                        .All()
+                        .Where(c => c.IsVisible)
+                        .ProjectTo<CampaignViewModel>()
+                        .ToList();
+                }
             }
             else
             {
@@ -122,6 +133,7 @@ namespace CRM.Services.Logic.Services.Marketing
                 Budget = campaign.Budget,
                 Start = campaign.Start,
                 End = campaign.End,
+                IsVisible = campaign.IsVisible,
                 Results = campaign.Results
             };
 
@@ -154,6 +166,7 @@ namespace CRM.Services.Logic.Services.Marketing
             campaignFromDb.Start = campaign.Start;
             campaignFromDb.End = campaign.End;
             campaignFromDb.Results = campaign.Results;
+            campaignFromDb.IsVisible = campaign.IsVisible;
 
             this.Data.Campaigns.SaveChanges();
 

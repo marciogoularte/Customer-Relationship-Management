@@ -63,87 +63,71 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         public int Id { get; set; }
 
         [DisplayName("Name")]
-        [Required(ErrorMessage = "Name is required")]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
         public string Name { get; set; }
 
         [DisplayName("Bulgarian Name")]
-        [Required(ErrorMessage = "Name is required")]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
         public string NameBulgarian { get; set; }
 
-        [Required]
         [DisplayName("Type")]
         [UIHint("TypeOfCompanyEditor")]
         public string TypeOfCompany { get; set; }
 
         [DisplayName("UIC")]
-        [Required(ErrorMessage = "UIC is required")]
         public string Uic { get; set; }
 
-        [Required]
         [DisplayName("VAT#")]
         public string Vat { get; set; }
 
-        [Required]
         [DisplayName("Residence and address")]
         public string ResidenceAndAddress { get; set; }
 
-        [Required]
         [DisplayName("Residence and address(BG)")]
         public string ResidenceAndAddressInBulgarian { get; set; }
-
-        [Required]
+        
         public string Region { get; set; }
-
-        [Required]
+        
         [DisplayName("Network page")]
         public string NetworkPage { get; set; }
-
-        [Required]
+        
         [DisplayName("Contact person")]
         public string ContactPerson { get; set; }
-
-        [Required]
+        
         [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
-
-        [Required]
+        
         [EmailAddress(ErrorMessage = "Provider email is not valid!")]
         public string Email { get; set; }
-
-        [Required]
+        
         [DisplayName("Correspondence")]
         public string Correspondence { get; set; }
 
         [DisplayName("Fixed phone service")]
-        public double FixedPhoneService { get; set; }
+        public double? FixedPhoneService { get; set; }
 
         [DisplayName("Mobile voice services provided through network")]
-        public double MobileVoiceServicesProvidedThroughNetwork { get; set; }
+        public double? MobileVoiceServicesProvidedThroughNetwork { get; set; }
 
         [DisplayName("Internet subs")]
-        public double InternetSubs { get; set; }
+        public double? InternetSubs { get; set; }
 
         [DisplayName("Services mobile access to internet")]
-        public double ServicesMobileAccessToInternet { get; set; }
+        public double? ServicesMobileAccessToInternet { get; set; }
 
         [DisplayName("TV Subs")]
-        public double TvSubs { get; set; }
+        public double? TvSubs { get; set; }
 
         public string Coverage { get; set; }
 
         [DisplayName("Post code")]
         public string PostCode { get; set; }
-
-        [Required]
+        
         public string Management { get; set; }
-
-        [Required]
+        
         [DisplayName("Managment in Bulgarian")]
         public string ManagementInBulgarian { get; set; }
-
-        [Required]
+        
         [DisplayName("Management phone")]
         public string ManagementPhone { get; set; }
 
@@ -154,6 +138,9 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
 
         [DisplayName("Finance phone")]
         public string FinancePhone { get; set; }
+
+        [DisplayName("Finance address")]
+        public string FinanceAddress { get; set; }
 
         [DisplayName("Finance email")]
         public string FinanceEmail { get; set; }
@@ -174,27 +161,22 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
 
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
-
-        [Required]
+        
         [DisplayName("Dealer name")]
         public string DealerName { get; set; }
-
-        [Required]
+        
         [DisplayName("Dealer phone")]
         public string DealerPhone { get; set; }
-
-        [Required]
+        
         [DisplayName("Dealer email")]
         public string DealerEmail { get; set; }
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
-
-        [Required]
+        
         [DisplayName("Want to receive EPG")]
         public bool WantToReceiveEpg { get; set; }
-
-        [Required]
+        
         [DisplayName("Want to receive Highlights / News")]
         public bool WantToReceiveNews { get; set; }
 

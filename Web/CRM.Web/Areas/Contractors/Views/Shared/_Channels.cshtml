@@ -9,6 +9,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all-channels", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-channels", false, new { id = "show-all-channels"})
+
 @(Html.Kendo()
     .Grid<ChannelViewModel>()
     .Name("grid-channels")
@@ -104,8 +107,19 @@
         };
     }
 
+    $('#show-all-channels').click(function () {
+        var grid = $("#grid-channels").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function addSearch() {
-        return { searchbox: $('#searchbox-channels').val() };
+        var isChecked = $('#show-all-channels').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchbox: $('#searchbox-channels').val()
+        };
     }
 
     $('#searchbox-channels').keyup(function () {

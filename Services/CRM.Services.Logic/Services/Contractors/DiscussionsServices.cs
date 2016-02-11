@@ -50,21 +50,11 @@ namespace CRM.Services.Logic.Services.Contractors
             return discussionsSubjects;
         }
 
-        public List<DiscussionViewModel> ReadClientsDiscussions(string searchTerm, int clientId)
+        public List<DiscussionViewModel> ReadClientsDiscussions(string searchTerm, int clientId, bool showAll)
         {
             List<DiscussionViewModel> discussions;
 
-            if (string.IsNullOrEmpty(searchTerm) || searchTerm == "")
-            {
-                discussions = this.Data.Discussions
-                    .All()
-                    .ProjectTo<DiscussionViewModel>()
-                    .Where(d =>
-                        d.ClientId != null &&
-                        d.ClientId == clientId)
-                    .ToList();
-            }
-            else
+            if (!string.IsNullOrEmpty(searchTerm) || searchTerm != "")
             {
                 discussions = this.Data.Discussions
                     .All()
@@ -75,23 +65,61 @@ namespace CRM.Services.Logic.Services.Contractors
                         d.SubjectOfDiscussion.Contains(searchTerm))
                     .ToList();
             }
-
+            else
+            {
+                if (showAll == false)
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ClientId != null &&
+                            d.ClientId == clientId &&
+                            d.IsVisible)
+                        .ToList();
+                }
+                else
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ClientId != null &&
+                            d.ClientId == clientId)
+                        .ToList();
+                }
+            }
+            
             return discussions;
         }
 
-        public List<DiscussionViewModel> ReadProvidersDiscussions(string searchTerm, int providerId)
+        public List<DiscussionViewModel> ReadProvidersDiscussions(string searchTerm, int providerId, bool showAll)
         {
             List<DiscussionViewModel> discussions;
 
             if (string.IsNullOrEmpty(searchTerm) || searchTerm == "")
             {
-                discussions = this.Data.Discussions
-                    .All()
-                    .ProjectTo<DiscussionViewModel>()
-                    .Where(d =>
-                        d.ProviderId != null &&
-                        d.ProviderId == providerId)
-                    .ToList();
+                if (showAll)
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ProviderId != null &&
+                            d.ProviderId == providerId)
+                        .ToList();
+                }
+                else
+                {
+                    discussions = this.Data.Discussions
+                        .All()
+                        .ProjectTo<DiscussionViewModel>()
+                        .Where(d =>
+                            d.ProviderId != null &&
+                            d.ProviderId == providerId &&
+                            d.IsVisible)
+                        .ToList();
+                }
             }
             else
             {
@@ -121,7 +149,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 NextDiscussionType = discussion.NextDiscussionType,
                 UserId = loggedUserId,
                 Comments = discussion.Comments,
-                IsFinished = false
+                IsFinished = false,
+                IsVisible = discussion.IsVisible
             };
 
             if (currentClientId != null)
@@ -181,6 +210,7 @@ namespace CRM.Services.Logic.Services.Contractors
             discussionFromDb.NextDiscussionNote = discussion.NextDiscussionNote;
             discussionFromDb.NextDiscussionType = discussion.NextDiscussionType;
             discussionFromDb.Comments = discussion.Comments;
+            discussionFromDb.IsVisible = discussion.IsVisible;
 
             this.Data.SaveChanges();
 

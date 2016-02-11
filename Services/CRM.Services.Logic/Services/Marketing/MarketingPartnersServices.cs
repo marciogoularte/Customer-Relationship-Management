@@ -49,16 +49,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return marketingPartner;
         }
 
-        public List<MarketingPartnerViewModel> ReadMarketingPartners(string searchboxMarketingPartner)
+        public List<MarketingPartnerViewModel> ReadMarketingPartners(string searchboxMarketingPartner, bool showAll)
         {
             List<MarketingPartnerViewModel> marketingPartners;
 
             if (string.IsNullOrEmpty(searchboxMarketingPartner) || searchboxMarketingPartner == "")
             {
-                marketingPartners = this.Data.MarketingPartners
-                .All()
-                .ProjectTo<MarketingPartnerViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    marketingPartners = this.Data.MarketingPartners
+                    .All()
+                    .ProjectTo<MarketingPartnerViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    marketingPartners = this.Data.MarketingPartners
+                    .All()
+                    .Where(mp => mp.IsVisible)
+                    .ProjectTo<MarketingPartnerViewModel>()
+                    .ToList();
+                }
             }
             else
             {
@@ -86,7 +97,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Address = marketingPartner.Address,
                 PhoneNumber = marketingPartner.PhoneNumber,
                 Email = marketingPartner.Email,
-                Media = marketingPartner.Media
+                Media = marketingPartner.Media,
+                IsVisible = marketingPartner.IsVisible
             };
 
             this.Data.MarketingPartners.Add(newMarketingPartner);
@@ -113,6 +125,7 @@ namespace CRM.Services.Logic.Services.Marketing
             marketingPartnerFromDb.PhoneNumber = marketingPartner.PhoneNumber;
             marketingPartnerFromDb.Email = marketingPartner.Email;
             marketingPartnerFromDb.Media = marketingPartner.Media;
+            marketingPartnerFromDb.IsVisible = marketingPartner.IsVisible;
 
             this.Data.SaveChanges();
 

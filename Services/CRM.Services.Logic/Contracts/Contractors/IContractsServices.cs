@@ -20,9 +20,9 @@ namespace CRM.Services.Logic.Contracts.Contractors
 
         List<string> ProvidersContractsNames();
 
-        List<ClientContractViewModel> ReadClientsContracts(string searchTerm, int clientId);
+        List<ClientContractViewModel> ReadClientsContracts(string searchTerm, int clientId, bool showAll);
 
-        List<ProviderContractViewModel> ReadProvidersContracts(string searchbox, int providerId);
+        List<ProviderContractViewModel> ReadProvidersContracts(string searchbox, int providerId, bool showAll);
 
         ClientContractViewModel CreateClientContract(ClientContractViewModel contract, int currentClientId);
 

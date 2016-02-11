@@ -1,11 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using CRM.Data.Models;
-using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Trds
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Trds
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    using CRM.Data.Models;
+    using Web.Common.Mappings;
+
     public class TrdViewModel : IMapFrom<Trd>
     {
     //    public static Expression<Func<Trd, TrdViewModel>> FromTrd

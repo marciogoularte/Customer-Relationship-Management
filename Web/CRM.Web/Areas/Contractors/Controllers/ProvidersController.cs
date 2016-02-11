@@ -65,9 +65,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return View(providerId);
         }
 
-        public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request, string searchboxProviders)
+        public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request, string searchboxProviders, bool? showAll)
         {
-            var readProviders = this.providers.ReadProviders(searchboxProviders);
+            var readProviders = (showAll != null) ? (this.providers.ReadProviders(searchboxProviders, (bool)showAll)) : (this.providers.ReadProviders(searchboxProviders, false));
 
             return Json(readProviders.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

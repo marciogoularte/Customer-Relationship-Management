@@ -15,7 +15,7 @@ namespace CRM.Services.Logic.Contracts.Contractors
 
         string GetTypeOfCompany(int TypeOfCompany);
 
-        List<ClientViewModel> ReadClients(string searchboxClients);
+        List<ClientViewModel> ReadClients(string searchboxClients, bool showAll);
 
         ClientViewModel CreateClient(ClientViewModel client);
 

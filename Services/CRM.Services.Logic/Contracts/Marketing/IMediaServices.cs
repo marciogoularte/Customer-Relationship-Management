@@ -13,7 +13,7 @@ namespace CRM.Services.Logic.Contracts.Marketing
 
         MediaViewModel MediaDetails(int mediaId);
 
-        List<MediaViewModel> ReadMedia(string searchboxMedia);
+        List<MediaViewModel> ReadMedia(string searchboxMedia, bool showAll);
 
         MediaViewModel CreateMedia(MediaViewModel media);
 

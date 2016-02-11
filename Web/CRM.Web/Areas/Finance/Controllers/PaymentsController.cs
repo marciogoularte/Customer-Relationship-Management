@@ -42,9 +42,9 @@
             return Json(paymentsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadPayments([DataSourceRequest] DataSourceRequest request, string searchTerm)
+        public JsonResult ReadPayments([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
-            var readPayments = this.payments.ReadPayments(searchTerm);
+            var readPayments = (showAll != null) ? (this.payments.ReadPayments(searchTerm, (bool)showAll)) : (this.payments.ReadPayments(searchTerm, false));
 
             return Json(readPayments.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

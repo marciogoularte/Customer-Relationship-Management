@@ -49,16 +49,27 @@ namespace CRM.Services.Logic.Services.Marketing
             return operatorDetails;
         }
 
-        public List<OperatorViewModel> ReadOperators(string searchboxOperator)
+        public List<OperatorViewModel> ReadOperators(string searchboxOperator, bool showAll)
         {
             List<OperatorViewModel > readOperators;
 
             if (string.IsNullOrEmpty(searchboxOperator) || searchboxOperator == "")
             {
-                readOperators = this.Data.Operators
-                .All()
-                .ProjectTo<OperatorViewModel>()
-                .ToList();
+                if (showAll)
+                {
+                    readOperators = this.Data.Operators
+                    .All()
+                    .ProjectTo<OperatorViewModel>()
+                    .ToList();
+                }
+                else
+                {
+                    readOperators = this.Data.Operators
+                    .All()
+                    .Where(o => o.IsVisible)
+                    .ProjectTo<OperatorViewModel>()
+                    .ToList();
+                }
             }
             else
             {
@@ -85,7 +96,8 @@ namespace CRM.Services.Logic.Services.Marketing
                 Address = givenOperator.Address,
                 PhoneNumber = givenOperator.PhoneNumber,
                 Email = givenOperator.Email,
-                Media = givenOperator.Media
+                Media = givenOperator.Media,
+                IsVisible = givenOperator.IsVisible
             };
 
             this.Data.Operators.Add(newoperator);
@@ -112,6 +124,7 @@ namespace CRM.Services.Logic.Services.Marketing
             operatorFromDb.PhoneNumber = givenOperator.PhoneNumber;
             operatorFromDb.Email = givenOperator.Email;
             operatorFromDb.Media = givenOperator.Media;
+            operatorFromDb.IsVisible = givenOperator.IsVisible;
 
             var client = this.Data.Clients
                 .All()

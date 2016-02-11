@@ -30,17 +30,28 @@ namespace CRM.Services.Logic.Services.Contractors
             return channelsNames;
         }
 
-        public List<ChannelViewModel> ReadChannels(string searchbox, int providerId)
+        public List<ChannelViewModel> ReadChannels(string searchbox, int providerId, bool showAll)
         {
             List<ChannelViewModel> channels;
 
             if (string.IsNullOrEmpty(searchbox) || searchbox == "")
             {
-                channels = this.Data.Channels
-                    .All()
-                    .ProjectTo<ChannelViewModel>()
-                    .Where(c => c.ProviderId == providerId)
-                    .ToList();
+                if (showAll == false)
+                {
+                    channels = this.Data.Channels
+                        .All()
+                        .ProjectTo<ChannelViewModel>()
+                        .Where(c => c.ProviderId == providerId && c.IsVisible)
+                        .ToList();
+                }
+                else
+                {
+                    channels = this.Data.Channels
+                        .All()
+                        .ProjectTo<ChannelViewModel>()
+                        .Where(c => c.ProviderId == providerId)
+                        .ToList();
+                }
             }
             else
             {
@@ -68,7 +79,8 @@ namespace CRM.Services.Logic.Services.Contractors
                 LogoLink = channel.LogoLink,
                 CreatedOn = DateTime.Now,
                 ProviderId = currentProviderId,
-                Comments = channel.Comments
+                Comments = channel.Comments,
+                IsVisible = channel.IsVisible
             };
 
             if (string.IsNullOrEmpty(newChannel.EpgSource) && string.IsNullOrEmpty(channel.EpgSource))
@@ -141,6 +153,7 @@ namespace CRM.Services.Logic.Services.Contractors
             channelFromDb.ReveivingOptions = channel.ReveivingOptions;
             channelFromDb.SatelliteData = channel.SatelliteData;
             channelFromDb.Comments = channel.Comments;
+            channelFromDb.IsVisible = channel.IsVisible;
 
             if (string.IsNullOrEmpty(channel.EpgSource) && string.IsNullOrEmpty(channelFromDb.EpgSource))
             {

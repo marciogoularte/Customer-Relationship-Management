@@ -10,6 +10,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all-prs", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-prs", false, new { id = "show-all-prs"})
+
 @(Html.Kendo()
     .Grid<PrViewModel>()
     .Name("grid-Prs")
@@ -92,6 +95,12 @@
 </div>
 
 <script>
+    $('#show-all-prs').click(function () {
+        var grid = $("#grid-Prs").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataPrs() {
         return {
             text: $("#searchbox-pr").val()
@@ -99,7 +108,12 @@
     }
 
     function addSearchPrs() {
-        return { searchTerm: $('#searchbox-pr').val() };
+        var isChecked = $('#show-all-prs').is(':checked');
+
+        return {
+            showAll: isChecked,
+            searchTerm: $('#searchbox-pr').val()
+        };
     }
 
     $('#searchbox-pr').keyup(function () {

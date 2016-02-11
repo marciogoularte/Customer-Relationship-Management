@@ -42,9 +42,9 @@
             return Json(prsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadPrs([DataSourceRequest] DataSourceRequest request, string searchTerm)
+        public JsonResult ReadPrs([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
-            var readPrs = prs.ReadPrs(searchTerm);
+            var readPrs = (showAll != null) ? (this.prs.ReadPrs(searchTerm, (bool)showAll)) : (this.prs.ReadPrs(searchTerm, false));
 
             return Json(readPrs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

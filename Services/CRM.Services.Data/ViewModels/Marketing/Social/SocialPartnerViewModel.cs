@@ -38,6 +38,7 @@ namespace CRM.Services.Data.ViewModels.Marketing.Social
         [EmailAddress]
         public string Email { get; set; }
 
+        [DisplayName("Is visible")]
         public bool IsVisible { get; set; }
 
         [DisplayName("Phone number")]

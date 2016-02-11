@@ -9,6 +9,9 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+@Html.Label("show-all-client-discussions", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-client-discussions", false, new { id = "show-all-client-discussions"})
+
 @(Html.Kendo()
     .Grid<DiscussionViewModel>()
     .Name("grid-client-discussions")
@@ -92,6 +95,12 @@
 </div>
 
 <script>
+    $('#show-all-client-discussions').click(function () {
+        var grid = $("#grid-client-discussions").data("kendoGrid");
+
+        grid.dataSource.read();
+    });
+
     function onAdditionalDataClientDiscussion() {
         return {
             text: $("#searchbox-client-discussion").val()
@@ -99,7 +108,12 @@
     }
 
     function addSearchClientDiscussion() {
-        return { searchTerm: $('#searchbox-client-discussion').val() };
+        var isChecked = $('#show-all-client-discussions').is(':checked');
+
+        return {
+            searchTerm: $('#searchbox-client-discussion').val(),
+            showAll: isChecked
+        };
     }
 
     $('#searchbox-client-discussion').keyup(function () {

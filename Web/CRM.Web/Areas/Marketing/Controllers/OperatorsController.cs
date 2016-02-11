@@ -42,9 +42,9 @@
             return Json(operatorsNames, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ReadOperators([DataSourceRequest] DataSourceRequest request, string searchTerm)
+        public JsonResult ReadOperators([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
-            var readOperators = operators.ReadOperators(searchTerm);
+            var readOperators = (showAll != null) ? (this.operators.ReadOperators(searchTerm, (bool)showAll)) : (this.operators.ReadOperators(searchTerm, false));
 
             return Json(readOperators.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

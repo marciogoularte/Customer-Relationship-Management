@@ -49,16 +49,27 @@ namespace CRM.Services.Logic.Services.Finance
             return frzDetails;
         }
 
-        public List<FrzViewModel> ReadFrzs(string searchboxFrz)
+        public List<FrzViewModel> ReadFrzs(string searchboxFrz, bool showAll)
         {
             List<FrzViewModel> readFrzs;
 
             if (string.IsNullOrEmpty(searchboxFrz) || searchboxFrz == "")
             {
-                readFrzs = this.Data.Frzs
-                .All()
-                .ProjectTo<FrzViewModel>()
-                .ToList();
+                if (showAll == false)
+                {
+                    readFrzs = this.Data.Frzs
+                        .All()
+                        .Where(frz => frz.IsVisible)
+                        .ProjectTo<FrzViewModel>()
+                        .ToList();
+                }
+                else
+                {
+                    readFrzs = this.Data.Frzs
+                    .All()
+                    .ProjectTo<FrzViewModel>()
+                    .ToList();
+                }
             }
             else
             {
@@ -85,7 +96,8 @@ namespace CRM.Services.Logic.Services.Finance
                 NumberOfContract = givenFrz.NumberOfContract,
                 DateOfContract = givenFrz.DateOfContract,
                 Salary = givenFrz.Salary,
-                BankAccount = givenFrz.BankAccount
+                BankAccount = givenFrz.BankAccount,
+                IsVisible = givenFrz.IsVisible
             };
 
             this.Data.Frzs.Add(newFrz);
@@ -112,6 +124,7 @@ namespace CRM.Services.Logic.Services.Finance
             frzFromDb.DateOfContract = givenFrz.DateOfContract;
             frzFromDb.Salary = givenFrz.Salary;
             frzFromDb.BankAccount = givenFrz.BankAccount;
+            frzFromDb.IsVisible = givenFrz.IsVisible;
 
             this.Data.SaveChanges();
 

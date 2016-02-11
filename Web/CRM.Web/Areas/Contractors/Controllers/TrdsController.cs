@@ -37,9 +37,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
             return Json(trdsData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ReadTrds([DataSourceRequest] DataSourceRequest request, string searchbox, int clientId)
+        public ActionResult ReadTrds([DataSourceRequest] DataSourceRequest request, string searchbox, int clientId, bool? showAll)
         {
-            var readTrds = this.trds.ReadTrds(searchbox, clientId);
+            var readTrds = (showAll != null) ? (this.trds.ReadTrds(searchbox, clientId, (bool)showAll)) : (this.trds.ReadTrds(searchbox, clientId, false));
 
             return Json(readTrds.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
