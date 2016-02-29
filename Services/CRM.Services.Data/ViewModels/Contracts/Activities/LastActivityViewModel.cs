@@ -1,7 +1,6 @@
 ﻿namespace CRM.Services.Data.ViewModels.Contracts.Activities
 {
     using System;
-    using System.Linq.Expressions;
 
     using CRM.Data.Models;
     using Web.Common.Mappings;

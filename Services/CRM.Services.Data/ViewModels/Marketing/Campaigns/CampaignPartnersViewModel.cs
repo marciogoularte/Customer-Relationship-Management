@@ -1,9 +1,9 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-
-namespace CRM.Services.Data.ViewModels.Marketing.Campaigns
+﻿namespace CRM.Services.Data.ViewModels.Marketing.Campaigns
 {
     using System.Collections.Generic;
+
+    using Contracts.Clients;
+    using Contracts.Providers;
 
     public class CampaignPartnersViewModel
     {

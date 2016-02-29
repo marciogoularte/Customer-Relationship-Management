@@ -1,14 +1,13 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Contracts;
-using CRM.Services.Data.ViewModels.Contracts.Discussions;
-using CRM.Services.Data.ViewModels.Contracts.Invoices;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-
-namespace CRM.Services.Logic.Contracts.Administration
+﻿namespace CRM.Services.Logic.Contracts.Administration
 {
     using System.Collections.Generic;
 
     using Base;
+    using Data.ViewModels.Contracts.Clients;
+    using Data.ViewModels.Contracts.Invoices;
+    using Data.ViewModels.Contracts.Providers;
+    using Data.ViewModels.Contracts.Contracts;
+    using Data.ViewModels.Contracts.Discussions;
 
     public interface IDeletedItemsServices : IService
     {

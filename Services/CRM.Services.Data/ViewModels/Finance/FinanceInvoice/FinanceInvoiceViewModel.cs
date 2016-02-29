@@ -1,12 +1,10 @@
-﻿using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Finance.FinanceInvoice
+﻿namespace CRM.Services.Data.ViewModels.Finance.FinanceInvoice
 {
     using System;
     using System.ComponentModel;
-    using System.Linq.Expressions;
     using System.ComponentModel.DataAnnotations;
 
+    using Web.Common.Mappings;
     using CRM.Data.Models.Finance;
 
     public class FinanceInvoiceViewModel : IMapFrom<FinanceInvoice>

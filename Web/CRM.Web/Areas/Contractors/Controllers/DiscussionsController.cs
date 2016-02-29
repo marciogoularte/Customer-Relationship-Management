@@ -1,7 +1,4 @@
-﻿using CRM.Services.Data.ViewModels.Contracts.Discussions;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Web.Areas.Contractors.Controllers
+﻿namespace CRM.Web.Areas.Contractors.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -13,8 +10,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
     using Data.Models;
     using Common.Base;
     using Web.Controllers;
-    using Services.Logic.Contracts.Users;
-
+    using Services.Logic.Contracts.Contractors;
+    using Services.Data.ViewModels.Contracts.Discussions;
+    
     [Authorize]
     public class DiscussionsController : BaseController
     {

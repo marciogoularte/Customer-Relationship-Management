@@ -1,14 +1,14 @@
-﻿using AutoMapper.QueryableExtensions;
-using CRM.Services.Data.ViewModels.Contracts.Activities;
-
-namespace CRM.Services.Logic.Services.Administration
+﻿namespace CRM.Services.Logic.Services.Administration
 {
     using System.Linq;
     using System.Collections.Generic;
 
+    using AutoMapper.QueryableExtensions;
+
     using CRM.Data;
     using CRM.Data.Models;
     using Contracts.Administration;
+    using Data.ViewModels.Contracts.Activities;
 
     public class ActivitiesServices : IActivitiesServices
     {

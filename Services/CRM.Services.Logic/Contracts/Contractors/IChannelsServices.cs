@@ -1,10 +1,11 @@
-using System.Collections.Generic;
-using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-using CRM.Services.Logic.Base;
-
 namespace CRM.Services.Logic.Contracts.Contractors
 {
+    using System.Collections.Generic;
+
+    using Base;
+    using Data.ViewModels.Contracts.Clients;
+    using Data.ViewModels.Contracts.Providers;
+
     public interface IChannelsServices : IService
     {
         List<string> GetChannelsNames();

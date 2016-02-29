@@ -1,11 +1,4 @@
-﻿using System.IO;
-using System.IO.Compression;
-using CRM.Services.Data.ViewModels.Contracts.Contracts;
-using CRM.Services.Logic.Contracts.Contractors;
-using CRM.Common.Constants;
-using Rotativa.Options;
-
-namespace CRM.Web.Areas.Contractors.Controllers
+﻿namespace CRM.Web.Areas.Contractors.Controllers
 {
     using System;
     using System.Linq;
@@ -17,10 +10,10 @@ namespace CRM.Web.Areas.Contractors.Controllers
 
     using Rotativa;
     using Data.Models;
+    using Common.Base;
     using Web.Controllers;
-    using Web.Common.Base;
-    using Services.Logic.Contracts.Users;
-    using System.Net;
+    using Services.Logic.Contracts.Contractors;
+    using Services.Data.ViewModels.Contracts.Contracts;
 
     [Authorize]
     public class ContractsController : BaseController

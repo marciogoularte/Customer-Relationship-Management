@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper.QueryableExtensions;
-using CRM.Data;
-using CRM.Data.Models;
-using CRM.Services.Data.ViewModels.Contracts.TypeOfCompanies;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Services.Logic.Services.Contractors
+﻿namespace CRM.Services.Logic.Services.Contractors
 {
+    using System.Linq;
+    using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
+
+    using CRM.Data;
+    using CRM.Data.Models;
+    using Contracts.Contractors;
+    using Data.ViewModels.Contracts.TypeOfCompanies;
+
     public class TypeOfCompaniesServices : ITypeOfCompaniesServices
     {
         private ICRMData Data { get; set; }

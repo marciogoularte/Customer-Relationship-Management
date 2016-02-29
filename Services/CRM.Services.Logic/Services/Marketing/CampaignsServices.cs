@@ -1,17 +1,17 @@
-﻿using AutoMapper.QueryableExtensions;
-using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-
-namespace CRM.Services.Logic.Services.Marketing
+﻿namespace CRM.Services.Logic.Services.Marketing
 {
     using System.Linq;
     using System.Collections.Generic;
 
+    using AutoMapper.QueryableExtensions;
+
     using CRM.Data;
     using CRM.Data.Models;
     using Contracts.Marketing;
+    using Data.ViewModels.Contracts.Clients;
     using Data.ViewModels.Marketing.Campaigns;
-
+    using Data.ViewModels.Contracts.Providers;
+    
     public class CampaignsServices : ICampaignsServices
     {
         private ICRMData Data { get; }

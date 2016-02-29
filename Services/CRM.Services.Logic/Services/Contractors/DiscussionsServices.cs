@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper.QueryableExtensions;
-using CRM.Data;
-using CRM.Data.Models;
-using CRM.Services.Data.ViewModels.Contracts.Discussions;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Services.Logic.Services.Contractors
+﻿namespace CRM.Services.Logic.Services.Contractors
 {
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
+
+    using CRM.Data;
+    using CRM.Data.Models;
+    using Contracts.Contractors;
+    using Data.ViewModels.Contracts.Discussions;
+
     public class DiscussionsServices : IDiscussionsServices
     {
         private ICRMData Data { get; set; }

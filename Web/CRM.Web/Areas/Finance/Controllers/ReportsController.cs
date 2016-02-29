@@ -1,14 +1,13 @@
-﻿using System;
-using System.Linq;
-using CRM.Common.Extensions;
-using CRM.Services.Data.ViewModels.Finance.Reports;
-
-namespace CRM.Web.Areas.Finance.Controllers
+﻿namespace CRM.Web.Areas.Finance.Controllers
 {
+    using System;
+    using System.Linq;
     using System.Web.Mvc;
 
+    using CRM.Common.Extensions;
     using Services.Logic.Contracts.Finance;
-
+    using Services.Data.ViewModels.Finance.Reports;
+    
     [Authorize]
     public class ReportsController : Controller
     {

@@ -1,9 +1,9 @@
-﻿using AutoMapper.QueryableExtensions;
-
-namespace CRM.Services.Logic.Services.Marketing
+﻿namespace CRM.Services.Logic.Services.Marketing
 {
     using System.Linq;
     using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
 
     using CRM.Data;
     using Contracts.Marketing;

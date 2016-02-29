@@ -1,8 +1,8 @@
-﻿using CRM.Data;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Services.Logic.Services.Contractors
+﻿namespace CRM.Services.Logic.Services.Contractors
 {
+    using CRM.Data;
+    using Contracts.Contractors;
+
     public class MarketingServices : IMarketingServices
     {
         private ICRMData Data { get; set; }

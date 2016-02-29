@@ -1,9 +1,9 @@
-﻿using AutoMapper.QueryableExtensions;
-
-namespace CRM.Services.Logic.Services.Finance
+﻿namespace CRM.Services.Logic.Services.Finance
 {
     using System.Linq;
     using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
 
     using Contracts.Finance;
     using CRM.Data;

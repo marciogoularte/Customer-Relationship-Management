@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Logic.Contracts.Contractors;
-using Kendo.Mvc;
-
-namespace CRM.Web.Areas.Contractors.Controllers
+﻿namespace CRM.Web.Areas.Contractors.Controllers
 {
+    using System;
     using System.Web.Mvc;
-
+    
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
     using Microsoft.AspNet.Identity;
@@ -15,7 +10,8 @@ namespace CRM.Web.Areas.Contractors.Controllers
     using Data.Models;
     using Common.Base;
     using Web.Controllers;
-    using Services.Logic.Contracts.Users;
+    using Services.Logic.Contracts.Contractors;
+    using Services.Data.ViewModels.Contracts.Clients;
 
     [Authorize]
     public class ClientsController : BaseController

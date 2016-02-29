@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Web.Areas.Contractors.Controllers
+﻿namespace CRM.Web.Areas.Contractors.Controllers
 {
     using System.Web.Mvc;
 
@@ -14,8 +9,9 @@ namespace CRM.Web.Areas.Contractors.Controllers
     using Common.Base;
     using Data.Models;
     using Web.Controllers;
-    using Services.Logic.Contracts.Users;
-
+    using Services.Logic.Contracts.Contractors;
+    using Services.Data.ViewModels.Contracts.Providers;
+    
     [Authorize]
     public class ProvidersController : BaseController
     {

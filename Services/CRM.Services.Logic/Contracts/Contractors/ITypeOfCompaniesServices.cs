@@ -1,9 +1,10 @@
-using System.Collections.Generic;
-using CRM.Services.Data.ViewModels.Contracts.TypeOfCompanies;
-using CRM.Services.Logic.Base;
-
 namespace CRM.Services.Logic.Contracts.Contractors
 {
+    using System.Collections.Generic;
+
+    using Base;
+    using Data.ViewModels.Contracts.TypeOfCompanies;
+
     public interface ITypeOfCompaniesServices : IService
     {
         List<string> Index();

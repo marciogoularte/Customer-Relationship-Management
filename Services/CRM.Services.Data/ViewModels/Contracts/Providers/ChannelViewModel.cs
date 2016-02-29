@@ -1,12 +1,11 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using CRM.Data.Models;
-using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Providers
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Providers
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    using CRM.Data.Models;
+    using Web.Common.Mappings;
+
     public class ChannelViewModel : IMapFrom<Channel>
     {
         //public static Expression<Func<Channel, ChannelViewModel>> FromChannel

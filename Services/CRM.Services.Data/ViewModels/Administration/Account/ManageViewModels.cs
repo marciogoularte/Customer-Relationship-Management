@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-
-namespace CRM.Services.Data.ViewModels.Administration.Account
+﻿namespace CRM.Services.Data.ViewModels.Administration.Account
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using Microsoft.Owin.Security;
+    using Microsoft.AspNet.Identity;
+
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }

@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper.QueryableExtensions;
-using CRM.Data;
-using CRM.Data.Models;
-using CRM.Services.Data.ViewModels.Contracts.Invoices;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Services.Logic.Services.Contractors
+﻿namespace CRM.Services.Logic.Services.Contractors
 {
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
+
+    using CRM.Data;
+    using CRM.Data.Models;
+    using Contracts.Contractors;
+    using Data.ViewModels.Contracts.Invoices;
+
     public class InvoicesServices : IInvoicesServices
     {
         private ICRMData Data { get; set; }

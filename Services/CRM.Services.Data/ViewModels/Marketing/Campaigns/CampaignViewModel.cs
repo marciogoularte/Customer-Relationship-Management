@@ -1,12 +1,10 @@
-﻿using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Marketing.Campaigns
+﻿namespace CRM.Services.Data.ViewModels.Marketing.Campaigns
 {
     using System;
-    using System.Linq.Expressions;
     using System.ComponentModel.DataAnnotations;
 
     using CRM.Data.Models;
+    using Web.Common.Mappings;
 
     public class CampaignViewModel : IMapFrom<Campaign>
     {

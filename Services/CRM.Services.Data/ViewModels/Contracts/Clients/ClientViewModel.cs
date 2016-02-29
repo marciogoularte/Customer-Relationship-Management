@@ -1,11 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using CRM.Data.Models;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Clients
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Clients
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    using CRM.Data.Models;
     using Web.Common.Mappings;
 
     public class ClientViewModel : IMapFrom<Client>

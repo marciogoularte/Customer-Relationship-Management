@@ -1,12 +1,9 @@
-﻿using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Marketing.Social
+﻿namespace CRM.Services.Data.ViewModels.Marketing.Social
 {
-    using System;
-    using System.Linq.Expressions;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
+    using Web.Common.Mappings;
     using CRM.Data.Models.Marketing;
 
     public class SocialPartnerViewModel : IMapFrom<SocialPartner>

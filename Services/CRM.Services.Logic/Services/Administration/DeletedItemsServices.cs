@@ -1,18 +1,18 @@
-﻿using AutoMapper.QueryableExtensions;
-using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Contracts;
-using CRM.Services.Data.ViewModels.Contracts.Discussions;
-using CRM.Services.Data.ViewModels.Contracts.Invoices;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-
-namespace CRM.Services.Logic.Services.Administration
+﻿namespace CRM.Services.Logic.Services.Administration
 {
     using System.Linq;
     using System.Collections.Generic;
 
+    using AutoMapper.QueryableExtensions;
+
     using CRM.Data;
     using Contracts.Administration;
-
+    using Data.ViewModels.Contracts.Clients;
+    using Data.ViewModels.Contracts.Contracts;
+    using Data.ViewModels.Contracts.Discussions;
+    using Data.ViewModels.Contracts.Invoices;
+    using Data.ViewModels.Contracts.Providers;
+    
     public class DeletedItemsServices : IDeletedItemsServices
     {
         private ICRMData Data { get; set; }

@@ -1,7 +1,7 @@
-﻿using CRM.Services.Logic.Base;
-
-namespace CRM.Services.Logic.Contracts.Contractors
+﻿namespace CRM.Services.Logic.Contracts.Contractors
 {
+    using Base;
+
     public interface IMarketingServices : IService
     {
     }

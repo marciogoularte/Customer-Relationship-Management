@@ -1,12 +1,12 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using CRM.Data.Models;
-using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Discussions
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Discussions
 {
+    using System;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    using CRM.Data.Models;
+    using Web.Common.Mappings;
+
     public class DiscussionViewModel : IMapFrom<Discussion>
     {
         //public static Expression<Func<Discussion, DiscussionViewModel>> FromDiscussion

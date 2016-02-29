@@ -1,12 +1,11 @@
-﻿using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Users.Profile
+﻿namespace CRM.Services.Data.ViewModels.Users.Profile
 {
     using System;
 
     using Kendo.Mvc.UI;
 
     using CRM.Data.Models;
+    using Web.Common.Mappings;
 
     public class SchedulerTaskViewModel : IMapFrom<SchedulerTask>, ISchedulerEvent
     {

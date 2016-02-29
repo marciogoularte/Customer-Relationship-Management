@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Nikolay\Desktop\CRM-PUBLISH-11.02.2016</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Nikolay\Desktop\CRM-PUBLISH-12.02.2016</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Administration/Views/Activities/Index.cshtml">
@@ -298,28 +298,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/24/2016 01:57:34</publishTime>
     </File>
     <File Include="bin/CRM.Common.dll">
-      <publishTime>02/11/2016 19:31:51</publishTime>
+      <publishTime>02/12/2016 17:49:34</publishTime>
     </File>
     <File Include="bin/CRM.Data.Contracts.dll">
-      <publishTime>02/11/2016 19:31:53</publishTime>
+      <publishTime>02/12/2016 17:49:23</publishTime>
     </File>
     <File Include="bin/CRM.Data.dll">
-      <publishTime>02/11/2016 19:31:56</publishTime>
+      <publishTime>02/12/2016 17:49:40</publishTime>
     </File>
     <File Include="bin/CRM.Data.Models.dll">
-      <publishTime>02/11/2016 19:31:54</publishTime>
+      <publishTime>02/12/2016 17:49:25</publishTime>
     </File>
     <File Include="bin/CRM.Services.Data.dll">
-      <publishTime>02/11/2016 19:31:59</publishTime>
+      <publishTime>02/12/2016 17:49:47</publishTime>
     </File>
     <File Include="bin/CRM.Services.Logic.dll">
-      <publishTime>02/11/2016 19:32:01</publishTime>
+      <publishTime>02/12/2016 17:49:51</publishTime>
     </File>
     <File Include="bin/CRM.Web.Common.dll">
-      <publishTime>02/11/2016 19:31:57</publishTime>
+      <publishTime>02/12/2016 17:49:43</publishTime>
     </File>
     <File Include="bin/CRM.Web.dll">
-      <publishTime>02/11/2016 19:32:05</publishTime>
+      <publishTime>02/12/2016 17:49:59</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/24/2016 01:57:22</publishTime>
@@ -2650,7 +2650,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/06/2015 01:54:57</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/11/2016 19:32:11</publishTime>
+      <publishTime>02/12/2016 17:50:08</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Contracts
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 {
+    using System.Collections.Generic;
+
+    using Providers;
+
     public class ClientContractChannelViewModel
     {
         public ICollection<ChannelViewModel> ProviderChannels { get; set; }

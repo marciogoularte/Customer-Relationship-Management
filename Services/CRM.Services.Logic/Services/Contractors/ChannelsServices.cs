@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper.QueryableExtensions;
-using CRM.Data;
-using CRM.Data.Models;
-using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-using CRM.Services.Logic.Contracts.Contractors;
-
-namespace CRM.Services.Logic.Services.Contractors
+﻿namespace CRM.Services.Logic.Services.Contractors
 {
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
+
+    using CRM.Data;
+    using CRM.Data.Models;
+    using Contracts.Contractors;
+    using Data.ViewModels.Contracts.Clients;
+    using Data.ViewModels.Contracts.Providers;
+
     public class ChannelsServices : IChannelsServices
     {
         private ICRMData Data { get; set; }

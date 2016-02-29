@@ -1,6 +1,4 @@
-﻿using AutoMapper.QueryableExtensions;
-
-namespace CRM.Services.Logic.Services.Administration
+﻿namespace CRM.Services.Logic.Services.Administration
 {
     using System;
     using System.Linq;
@@ -8,6 +6,7 @@ namespace CRM.Services.Logic.Services.Administration
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using AutoMapper.QueryableExtensions;
 
     using CRM.Data;
     using CRM.Data.Models;

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace CRM.Services.Data.ViewModels.Administration.Account
+﻿namespace CRM.Services.Data.ViewModels.Administration.Account
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     namespace CRM.Web.ViewModels
     {
         public class ExternalLoginConfirmationViewModel

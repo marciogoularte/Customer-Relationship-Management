@@ -1,6 +1,4 @@
-﻿using CRM.Data.Models;
-
-namespace CRM.Services.Logic.Services.Users
+﻿namespace CRM.Services.Logic.Services.Users
 {
     using System;
     using System.Linq;
@@ -9,6 +7,7 @@ namespace CRM.Services.Logic.Services.Users
     using AutoMapper.QueryableExtensions;
 
     using CRM.Data;
+    using CRM.Data.Models;
     using Contracts.Users;
     using Data.ViewModels.Users.UserActivities;
 

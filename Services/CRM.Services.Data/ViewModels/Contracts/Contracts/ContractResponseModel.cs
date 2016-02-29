@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
-using CRM.Data.Models;
-using CRM.Services.Data.ViewModels.Contracts.Clients;
-using CRM.Services.Data.ViewModels.Contracts.Invoices;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-using CRM.Services.Data.ViewModels.Contracts.Trds;
-using CRM.Services.Data.ViewModels.Contracts.TypeOfCompanies;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Contracts
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 {
+    using System.Collections.Generic;
+
+    using Trds;
+    using Clients;
+    using Invoices;
+    using Providers;
+    using TypeOfCompanies;
+    using CRM.Data.Models;
+
     public class ContractResponseModel
     {
         public double Sum { get; set; }

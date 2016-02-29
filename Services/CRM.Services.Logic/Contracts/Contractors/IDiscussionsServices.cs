@@ -1,9 +1,10 @@
-using System.Collections.Generic;
-using CRM.Services.Data.ViewModels.Contracts.Discussions;
-using CRM.Services.Logic.Base;
-
 namespace CRM.Services.Logic.Contracts.Contractors
 {
+    using System.Collections.Generic;
+
+    using Base;
+    using Data.ViewModels.Contracts.Discussions;
+
     public interface IDiscussionsServices : IService
     {
         DiscussionViewModel DiscussionInformation(int discussionId);

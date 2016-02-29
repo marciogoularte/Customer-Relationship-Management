@@ -1,14 +1,11 @@
-﻿using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Marketing.Partners
+﻿namespace CRM.Services.Data.ViewModels.Marketing.Partners
 {
-    using System;
-    using System.Linq.Expressions;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
+    using Web.Common.Mappings;
     using CRM.Data.Models.Marketing;
-
+    
     public class MarketingPartnerViewModel : IMapFrom<MarketingPartner>
     {
         //public static Expression<Func<MarketingPartner, MarketingPartnerViewModel>> FromMarketingPartner

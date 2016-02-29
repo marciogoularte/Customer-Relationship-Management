@@ -1,12 +1,10 @@
-﻿using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Finance.Frz
+﻿namespace CRM.Services.Data.ViewModels.Finance.Frz
 {
     using System;
     using System.ComponentModel;
-    using System.Linq.Expressions;
     using System.ComponentModel.DataAnnotations;
 
+    using Web.Common.Mappings;
     using CRM.Data.Models.Finance;
 
     public class FrzViewModel : IMapFrom<Frz>

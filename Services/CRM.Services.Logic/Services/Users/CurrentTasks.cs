@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CRM.Data;
-using CRM.Services.Data.ViewModels.Users.CurrentTasks;
-
-namespace CRM.Services.Logic.Services.Users
+﻿namespace CRM.Services.Logic.Services.Users
 {
+    using System.Collections.Generic;
+
+    using CRM.Data;
+    using Data.ViewModels.Users.CurrentTasks;
+
     public class CurrentTasks
     {
         private ICRMData Data { get; set; }

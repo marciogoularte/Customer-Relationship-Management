@@ -1,8 +1,8 @@
-﻿using System;
-using System.Web.Mvc;
-
-namespace CRM.Web.Controllers
+﻿namespace CRM.Web.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
     public abstract class BaseController : Controller
     {
         [HttpPost]

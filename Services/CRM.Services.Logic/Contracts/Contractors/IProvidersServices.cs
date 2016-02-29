@@ -1,10 +1,11 @@
-using System.Collections.Generic;
-using CRM.Services.Data.ViewModels.Contracts.Contracts;
-using CRM.Services.Data.ViewModels.Contracts.Providers;
-using CRM.Services.Logic.Base;
-
 namespace CRM.Services.Logic.Contracts.Contractors
 {
+    using System.Collections.Generic;
+
+    using Base;
+    using Data.ViewModels.Contracts.Contracts;
+    using Data.ViewModels.Contracts.Providers;
+
     public interface IProvidersServices : IService
     {
         List<string> GetProvidersNames();

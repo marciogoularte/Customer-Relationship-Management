@@ -171,13 +171,25 @@
 
         public ClientContractViewModel CreateClientContract(ClientContractViewModel contract, int currentClientId)
         {
-            var clientType = int.Parse(this.Data.Clients
-                .GetById(currentClientId)
-                .TypeOfCompany);
+            int clientType;
+            string type;
 
-            var type = this.Data.TypeOfCompanies
-                .GetById(clientType)
-                .Type;
+            try
+            {
+                clientType = int.Parse(this.Data.Clients
+                    .GetById(currentClientId)
+                    .TypeOfCompany);
+
+                type = this.Data.TypeOfCompanies
+                        .GetById(clientType)
+                        .Type;
+            }
+            catch (Exception)
+            {
+                type = this.Data.Clients
+                    .GetById(currentClientId)
+                    .TypeOfCompany;
+            }
 
             var newContract = new ClientContract
             {

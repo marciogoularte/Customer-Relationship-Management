@@ -1,6 +1,4 @@
-﻿using CRM.Services.Data.ViewModels.Administration.Account.CRM.Web.ViewModels;
-
-namespace CRM.Web.Controllers
+﻿namespace CRM.Web.Controllers
 {
     using System.Linq;
     using System.Web;
@@ -12,6 +10,7 @@ namespace CRM.Web.Controllers
     using Microsoft.AspNet.Identity.Owin;
 
     using Data.Models;
+    using Services.Data.ViewModels.Administration.Account.CRM.Web.ViewModels;
 
     [Authorize]
     public class AccountController : Controller

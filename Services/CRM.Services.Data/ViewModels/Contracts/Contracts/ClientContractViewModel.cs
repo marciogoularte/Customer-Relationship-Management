@@ -1,11 +1,10 @@
-﻿using AutoMapper;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Contracts
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 {
     using System;
-    using System.Linq.Expressions;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    using AutoMapper;
 
     using CRM.Data.Models;
     using Web.Common.Mappings;

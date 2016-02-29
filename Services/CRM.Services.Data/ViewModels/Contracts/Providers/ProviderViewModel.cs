@@ -1,14 +1,10 @@
-﻿using System.Web;
-using CRM.Web.Common.Mappings;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Providers
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Providers
 {
-    using System;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq.Expressions;
 
     using CRM.Data.Models;
+    using Web.Common.Mappings;
 
     public class ProviderViewModel : IMapFrom<Provider>
     {

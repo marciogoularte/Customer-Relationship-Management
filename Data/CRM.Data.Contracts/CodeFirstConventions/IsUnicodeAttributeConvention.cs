@@ -1,7 +1,7 @@
 ﻿namespace CRM.Data.Contracts.CodeFirstConventions
 {
-    using System.Data.Entity.ModelConfiguration.Configuration;
     using System.Data.Entity.ModelConfiguration.Conventions;
+    using System.Data.Entity.ModelConfiguration.Configuration;
 
     using DataAnnotations;
   
