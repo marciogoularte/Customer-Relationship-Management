@@ -5,7 +5,7 @@
     using Base;
     using Data.ViewModels.Finance.Reports;
 
-    public interface IReportsServices : IService
+    public interface IFinanceReportsServices : IService
     {
         List<SearchedItemDropDown> GetClients();
 

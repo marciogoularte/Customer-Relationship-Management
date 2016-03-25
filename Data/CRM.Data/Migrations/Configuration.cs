@@ -28,9 +28,24 @@ namespace CRM.Data.Migrations
                 return;
             }
 
+            this.AddMarketingUserProfiles(context);
             this.AddDealerUserProfiles(context);
             this.AddFinancialUserProfiles(context);
             this.AddAdministratorUserProfiles(context);
+        }
+
+        private void AddMarketingUserProfiles(CRMDbContext context)
+        {
+            // Create Dealer user role
+            const string roleName = "Marketing";
+            var userRole = new IdentityRole
+            {
+                Name = roleName,
+                Id = Guid.NewGuid().ToString()
+            };
+
+            context.Roles.AddOrUpdate(userRole);
+            context.SaveChanges();
         }
 
         private void AddDealerUserProfiles(CRMDbContext context)
@@ -45,39 +60,6 @@ namespace CRM.Data.Migrations
 
             context.Roles.AddOrUpdate(userRole);
             context.SaveChanges();
-
-            //// Create user
-            //var hasher = new PasswordHasher();
-            //var user = new User()
-            //    {
-            //        UserName = "Dealer",
-            //        PasswordHash = hasher.HashPassword("123456"),
-            //        Email = "Dealer@abv.bg",
-            //        EmailConfirmed = false,
-            //        SecurityStamp = Guid.NewGuid().ToString(),
-            //        FirstName = "Dealer",
-            //        SecondName = "Dealer",
-            //        LastName = "Dealer",
-            //        Gender = Gender.Male,
-            //        CreatedOn = DateTime.Now,
-            //        LockoutEnabled = true,
-            //        Age = 10,
-            //        Town = "Sofia",
-            //        Country = "Bulgaria",
-            //        EnterprisePosition = EnterprisePosition.Dealer,
-            //        PhoneNumber = "0891234567",
-            //        PhoneNumberConfirmed = false
-            //    };
-            //
-            //// Add user to role and database
-            //user.Roles.Add(new IdentityUserRole()
-            //{
-            //    RoleId = userRole.Id,
-            //    UserId = user.Id
-            //});
-            //
-            //context.Users.AddOrUpdate(user);
-            //context.SaveChanges();
         }
 
         private void AddFinancialUserProfiles(CRMDbContext context)
@@ -92,39 +74,6 @@ namespace CRM.Data.Migrations
 
             context.Roles.AddOrUpdate(userRole);
             context.SaveChanges();
-            //
-            //// Create user
-            //var hasher = new PasswordHasher();
-            //var user = new User()
-            //{
-            //    UserName = "Financial",
-            //    PasswordHash = hasher.HashPassword("123456"),
-            //    Email = "Financial@abv.bg",
-            //    EmailConfirmed = false,
-            //    SecurityStamp = Guid.NewGuid().ToString(),
-            //    FirstName = "Financial",
-            //    SecondName = "Financial",
-            //    LastName = "Financial",
-            //    Gender = Gender.Female,
-            //    CreatedOn = DateTime.Now,
-            //    LockoutEnabled = true,
-            //    Age = 10,
-            //    Town = "Sofia",
-            //    Country = "Bulgaria",
-            //    EnterprisePosition = EnterprisePosition.Financial,
-            //    PhoneNumber = "0891234567",
-            //    PhoneNumberConfirmed = false
-            //};
-            //
-            //// Add user to role and database
-            //user.Roles.Add(new IdentityUserRole()
-            //{
-            //    RoleId = userRole.Id,
-            //    UserId = user.Id
-            //});
-            //
-            //context.Users.AddOrUpdate(user);
-            //context.SaveChanges();
         }
 
         private void AddAdministratorUserProfiles(CRMDbContext context)
@@ -175,40 +124,6 @@ namespace CRM.Data.Migrations
 
             context.Users.AddOrUpdate(user);
             context.SaveChanges();
-
-            //var secondUser = new User()
-            //{
-            //    UserName = "Nikolay",
-            //    PasswordHash = hasher.HashPassword("123456"),
-            //    Email = "Nikolay@gmail.com",
-            //    EmailConfirmed = false,
-            //    SecurityStamp = Guid.NewGuid().ToString(),
-            //    FirstName = "Nikolay",
-            //    SecondName = "Petrov",
-            //    LastName = "Dermendzhiev",
-            //    Gender = Gender.Male,
-            //    CreatedOn = DateTime.Now,
-            //    LockoutEnabled = true,
-            //    Age = 10,
-            //    Town = "Panagyurishte",
-            //    Country = "Bulgaria",
-            //    Website = "http://gmail.com",
-            //    EnterprisePosition = EnterprisePosition.Admin,
-            //    PhoneNumber = "0897654321",
-            //    PhoneNumberConfirmed = false,
-            //    LastActivities = new List<Activity>(),
-            //    SchedulerTasks = new List<SchedulerTask>()
-            //};
-            //
-            //// Add user to role and database
-            //secondUser.Roles.Add(new IdentityUserRole()
-            //{
-            //    RoleId = userRole.Id,
-            //    UserId = user.Id
-            //});
-            //
-            //context.Users.AddOrUpdate(secondUser);
-            //context.SaveChanges();
         }
     }
 }

@@ -1,7 +1,6 @@
 namespace CRM.Services.Logic.Contracts.Users
 {
     using System.Linq;
-    using System.Collections.Generic;
 
     using Base;
     using Data.ViewModels.Users.Profile;

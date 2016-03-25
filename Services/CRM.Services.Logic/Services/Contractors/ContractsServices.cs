@@ -209,7 +209,8 @@
                 Channels = new List<Channel>(),
                 Frequency = contract.Frequency,
                 MonthlyFee = contract.MonthlyFee,
-                IsVisible = contract.IsVisible
+                IsVisible = contract.IsVisible,
+                AnnualIndexation = contract.AnnualIndexation
             };
 
             if (contract.ProviderId != null)
@@ -249,7 +250,8 @@
                 ProviderId = currentProviderId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments,
-                IsVisible = contract.IsVisible
+                IsVisible = contract.IsVisible,
+                AnnualIndexation = contract.AnnualIndexation
             };
 
             this.Data.ProviderContracts.Add(newContract);
@@ -282,6 +284,7 @@
             contractFromDb.Frequency = contract.Frequency;
             contractFromDb.MonthlyFee = contract.MonthlyFee;
             contractFromDb.IsVisible = contract.IsVisible;
+            contractFromDb.AnnualIndexation = contract.AnnualIndexation;
 
             this.Data.SaveChanges();
 
@@ -306,6 +309,7 @@
             contractFromDb.CreatedOn = DateTime.Now;
             contractFromDb.Comments = contract.Comments;
             contractFromDb.IsVisible = contract.IsVisible;
+            contractFromDb.AnnualIndexation = contract.AnnualIndexation;
 
             this.Data.SaveChanges();
 

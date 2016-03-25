@@ -100,6 +100,7 @@
     <Compile Include="Contracts\Administration\IAdminServices.cs" />
     <Compile Include="Contracts\Administration\IDeletedItemsServices.cs" />
     <Compile Include="Contracts\Marketing\ICampaignsServices.cs" />
+    <Compile Include="Contracts\Marketing\IMarketingReportsServices.cs" />
     <Compile Include="Contracts\Marketing\ISocialPartnersServices.cs" />
     <Compile Include="Contracts\Contractors\IChannelsServices.cs" />
     <Compile Include="Contracts\Contractors\IClientsServices.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Contracts\Contractors\IInvoicesServices.cs" />
     <Compile Include="Contracts\Contractors\IMarketingServices.cs" />
     <Compile Include="Contracts\Contractors\IProductsServices.cs" />
+    <Compile Include="Contracts\Users\IManageUserServices.cs" />
     <Compile Include="Contracts\Users\IProfileServices.cs" />
     <Compile Include="Contracts\Contractors\IProvidersServices.cs" />
     <Compile Include="Contracts\Contractors\ITrdsServices.cs" />
@@ -122,12 +124,13 @@
     <Compile Include="Contracts\Finance\IFinanceInvoicingServices.cs" />
     <Compile Include="Contracts\Finance\IFrzsServices.cs" />
     <Compile Include="Contracts\Finance\IPaymentsServices.cs" />
-    <Compile Include="Contracts\Finance\IReportsServices.cs" />
+    <Compile Include="Contracts\Finance\IFinanceReportsServices.cs" />
     <Compile Include="Services\Finance\FrzsServices.cs" />
     <Compile Include="Services\Finance\FinanceInvoicingServices.cs" />
     <Compile Include="Services\Finance\PaymentsServices.cs" />
-    <Compile Include="Services\Finance\ReportsServices.cs" />
+    <Compile Include="Services\Finance\FinanceReportsServices.cs" />
     <Compile Include="Services\Marketing\CampaignsServices.cs" />
+    <Compile Include="Services\Marketing\MarketingReportsServices.cs" />
     <Compile Include="Services\Marketing\SocialPartnersServices.cs" />
     <Compile Include="Services\Contractors\ChannelsServices.cs" />
     <Compile Include="Services\Contractors\ClientsServices.cs" />
@@ -147,6 +150,7 @@
     <Compile Include="Services\Marketing\OperatorsServices.cs" />
     <Compile Include="Services\Marketing\PrsServices.cs" />
     <Compile Include="Services\Contractors\ProductsServices.cs" />
+    <Compile Include="Services\Users\ManageUserServices.cs" />
     <Compile Include="Services\Users\ProfileServices.cs" />
     <Compile Include="Services\Contractors\ProvidersServices.cs" />
     <Compile Include="Services\Contractors\TrdsServices.cs" />

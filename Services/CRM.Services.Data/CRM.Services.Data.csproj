@@ -84,10 +84,12 @@
     <Compile Include="ViewModels\Finance\FinanceInvoice\FinanceInvoiceViewModel.cs" />
     <Compile Include="ViewModels\Finance\Frz\FrzViewModel.cs" />
     <Compile Include="ViewModels\Finance\Payments\PaymentViewModel.cs" />
-    <Compile Include="ViewModels\Finance\Reports\ChooseReportDropdown.cs" />
+    <Compile Include="ViewModels\Finance\Reports\ChooseFinanceReportDropdown.cs" />
     <Compile Include="ViewModels\Finance\Reports\SearchedItemDropDown.cs" />
-    <Compile Include="ViewModels\Finance\Reports\SendReportViewModel.cs" />
+    <Compile Include="ViewModels\Finance\Reports\SendFinanceReportViewModel.cs" />
     <Compile Include="ViewModels\Marketing\Campaigns\CampaignPartnersViewModel.cs" />
+    <Compile Include="ViewModels\Marketing\Reports\ChooseMarketingReportDropdown.cs" />
+    <Compile Include="ViewModels\Marketing\Reports\SendMarketingReportViewModel.cs" />
     <Compile Include="ViewModels\Marketing\Social\SocialPartnerViewModel.cs" />
     <Compile Include="ViewModels\Contracts\Activities\LastActivityViewModel.cs" />
     <Compile Include="ViewModels\Marketing\Campaigns\CampaignViewModel.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="ViewModels\Marketing\Partners\MediaViewModel.cs" />
     <Compile Include="ViewModels\Marketing\Partners\OperatorViewModel.cs" />
     <Compile Include="ViewModels\Marketing\Partners\PrViewModel.cs" />
+    <Compile Include="ViewModels\Users\ManageUser\ManageUserViewModel.cs" />
     <Compile Include="ViewModels\Users\Profile\SchedulerTaskViewModel.cs" />
     <Compile Include="ViewModels\Contracts\Providers\ChannelViewModel.cs" />
     <Compile Include="ViewModels\Contracts\Providers\ProviderViewModel.cs" />

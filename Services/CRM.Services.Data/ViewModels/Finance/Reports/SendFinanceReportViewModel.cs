@@ -1,9 +1,9 @@
 ﻿namespace CRM.Services.Data.ViewModels.Finance.Reports
 {
-    public class SendReportViewModel
+    public class SendFinanceReportViewModel
     {
         public string Type { get; set; }
 
-        public ChooseReportDropdown Report { get; set; }
+        public ChooseFinanceReportDropdown Report { get; set; }
     }
 }

@@ -403,6 +403,11 @@
                                         <i class="icon-align-justify"></i><span class="hidden-tablet"> Social</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="submenu" href="@Url.Action("Index", "MarketingReports", new { area = "Marketing" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Reports</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -421,13 +426,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("Index", "Reports", new { area = "Finance" })">
-                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Reports</span>
+                                    <a class="submenu" href="@Url.Action("AllFrzs", "Frzs", new { area = "Finance" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Frzs</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="submenu" href="@Url.Action("AllFrzs", "Frzs", new { area = "Finance" })">
-                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Frzs</span>
+                                    <a class="submenu" href="@Url.Action("Index", "FinanceReports", new { area = "Finance" })">
+                                        <i class="icon-align-justify"></i><span class="hidden-tablet"> Reports</span>
                                     </a>
                                 </li>
                             </ul>

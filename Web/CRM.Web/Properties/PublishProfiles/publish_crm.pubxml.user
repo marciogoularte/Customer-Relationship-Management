@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Nikolay\Desktop\CRM-PUBLISH-12.02.2016</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Nikolay\Desktop\CRM-22.03.2016</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Administration/Views/Activities/Index.cshtml">
@@ -67,19 +67,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Contracts/ProviderContractDetails.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>03/22/2016 16:51:26</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Contracts/_ClientContractChannels.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Contracts/_ClientContractInformation.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>03/22/2016 16:40:42</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Contracts/_ClientContracts.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>03/22/2016 16:37:11</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Contracts/_ProviderContracts.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>03/22/2016 16:51:26</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Discussions/DiscussionInformation.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
@@ -304,22 +304,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/12/2016 17:49:23</publishTime>
     </File>
     <File Include="bin/CRM.Data.dll">
-      <publishTime>02/12/2016 17:49:40</publishTime>
+      <publishTime>03/22/2016 16:53:27</publishTime>
     </File>
     <File Include="bin/CRM.Data.Models.dll">
-      <publishTime>02/12/2016 17:49:25</publishTime>
+      <publishTime>03/22/2016 16:53:26</publishTime>
     </File>
     <File Include="bin/CRM.Services.Data.dll">
-      <publishTime>02/12/2016 17:49:47</publishTime>
+      <publishTime>03/22/2016 16:53:29</publishTime>
     </File>
     <File Include="bin/CRM.Services.Logic.dll">
-      <publishTime>02/12/2016 17:49:51</publishTime>
+      <publishTime>03/22/2016 16:53:31</publishTime>
     </File>
     <File Include="bin/CRM.Web.Common.dll">
-      <publishTime>02/12/2016 17:49:43</publishTime>
+      <publishTime>03/22/2016 16:53:28</publishTime>
     </File>
     <File Include="bin/CRM.Web.dll">
-      <publishTime>02/12/2016 17:49:59</publishTime>
+      <publishTime>03/22/2016 16:53:33</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/24/2016 01:57:22</publishTime>

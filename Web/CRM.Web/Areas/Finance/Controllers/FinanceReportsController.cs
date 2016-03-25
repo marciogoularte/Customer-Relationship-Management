@@ -9,24 +9,24 @@
     using Services.Data.ViewModels.Finance.Reports;
     
     [Authorize]
-    public class ReportsController : Controller
+    public class FinanceReportsController : Controller
     {
-        private readonly IReportsServices reports;
+        private readonly IFinanceReportsServices financeReports;
         
-        public ReportsController(IReportsServices reports)
+        public FinanceReportsController(IFinanceReportsServices financeReports)
         {
-            this.reports = reports;
+            this.financeReports = financeReports;
         }
 
         public ActionResult Index()
         {
-            var model = new SendReportViewModel();
+            var model = new SendFinanceReportViewModel();
 
-            var enumData = from ChooseReportDropdown e in Enum.GetValues(typeof(ChooseReportDropdown))
+            var enumData = from ChooseFinanceReportDropdown e in Enum.GetValues(typeof(ChooseFinanceReportDropdown))
                                   select new
                                   {
                                       Id = (int)e,
-                                      Name = EnumExtensions.GetDescriptionOfEnum((ChooseReportDropdown)e)
+                                      Name = EnumExtensions.GetDescriptionOfEnum((ChooseFinanceReportDropdown)e)
                                   };
 
             ViewBag.EnumData = new SelectList(enumData, "Id", "Name");
@@ -37,7 +37,7 @@
         [HttpGet]
         public JsonResult GetClients()
         {
-            var clients = this.reports.GetClients();
+            var clients = this.financeReports.GetClients();
 
             return this.Json(clients, JsonRequestBehavior.AllowGet);
         }
@@ -45,7 +45,7 @@
         [HttpGet]
         public JsonResult GetProviders()
         {
-            var providers = this.reports.GetProviders();
+            var providers = this.financeReports.GetProviders();
 
             return this.Json(providers, JsonRequestBehavior.AllowGet);
         }
@@ -53,7 +53,7 @@
         [HttpGet]
         public JsonResult GetMonths()
         {
-            var months = this.reports.GetMonths();
+            var months = this.financeReports.GetMonths();
 
             return this.Json(months, JsonRequestBehavior.AllowGet);
         }
@@ -61,7 +61,7 @@
         [HttpGet]
         public JsonResult GetYears()
         {
-            var years = this.reports.GetYears();
+            var years = this.financeReports.GetYears();
 
             return this.Json(years, JsonRequestBehavior.AllowGet);
         }

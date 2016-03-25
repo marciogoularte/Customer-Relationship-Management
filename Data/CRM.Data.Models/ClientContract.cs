@@ -56,6 +56,8 @@
         
         public bool IsVisible { get; set; }
 
+        public int AnnualIndexation { get; set; }
+
         public virtual ICollection<Invoice> Invoices
         {
             get { return this.invoices; }

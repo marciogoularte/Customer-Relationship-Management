@@ -65,7 +65,7 @@
                 TypeOfCompanies = this.Data.TypeOfCompanies
                 .All()
                 .ProjectTo<TypeOfCompanyViewModel>()
-                .Where(p => p.Type.Contains(searchboxTypeOfCompany))
+                .Where(p => p.Type.Contains(searchboxTypeOfCompany) || p.TypeInBulgarian.Contains(searchboxTypeOfCompany))
                 .ToList();
             }
 

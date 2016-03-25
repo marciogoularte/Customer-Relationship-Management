@@ -1,11 +1,11 @@
 ﻿@using CRM.Services.Data.ViewModels.Finance.Reports
-@model SendReportViewModel
+@model SendFinanceReportViewModel
 
 @{
-    ViewBag.Title = "Reports";
+    ViewBag.Title = "Finance Reports";
 }
 
-<h2>Reports</h2>
+<h2>Finance Reports</h2>
 @Html.DropDownList("choose-report-type", ViewBag.EnumData as SelectList)
 <button class="btn btn-success" id="generate-report-btn">Generate report</button>
 

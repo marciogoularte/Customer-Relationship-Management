@@ -8,11 +8,11 @@
     using Contracts.Finance;
     using Data.ViewModels.Finance.Reports;
 
-    public class ReportsServices : IReportsServices
+    public class FinanceReportsServices : IFinanceReportsServices
     {
         private ICRMData Data { get; }
 
-        public ReportsServices(ICRMData data)
+        public FinanceReportsServices(ICRMData data)
         {
             this.Data = data;
         }

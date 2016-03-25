@@ -98,6 +98,9 @@
         [DisplayName("Monthly fee")]
         public double MonthlyFee { get; set; }
 
+        [DisplayName("Annual indexation(in %)")]
+        public int AnnualIndexation { get; set; }
+
         [DisplayName("Is visible")]
         public bool IsVisible { get; set; }
 

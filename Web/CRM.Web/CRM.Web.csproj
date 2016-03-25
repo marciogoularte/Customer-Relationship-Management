@@ -202,10 +202,11 @@
     <Compile Include="Areas\Finance\Controllers\FrzsController.cs" />
     <Compile Include="Areas\Finance\Controllers\FinanceInvoicesController.cs" />
     <Compile Include="Areas\Finance\Controllers\PaymentsController.cs" />
-    <Compile Include="Areas\Finance\Controllers\ReportsController.cs" />
+    <Compile Include="Areas\Finance\Controllers\FinanceReportsController.cs" />
     <Compile Include="Areas\Finance\FinanceAreaRegistration.cs" />
     <Compile Include="Areas\Marketing\Controllers\CampaignsController.cs" />
     <Compile Include="Areas\Marketing\Controllers\MarketingPartnersController.cs" />
+    <Compile Include="Areas\Marketing\Controllers\MarketingReportsController.cs" />
     <Compile Include="Areas\Marketing\Controllers\MediaController.cs" />
     <Compile Include="Areas\Marketing\Controllers\OperatorsController.cs" />
     <Compile Include="Areas\Marketing\Controllers\PartnersController.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Areas\Contractors\Controllers\ContractsController.cs" />
     <Compile Include="Areas\Products\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Products\ProductsAreaRegistration.cs" />
+    <Compile Include="Areas\Users\Controllers\ManageUserController.cs" />
     <Compile Include="Areas\Users\Controllers\UserActivitiesController.cs" />
     <Compile Include="Areas\Users\Controllers\CurrentTasksController.cs" />
     <Compile Include="Areas\Contractors\Controllers\DiscussionsController.cs" />
@@ -527,7 +529,7 @@
     <Content Include="Areas\Finance\Views\Frzs\Frzs.cshtml" />
     <Content Include="Areas\Finance\Views\FinanceInvoices\FinanceInvoices.cshtml" />
     <Content Include="Areas\Finance\Views\Payments\Payments.cshtml" />
-    <Content Include="Areas\Finance\Views\Reports\Index.cshtml" />
+    <Content Include="Areas\Finance\Views\FinanceReports\Index.cshtml" />
     <Content Include="Areas\Finance\Views\FinanceInvoices\FinanceInvoicesInformation.cshtml" />
     <Content Include="Areas\Finance\Views\Frzs\FrzsInformation.cshtml" />
     <Content Include="Areas\Finance\Views\Payments\PaymentsInformation.cshtml" />
@@ -1021,6 +1023,9 @@
     <Content Include="Scripts\theme-scripts\retina.js" />
     <Content Include="Areas\Users\Views\UserActivities\UserActivities.cshtml" />
     <Content Include="Areas\Users\Views\UserActivities\FinishActivityProccess.cshtml" />
+    <Content Include="Areas\Marketing\Views\MarketingReports\Index.cshtml" />
+    <Content Include="Areas\Users\Views\ManageUser\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Shared\EditorTemplates\GenderEditor.cshtml" />
     <None Include="Properties\PublishProfiles\publish_crm.pubxml" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />

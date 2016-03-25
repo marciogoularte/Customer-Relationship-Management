@@ -98,7 +98,7 @@
                 clients = this.Data.Clients
                     .All()
                     .ProjectTo<ClientViewModel>()
-                    .Where(c => c.Name.Contains(searchboxClients))
+                    .Where(c => c.Name.Contains(searchboxClients) || c.NameBulgarian.Contains(searchboxClients))
                     .ToList();
             }
 

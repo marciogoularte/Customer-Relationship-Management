@@ -67,6 +67,9 @@
         [DisplayName("Governing law")]
         public string GoverningLaw { get; set; }
 
+        [DisplayName("Annual indexation(in %)")]
+        public int AnnualIndexation { get; set; }
+
         [DisplayName("Comments")]
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
