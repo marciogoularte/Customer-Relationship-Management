@@ -49,11 +49,11 @@ namespace CRM.Web.Areas.Finance.Controllers
             {
                 case 0:
                     var byClient = financeReports.ByClient(from, to);
-                    SetResponse(byClient);
+                    SetResponse(byClient, $"By client - {from} - {to}");
                     break;
                 case 1:
                     var byDealer = financeReports.ByDealer(from, to);
-                    SetResponse(byDealer);
+                    SetResponse(byDealer, $"By dealer - {from} - {to}");
                     break;
                     //case 2:
                     //    result = financeReports.ByInvoices(from, to);
@@ -69,10 +69,10 @@ namespace CRM.Web.Areas.Finance.Controllers
             return RedirectToAction("Index");
         }
 
-        private void SetResponse<T>(IEnumerable<T> result)
+        private void SetResponse<T>(IEnumerable<T> result, string fileName)
         {
             Response.ClearContent();
-            Response.AddHeader("content-disposition", "attachment;filename=Contact.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=" + fileName +".xls");
             Response.AddHeader("Content-Type", "application/vnd.ms-excel");
             GenerateExcel(result, Response.Output);
             Response.End();
