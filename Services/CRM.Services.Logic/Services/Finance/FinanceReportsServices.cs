@@ -1,8 +1,12 @@
-﻿namespace CRM.Services.Logic.Services.Finance
+﻿using CRM.Data.Models;
+
+namespace CRM.Services.Logic.Services.Finance
 {
     using System;
     using System.Linq;
     using System.Collections.Generic;
+
+    using AutoMapper.QueryableExtensions;
 
     using CRM.Data;
     using Contracts.Finance;
@@ -17,79 +21,94 @@
             this.Data = data;
         }
 
-        public List<SearchedItemDropDown> GetClients()
+        public List<ClientReportModel> ByClient(DateTime from, DateTime to)
         {
+            // TODO: Check specification
+            // TODO: from/to
+
             var clients = this.Data.Clients
                 .All()
-                .Select(c => new SearchedItemDropDown()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                })
+                .Where(c => c.Contracts.Count != 0)
+                .ProjectTo<ClientReportModel>()
                 .ToList();
 
             return clients;
         }
 
-        public List<SearchedItemDropDown> GetProviders()
+        public List<DealerReportModel> ByDealer(DateTime from, DateTime to)
         {
-            var providers = this.Data.Providers
+            var identityUserRoles = this.Data.IdentityRoles
                 .All()
-                .Select(p => new SearchedItemDropDown()
-                {
-                    Id = p.Id,
-                    Name = p.Name
-                })
-                .ToList();
+                .FirstOrDefault(r => r.Name == "Dealer")
+                .Users;
 
-            return providers;
-        }
+            var dealers = new List<DealerReportModel>();
 
-        public List<SearchedItemDropDown> GetMonths()
-        {
-            var months = new List<SearchedItemDropDown>()
+            foreach (var identityUserRole in identityUserRoles)
             {
-                new SearchedItemDropDown(0, "January"),
-                new SearchedItemDropDown(1, "February"),
-                new SearchedItemDropDown(2, "March"),
-                new SearchedItemDropDown(3, "April"),
-                new SearchedItemDropDown(4, "May"),
-                new SearchedItemDropDown(5, "June"),
-                new SearchedItemDropDown(6, "July"),
-                new SearchedItemDropDown(7, "August"),
-                new SearchedItemDropDown(8, "September"),
-                new SearchedItemDropDown(9, "October"),
-                new SearchedItemDropDown(10, "November"),
-                new SearchedItemDropDown(10, "December")
-            };
+                var user = this.Data.Users
+                    .All()
+                    .FirstOrDefault(u => u.Id == identityUserRole.UserId);
 
-            return months;
-        }
+                var dealerReportModel = new DealerReportModel();
+                dealerReportModel.UserName = user.UserName;
+                dealerReportModel.TotalContracts = GetTotalContracts(user.Clients.ToList(), null, null).Count;
+                dealerReportModel.TotalContractsForPeriod = GetTotalContracts(user.Clients.ToList(), from, to).Count;
+                dealerReportModel.TotalMonthlyFee = GetTotalMonthlyFee(user.Clients.ToList(), null, null);
+                dealerReportModel.TotalMonthlyFeeForPeriod = GetTotalMonthlyFee(user.Clients.ToList(), from, to);
 
-        public List<SearchedItemDropDown> GetYears()
-        {
-            var currentYear = DateTime.Now.Year;
-            var years = new List<SearchedItemDropDown>();
-            var counter = 0;
-                
-            for (var i = 1950; i <= currentYear; i++)
-            {
-                var searchedItem = new SearchedItemDropDown(counter, i.ToString());
-                years.Add(searchedItem);
-
-                counter++;
+                dealers.Add(dealerReportModel);
             }
 
-            return years;
-        } 
+            return dealers;
+        }
 
-        
-        //getDealers();
-        //getUnpaidInvoices();
-        //getPaidInvoices();
-        //getTvChannels();
-        //getQ();
-        //getEpg();
-        //getNewslerters();
+        private List<ClientContract> GetTotalContracts(List<Client> clients, DateTime? from, DateTime? to)
+        {
+            var clientContracts = new List<ClientContract>();
+
+            foreach (var client in clients)
+            {
+                foreach (var clientContract in client.Contracts)
+                {
+                    if (from != null && to != null)
+                    {
+                        if (clientContract.CreatedOn < to && clientContract.CreatedOn > from)
+                        {
+                            clientContracts.Add(clientContract);
+                        }
+                    }
+                    else
+                    {
+                        clientContracts.Add(clientContract);
+                    }
+                }
+            }
+
+            return clientContracts;
+        }
+
+        private double GetTotalMonthlyFee(List<Client> clients, DateTime? from, DateTime? to)
+        {
+            var contracts = this.GetTotalContracts(clients, from, to);
+            var totalMonthlyFee = contracts.Sum(contract => contract.MonthlyFee);
+
+            return totalMonthlyFee;
+        }
+
+        //public List<InvoiceReportModel> ByInvoices(DateTime @from, DateTime to)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public List<TvChannelReportModel> ByTvChannels(DateTime @from, DateTime to)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public List<DateReportModel> ByDate(DateTime @from, DateTime to)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

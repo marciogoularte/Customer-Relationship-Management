@@ -3,6 +3,8 @@
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 
+    using Microsoft.AspNet.Identity.EntityFramework;
+
     using Models;
     using Models.Finance;
     using Models.Marketing;
@@ -48,6 +50,10 @@
         IDbSet<Frz> Frzs { get; set; }
 
         IDbSet<Payment> Payments { get; set; }
+
+        //IDbSet<IdentityUserRole> IdentityUserRoles { get; set; }
+
+        //IDbSet<IdentityRole> IdentityRoles { get; set; }
 
         DbContext DbContext { get; }
 

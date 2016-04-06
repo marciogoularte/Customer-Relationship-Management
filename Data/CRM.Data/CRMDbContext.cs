@@ -64,13 +64,11 @@
 
         public virtual IDbSet<Payment> Payments { get; set; }
 
-        public DbContext DbContext
-        {
-            get
-            {
-                return this;
-            }
-        }
+        //public virtual IDbSet<IdentityUserRole> IdentityUserRoles { get; set; }
+
+        //public virtual IDbSet<IdentityRole> IdentityRoles { get; set; }
+
+        public DbContext DbContext => this;
 
         public override int SaveChanges()
         {

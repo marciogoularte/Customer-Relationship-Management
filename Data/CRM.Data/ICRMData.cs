@@ -1,5 +1,9 @@
 ﻿namespace CRM.Data
 {
+    using System.Data.Entity;
+
+    using Microsoft.AspNet.Identity.EntityFramework;
+
     using Contracts;
     using Models;
     using Models.Finance;
@@ -48,6 +52,10 @@
         IDeletableEntityRepository<Frz> Frzs { get; }
 
         IDeletableEntityRepository<Payment> Payments { get; }
+
+        //IDbSet<IdentityUserRole> IdentityUserRoles { get; }
+
+        IRepository<IdentityRole> IdentityRoles { get; }
 
         //IDeletableEntityRepository<ContractTemplate> ContractTemplates { get; }
 

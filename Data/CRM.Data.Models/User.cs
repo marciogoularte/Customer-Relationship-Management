@@ -17,12 +17,14 @@
         private ICollection<Activity> lastActivities;
         private ICollection<SchedulerTask> schedulerTasks;
         private ICollection<Discussion> discussions;
+        private ICollection<Client> clients;
 
         public User()
         {
             this.lastActivities = new HashSet<Activity>();
             this.schedulerTasks = new HashSet<SchedulerTask>();
             this.discussions = new HashSet<Discussion>();
+            this.clients = new HashSet<Client>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
@@ -79,6 +81,12 @@
         {
             get { return this.discussions; }
             set { this.discussions = value; }
+        }
+
+        public virtual ICollection<Client> Clients
+        {
+            get { return this.clients; }
+            set { this.clients = value; }
         }
     }
 }

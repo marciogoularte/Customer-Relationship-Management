@@ -1,5 +1,6 @@
 ﻿namespace CRM.Services.Logic.Contracts.Finance
 {
+    using System;
     using System.Collections.Generic;
 
     using Base;
@@ -7,12 +8,14 @@
 
     public interface IFinanceReportsServices : IService
     {
-        List<SearchedItemDropDown> GetClients();
+        List<ClientReportModel> ByClient(DateTime from, DateTime to);
 
-        List<SearchedItemDropDown> GetProviders();
+        List<DealerReportModel> ByDealer(DateTime from, DateTime to);
 
-        List<SearchedItemDropDown> GetMonths();
+        //List<InvoiceReportModel> ByInvoices(DateTime from, DateTime to);
 
-        List<SearchedItemDropDown> GetYears();
+        //List<TvChannelReportModel> ByTvChannels(DateTime from, DateTime to);
+
+        //List<DateReportModel> ByDate(DateTime from, DateTime to);
     }
 }

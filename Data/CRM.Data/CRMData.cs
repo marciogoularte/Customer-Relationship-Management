@@ -1,4 +1,7 @@
-﻿namespace CRM.Data
+﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace CRM.Data
 {
     using System;
     using System.Collections.Generic;
@@ -20,33 +23,67 @@
             this.context = context;
         }
 
-        public ICRMDbContext Context
+        public ICRMDbContext Context => this.context;
+
+        public IRepository<User> Users => this.GetRepository<User>();
+
+        public IDeletableEntityRepository<Provider> Providers => this.GetDeletableEntityRepository<Provider>();
+
+        public IDeletableEntityRepository<Client> Clients => this.GetDeletableEntityRepository<Client>();
+
+        public IDeletableEntityRepository<Activity> Activities => this.GetDeletableEntityRepository<Activity>();
+
+        public IDeletableEntityRepository<SchedulerTask> SchedulerTasks => this.GetDeletableEntityRepository<SchedulerTask>();
+
+        public IDeletableEntityRepository<Channel> Channels => this.GetDeletableEntityRepository<Channel>();
+
+        public IDeletableEntityRepository<ClientContract> ClientContracts => this.GetDeletableEntityRepository<ClientContract>();
+
+        public IDeletableEntityRepository<ProviderContract> ProviderContracts => this.GetDeletableEntityRepository<ProviderContract>();
+
+        public IDeletableEntityRepository<Invoice> Invoices => this.GetDeletableEntityRepository<Invoice>();
+
+        public IDeletableEntityRepository<Discussion> Discussions => this.GetDeletableEntityRepository<Discussion>();
+
+        public IDeletableEntityRepository<Trd> Trds => this.GetDeletableEntityRepository<Trd>();
+
+        public IDeletableEntityRepository<TypeOfCompany> TypeOfCompanies => this.GetDeletableEntityRepository<TypeOfCompany>();
+
+        public IDeletableEntityRepository<Campaign> Campaigns => this.GetDeletableEntityRepository<Campaign>();
+
+        public IDeletableEntityRepository<Media> Media => this.GetDeletableEntityRepository<Media>();
+
+        public IDeletableEntityRepository<Operator> Operators => this.GetDeletableEntityRepository<Operator>();
+
+        public IDeletableEntityRepository<Pr> Prs => this.GetDeletableEntityRepository<Pr>();
+
+        public IDeletableEntityRepository<MarketingPartner> MarketingPartners => this.GetDeletableEntityRepository<MarketingPartner>();
+
+        public IDeletableEntityRepository<SocialPartner> SocialPartners => this.GetDeletableEntityRepository<SocialPartner>();
+
+        public IDeletableEntityRepository<FinanceInvoice> FinanceInvoices => this.GetDeletableEntityRepository<FinanceInvoice>();
+
+        public IDeletableEntityRepository<Frz> Frzs => this.GetDeletableEntityRepository<Frz>();
+
+        public IDeletableEntityRepository<Payment> Payments => this.GetDeletableEntityRepository<Payment>();
+
+        //public IDbSet<IdentityUserRole> IdentityUserRoles => this.GetDbSet<IdentityUserRole>();
+
+        public IRepository<IdentityRole> IdentityRoles => this.GetRepository<IdentityRole>();
+
+        public void Dispose()
         {
-            get
+            this.Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposing)
             {
-                return this.context;
+                return;
             }
+            this.context?.Dispose();
         }
-
-        //public IRepository<T> GetGenericRepository<T>() where T : class
-        //{
-        //    if (typeof(T).IsAssignableFrom(typeof(DeletableEntity)))
-        //    {
-        //        return this.GetDeletableEntityRepository<T>();
-        //    }
-
-        //    return this.GetRepository<T>();
-        //}
-
-        public IRepository<User> Users
-        {
-            get { return this.GetRepository<User>(); }
-        }
-
-        //  public IRepository<IdentityUserRole> UserRoles
-        //  {
-        //      get { return this.GetRepository<IdentityUserRole>()}
-        //  }
 
         /// <summary>
         /// Saves all changes made in this context to the underlying database.
@@ -60,142 +97,30 @@
             return this.context.SaveChanges();
         }
 
-        public void Dispose()
+        private IRepository<T> GetRepository<T>() where T : class
         {
-            this.Dispose(true);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (this.repositories.ContainsKey(typeof(T)))
             {
-                if (this.context != null)
-                {
-                    this.context.Dispose();
-                }
+                return (IRepository<T>)this.repositories[typeof(T)];
             }
-        }
 
-        private IRepository<T> GetRepository<T>() where T : class, IEntity
-        {
-            if (!this.repositories.ContainsKey(typeof(T)))
-            {
-                var type = typeof(GenericRepository<T>);
-                this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
-            }
+            var type = typeof(GenericRepository<T>);
+            this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
 
             return (IRepository<T>)this.repositories[typeof(T)];
         }
 
         private IDeletableEntityRepository<T> GetDeletableEntityRepository<T>() where T : class, IDeletableEntity, IEntity
         {
-            if (!this.repositories.ContainsKey(typeof(T)))
+            if (this.repositories.ContainsKey(typeof(T)))
             {
-                var type = typeof(DeletableEntityRepository<T>);
-                this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
+                return (IDeletableEntityRepository<T>)this.repositories[typeof(T)];
             }
 
+            var type = typeof(DeletableEntityRepository<T>);
+            this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
+
             return (IDeletableEntityRepository<T>)this.repositories[typeof(T)];
-        }
-
-        public IDeletableEntityRepository<Provider> Providers
-        {
-            get { return this.GetDeletableEntityRepository<Provider>(); }
-        }
-
-        public IDeletableEntityRepository<Client> Clients
-        {
-            get { return this.GetDeletableEntityRepository<Client>(); }
-        }
-
-        public IDeletableEntityRepository<Activity> Activities
-        {
-            get { return this.GetDeletableEntityRepository<Activity>(); }
-        }
-
-        public IDeletableEntityRepository<SchedulerTask> SchedulerTasks
-        {
-            get { return this.GetDeletableEntityRepository<SchedulerTask>(); }
-        }
-
-        public IDeletableEntityRepository<Channel> Channels
-        {
-            get { return this.GetDeletableEntityRepository<Channel>(); }
-        }
-
-        public IDeletableEntityRepository<ClientContract> ClientContracts
-        {
-            get { return this.GetDeletableEntityRepository<ClientContract>(); }
-        }
-
-        public IDeletableEntityRepository<ProviderContract> ProviderContracts
-        {
-            get { return this.GetDeletableEntityRepository<ProviderContract>(); }
-        }
-
-        public IDeletableEntityRepository<Invoice> Invoices
-        {
-            get { return this.GetDeletableEntityRepository<Invoice>(); }
-        }
-
-        public IDeletableEntityRepository<Discussion> Discussions
-        {
-            get { return this.GetDeletableEntityRepository<Discussion>(); }
-        }
-
-        public IDeletableEntityRepository<Trd> Trds
-        {
-            get { return this.GetDeletableEntityRepository<Trd>(); }
-        }
-
-        public IDeletableEntityRepository<TypeOfCompany> TypeOfCompanies
-        {
-            get { return this.GetDeletableEntityRepository<TypeOfCompany>(); }
-        }
-
-        public IDeletableEntityRepository<Campaign> Campaigns
-        {
-            get { return this.GetDeletableEntityRepository<Campaign>(); }
-        }
-
-        public IDeletableEntityRepository<Media> Media
-        {
-            get { return this.GetDeletableEntityRepository<Media>(); }
-        }
-
-        public IDeletableEntityRepository<Operator> Operators
-        {
-            get { return this.GetDeletableEntityRepository<Operator>(); }
-        }
-
-        public IDeletableEntityRepository<Pr> Prs
-        {
-            get { return this.GetDeletableEntityRepository<Pr>(); }
-        }
-
-        public IDeletableEntityRepository<MarketingPartner> MarketingPartners
-        {
-            get { return this.GetDeletableEntityRepository<MarketingPartner>(); }
-        }
-
-        public IDeletableEntityRepository<SocialPartner> SocialPartners
-        {
-            get { return this.GetDeletableEntityRepository<SocialPartner>(); }
-        }
-
-        public IDeletableEntityRepository<FinanceInvoice> FinanceInvoices
-        {
-            get { return this.GetDeletableEntityRepository<FinanceInvoice>(); }
-        }
-
-        public IDeletableEntityRepository<Frz> Frzs
-        {
-            get { return this.GetDeletableEntityRepository<Frz>(); }
-        }
-
-        public IDeletableEntityRepository<Payment> Payments
-        {
-            get { return this.GetDeletableEntityRepository<Payment>(); }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Logic.Services.Contractors
+﻿using CRM.Services.Data.ViewModels.Administration.Admin;
+
+namespace CRM.Services.Logic.Services.Contractors
 {
     using System.Linq;
     using System.Collections.Generic;
@@ -108,6 +110,9 @@
 
         public ClientViewModel CreateClient(ClientViewModel client)
         {
+            var dealer = this.Data.Users
+                .GetById(client.Dealer);
+
             var newClient = new Client
             {
                 Name = client.Name,
@@ -130,6 +135,8 @@
                 TvSubs = client.TvSubs,
                 Coverage = client.Coverage,
                 PostCode = client.PostCode,
+                DealerId = client.Dealer,
+                Dealer = dealer,
                 Management = client.Management,
                 ManagementInBulgarian = client.ManagementInBulgarian,
                 ManagementPhone = client.ManagementPhone,
@@ -146,9 +153,9 @@
                 MarketingEmail = client.MarketingEmail,
                 Contracts = new List<ClientContract>(),
                 Discussions = new List<Discussion>(),
-                DealerPhone = client.DealerPhone,
-                DealerEmail = client.DealerEmail,
-                DealerName = client.DealerName,
+                //DealerPhone = client.DealerPhone,
+                //DealerEmail = client.DealerEmail,
+                //DealerName = client.DealerName,
                 WantToReceiveEpg = client.WantToReceiveEpg,
                 WantToReceiveNews = client.WantToReceiveNews,
                 IsVisible = client.IsVisible
@@ -210,9 +217,9 @@
             clientFromDb.Marketing = client.Marketing;
             clientFromDb.MarketingPhone = client.MarketingPhone;
             clientFromDb.MarketingEmail = client.MarketingEmail;
-            clientFromDb.DealerName = client.DealerName;
-            clientFromDb.DealerEmail = client.DealerEmail;
-            clientFromDb.DealerPhone = client.DealerPhone;
+            //clientFromDb.DealerName = client.DealerName;
+            //clientFromDb.DealerEmail = client.DealerEmail;
+            //clientFromDb.DealerPhone = client.DealerPhone;
             clientFromDb.WantToReceiveNews = client.WantToReceiveNews;
             clientFromDb.WantToReceiveEpg = client.WantToReceiveEpg;
             clientFromDb.IsVisible = client.IsVisible;
@@ -230,6 +237,33 @@
             this.Data.Clients.SaveChanges();
 
             return client;
+        }
+
+        public List<DatabaseDataDropdownViewModel> GetDealers()
+        {
+            var identityUserRoles = this.Data.IdentityRoles
+                .All()
+                .FirstOrDefault(r => r.Name == "Dealer")
+                .Users;
+
+            var dealers = new List<DatabaseDataDropdownViewModel>();
+
+            foreach (var identityUserRole in identityUserRoles)
+            {
+                var user = this.Data.Users
+                    .All()
+                    .Where(u => u.Id == identityUserRole.UserId)
+                    .Select(u => new DatabaseDataDropdownViewModel()
+                    {
+                        Text = u.UserName,
+                        ValueString = u.Id
+                    })
+                    .FirstOrDefault();
+
+                dealers.Add(user);
+            }
+
+            return dealers;
         }
     }
 }

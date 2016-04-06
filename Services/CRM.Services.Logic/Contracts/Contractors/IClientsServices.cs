@@ -23,5 +23,7 @@ namespace CRM.Services.Logic.Contracts.Contractors
         ClientViewModel UpdateClient(ClientViewModel client);
 
         ClientViewModel DestroyClient(ClientViewModel client);
+
+        List<DatabaseDataDropdownViewModel> GetDealers();
     }
 }

@@ -28,8 +28,10 @@
         {
             var names = clients.GetNames();
             var vm = clients.Index();
+            var dealerUsers = clients.GetDealers();
 
             ViewData["TypeOfCompanies"] = vm;
+            ViewData["DealerUsers"] = dealerUsers;
 
             return View(names);
         }

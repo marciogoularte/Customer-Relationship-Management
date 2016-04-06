@@ -44,6 +44,10 @@
       <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FastMember.1.0.0.11\lib\net40\FastMember.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Kendo.Mvc, Version=2015.3.1111.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\Kendo.Mvc.dll</HintPath>
@@ -1026,6 +1030,7 @@
     <Content Include="Areas\Marketing\Views\MarketingReports\Index.cshtml" />
     <Content Include="Areas\Users\Views\ManageUser\Index.cshtml" />
     <Content Include="Areas\Users\Views\Shared\EditorTemplates\GenderEditor.cshtml" />
+    <Content Include="Areas\Contractors\Views\Shared\EditorTemplates\DealerEditor.cshtml" />
     <None Include="Properties\PublishProfiles\publish_crm.pubxml" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />

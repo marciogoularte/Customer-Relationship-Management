@@ -85,6 +85,8 @@
     <Compile Include="ViewModels\Finance\Frz\FrzViewModel.cs" />
     <Compile Include="ViewModels\Finance\Payments\PaymentViewModel.cs" />
     <Compile Include="ViewModels\Finance\Reports\ChooseFinanceReportDropdown.cs" />
+    <Compile Include="ViewModels\Finance\Reports\ClientReportModel.cs" />
+    <Compile Include="ViewModels\Finance\Reports\DealerReportModel.cs" />
     <Compile Include="ViewModels\Finance\Reports\SearchedItemDropDown.cs" />
     <Compile Include="ViewModels\Finance\Reports\SendFinanceReportViewModel.cs" />
     <Compile Include="ViewModels\Marketing\Campaigns\CampaignPartnersViewModel.cs" />

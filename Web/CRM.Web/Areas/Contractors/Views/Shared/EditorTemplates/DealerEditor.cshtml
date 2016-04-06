@@ -1,0 +1,16 @@
+﻿@using CRM.Services.Data.ViewModels.Contracts.Contracts
+@{
+    var data = ViewData["DealerUsers"];
+    var dealerUsers = new List<DatabaseDataDropdownViewModel>();
+    if (data != null)
+    {
+        var dealerUsersVm = (List<DatabaseDataDropdownViewModel>)data;
+        dealerUsers.AddRange(dealerUsersVm);
+    }
+}
+
+@(Html.Kendo().DropDownListFor(m => m)
+        .DataTextField("Text")
+        .DataValueField("ValueString")
+         .BindTo(dealerUsers)
+)

@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Linq.Expressions;
 
-    public interface IRepository<T> where T : IEntity
+    public interface IRepository<T> where T : class
     {
         IQueryable<T> All();
 

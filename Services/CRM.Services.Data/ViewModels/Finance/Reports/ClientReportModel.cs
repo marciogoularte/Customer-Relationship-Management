@@ -1,136 +1,135 @@
-﻿namespace CRM.Data.Models
+﻿namespace CRM.Services.Data.ViewModels.Finance.Reports
 {
-    using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
-    using Contracts;
+    using CRM.Data.Models;
+    using Web.Common.Mappings;
 
-    public class Client : DeletableEntity, IEntity
+    public class ClientReportModel : IMapFrom<Client>
     {
-        private ICollection<ClientContract> contracts;
-        private ICollection<Discussion> discussions;
-        private ICollection<Trd> trds;
-        private ICollection<Campaign> campaigns;
-
-        public Client()
-        {
-            this.contracts = new HashSet<ClientContract>();
-            this.discussions = new HashSet<Discussion>();
-            this.trds = new HashSet<Trd>();
-            this.campaigns = new HashSet<Campaign>();
-        }
-
-        public int Id { get; set; }
-
+        [DisplayName("Name")]
+        [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
         public string Name { get; set; }
 
+        [DisplayName("Bulgarian Name")]
+        [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
         public string NameBulgarian { get; set; }
 
+        [DisplayName("Type")]
+        [UIHint("TypeOfCompanyEditor")]
         public string TypeOfCompany { get; set; }
 
+        [DisplayName("UIC")]
         public string Uic { get; set; }
 
+        [DisplayName("VAT#")]
         public string Vat { get; set; }
 
+        [DisplayName("Residence and address")]
         public string ResidenceAndAddress { get; set; }
 
+        [DisplayName("Residence and address(BG)")]
         public string ResidenceAndAddressInBulgarian { get; set; }
 
         public string Region { get; set; }
 
+        [DisplayName("Network page")]
         public string NetworkPage { get; set; }
 
+        [DisplayName("Contact person")]
         public string ContactPerson { get; set; }
 
+        [DisplayName("Phone number")]
         public string PhoneNumber { get; set; }
 
         [EmailAddress(ErrorMessage = "Provider email is not valid!")]
         public string Email { get; set; }
 
+        [DisplayName("Correspondence")]
         public string Correspondence { get; set; }
 
+        [DisplayName("Fixed phone service")]
         public double? FixedPhoneService { get; set; }
 
+        [DisplayName("Mobile voice services provided through network")]
         public double? MobileVoiceServicesProvidedThroughNetwork { get; set; }
 
+        [DisplayName("Internet subs")]
         public double? InternetSubs { get; set; }
 
+        [DisplayName("Services mobile access to internet")]
         public double? ServicesMobileAccessToInternet { get; set; }
 
+        [DisplayName("TV Subs")]
         public double? TvSubs { get; set; }
 
         public string Coverage { get; set; }
 
+        [DisplayName("Post code")]
         public string PostCode { get; set; }
 
         public string Management { get; set; }
 
+        [DisplayName("Managment in Bulgarian")]
         public string ManagementInBulgarian { get; set; }
 
+        [DisplayName("Management phone")]
         public string ManagementPhone { get; set; }
 
+        [DisplayName("Management email")]
         public string ManagementEmail { get; set; }
 
         public string Finance { get; set; }
 
+        [DisplayName("Finance phone")]
         public string FinancePhone { get; set; }
 
+        [DisplayName("Finance address")]
         public string FinanceAddress { get; set; }
 
+        [DisplayName("Finance email")]
         public string FinanceEmail { get; set; }
 
+        [DisplayName("Technical name")]
         public string TechnicalName { get; set; }
 
+        [DisplayName("Technical phone")]
         public string TechnicalPhone { get; set; }
 
+        [DisplayName("Technical email")]
         public string TechnicalEmail { get; set; }
 
         public string Marketing { get; set; }
 
+        [DisplayName("Marketing phone")]
         public string MarketingPhone { get; set; }
 
+        [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
 
-        public string Comments { get; set; }
+        //public int DealerId { get; set; }
 
-        public string DealerId { get; set; }
-
+        [Required]
+        [UIHint("DealerEditor")]
         public virtual User Dealer { get; set; }
 
+        //[DisplayName("Dealer name")]
         //public string DealerName { get; set; }
 
+        //[DisplayName("Dealer phone")]
         //public string DealerPhone { get; set; }
 
+        //[DisplayName("Dealer email")]
         //public string DealerEmail { get; set; }
 
+        [UIHint("TextAreaEditor")]
+        public string Comments { get; set; }
+
+        [DisplayName("Want to receive EPG")]
         public bool WantToReceiveEpg { get; set; }
 
+        [DisplayName("Want to receive Highlights / News")]
         public bool WantToReceiveNews { get; set; }
-
-        public bool IsVisible { get; set; }
-
-        public virtual ICollection<Trd> Trds
-        {
-            get { return this.trds; }
-            set { this.trds = value; }
-        }
-
-        public virtual ICollection<ClientContract> Contracts
-        {
-            get { return this.contracts; }
-            set { this.contracts = value; }
-        }
-
-        public virtual ICollection<Discussion> Discussions
-        {
-            get { return this.discussions; }
-            set { this.discussions = value; }
-        }
-
-        public virtual ICollection<Campaign> Campaigns
-        {
-            get { return this.campaigns; }
-            set { this.campaigns = value; }
-        }
     }
 }

@@ -12,7 +12,7 @@
     using Contracts;
     using Common.Extensions;
 
-    public class GenericRepository<T> : IRepository<T> where T : class, IEntity
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         public GenericRepository(ICRMDbContext context)
         {

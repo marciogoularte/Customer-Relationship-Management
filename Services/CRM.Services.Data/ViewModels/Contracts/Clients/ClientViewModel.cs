@@ -1,4 +1,6 @@
-﻿namespace CRM.Services.Data.ViewModels.Contracts.Clients
+﻿using AutoMapper;
+
+namespace CRM.Services.Data.ViewModels.Contracts.Clients
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
@@ -6,7 +8,7 @@
     using CRM.Data.Models;
     using Web.Common.Mappings;
 
-    public class ClientViewModel : IMapFrom<Client>
+    public class ClientViewModel : IMapFrom<Client>, IHaveCustomMappings
     {
         //public static Expression<Func<Client, ClientViewModel>> FromClient
         //{
@@ -160,14 +162,20 @@
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
         
-        [DisplayName("Dealer name")]
-        public string DealerName { get; set; }
-        
-        [DisplayName("Dealer phone")]
-        public string DealerPhone { get; set; }
-        
-        [DisplayName("Dealer email")]
-        public string DealerEmail { get; set; }
+        //public int DealerId { get; set; }
+
+        [Required]
+        [UIHint("DealerEditor")]
+        public string Dealer { get; set; }
+
+        //[DisplayName("Dealer name")]
+        //public string DealerName { get; set; }
+
+        //[DisplayName("Dealer phone")]
+        //public string DealerPhone { get; set; }
+
+        //[DisplayName("Dealer email")]
+        //public string DealerEmail { get; set; }
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
@@ -180,5 +188,11 @@
 
         [DisplayName("Is visible")]
         public bool IsVisible { get; set; }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            configuration.CreateMap<Client, ClientViewModel>()
+                .ForMember(m => m.Dealer, opts => opts.MapFrom(m => m.Dealer.UserName.ToString()));
+        }
     }
 }
