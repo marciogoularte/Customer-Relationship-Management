@@ -31,5 +31,7 @@
         public virtual ClientContract ClientContract { get; set; }
         
         public bool IsVisible { get; set; }
+
+        public bool IsPaid { get; set; }
     }
 }

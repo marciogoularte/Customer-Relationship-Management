@@ -1,7 +1,10 @@
-﻿namespace CRM.Data.Models
+﻿using System.Linq;
+
+namespace CRM.Data.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Contracts;
 
@@ -108,6 +111,27 @@
         public bool WantToReceiveNews { get; set; }
 
         public bool IsVisible { get; set; }
+
+        //[NotMapped]
+        //public bool HasUnpaidInvoices
+        //{
+        //    get
+        //    {
+        //        if (this.Contracts == null || !this.Contracts.Any())
+        //        {
+        //            return false;
+        //        }
+
+        //        var hasUnpaid =
+        //            this.Contracts
+        //                .ToList()
+        //                .Any(contract => contract
+        //                    .Invoices
+        //                    .Any(invoice => invoice.IsPaid == false));
+
+        //        return hasUnpaid;
+        //    }
+        //}
 
         public virtual ICollection<Trd> Trds
         {

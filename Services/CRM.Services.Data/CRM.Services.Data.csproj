@@ -87,8 +87,10 @@
     <Compile Include="ViewModels\Finance\Reports\ChooseFinanceReportDropdown.cs" />
     <Compile Include="ViewModels\Finance\Reports\ClientReportModel.cs" />
     <Compile Include="ViewModels\Finance\Reports\DealerReportModel.cs" />
+    <Compile Include="ViewModels\Finance\Reports\InvoiceReportModel.cs" />
     <Compile Include="ViewModels\Finance\Reports\SearchedItemDropDown.cs" />
     <Compile Include="ViewModels\Finance\Reports\SendFinanceReportViewModel.cs" />
+    <Compile Include="ViewModels\Finance\Reports\TvChannelReportModel.cs" />
     <Compile Include="ViewModels\Marketing\Campaigns\CampaignPartnersViewModel.cs" />
     <Compile Include="ViewModels\Marketing\Reports\ChooseMarketingReportDropdown.cs" />
     <Compile Include="ViewModels\Marketing\Reports\SendMarketingReportViewModel.cs" />

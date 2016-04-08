@@ -30,6 +30,15 @@
             return invoicesData;
         }
 
+        public void InvoiceIsPaid(int invoiceId)
+        {
+            var invoice = this.Data.Invoices
+                .GetById(invoiceId);
+
+            invoice.IsPaid = true;
+            this.Data.Invoices.SaveChanges();
+        }
+
         public List<InvoiceViewModel> ReadContractInvoices(string searchbox, int contractId, bool showAll)
         {
             List<InvoiceViewModel> invoices;
@@ -81,7 +90,8 @@
                 Vat = invoice.Vat,
                 ClientContractId = contractId,
                 Comments = invoice.Comments,
-                IsVisible = invoice.IsVisible
+                IsVisible = invoice.IsVisible,
+                IsPaid = false
             };
 
             this.Data.Invoices.Add(newInvoice);

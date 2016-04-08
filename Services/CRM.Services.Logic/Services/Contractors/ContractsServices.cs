@@ -60,11 +60,22 @@
 
         public List<ChannelViewModel> GetChannels(int contractId)
         {
-            var channels = this.Data.Channels
+            var contract = this.Data.ClientContracts
                 .All()
-                .Where(c => c.ClientContractId == contractId)
-                .ProjectTo<ChannelViewModel>()
-                .ToList();
+                .FirstOrDefault(c => c.Id == contractId);
+
+            var channels = new List<ChannelViewModel>();
+
+            foreach (var channel in contract.Provider.Channels)
+            {
+                var channelAsModel = this.Data.Channels
+                    .All()
+                    .Where(c => c.Id == channel.Id)
+                    .ProjectTo<ChannelViewModel>()
+                    .FirstOrDefault();
+
+                channels.Add(channelAsModel);
+            }
 
             return channels;
         }
@@ -386,6 +397,8 @@
             }
 
             this.Data.SaveChanges();
+            this.Data.Channels.SaveChanges();
+            this.Data.ClientContracts.SaveChanges();
         }
 
         public ContractResponseModel GenerateContractTemplate(int providerId, int contractId)
@@ -487,11 +500,20 @@
                 .Where(c => c.ProviderId == clientContractProviderId)
                 .ToList();
 
-            var clientContractChannels = this.Data.Channels
-                .All()
-                .ProjectTo<ChannelViewModel>()
-                .Where(c => c.ClientContractId == clientContractId)
-                .ToList();
+            var clientContract = this.Data.ClientContracts
+                .GetById(clientContractId);
+
+            var clientContractChannels = new List<ChannelViewModel>();
+            foreach(var channel in clientContract.Channels)
+            {
+                var channelAsModel = this.Data.Channels
+                    .All()
+                    .Where(c => c.Id == channel.Id)
+                    .ProjectTo<ChannelViewModel>()
+                    .FirstOrDefault();
+
+                clientContractChannels.Add(channelAsModel);
+            }
 
             var indexesOfElementForRemove = new List<int>();
             foreach (var channel in clientContractChannels)

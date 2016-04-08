@@ -66,5 +66,9 @@
 
         [DisplayName("Is visible")]
         public bool IsVisible { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DisplayName("Is paid")]
+        public bool IsPaid { get; set; }
     }
 }

@@ -32,6 +32,7 @@
             command.Custom("Details").Click("viewInvoiceDetails");
             command.Edit();
             command.Destroy();
+            command.Custom("Invoice is paid").Click("invoiceIsPaid");
         });
     })
     .ToolBar(toolBar =>
@@ -129,6 +130,12 @@
         e.preventDefault();
         var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
         window.location = '/Contractors/Invoices/InvoiceDetails?invoiceId=' + dataItem.Id;
+    }
+
+    function invoiceIsPaid(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        window.location = '/Contractors/Invoices/InvoiceIsPaid?invoiceId=' + dataItem.Id;
     }
 
     function selectRow() {

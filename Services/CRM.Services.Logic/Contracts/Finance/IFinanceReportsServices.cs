@@ -12,9 +12,9 @@
 
         List<DealerReportModel> ByDealer(DateTime from, DateTime to);
 
-        //List<InvoiceReportModel> ByInvoices(DateTime from, DateTime to);
+        List<InvoiceReportModel> ByInvoices(DateTime from, DateTime to);
 
-        //List<TvChannelReportModel> ByTvChannels(DateTime from, DateTime to);
+        List<TvChannelReportModel> ByTvChannels(DateTime from, DateTime to);
 
         //List<DateReportModel> ByDate(DateTime from, DateTime to);
     }

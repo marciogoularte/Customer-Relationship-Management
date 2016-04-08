@@ -1,9 +1,9 @@
-﻿using AutoMapper;
-
-namespace CRM.Services.Data.ViewModels.Contracts.Clients
+﻿namespace CRM.Services.Data.ViewModels.Contracts.Clients
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    using AutoMapper;
 
     using CRM.Data.Models;
     using Web.Common.Mappings;
@@ -162,20 +162,9 @@ namespace CRM.Services.Data.ViewModels.Contracts.Clients
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
         
-        //public int DealerId { get; set; }
-
         [Required]
         [UIHint("DealerEditor")]
         public string Dealer { get; set; }
-
-        //[DisplayName("Dealer name")]
-        //public string DealerName { get; set; }
-
-        //[DisplayName("Dealer phone")]
-        //public string DealerPhone { get; set; }
-
-        //[DisplayName("Dealer email")]
-        //public string DealerEmail { get; set; }
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }

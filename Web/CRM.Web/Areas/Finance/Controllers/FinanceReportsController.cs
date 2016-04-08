@@ -49,54 +49,44 @@ namespace CRM.Web.Areas.Finance.Controllers
             {
                 case 0:
                     var byClient = financeReports.ByClient(from, to);
-                    SetResponse(byClient, $"By client - {from} - {to}");
+                    SetResponse(byClient, $"By client - {from} - {to}", true);
                     break;
                 case 1:
                     var byDealer = financeReports.ByDealer(from, to);
-                    SetResponse(byDealer, $"By dealer - {from} - {to}");
+                    SetResponse(byDealer, $"By dealer - {from} - {to}", false);
                     break;
-                    //case 2:
-                    //    result = financeReports.ByInvoices(from, to);
-                    //    break;
-                    //case 3:
-                    //    result = financeReports.ByTvChannels(from, to);
-                    //    break;
+                case 2:
+                    var byInvoice = financeReports.ByInvoices(from, to);
+                    SetResponse(byInvoice, $"By total unpaid and total paid invoices - {from} - {to}", false);
+                    break;
+                case 3:
+                    var byTvChannels = financeReports.ByTvChannels(from, to);
+                    SetResponse(byTvChannels, $"By TV Channels - {from} - {to}", false);
+                    break;
                     //case 4:
-                    //    result = financeReports.ByDate(from, to);
+                    //    result = financeReports.ByDate(from, to, false);
                     //    break;
             }
 
             return RedirectToAction("Index");
         }
 
-        private void SetResponse<T>(IEnumerable<T> result, string fileName)
+        private void SetResponse<T>(IEnumerable<T> result, string fileName, bool isClient)
         {
             Response.ClearContent();
-            Response.AddHeader("content-disposition", "attachment;filename=" + fileName +".xls");
+            Response.AddHeader("content-disposition", "attachment;filename=" + fileName + ".xls");
             Response.AddHeader("Content-Type", "application/vnd.ms-excel");
-            GenerateExcel(result, Response.Output);
-            Response.End();
-        }
 
-        private void GenerateExcel<T>(IEnumerable<T> data, TextWriter output)
-        {
-            var props = TypeDescriptor.GetProperties(typeof(T));
-            foreach (PropertyDescriptor prop in props)
+            if (isClient)
             {
-                output.Write(prop.DisplayName); // header
-                output.Write("\t");
+                result.WriteHtmlTable(Response.Output);
             }
-            output.WriteLine();
-            foreach (var item in data)
+            else
             {
-                foreach (PropertyDescriptor prop in props)
-                {
-                    output.Write(prop.Converter.ConvertToString(
-                         prop.GetValue(item)));
-                    output.Write("\t");
-                }
-                output.WriteLine();
+                result.GenerateExcel(Response.Output);
             }
+
+            Response.End();
         }
     }
 }

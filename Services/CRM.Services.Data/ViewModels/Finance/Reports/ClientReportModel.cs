@@ -1,12 +1,15 @@
 ﻿namespace CRM.Services.Data.ViewModels.Finance.Reports
 {
+    using System.Linq;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
+    using AutoMapper;
 
     using CRM.Data.Models;
     using Web.Common.Mappings;
 
-    public class ClientReportModel : IMapFrom<Client>
+    public class ClientReportModel : IMapFrom<Client>, IHaveCustomMappings
     {
         [DisplayName("Name")]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
@@ -108,20 +111,9 @@
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
 
-        //public int DealerId { get; set; }
-
         [Required]
-        [UIHint("DealerEditor")]
-        public virtual User Dealer { get; set; }
-
-        //[DisplayName("Dealer name")]
-        //public string DealerName { get; set; }
-
-        //[DisplayName("Dealer phone")]
-        //public string DealerPhone { get; set; }
-
-        //[DisplayName("Dealer email")]
-        //public string DealerEmail { get; set; }
+        [DisplayName("Dealr name")]
+        public string Dealer { get; set; }
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }
@@ -131,5 +123,18 @@
 
         [DisplayName("Want to receive Highlights / News")]
         public bool WantToReceiveNews { get; set; }
+
+        public bool HasUnpaidInvoices { get; set; }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            configuration.CreateMap<Client, ClientReportModel>()
+                .ForMember(c => c.Dealer, opts => opts.MapFrom(c => c.Dealer.UserName))
+                .ForMember(c => c.HasUnpaidInvoices, opts => opts.MapFrom(c => c
+                    .Contracts.ToList()
+                        .Any(contract => contract
+                            .Invoices
+                            .Any(invoice => invoice.IsPaid == false))));
+        }
     }
 }

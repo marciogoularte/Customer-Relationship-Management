@@ -1,11 +1,19 @@
 ﻿namespace CRM.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using Contracts;
 
     public class Channel : DeletableEntity, IEntity
     {
+        private ICollection<ClientContract> clientContracts;
+
+        public Channel()
+        {
+            this.clientContracts = new HashSet<ClientContract>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -34,12 +42,14 @@
 
         public virtual Client Client { get; set; }
 
-        public int? ClientContractId { get; set; }
-
-        public virtual ClientContract ClientContract { get; set; }
-
         public string Comments { get; set; }
         
         public bool IsVisible { get; set; }
+
+        public virtual ICollection<ClientContract> ClientContracts
+        {
+            get { return this.clientContracts; }
+            set { this.clientContracts = value; }
+        }
     }
 }
