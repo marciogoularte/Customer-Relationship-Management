@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
 
+    using Rotativa;
     using Kendo.Mvc.UI;
     using Kendo.Mvc.Extensions;
     using Microsoft.AspNet.Identity;
@@ -11,7 +12,7 @@
     using Web.Controllers;
     using Services.Logic.Contracts.Contractors;
     using Services.Data.ViewModels.Contracts.Invoices;
-
+    using System;
     [Authorize]
     public class InvoicesController : BaseController
     {
@@ -53,7 +54,20 @@
         [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateContractInvoice([DataSourceRequest]  DataSourceRequest request, InvoiceViewModel invoice, int contractId)
         {
-            if (invoice == null || !ModelState.IsValid)
+            if (invoice.From != null)
+            {
+                invoice.From = DateTime.Parse(invoice.From.ToString());
+            }
+            if (invoice.To != null)
+            {
+                invoice.To = DateTime.Parse(invoice.To.ToString());
+            }
+            if (invoice.CorrespondencePayment != null)
+            {
+                invoice.CorrespondencePayment = DateTime.Parse(invoice.CorrespondencePayment.ToString());
+            }
+
+            if (invoice == null)
             {
                 return Json(new[] { invoice }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
             }
@@ -105,6 +119,31 @@
             invoice.Id = deletedInvoice.Id;
 
             return Json(new[] { invoice }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult GenerateInvoice(int id, string type)
+        {
+            //return View("InvoicesTemplates/invoice-en");
+            var invoiceDetails = this.invoices.InvoiceDetails(id);
+            ViewAsPdf file;
+
+            if (type == "bg")
+            {
+                file = new ViewAsPdf("InvoicesTemplates/invoice-bg", invoiceDetails)
+                {
+                    FileName = ("Invoice BG - " + DateTime.Now + ".pdf")
+                };
+            }
+            else
+            {
+                file = new ViewAsPdf("InvoicesTemplates/invoice-en", invoiceDetails)
+                {
+                    FileName = ("Invoice EN - " + DateTime.Now + ".pdf")
+                };
+            }
+
+            return file;
         }
     }
 }

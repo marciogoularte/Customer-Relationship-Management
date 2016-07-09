@@ -16,6 +16,6 @@
 
         List<TvChannelReportModel> ByTvChannels(DateTime from, DateTime to);
 
-        //List<DateReportModel> ByDate(DateTime from, DateTime to);
+        List<DateReportModel> ByDate(DateTime from, DateTime to);
     }
 }

@@ -22,12 +22,9 @@
 
         public List<ClientReportModel> ByClient(DateTime from, DateTime to)
         {
-            // TODO: Check specification
-            // TODO: from/to
-
             var clients = this.Data.Clients
                 .All()
-                .Where(c => c.Contracts.Count != 0)
+                .Where(c => c.Contracts.Count != 0 && c.CreatedOn > from && c.CreatedOn < to)
                 .ProjectTo<ClientReportModel>()
                 .OrderBy(c => c.Name)
                 .ToList();
@@ -73,13 +70,14 @@
         {
             var invoices = this.Data.Invoices
                 .All()
+                .Where(i => i.From > from && i.To < to)
                 .Select(i => new InvoiceReportModel()
                 {
                     ClientName = i.ClientContract.Client.Name,
                     DealerName = i.ClientContract.Client.Dealer.UserName,
                     From = i.From,
                     To = i.To,
-                    AdditionalInformation= i.AdditionalInformation,
+                    AdditionalInformation = i.AdditionalInformation,
                     TotalValue = i.FixedMonthlyFee,
                     IsPaid = i.IsPaid
                 })
@@ -102,8 +100,8 @@
             {
                 ChannelName = channel.Name,
                 ProviderName = channel.Provider.Name,
-                TotalPaid = GetTotalPaidAndUnpaidForChannels(channel, true),
-                TotalUnpaid = GetTotalPaidAndUnpaidForChannels(channel, false),
+                TotalPaid = GetTotalPaidAndUnpaidForChannels(channel, true, from, to),
+                TotalUnpaid = GetTotalPaidAndUnpaidForChannels(channel, false, from, to),
                 TotalRevenuesForSelectedPeriod = GetTotalRevenuesForSelectedPeriodForChannel(channel, from, to)
             })
             .OrderBy(channel => channel.ChannelName)
@@ -113,7 +111,26 @@
             return channelsReportModel;
         }
 
-        private int GetTotalPaidAndUnpaidForChannels(Channel channel, bool isPaid)
+        public List<DateReportModel> ByDate(DateTime from, DateTime to)
+        {
+            var contracts = this.Data.ClientContracts
+                .All()
+                .Where(c => c.CreatedOn < to && c.CreatedOn > from)
+                .ToList();
+
+            var reports = contracts
+                .Select(contract => new DateReportModel
+                {
+                    TotalPaid = contract.Invoices.Count(i => i.IsPaid),
+                    TotalUnpaid = contract.Invoices.Count(i => i.IsPaid == false),
+                    TotalProfitForPeriod = contract.Invoices.Select(i => i.FixedMonthlyFee).Sum()
+                })
+                .ToList();
+
+            return reports;
+        }
+
+        private int GetTotalPaidAndUnpaidForChannels(Channel channel, bool isPaid, DateTime from, DateTime to)
         {
             var test = this.Data.ClientContracts.All().ToList();
             var contracts = this.Data.ClientContracts
@@ -124,6 +141,7 @@
             var total = contracts
                 .Sum(contract => contract
                 .Invoices
+                .Where(invoice => invoice.CreatedOn > from && invoice.CreatedOn < to)
                 .Count(invoice => invoice.IsPaid == isPaid));
 
             return total;
@@ -140,7 +158,7 @@
             foreach (var contract in contracts)
             {
                 invoices.AddRange(contract.Invoices
-                    .Where(invoice => invoice.From > @from && invoice.To < to));
+                    .Where(invoice => invoice.CreatedOn > from && invoice.CreatedOn < to));
             }
 
             var total = invoices.Sum(invoice => invoice.FixedMonthlyFee);

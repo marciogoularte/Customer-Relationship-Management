@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Nikolay\Desktop\CRM-22.03.2016</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Nikolay\Desktop\CRM-22.04.2016</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Administration/Views/Activities/Index.cshtml">
@@ -61,7 +61,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Clients/Index.cshtml">
-      <publishTime>02/11/2016 16:25:46</publishTime>
+      <publishTime>04/06/2016 13:34:17</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Contracts/ClientContractDetails.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
@@ -94,10 +94,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Invoices/InvoiceDetails.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>04/07/2016 15:35:44</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Invoices/_ContractInvoices.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>04/07/2016 15:45:19</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Providers/Index.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
@@ -116,6 +116,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Areas/Contractors/Views/Shared/EditorTemplates/ContractTemplateEditor.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
+    </File>
+    <File Include="Areas/Contractors/Views/Shared/EditorTemplates/DealerEditor.cshtml">
+      <publishTime>03/28/2016 12:14:12</publishTime>
     </File>
     <File Include="Areas/Contractors/Views/Shared/EditorTemplates/DiscussionTypeEditor.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
@@ -163,10 +166,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
     <File Include="Areas/Finance/Views/FinanceInvoices/FinanceInvoices.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>04/07/2016 15:32:22</publishTime>
     </File>
     <File Include="Areas/Finance/Views/FinanceInvoices/FinanceInvoicesInformation.cshtml">
-      <publishTime>02/10/2016 13:52:20</publishTime>
+      <publishTime>04/07/2016 15:35:35</publishTime>
+    </File>
+    <File Include="Areas/Finance/Views/FinanceReports/Index.cshtml">
+      <publishTime>04/08/2016 16:40:01</publishTime>
     </File>
     <File Include="Areas/Finance/Views/Frzs/Frzs.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
@@ -206,6 +212,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Areas/Marketing/Views/MarketingPartners/_MarketingPartners.cshtml">
       <publishTime>02/11/2016 18:30:58</publishTime>
+    </File>
+    <File Include="Areas/Marketing/Views/MarketingReports/Index.cshtml">
+      <publishTime>04/21/2016 15:33:03</publishTime>
     </File>
     <File Include="Areas/Marketing/Views/Media/MediaInformation.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
@@ -264,6 +273,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Users/Views/Feedbacks/Index.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
+    <File Include="Areas/Users/Views/ManageUser/Index.cshtml">
+      <publishTime>03/25/2016 19:44:33</publishTime>
+    </File>
     <File Include="Areas/Users/Views/Profile/Index.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
@@ -272,6 +284,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Areas/Users/Views/Profile/UpcomingActivities.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
+    </File>
+    <File Include="Areas/Users/Views/Shared/EditorTemplates/GenderEditor.cshtml">
+      <publishTime>03/25/2016 19:05:24</publishTime>
     </File>
     <File Include="Areas/Users/Views/Shared/_CalendarScheduler.cshtml">
       <publishTime>02/10/2016 13:52:20</publishTime>
@@ -292,130 +307,133 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/10/2016 13:52:20</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>01/24/2016 01:57:28</publishTime>
+      <publishTime>04/08/2016 19:05:36</publishTime>
     </File>
     <File Include="bin/AutoMapper.dll">
-      <publishTime>01/24/2016 01:57:34</publishTime>
+      <publishTime>04/08/2016 19:05:36</publishTime>
     </File>
     <File Include="bin/CRM.Common.dll">
-      <publishTime>02/12/2016 17:49:34</publishTime>
+      <publishTime>04/22/2016 15:00:12</publishTime>
     </File>
     <File Include="bin/CRM.Data.Contracts.dll">
-      <publishTime>02/12/2016 17:49:23</publishTime>
+      <publishTime>04/22/2016 15:00:12</publishTime>
     </File>
     <File Include="bin/CRM.Data.dll">
-      <publishTime>03/22/2016 16:53:27</publishTime>
+      <publishTime>04/22/2016 15:00:14</publishTime>
     </File>
     <File Include="bin/CRM.Data.Models.dll">
-      <publishTime>03/22/2016 16:53:26</publishTime>
+      <publishTime>04/22/2016 15:00:13</publishTime>
     </File>
     <File Include="bin/CRM.Services.Data.dll">
-      <publishTime>03/22/2016 16:53:29</publishTime>
+      <publishTime>04/22/2016 15:00:16</publishTime>
     </File>
     <File Include="bin/CRM.Services.Logic.dll">
-      <publishTime>03/22/2016 16:53:31</publishTime>
+      <publishTime>04/22/2016 15:00:17</publishTime>
     </File>
     <File Include="bin/CRM.Web.Common.dll">
-      <publishTime>03/22/2016 16:53:28</publishTime>
+      <publishTime>04/22/2016 15:00:15</publishTime>
     </File>
     <File Include="bin/CRM.Web.dll">
-      <publishTime>03/22/2016 16:53:33</publishTime>
+      <publishTime>04/22/2016 15:00:20</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>01/24/2016 01:57:22</publishTime>
+      <publishTime>04/08/2016 19:05:44</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>01/24/2016 01:57:23</publishTime>
+      <publishTime>04/08/2016 19:05:45</publishTime>
+    </File>
+    <File Include="bin/FastMember.dll">
+      <publishTime>04/08/2016 19:05:37</publishTime>
     </File>
     <File Include="bin/Kendo.Mvc.dll">
       <publishTime>11/11/2015 10:28:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>01/24/2016 01:57:21</publishTime>
+      <publishTime>04/08/2016 19:05:38</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
-      <publishTime>01/24/2016 01:57:22</publishTime>
+      <publishTime>04/08/2016 19:05:38</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
-      <publishTime>01/24/2016 01:57:27</publishTime>
+      <publishTime>04/08/2016 19:05:39</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
-      <publishTime>01/24/2016 01:57:27</publishTime>
+      <publishTime>04/08/2016 19:05:36</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
-      <publishTime>01/24/2016 01:57:27</publishTime>
+      <publishTime>04/08/2016 19:05:40</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
-      <publishTime>01/24/2016 01:57:30</publishTime>
+      <publishTime>04/08/2016 19:05:38</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.dll">
-      <publishTime>01/24/2016 01:57:30</publishTime>
+      <publishTime>04/08/2016 19:05:39</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
-      <publishTime>01/24/2016 01:57:27</publishTime>
+      <publishTime>04/08/2016 19:05:38</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Google.dll">
-      <publishTime>01/24/2016 01:57:30</publishTime>
+      <publishTime>04/08/2016 19:05:39</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
-      <publishTime>01/24/2016 01:57:30</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
-      <publishTime>01/24/2016 01:57:31</publishTime>
+      <publishTime>04/08/2016 19:05:40</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
-      <publishTime>01/24/2016 01:57:30</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>01/24/2016 01:57:21</publishTime>
+      <publishTime>04/08/2016 19:05:37</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>01/24/2016 01:57:34</publishTime>
+      <publishTime>04/08/2016 19:05:42</publishTime>
     </File>
     <File Include="bin/Ninject.dll">
-      <publishTime>01/24/2016 01:57:35</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="bin/Ninject.Extensions.Conventions.dll">
-      <publishTime>01/24/2016 01:57:34</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="bin/Ninject.Web.Common.dll">
-      <publishTime>01/24/2016 01:57:34</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="bin/Ninject.Web.Mvc.dll">
-      <publishTime>01/24/2016 01:57:33</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="bin/Owin.dll">
-      <publishTime>01/24/2016 01:57:25</publishTime>
+      <publishTime>04/08/2016 19:05:37</publishTime>
     </File>
     <File Include="bin/Rotativa.dll">
-      <publishTime>01/24/2016 01:57:41</publishTime>
+      <publishTime>04/08/2016 19:05:47</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>01/24/2016 01:57:21</publishTime>
+      <publishTime>04/08/2016 19:05:37</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>01/24/2016 01:57:18</publishTime>
+      <publishTime>04/08/2016 19:05:36</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>01/24/2016 01:57:24</publishTime>
+      <publishTime>04/08/2016 19:05:36</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>01/24/2016 01:57:20</publishTime>
+      <publishTime>04/08/2016 19:05:36</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>01/24/2016 01:57:21</publishTime>
+      <publishTime>04/08/2016 19:05:38</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>01/24/2016 01:57:21</publishTime>
+      <publishTime>04/08/2016 19:05:37</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>01/24/2016 01:57:21</publishTime>
+      <publishTime>04/08/2016 19:05:38</publishTime>
     </File>
     <File Include="bin/WebActivatorEx.dll">
-      <publishTime>01/24/2016 01:57:34</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>01/24/2016 01:57:33</publishTime>
+      <publishTime>04/08/2016 19:05:41</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.min.css">
       <publishTime>08/10/2015 09:01:00</publishTime>
@@ -1093,7 +1111,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/11/2015 10:28:26</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>12/24/2015 16:27:42</publishTime>
+      <publishTime>04/02/2016 12:34:49</publishTime>
     </File>
     <File Include="Rotativa/wkhtmltopdf.exe">
       <publishTime>12/06/2015 02:11:33</publishTime>
@@ -2638,7 +2656,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/06/2015 02:05:33</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/24/2016 15:13:28</publishTime>
+      <publishTime>03/25/2016 09:58:47</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>12/06/2015 02:00:03</publishTime>
@@ -2650,7 +2668,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/06/2015 01:54:57</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/12/2016 17:50:08</publishTime>
+      <publishTime>04/22/2016 15:00:23</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@
         [Display(Description = "By TV channels")]
         ByTvChannel = 3,
 
-        [Display(Description = "By month/year/Q")]
+        [Display(Description = "By date")]
         ByMonthYearQ = 4
     }
 }

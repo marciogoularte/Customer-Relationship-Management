@@ -95,7 +95,24 @@
         [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateClientContract([DataSourceRequest]  DataSourceRequest request, ClientContractViewModel contract, int currentClientId)
         {
-            if (contract == null || !ModelState.IsValid)
+            if (contract.StartDate != null)
+            {
+                contract.StartDate = DateTime.Parse(contract.StartDate.ToString());
+            }
+            if (contract.EndDate != null)
+            {
+                contract.EndDate = DateTime.Parse(contract.EndDate.ToString());
+            }
+            if (contract.BillingEndDate != null)
+            {
+                contract.BillingEndDate = DateTime.Parse(contract.BillingEndDate.ToString());
+            }
+            if (contract.BillingStartDate != null)
+            {
+                contract.BillingStartDate = DateTime.Parse(contract.BillingStartDate.ToString());
+            }
+
+            if (contract == null)
             {
                 return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
             }
@@ -113,7 +130,24 @@
         [Authorize(Roles = "Admin, Dealer")]
         public JsonResult CreateProviderContract([DataSourceRequest]  DataSourceRequest request, ProviderContractViewModel contract, int currentProviderId)
         {
-            if (contract == null || !ModelState.IsValid)
+            if (contract.StartDate != null)
+            {
+                contract.StartDate = DateTime.Parse(contract.StartDate.ToString());
+            }
+            if (contract.EndDate != null)
+            {
+                contract.EndDate = DateTime.Parse(contract.EndDate.ToString());
+            }
+            if (contract.BillingEndDate != null)
+            {
+                contract.BillingEndDate = DateTime.Parse(contract.BillingEndDate.ToString());
+            }
+            if (contract.BillingStartDate != null)
+            {
+                contract.BillingStartDate = DateTime.Parse(contract.BillingStartDate.ToString());
+            }
+
+            if (contract == null)
             {
                 return Json(new[] { contract }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
             }

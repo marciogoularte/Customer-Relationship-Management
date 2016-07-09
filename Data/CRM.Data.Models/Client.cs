@@ -1,10 +1,7 @@
-﻿using System.Linq;
-
-namespace CRM.Data.Models
+﻿namespace CRM.Data.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     using Contracts;
 

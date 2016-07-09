@@ -1,0 +1,418 @@
+﻿@model CRM.Services.Data.ViewModels.Contracts.Clients.ClientViewModel
+
+<div class="table-responsive">
+    <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Name
+                    </strong>
+                </td>
+                <td>
+                    @Model.Name
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Name in Bulgarian
+                    </strong>
+                </td>
+                <td>
+                    @Model.NameBulgarian
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Type
+                    </strong>
+                </td>
+                <td>
+                    @if (ViewBag.TypeOfCompany != null)
+                    {
+                        @ViewBag.TypeOfCompany.ToString()
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Uic
+                    </strong>
+                </td>
+                <td>
+                    @Model.Uic
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Vat
+                    </strong>
+                </td>
+                <td>
+                    @Model.Vat
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Residence and Address
+                    </strong>
+                </td>
+                <td>
+                    @Model.ResidenceAndAddress
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Residence and address(BG)
+                    </strong>
+                </td>
+                <td>
+                    @Model.ResidenceAndAddressInBulgarian
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Region
+                    </strong>
+                </td>
+                <td>
+                    @Model.Region
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Network Page
+                    </strong>
+                </td>
+                <td>
+                    @Model.NetworkPage
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Contact Person
+                    </strong>
+                </td>
+                <td>
+                    @Model.ContactPerson
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Phone Number
+                    </strong>
+                </td>
+                <td>
+                    @Model.PhoneNumber
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Email
+                    </strong>
+                </td>
+                <td>
+                    @Model.Email
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Correspondence
+                    </strong>
+                </td>
+                <td>
+                    @Model.Correspondence
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Fixed Phone Service
+                    </strong>
+                </td>
+                <td>
+                    @Model.FixedPhoneService
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Mobile Voice Services Provided Through Network
+                    </strong>
+                </td>
+                <td>
+                    @Model.MobileVoiceServicesProvidedThroughNetwork
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Services Fixed Access To Internet
+                    </strong>
+                </td>
+                <td>
+                    @Model.InternetSubs
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Services Mobile Access To Internet
+                    </strong>
+                </td>
+                <td>
+                    @Model.ServicesMobileAccessToInternet
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        TV Subs
+                    </strong>
+                </td>
+                <td>
+                    @Model.TvSubs
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Coverage
+                    </strong>
+                </td>
+                <td>
+                    @Model.Coverage
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Post Code
+                    </strong>
+                </td>
+                <td>
+                    @Model.PostCode
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Management
+                    </strong>
+                </td>
+                <td>
+                    @Model.Management
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Managment in Bulgarian
+                    </strong>
+                </td>
+                <td>
+                    @Model.ManagementInBulgarian
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Management Phone
+                    </strong>
+                </td>
+                <td>
+                    @Model.ManagementPhone
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Management Email
+                    </strong>
+                </td>
+                <td>
+                    @Model.ManagementEmail
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Finance
+                    </strong>
+                </td>
+                <td>
+                    @Model.Finance
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Finance Phone
+                    </strong>
+                </td>
+                <td>
+                    @Model.FinancePhone
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Finance Address
+                    </strong>
+                </td>
+                <td>
+                    @Model.FinanceAddress
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Finance Email
+                    </strong>
+                </td>
+                <td>
+                    @Model.FinanceEmail
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Technical Name
+                    </strong>
+                </td>
+                <td>
+                    @Model.TechnicalName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Technical Phone
+                    </strong>
+                </td>
+                <td>
+                    @Model.TechnicalPhone
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Technical Email
+                    </strong>
+                </td>
+                <td>
+                    @Model.TechnicalEmail
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Marketing
+                    </strong>
+                </td>
+                <td>
+                    @Model.Marketing
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Marketing Phone
+                    </strong>
+                </td>
+                <td>
+                    @Model.MarketingPhone
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Marketing Email
+                    </strong>
+                </td>
+                <td>
+                    @Model.MarketingEmail
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Dealer Name
+                    </strong>
+                </td>
+                <td>
+                    @Model.Dealer
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Want to receive EPG
+                    </strong>
+                </td>
+                <td>
+                    @Model.WantToReceiveEpg
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Want to receive Highlights / News
+                    </strong>
+                </td>
+                <td>
+                    @Model.WantToReceiveNews
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

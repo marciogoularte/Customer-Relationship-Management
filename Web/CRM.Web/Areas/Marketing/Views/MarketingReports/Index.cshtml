@@ -6,141 +6,24 @@
 }
 
 <h2>Marketing Reports</h2>
-@Html.DropDownList("choose-report-type", ViewBag.EnumData as SelectList)
-<button class="btn btn-success" id="generate-report-btn">Generate report</button>
-
-<script>
-    $(document).ready(function() {
-        $('#generate-report-btn').click(function() {
-            alert('No information for reports!');
-        });
-    });
-</script>
-@*<div id="additional-dropdown"></div>
-
-    <script>
-        $(document).ready(function() {
-            $('#choose-report-type').change(function () {
-                var container = $('#additional-dropdown');
-                var reportIndex = parseInt($('#choose-report-type').val());
-                var list = $('<select />');
-                var result;
-
-                switch (reportIndex) {
-                    case 0:
-                        $.ajax({
-                            type:'GET',
-                            url: '@Url.Action("GetClients", "Reports", new { area = "Finance" })',
-                            contentType: 'application/json;',
-                            success: function(data) {
-                                result = $.map(data, function (el) { return el });
-
-                                for (var i in result) {
-                                    $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
-                                }
-                            }
-                        });
-
-                        break;
-                    case 1:
-                        result = getDealers();
-                        break;
-                    case 2:
-                        result = getUnpaidInvoices();
-                        break;
-                    case 3:
-                        result = getPaidInvoices();
-                        break;
-                    case 4:
-                        result = getTvChannels();
-                        break;
-                    case 5:
-
-                        $.ajax({
-                            type: 'GET',
-                            url: '@Url.Action("GetProviders", "Reports", new { area = "Finance" })',
-                            success: function(data) {
-                                result = $.map(data, function(el) { return el });
-
-                                for (var i in result) {
-                                    $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
-                                }
-                            }
-                        });
-
-                        break;
-                    case 6:
-
-                        $.ajax({
-                            type:'GET',
-                            url: '@Url.Action("GetMonths", "Reports", new { area = "Finance" })',
-                            success: function(data) {
-                                result = $.map(data, function(el) { return el });
-
-                                for (var i in result) {
-                                    $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
-                                }
-                            }
-                        });
-
-                        break;
-                    case 7:
-
-                        $.ajax({
-                            type:'GET',
-                            url: '@Url.Action("GetYears", "Reports", new { area = "Finance" })',
-                            success: function(data) {
-                                result = $.map(data, function(el) { return el });
 
 
-                                for (var i in result) {
-                                    $('<option />', { value: result[i].Id, text: result[i].Name }).appendTo(list);
-                                }
-                            }
-                        });
+@using (Html.BeginForm("GenerateReport", "MarketingReports", null, FormMethod.Post, null))
+{
+    @Html.DropDownList("chooseReportType", ViewBag.EnumData as SelectList)
 
-                        break;
-                    case 8:
-                        result = getQ();
-                        break;
-                    case 9:
-                        result = getEpg();
-                        break;
-                    case 10:
-                        result = getNewsletters();
-                        break;
-                }
+    <label for="from">From</label>
+    @(Html.Kendo().DatePicker()
+              .Name("from")
+    )
 
-                container.html('');
-                list.appendTo(container);
-            });
+    <label for="to">To</label>
+    @(Html.Kendo().DatePicker()
+              .Name("to")
+    )
 
-            function getDealers() {
+    <br />
+    <br />
 
-            }
-
-            function getUnpaidInvoices() {
-
-            }
-
-            function getPaidInvoices() {
-
-            }
-
-            function getTvChannels() {
-
-            }
-
-            function getQ() {
-
-            }
-
-            function getEpg() {
-
-            }
-
-            function getNewsletters() {
-
-            }
-        });
-    </script>*@
+    <input type="submit" value="Generate report" class="btn btn-primary" />
+}

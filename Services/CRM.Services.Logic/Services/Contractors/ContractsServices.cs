@@ -66,6 +66,11 @@
 
             var channels = new List<ChannelViewModel>();
 
+            if (contract == null || contract.Provider == null || contract.Provider.Channels.Count == 0)
+            {
+                return channels;
+            }
+
             foreach (var channel in contract.Provider.Channels)
             {
                 var channelAsModel = this.Data.Channels
@@ -430,7 +435,7 @@
             var channels = this.Data.Channels
                 .All()
                 .ProjectTo<ChannelViewModel>()
-                .Where(c => c.ClientContractId == contract.Id)
+                .Where(c => c.ClientContractId != null && c.ClientContractId == contract.Id)
                 .ToList();
 
             var trds = this.Data.Trds

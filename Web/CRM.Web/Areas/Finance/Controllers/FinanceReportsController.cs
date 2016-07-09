@@ -1,17 +1,9 @@
-﻿using System.ComponentModel;
-
-namespace CRM.Web.Areas.Finance.Controllers
+﻿namespace CRM.Web.Areas.Finance.Controllers
 {
     using System;
-    using System.IO;
-    using System.Data;
     using System.Linq;
-    using System.Web.UI;
     using System.Web.Mvc;
-    using System.Web.UI.WebControls;
     using System.Collections.Generic;
-
-    using FastMember;
 
     using CRM.Common.Extensions;
     using Services.Logic.Contracts.Finance;
@@ -63,9 +55,10 @@ namespace CRM.Web.Areas.Finance.Controllers
                     var byTvChannels = financeReports.ByTvChannels(from, to);
                     SetResponse(byTvChannels, $"By TV Channels - {from} - {to}", false);
                     break;
-                    //case 4:
-                    //    result = financeReports.ByDate(from, to, false);
-                    //    break;
+                case 4:
+                    var byDate = financeReports.ByDate(from, to);
+                    SetResponse(byDate, $"By date - {from} - {to}", false);
+                    break;
             }
 
             return RedirectToAction("Index");

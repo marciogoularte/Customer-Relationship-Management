@@ -5,9 +5,9 @@
     public enum ChooseMarketingReportDropdown
     {
         [Display(Description = "By EPG")]
-        ByEpg = 9,
+        ByEpg = 1,
 
         [Display(Description = "By Newsletter")]
-        ByNewsLetter = 10
+        ByNewsLetter = 2
     }
 }
