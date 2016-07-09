@@ -36,6 +36,7 @@
             return Json(invoicesData, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         [HttpGet]
         public ActionResult InvoiceIsPaid(int invoiceId)
         {
@@ -47,6 +48,11 @@
         public ActionResult ReadContractInvoices([DataSourceRequest] DataSourceRequest request, string searchbox, int contractId, bool? showAll)
         {
             var readInvoices = (showAll != null) ? (this.invoices.ReadContractInvoices(searchbox, contractId, (bool)showAll)) : (this.invoices.ReadContractInvoices(searchbox, contractId, false));
+=======
+        public ActionResult ReadContractInvoices([DataSourceRequest] DataSourceRequest request, string searchbox, int contractId, bool showAll)
+        {
+            var readInvoices = this.invoices.ReadContractInvoices(searchbox, contractId, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readInvoices.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

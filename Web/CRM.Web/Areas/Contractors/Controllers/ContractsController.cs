@@ -78,16 +78,28 @@
             return Json(contractsNames, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool? showAll)
         {
             var clientContracts = (showAll != null) ? (this.contracts.ReadClientsContracts(searchTerm, clientId, (bool)showAll)) : (this.contracts.ReadClientsContracts(searchTerm, clientId, false));
+=======
+        public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool showAll)
+        {
+            var clientContracts = this.contracts.ReadClientsContracts(searchTerm, clientId, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(clientContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool? showAll)
         {
             var providerContracts = (showAll != null) ? (this.contracts.ReadProvidersContracts(searchbox, providerId, (bool)showAll)) : (this.contracts.ReadProvidersContracts(searchbox, providerId, false));
+=======
+        public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool showAll)
+        {
+            var providerContracts = this.contracts.ReadProvidersContracts(searchbox, providerId, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(providerContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

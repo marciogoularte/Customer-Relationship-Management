@@ -61,9 +61,15 @@
             return View(providerId);
         }
 
+<<<<<<< HEAD
         public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request, string searchboxProviders, bool? showAll)
         {
             var readProviders = (showAll != null) ? (this.providers.ReadProviders(searchboxProviders, (bool)showAll)) : (this.providers.ReadProviders(searchboxProviders, false));
+=======
+        public JsonResult ReadProviders([DataSourceRequest] DataSourceRequest request, string searchboxProviders, bool showAll)
+        {
+            var readProviders = this.providers.ReadProviders(searchboxProviders, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readProviders.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

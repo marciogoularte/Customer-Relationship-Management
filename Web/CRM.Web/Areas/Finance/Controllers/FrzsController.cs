@@ -42,9 +42,15 @@
             return Json(frzsNames, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult ReadFrzs([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readFrzs = (showAll != null) ? (this.frzs.ReadFrzs(searchTerm, (bool)showAll)) : (this.frzs.ReadFrzs(searchTerm, false));
+=======
+        public JsonResult ReadFrzs([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
+        {
+            var readFrzs = this.frzs.ReadFrzs(searchTerm, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readFrzs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 ﻿namespace CRM.Web.Areas.Contractors.Controllers
+=======
+﻿using System.Collections.Generic;
+using CRM.Services.Data.ViewModels.Contracts.Clients;
+using CRM.Services.Logic.Contracts.Contractors;
+using Kendo.Mvc;
+
+namespace CRM.Web.Areas.Contractors.Controllers
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 {
     using System;
     using System.Web.Mvc;
@@ -73,11 +82,18 @@
             return View(clientId);
         }
 
+<<<<<<< HEAD
         public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request, string searchboxClients, bool? showAll)
         {
             var readClients = (showAll != null) ? (this.clients.ReadClients(searchboxClients, (bool)showAll)) : (this.clients.ReadClients(searchboxClients, false));
+=======
+        public JsonResult ReadClients([DataSourceRequest] DataSourceRequest request, string searchboxClients, bool showAll)
+        {
+            var readClients = clients.ReadClients(searchboxClients, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readClients.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+
         }
 
         [Authorize(Roles = "Admin, Dealer")]

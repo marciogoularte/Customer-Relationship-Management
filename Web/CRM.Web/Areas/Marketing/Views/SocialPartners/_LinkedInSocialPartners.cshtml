@@ -9,8 +9,13 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+<<<<<<< HEAD
 @Html.Label("show-all-li", "Show all", new { style = "display:inline;" })
 @Html.CheckBox("show-all-li", false, new { id = "show-all-li"})
+=======
+@Html.Label("show-all-linked-in", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all-linked-in", false, new { id = "show-all-linked-in"})
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
 @(Html.Kendo()
     .Grid<SocialPartnerViewModel>()
@@ -102,7 +107,11 @@
 </div>
 
 <script>
+<<<<<<< HEAD
     $('#show-all-li').click(function () {
+=======
+    $('#show-all-linked-in').click(function () {
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
         var grid = $("#grid-LinkedIn-social-partners").data("kendoGrid");
 
         grid.dataSource.read();
@@ -115,7 +124,11 @@
     }
 
     function addSearchLinkedInSocialPartners() {
+<<<<<<< HEAD
         var isChecked = $('#show-all-li').is(':checked');
+=======
+        var isChecked = $('#show-all-linked-in').is(':checked');
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
         return {
             showAll: isChecked,

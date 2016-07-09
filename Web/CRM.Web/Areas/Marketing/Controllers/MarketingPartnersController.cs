@@ -42,9 +42,15 @@
             return Json(marketingPartnersNames, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult ReadMarketingPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readMarketingPartners = (showAll != null) ? (this.marketingPartners.ReadMarketingPartners(searchTerm, (bool)showAll)) : (this.marketingPartners.ReadMarketingPartners(searchTerm, false));
+=======
+        public JsonResult ReadMarketingPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
+        {
+            var readMarketingPartners = marketingPartners.ReadMarketingPartners(searchTerm, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readMarketingPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

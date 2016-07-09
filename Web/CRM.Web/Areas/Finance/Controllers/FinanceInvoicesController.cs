@@ -42,9 +42,15 @@
             return Json(financeInvoicesNames, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult ReadFinanceInvoices([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readFinanceInvoices = (showAll != null) ? (financeInvoices.ReadFinanceInvoices(searchTerm, (bool)showAll)) : (financeInvoices.ReadFinanceInvoices(searchTerm, false));
+=======
+        public JsonResult ReadFinanceInvoices([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
+        {
+            var readFinanceInvoices = this.financeInvoices.ReadFinanceInvoices(searchTerm, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readFinanceInvoices.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

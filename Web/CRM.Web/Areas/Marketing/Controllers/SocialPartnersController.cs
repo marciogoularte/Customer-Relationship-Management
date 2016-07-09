@@ -111,42 +111,66 @@
             return Json(socialPartnersNames, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult FacebookReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readSocialPartners = 
                 (showAll != null) ? 
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.Facebook, (bool)showAll)) : 
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.Facebook, false));
+=======
+        public JsonResult FacebookReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
+        {
+            var readSocialPartners = socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.Facebook, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readSocialPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult TwitterReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readSocialPartners =
                 (showAll != null) ?
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.Twitter, (bool)showAll)) :
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.Twitter, false));
+=======
+        public JsonResult TwitterReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
+        {
+            var readSocialPartners = socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.Twitter, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readSocialPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult GooglePlusReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readSocialPartners =
                 (showAll != null) ?
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.GooglePlus, (bool)showAll)) :
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.GooglePlus, false));
+=======
+        public JsonResult GooglePlusReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
+        {
+            var readSocialPartners = socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.GooglePlus, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readSocialPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public JsonResult LinkedInReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readSocialPartners =
                 (showAll != null) ?
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.LinkedIn, (bool)showAll)) :
                 (this.socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.LinkedIn, false));
+=======
+        public JsonResult LinkedInReadSocialPartners([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
+        {
+            var readSocialPartners = socialPartners.ReadSocialPartners(searchTerm, SocialSystemType.LinkedIn, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readSocialPartners.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

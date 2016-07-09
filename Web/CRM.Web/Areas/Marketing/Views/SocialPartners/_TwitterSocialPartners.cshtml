@@ -9,8 +9,13 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/kendo")
 
+<<<<<<< HEAD
 @Html.Label("show-all-twitter", "Show all", new { style = "display:inline;" })
 @Html.CheckBox("show-all-twitter", false, new { id = "show-all-twitter"})
+=======
+@Html.Label("show-all", "Show all", new { style = "display:inline;" })
+@Html.CheckBox("show-all", false, new { id = "show-all-twitter"})
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
 @(Html.Kendo()
     .Grid<SocialPartnerViewModel>()

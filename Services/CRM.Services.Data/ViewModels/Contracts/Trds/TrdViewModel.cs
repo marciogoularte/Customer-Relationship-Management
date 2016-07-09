@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 ﻿namespace CRM.Services.Data.ViewModels.Contracts.Trds
+=======
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
+using CRM.Data.Models;
+using CRM.Web.Common.Mappings;
+
+namespace CRM.Services.Data.ViewModels.Contracts.Trds
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;

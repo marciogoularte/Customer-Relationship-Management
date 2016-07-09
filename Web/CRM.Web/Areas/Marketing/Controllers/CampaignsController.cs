@@ -46,9 +46,15 @@
             return Json(campaignsData, JsonRequestBehavior.AllowGet);
         }
 
+<<<<<<< HEAD
         public ActionResult ReadCampaigns([DataSourceRequest] DataSourceRequest request, string searchbox, bool? showAll)
         {
             var readCampaigns = (showAll != null) ? (this.campaigns.ReadCampaigns(searchbox, (bool)showAll)) : (this.campaigns.ReadCampaigns(searchbox, false));
+=======
+        public ActionResult ReadCampaigns([DataSourceRequest] DataSourceRequest request, string searchbox, bool showAll)
+        {
+            var readCampaigns = this.campaigns.ReadCampaigns(searchbox, showAll);
+>>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readCampaigns.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
