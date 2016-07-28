@@ -121,11 +121,11 @@
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                    contracts = this.Data.ClientContracts
-                    .All()
-                    .Where(c => c.TypeOfContract.Contains(searchTerm) && c.ClientId == clientId)
-                    .ProjectTo<ClientContractViewModel>()
-                    .ToList();
+                contracts = this.Data.ClientContracts
+                .All()
+                .Where(c => c.TypeOfContract.Contains(searchTerm) && c.ClientId == clientId)
+                .ProjectTo<ClientContractViewModel>()
+                .ToList();
             }
             else
             {
@@ -146,7 +146,7 @@
                     .ToList();
                 }
             }
-            
+
             return contracts;
         }
 
@@ -225,12 +225,8 @@
                 Channels = new List<Channel>(),
                 Frequency = contract.Frequency,
                 MonthlyFee = contract.MonthlyFee,
-<<<<<<< HEAD
-                IsVisible = contract.IsVisible,
-                AnnualIndexation = contract.AnnualIndexation
-=======
+                AnnualIndexation = contract.AnnualIndexation,
                 IsVisible = contract.IsVisible
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
             };
 
             if (contract.ProviderId != null)
@@ -270,12 +266,8 @@
                 ProviderId = currentProviderId,
                 CreatedOn = DateTime.Now,
                 Comments = contract.Comments,
-<<<<<<< HEAD
-                IsVisible = contract.IsVisible,
-                AnnualIndexation = contract.AnnualIndexation
-=======
+                AnnualIndexation = contract.AnnualIndexation,
                 IsVisible = contract.IsVisible
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
             };
 
             this.Data.ProviderContracts.Add(newContract);
@@ -308,10 +300,7 @@
             contractFromDb.Frequency = contract.Frequency;
             contractFromDb.MonthlyFee = contract.MonthlyFee;
             contractFromDb.IsVisible = contract.IsVisible;
-<<<<<<< HEAD
             contractFromDb.AnnualIndexation = contract.AnnualIndexation;
-=======
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             this.Data.SaveChanges();
 
@@ -336,10 +325,7 @@
             contractFromDb.CreatedOn = DateTime.Now;
             contractFromDb.Comments = contract.Comments;
             contractFromDb.IsVisible = contract.IsVisible;
-<<<<<<< HEAD
             contractFromDb.AnnualIndexation = contract.AnnualIndexation;
-=======
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             this.Data.SaveChanges();
 
@@ -446,10 +432,14 @@
                 .Where(i => i.ClientContractId == contract.Id)
                 .ToList();
 
+            var channelsIds = contract.Channels
+                .Select(c => c.Id)
+                .ToList();
+
             var channels = this.Data.Channels
                 .All()
+                .Where(c => channelsIds.Contains(c.Id))
                 .ProjectTo<ChannelViewModel>()
-                .Where(c => c.ClientContractId != null && c.ClientContractId == contract.Id)
                 .ToList();
 
             var trds = this.Data.Trds
@@ -523,7 +513,7 @@
                 .GetById(clientContractId);
 
             var clientContractChannels = new List<ChannelViewModel>();
-            foreach(var channel in clientContract.Channels)
+            foreach (var channel in clientContract.Channels)
             {
                 var channelAsModel = this.Data.Channels
                     .All()

@@ -34,16 +34,10 @@
 
             return Json(trdsData, JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
+        
         public ActionResult ReadTrds([DataSourceRequest] DataSourceRequest request, string searchbox, int clientId, bool? showAll)
         {
             var readTrds = (showAll != null) ? (this.trds.ReadTrds(searchbox, clientId, (bool)showAll)) : (this.trds.ReadTrds(searchbox, clientId, false));
-=======
-        public ActionResult ReadTrds([DataSourceRequest] DataSourceRequest request, string searchbox, int clientId, bool showAll)
-        {
-            var readTrds = this.trds.ReadTrds(searchbox, clientId, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readTrds.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

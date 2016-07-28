@@ -77,29 +77,16 @@
 
             return Json(contractsNames, JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
         public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool? showAll)
         {
             var clientContracts = (showAll != null) ? (this.contracts.ReadClientsContracts(searchTerm, clientId, (bool)showAll)) : (this.contracts.ReadClientsContracts(searchTerm, clientId, false));
-=======
-        public JsonResult ReadClientsContracts([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool showAll)
-        {
-            var clientContracts = this.contracts.ReadClientsContracts(searchTerm, clientId, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(clientContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
+        
         public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool? showAll)
         {
             var providerContracts = (showAll != null) ? (this.contracts.ReadProvidersContracts(searchbox, providerId, (bool)showAll)) : (this.contracts.ReadProvidersContracts(searchbox, providerId, false));
-=======
-        public JsonResult ReadProvidersContracts([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool showAll)
-        {
-            var providerContracts = this.contracts.ReadProvidersContracts(searchbox, providerId, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(providerContracts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
@@ -281,79 +268,109 @@
             switch (contractsData.ContractTemplate)
             {
                 case ContractTemplate.Box:
-                    file = new ViewAsPdf("ContractsTemplates/Box", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Box.cshtml", contract)
                     {
                         FileName = ("Box contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
                 case ContractTemplate.EbuLa:
-                    file = new ViewAsPdf("ContractsTemplates/Ebu_la", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Ebu_la.cshtml", contract)
                     {
                         FileName = ("Ebu La contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
                 case ContractTemplate.Ectv:
-                    file = new ViewAsPdf("ContractsTemplates/Ectv", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Ectv.cshtml", contract)
                     {
                         FileName = ("Ectv contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
                 case ContractTemplate.Fashionone:
-                    file = new ViewAsPdf("ContractsTemplates/Fashionone", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Fashionone.cshtml", contract)
                     {
                         FileName = ("Fashionone contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
                 case ContractTemplate.Fcw:
-                    file = new ViewAsPdf("ContractsTemplates/Fcw", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Fcw.cshtml", contract)
                     {
                         FileName = ("Fcw contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
                 case ContractTemplate.Fishing:
-                    file = new ViewAsPdf("ContractsTemplates/Fishing", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Fishing.cshtml", contract)
                     {
                         FileName = ("Fishing contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
                 case ContractTemplate.Imagine:
-                    file = new ViewAsPdf("ContractsTemplates/Imagine", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Imagine.cshtml", contract)
                     {
                         FileName = ("Imagine contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
-                case ContractTemplate.Moviestar:
-                    file = new ViewAsPdf("ContractsTemplates/Moviestar", contract)
-                    {
-                        FileName = ("Moviestar contract - " + DateTime.Now + ".pdf")
-                    };
-                    return file;
                 case ContractTemplate.Roma:
-                    file = new ViewAsPdf("ContractsTemplates/Roma", contract)
+                    file = new ViewAsPdf("ContractsTemplates/Roma.cshtml", contract)
                     {
                         FileName = ("Roma contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
-                case ContractTemplate.Sct:
-                    file = new ViewAsPdf("ContractsTemplates/Sct", contract)
-                    {
-                        FileName = ("Sct contract - " + DateTime.Now + ".pdf")
-                    };
-                    return file;
                 case ContractTemplate.SuperOne:
-                    file = new ViewAsPdf("ContractsTemplates/SuperOne", contract)
+                    file = new ViewAsPdf("ContractsTemplates/SuperOne.cshtml", contract)
                     {
                         FileName = ("Super One contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
-                case ContractTemplate.TheWorld:
-                    file = new ViewAsPdf("ContractsTemplates/TheWorld", contract)
+                case ContractTemplate.Bulsat:
+                    file = new ViewAsPdf("ContractsTemplates/Bulsat.cshtml", contract)
                     {
-                        FileName = ("The World contract - " + DateTime.Now + ".pdf")
+                        FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf")
+                    };
+
+                    return file;
+                case ContractTemplate.CREA:
+                    file = new ViewAsPdf("ContractsTemplates/CREA/CREA.cshtml", contract)
+                    {
+                        FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf")
+                    };
+
+                    return file;
+                case ContractTemplate.DSTV:
+                    file = new ViewAsPdf("ContractsTemplates/DSTV/DSTV.cshtml", contract)
+                    {
+                        FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf")
+                    };
+
+                    return file;
+                case ContractTemplate.Moviestar:
+                    file = new ViewAsPdf("ContractsTemplates/Moviestar/Moviestar.cshtml", contract)
+                    {
+                        FileName = ("Moviestar contract - " + DateTime.Now + ".pdf")
                     };
                     return file;
-                case ContractTemplate.Bulsat:
-                    file = new ViewAsPdf("ContractsTemplates/Bulsat", contract)
+                case ContractTemplate.P4TV:
+                    file = new ViewAsPdf("ContractsTemplates/P4TV/P4TV.cshtml", contract)
+                    {
+                        FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf")
+                    };
+
+                    return file;
+                case ContractTemplate.SCT:
+                    file = new ViewAsPdf("ContractsTemplates/SCT/SCT.cshtml", contract)
+                    {
+                        FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf")
+                    };
+
+                    return file;
+                case ContractTemplate.TheWorld:
+                    file = new ViewAsPdf("ContractsTemplates/THE_WORLD/THE_WORLD.cshtml", contract)
+                    {
+                        FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf")
+                    };
+
+                    return file;
+                case ContractTemplate.UATV:
+                    file = new ViewAsPdf("ContractsTemplates/UATV/UATV.cshtml", contract)
                     {
                         FileName = ("Bulsat VIRGIN XCHANGE contract - " + DateTime.Now + ".pdf")
                     };

@@ -25,11 +25,7 @@
         public string Name { get; set; }
 
         public string NameBulgarian { get; set; }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
         public string TypeOfCompany { get; set; }
 
         public string Uic { get; set; }
@@ -52,7 +48,6 @@
         public string Email { get; set; }
 
         public string Correspondence { get; set; }
-<<<<<<< HEAD
 
         public double? FixedPhoneService { get; set; }
 
@@ -61,18 +56,7 @@
         public double? InternetSubs { get; set; }
 
         public double? ServicesMobileAccessToInternet { get; set; }
-
-=======
                
-        public double? FixedPhoneService { get; set; }
-           
-        public double? MobileVoiceServicesProvidedThroughNetwork { get; set; }
-
-        public double? InternetSubs { get; set; }
-               
-        public double? ServicesMobileAccessToInternet { get; set; }
-               
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
         public double? TvSubs { get; set; }
 
         public string Coverage { get; set; }
@@ -108,7 +92,6 @@
         public string MarketingEmail { get; set; }
 
         public string Comments { get; set; }
-<<<<<<< HEAD
 
         public string DealerId { get; set; }
 
@@ -119,8 +102,6 @@
         //public string DealerPhone { get; set; }
 
         //public string DealerEmail { get; set; }
-
-=======
         
         public string DealerName { get; set; }
         
@@ -128,7 +109,6 @@
         
         public string DealerEmail { get; set; }
         
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
         public bool WantToReceiveEpg { get; set; }
 
         public bool WantToReceiveNews { get; set; }

@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using AutoMapper;
@@ -103,6 +104,8 @@
 
         [DisplayName("Is visible")]
         public bool IsVisible { get; set; }
+
+        public ICollection<Channel> Channels { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {

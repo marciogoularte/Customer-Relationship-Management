@@ -41,17 +41,10 @@
 
             return Json(prsNames, JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
+        
         public JsonResult ReadPrs([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readPrs = (showAll != null) ? (this.prs.ReadPrs(searchTerm, (bool)showAll)) : (this.prs.ReadPrs(searchTerm, false));
-=======
-        public JsonResult ReadPrs([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
-        {
-            var readPrs = prs.ReadPrs(searchTerm, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
-
             return Json(readPrs.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 

@@ -56,29 +56,17 @@
 
             return Json(discussionsSubjects, JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
+        
         public JsonResult ReadClientsDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool? showAll)
         {
             var readDiscussions = (showAll != null) ? (this.discussions.ReadClientsDiscussions(searchTerm, clientId, (bool)showAll)) : (this.discussions.ReadClientsDiscussions(searchTerm, clientId, false));
-=======
-        public JsonResult ReadClientsDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int clientId, bool showAll)
-        {
-            var readDiscussions = this.discussions.ReadClientsDiscussions(searchTerm, clientId, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readDiscussions.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
+        
         public JsonResult ReadProvidersDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int providerId, bool? showAll)
         {
             var readDiscussions = (showAll != null) ? (this.discussions.ReadProvidersDiscussions(searchTerm, providerId, (bool)showAll)) : (this.discussions.ReadProvidersDiscussions(searchTerm, providerId, false));
-=======
-        public JsonResult ReadProvidersDiscussions([DataSourceRequest] DataSourceRequest request, string searchTerm, int providerId, bool showAll)
-        {
-            var readDiscussions = this.discussions.ReadProvidersDiscussions(searchTerm, providerId, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readDiscussions.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

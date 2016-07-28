@@ -41,16 +41,10 @@
 
             return Json(operatorsNames, JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
+        
         public JsonResult ReadOperators([DataSourceRequest] DataSourceRequest request, string searchTerm, bool? showAll)
         {
             var readOperators = (showAll != null) ? (this.operators.ReadOperators(searchTerm, (bool)showAll)) : (this.operators.ReadOperators(searchTerm, false));
-=======
-        public JsonResult ReadOperators([DataSourceRequest] DataSourceRequest request, string searchTerm, bool showAll)
-        {
-            var readOperators = operators.ReadOperators(searchTerm, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readOperators.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

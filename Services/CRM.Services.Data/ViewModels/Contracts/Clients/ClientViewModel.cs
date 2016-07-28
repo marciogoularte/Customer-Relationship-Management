@@ -69,34 +69,20 @@
         [DisplayName("Bulgarian Name")]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Name should be between 2 and 20 symbols")]
         public string NameBulgarian { get; set; }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
         [DisplayName("Type")]
         [UIHint("TypeOfCompanyEditor")]
         public string TypeOfCompany { get; set; }
 
         [DisplayName("UIC")]
         public string Uic { get; set; }
-<<<<<<< HEAD
 
         [DisplayName("VAT#")]
         public string Vat { get; set; }
 
         [DisplayName("Residence and address")]
         public string ResidenceAndAddress { get; set; }
-
-=======
         
-        [DisplayName("VAT#")]
-        public string Vat { get; set; }
-        
-        [DisplayName("Residence and address")]
-        public string ResidenceAndAddress { get; set; }
-        
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
         [DisplayName("Residence and address(BG)")]
         public string ResidenceAndAddressInBulgarian { get; set; }
         
@@ -176,11 +162,10 @@
         [DisplayName("Marketing email")]
         public string MarketingEmail { get; set; }
         
-<<<<<<< HEAD
         [Required]
         [UIHint("DealerEditor")]
         public string Dealer { get; set; }
-=======
+
         [DisplayName("Dealer name")]
         public string DealerName { get; set; }
         
@@ -189,7 +174,6 @@
         
         [DisplayName("Dealer email")]
         public string DealerEmail { get; set; }
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
         [UIHint("TextAreaEditor")]
         public string Comments { get; set; }

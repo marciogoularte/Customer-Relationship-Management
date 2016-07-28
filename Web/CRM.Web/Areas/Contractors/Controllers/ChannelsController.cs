@@ -35,16 +35,10 @@
 
             return Json(channelsNames, JsonRequestBehavior.AllowGet);
         }
-
-<<<<<<< HEAD
+        
         public JsonResult ReadChannels([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool? showAll)
         {
             var readChannels = (showAll != null) ? (this.channels.ReadChannels(searchbox, providerId, (bool)showAll)) : (this.channels.ReadChannels(searchbox, providerId, false));
-=======
-        public JsonResult ReadChannels([DataSourceRequest] DataSourceRequest request, string searchbox, int providerId, bool showAll)
-        {
-            var readChannels = this.channels.ReadChannels(searchbox, providerId, showAll);
->>>>>>> d5b65130ac06472e570e2926b4106b53b6bd5ff6
 
             return Json(readChannels.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }

@@ -5,7 +5,7 @@
 
     using CRM.Data.Models;
     using Web.Common.Mappings;
-
+    using System.Collections.Generic;
     public class ChannelViewModel : IMapFrom<Channel>
     {
         //public static Expression<Func<Channel, ChannelViewModel>> FromChannel
@@ -79,10 +79,9 @@
         [ScaffoldColumn(false)]
         public int? ClientId { get; set; }
 
-        [ScaffoldColumn(false)]
-        public int? ClientContractId { get; set; }
-
         [DisplayName("Is visible")]
         public bool IsVisible { get; set; }
+
+        public ICollection<ClientContract> ClientContracts { get; set; }
     }
 }
