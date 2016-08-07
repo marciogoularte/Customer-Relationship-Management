@@ -3,10 +3,10 @@
 @using CRM.Services.Data.ViewModels.Contracts.Contracts
 @model ClientContractViewModel
 
-@Html.ActionLink("Generate PDF", "GenerateContractTemplate", "Contracts", new { providerId= Model.ProviderId, contractId = Model.Id},new{@class="btn btn-default"})
+@Html.ActionLink("Generate PDF", "GenerateContractTemplate", "Contracts", new { providerId = int.Parse(Model.ProviderId), contractId = Model.Id }, new { @class = "btn btn-default" })
 
-<br/>
-<br/>
+<br />
+<br />
 
 <div class="table-responsive">
     <table class="table table-condensed table-responsive table-user-information">
@@ -152,32 +152,6 @@
                     @Model.AnnualIndexation
                 </td>
             </tr>
-            @*<tr>
-                <td>
-                    <strong>
-                        Client name
-                    </strong>
-                </td>
-                @if (Model.ClientId != null)
-                {
-                    <td>
-                        @Model.Client.Name
-                    </td>
-                }
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        Provider name
-                    </strong>
-                </td>
-                @if (Model.Provider != null && Model.Provider.Name != null)
-                {
-                    <td>
-                        @Model.Provider.Name
-                    </td>
-                }
-            </tr>*@
         </tbody>
     </table>
 </div>
@@ -185,7 +159,6 @@
 <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
 <div class="panel panel-default">
     <div class="panel-heading">Channels</div>
-    <!-- Table -->
     <table class="table">
         <thead>
             <tr>

@@ -44,13 +44,13 @@
     {
     toolBar.Template(@<text>
 
-                         @*@(Html.Kendo().AutoComplete()
+                         @(Html.Kendo().AutoComplete()
                 .Name("searchbox-clients-contracts")
                  .Placeholder("Type of contract... ")
                 .DataSource(datasource => datasource
                             .Read(read => read.Action("ClientsContractsNames", controllerName, null).Data("onAdditionalDataClientContracts")))
                 .Filter("contains")
-        )*@ 
+        )
 @if (this.User.IsInRole("Admin") || this.User.IsInRole("Dealer"))
 {
     <a class="k-button k-button-icontext k-grid-add" href="/Users/Contracts/ReadClientsContracts?grid-channels-mode=insert"><span class="k-icon k-add"></span>Add new record</a>

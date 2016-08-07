@@ -432,7 +432,8 @@
                 .Where(i => i.ClientContractId == contract.Id)
                 .ToList();
 
-            var channelsIds = contract.Channels
+            var channelsIds = this.Data.ClientContracts.GetById(contractId)
+                .Channels
                 .Select(c => c.Id)
                 .ToList();
 

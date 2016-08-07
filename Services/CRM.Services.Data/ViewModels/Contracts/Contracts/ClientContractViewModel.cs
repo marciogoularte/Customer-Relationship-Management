@@ -1,6 +1,7 @@
 ﻿namespace CRM.Services.Data.ViewModels.Contracts.Contracts
 {
     using System;
+    using System.Linq;
     using System.ComponentModel;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -105,12 +106,13 @@
         [DisplayName("Is visible")]
         public bool IsVisible { get; set; }
 
-        public ICollection<Channel> Channels { get; set; }
+        // public List<Channel> Channels { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<ClientContract, ClientContractViewModel>()
                 .ForMember(c => c.ProviderId, opts => opts.MapFrom(c => c.ProviderId.ToString()));
+                // .ForMember(c => c.Channels, opts => opts.MapFrom(c => c.Channels));
         }
     }
 }
